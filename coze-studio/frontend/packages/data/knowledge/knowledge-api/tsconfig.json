@@ -1,0 +1,8 @@
+{
+  "extends": "@coze-arch/ts-config/react-library.json",
+  "compilerOptions": {
+    "outDir": "dist"
+  },
+  "include": ["src/**/*"],
+  "exclude": ["**/*.test.*", "**/*.stories.*"]
+}

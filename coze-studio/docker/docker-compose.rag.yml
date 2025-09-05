@@ -1,0 +1,255 @@
+version: '3.8'
+
+services:
+  # FastGPTRAG微服务
+  fastgpt-rag:
+    build:
+      context: ../services/FastGPTRAG
+      dockerfile: Dockerfile
+    container_name: coze-fastgpt-rag
+    restart: unless-stopped
+    ports:
+      - "${RAG_PORT:-3001}:${RAG_PORT:-3001}"
+    env_file:
+      - .env
+    environment:
+      # 基础配置
+      NODE_ENV: ${RAG_NODE_ENV:-development}
+      PORT: ${RAG_PORT:-3001}
+      
+      # 数据库配置 - 支持外部数据库和内部数据库
+      # 外部MongoDB配置（优先使用）
+      MONGO_URL: ${RAG_MONGO_URL:-mongodb://rag-mongo:27017/coze-rag}
+      MONGO_LOG_URL: ${RAG_MONGO_LOG_URL:-mongodb://rag-mongo:27017/coze-rag}
+      # 外部Redis配置（优先使用）
+      REDIS_URL: ${RAG_REDIS_URL:-redis://rag-redis:6379}
+      # 外部PostgreSQL配置（优先使用）
+      PG_URL: ${RAG_PG_URL:-postgresql://postgres:${RAG_POSTGRES_PASSWORD}@rag-postgres:5432/coze_rag}
+      
+      # Milvus配置（可选）
+      MILVUS_URL: ${MILVUS_URL:-localhost:19530}
+      MILVUS_USERNAME: ${MILVUS_USERNAME:-}
+      MILVUS_PASSWORD: ${MILVUS_PASSWORD:-}
+      
+      # Coze集成配置
+      COZE_API_BASE: ${COZE_BACKEND_URL:-http://coze-backend:8080}
+      COZE_AUTH_TOKEN: ${RAG_AUTH_TOKEN}
+      
+      # AI模型配置
+      ONEAPI_URL: ${ONEAPI_URL}
+      ONEAPI_KEY: ${ONEAPI_KEY}
+      
+      # 默认模型配置
+      DEFAULT_VECTOR_MODEL: ${DEFAULT_VECTOR_MODEL:-text-embedding-v3}
+      DEFAULT_LLM_MODEL: ${DEFAULT_LLM_MODEL:-qwen-max}
+      DEFAULT_VLM_MODEL: ${DEFAULT_VLM_MODEL:-glm-4v-flash}
+      
+      # 阿里云API配置
+      ALIBABA_API_KEY: ${ALIBABA_API_KEY}
+      ALIBABA_API_URL: ${ALIBABA_API_URL}
+      
+      # 智谱AI配置
+      ZHIPU_API_KEY: ${ZHIPU_API_KEY}
+      ZHIPU_API_URL: ${ZHIPU_API_URL}
+      
+      # 安全配置
+      JWT_SECRET: ${RAG_JWT_SECRET}
+      ENCRYPT_KEY: ${RAG_ENCRYPT_KEY}
+      
+      # 文件存储配置
+      UPLOAD_PATH: ${RAG_UPLOAD_PATH:-./uploads}
+      MAX_FILE_SIZE: ${RAG_MAX_FILE_SIZE:-100}
+      
+      # 日志配置
+      # 强制使用debug级别日志，确保生产环境也有详细日志输出
+      LOG_LEVEL: ${LOG_LEVEL:-debug}
+      LOG_FILE_PATH: ./logs
+      # 启用详细启动日志
+      SHOW_STARTUP_INFO: "true"
+      VERBOSE_LOGGING: "true"
+      # 强制启用详细日志，忽略NODE_ENV设置 - 这是关键配置
+      FORCE_VERBOSE_LOGGING: "true"
+      # 启用请求日志
+      ENABLE_REQUEST_LOGGING: "true"
+      # 启用数据库查询日志
+      ENABLE_DB_LOGGING: "true"
+      # 启用API调用日志
+      ENABLE_API_LOGGING: "true"
+      # 确保即使在生产环境也能看到控制台日志
+      FORCE_CONSOLE_LOGGING: "true"
+      # 启用彩色日志输出 - 错误日志将显示为红色
+      ENABLE_COLOR_LOGS: ${ENABLE_COLOR_LOGS:-true}
+      FORCE_COLOR: ${FORCE_COLOR:-1}
+      
+      # 队列配置
+      VECTOR_MAX_PROCESS: ${RAG_VECTOR_MAX_PROCESS:-15}
+      QA_MAX_PROCESS: ${RAG_QA_MAX_PROCESS:-15}
+      TOKEN_WORKERS: ${RAG_TOKEN_WORKERS:-30}
+      
+      # 向量搜索配置
+      HNSW_EF_SEARCH: ${RAG_HNSW_EF_SEARCH:-100}
+      
+      # 团队和用户配置
+      ROOT_USER_EMAIL: ${RAG_ROOT_USER_EMAIL:-admin@fastgpt.rag}
+      ROOT_USER_PASSWORD: ${RAG_ROOT_USER_PASSWORD:-admin123456}
+      DEFAULT_TEAM_NAME: ${RAG_DEFAULT_TEAM_NAME:-FastGPT RAG Team}
+    volumes:
+      - rag_uploads:/app/uploads
+      - rag_logs:/app/logs
+    # 条件依赖 - 只有在使用内部数据库时才依赖
+    # depends_on:
+    #   - rag-mongo
+    #   - rag-redis
+    #   - rag-postgres
+    networks:
+      - coze-network  # 使用统一的coze-network
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:${RAG_PORT:-3001}/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # MongoDB for RAG
+  rag-mongo:
+    image: mongo:7
+    container_name: coze-rag-mongo
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    env_file:
+      - .env
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${RAG_MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${RAG_MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: coze-rag
+    volumes:
+      - rag_mongo_data:/data/db
+      - rag_mongo_config:/data/configdb
+      - ./scripts/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    networks:
+      - coze-network
+    command: mongod --auth --verbose
+
+  # Redis for RAG
+  rag-redis:
+    image: redis:7-alpine
+    container_name: coze-rag-redis
+    restart: unless-stopped
+    ports:
+      - "6380:6379"
+    env_file:
+      - .env
+    environment:
+      REDIS_PASSWORD: ${RAG_REDIS_PASSWORD}
+    volumes:
+      - rag_redis_data:/data
+      - ./scripts/redis.conf:/usr/local/etc/redis/redis.conf:ro
+    networks:
+      - coze-network
+    command: redis-server /usr/local/etc/redis/redis.conf --loglevel verbose
+    healthcheck:
+      test: ["CMD", "redis-cli", "--raw", "incr", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # PostgreSQL with pgvector for RAG
+  rag-postgres:
+    image: pgvector/pgvector:pg16
+    container_name: coze-rag-postgres
+    restart: unless-stopped
+    ports:
+      - "5433:5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: coze_rag
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${RAG_POSTGRES_PASSWORD}
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - rag_postgres_data:/var/lib/postgresql/data
+      - ./scripts/postgres-init.sql:/docker-entrypoint-initdb.d/postgres-init.sql:ro
+    networks:
+      - coze-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d coze_rag"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Milvus (可选，如果选择Milvus作为向量数据库)
+  rag-milvus:
+    image: milvusdb/milvus:v2.4.0
+    container_name: coze-rag-milvus
+    restart: unless-stopped
+    ports:
+      - "19530:19530"
+      - "9091:9091"
+    environment:
+      ETCD_ENDPOINTS: rag-etcd:2379
+      MINIO_ADDRESS: rag-minio:9000
+    volumes:
+      - rag_milvus_data:/var/lib/milvus
+      - ./scripts/milvus.yaml:/milvus/configs/milvus.yaml:ro
+    depends_on:
+      - rag-etcd
+      - rag-minio
+    networks:
+      - coze-network
+    profiles:
+      - milvus
+
+  # etcd for Milvus
+  rag-etcd:
+    image: quay.io/coreos/etcd:v3.5.5
+    container_name: coze-rag-etcd
+    restart: unless-stopped
+    environment:
+      - ETCD_AUTO_COMPACTION_MODE=revision
+      - ETCD_AUTO_COMPACTION_RETENTION=1000
+      - ETCD_QUOTA_BACKEND_BYTES=4294967296
+      - ETCD_SNAPSHOT_COUNT=50000
+    volumes:
+      - rag_etcd_data:/etcd
+    command: etcd -advertise-client-urls=http://127.0.0.1:2379 -listen-client-urls http://0.0.0.0:2379 --data-dir /etcd
+    networks:
+      - coze-network
+    profiles:
+      - milvus
+
+  # MinIO for Milvus
+  rag-minio:
+    image: minio/minio:RELEASE.2023-03-20T20-16-18Z
+    container_name: coze-rag-minio
+    restart: unless-stopped
+    environment:
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    ports:
+      - "9001:9001"
+      - "9000:9000"
+    volumes:
+      - rag_minio_data:/minio_data
+    command: minio server /minio_data --console-address ":9001"
+    networks:
+      - coze-network
+    profiles:
+      - milvus
+
+volumes:
+  rag_mongo_data:
+  rag_mongo_config:
+  rag_redis_data:
+  rag_postgres_data:
+  rag_milvus_data:
+  rag_etcd_data:
+  rag_minio_data:
+  rag_uploads:
+  rag_logs:
+
+networks:
+  coze-network:
+    external: true
+    name: coze-studio_coze-network
