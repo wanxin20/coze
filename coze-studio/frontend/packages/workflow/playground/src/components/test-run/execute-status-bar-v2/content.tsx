@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,8 +31,8 @@ import {
 import {
   IconCozWarningCircleFill,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Tag } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tag } from '@coze-arch/coze-design';
 
 import { TestRunCostPopover } from '../../test-run/execute-result/test-run-cost-popover';
 import { ExecuteResultPanel } from '../../test-run/execute-result/execute-result-panel';
@@ -271,4 +271,3 @@ export const ExecuteStatusBarContent: React.FC<ExecuteStatusBarProps> = ({
     </NodeStatusBar>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { I18n } from '@coze-arch/i18n';
 import { type FormApi } from '@coze-arch/bot-semi/Form';
 import { Form } from '@coze-arch/bot-semi';
 import { type GetDocumentTableInfoResponse } from '@coze-arch/bot-api/memory';
-import { FormSelect } from '@coze-arch/bot-semi';
+import { FormSelect } from '@coze-arch/coze-design';
 
 import { type TableSettings } from '@/types';
 import { TableSettingFormFields } from '@/constants';
@@ -162,4 +162,3 @@ export const TableSettingBar: React.FC<TableSettingBarProps> = ({
     </div>
   );
 };
-

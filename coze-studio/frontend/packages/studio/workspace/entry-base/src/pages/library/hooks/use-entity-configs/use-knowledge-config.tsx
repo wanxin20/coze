@@ -164,19 +164,12 @@ export const useKnowledgeConfig: UseEntityConfigHook = ({
     open: openCreateKnowledgeModal,
     close: closeCreateKnowledgeModal,
   } = useCreateKnowledgeModalV2({
-    onFinish: (datasetID, unitType, shouldUpload, formatType) => {
-      // 如果是FastGPTRAG类型，跳转到专门的页面
-      if (formatType === FormatType.FastGPTRAG) {
-        navigate(
-          `/space/${spaceId}/knowledge/${datasetID}?type=fastgptrag&from=create`,
-        );
-      } else {
-        navigate(
-          `/space/${spaceId}/knowledge/${datasetID}${
-            shouldUpload ? '/upload' : ''
-          }?type=${unitType}&from=create`,
-        );
-      }
+    onFinish: (datasetID, unitType, shouldUpload) => {
+      navigate(
+        `/space/${spaceId}/knowledge/${datasetID}${
+          shouldUpload ? '/upload' : ''
+        }?type=${unitType}&from=create`,
+      );
       closeCreateKnowledgeModal();
     },
   });

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type FC } from 'react';
 
-import { Avatar } from '@coze-arch/bot-semi';
+import { Avatar } from '@coze-arch/coze-design';
 
 export interface CreatorProps {
   avatar?: string;
@@ -39,4 +39,3 @@ export const Creator: FC<CreatorProps> = ({ avatar, name, extra }) => (
     </div>
   </div>
 );
-

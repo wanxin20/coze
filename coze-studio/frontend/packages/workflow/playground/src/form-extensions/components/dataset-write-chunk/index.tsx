@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ import type {
   RadioChangeEvent,
   RadioType,
 } from '@coze-arch/bot-semi/Radio';
-import { Select, Input } from '@coze-arch/bot-semi';
+import { Select, Input } from '@coze-arch/coze-design';
 
 import { Radio } from '../radio';
 import { SliderArea, TitleArea } from '../dataset-setting/components';
@@ -412,4 +412,3 @@ export const DatasetWriteChunkSetter = {
   key: 'DatasetWriteChunk',
   component: DatasetWriteChunk,
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import classNames from 'classnames';
 import {
   IconCozArrowLeft,
   IconCozArrowRight,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { TemplateCompZIndex } from './constants';
 
@@ -69,4 +69,3 @@ export const TemplateSlideButton = ({
     </div>
   );
 };
-

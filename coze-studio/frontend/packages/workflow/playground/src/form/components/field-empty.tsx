@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type PropsWithChildren } from 'react';
 
-import { IconCozEmpty } from '@coze-arch/bot-semi/icons';
+import { IconCozEmpty } from '@coze-arch/coze-design/icons';
 
 export interface FieldEmptyProps {
   text?: string;
@@ -43,4 +43,3 @@ export function FieldEmpty({
     </>
   );
 }
-

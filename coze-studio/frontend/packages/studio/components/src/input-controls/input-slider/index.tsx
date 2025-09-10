@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { nanoid } from 'nanoid';
 import { isInteger, isUndefined } from 'lodash-es';
 import classNames from 'classnames';
 import { useHover } from 'ahooks';
-import { InputNumber } from '@coze-arch/bot-semi';
+import { InputNumber } from '@coze-arch/coze-design';
 import { type SliderProps } from '@coze-arch/bot-semi/Slider';
 import { Slider } from '@coze-arch/bot-semi';
 
@@ -164,4 +164,3 @@ export const InputSlider: React.FC<InputSliderProps> = ({
     </div>
   );
 };
-

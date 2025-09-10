@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
   IconCozRefresh,
   IconCozUpload,
   IconCozImageBroken,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { type SelectProps } from '@coze-arch/bot-semi/Select';
 import { Image, ImagePreview, Popover, Space, Spin } from '@coze-arch/bot-semi';
 
@@ -393,4 +393,3 @@ const ImageUploader: FC<ImageUploaderProps> = ({
 
 export default ImageUploader;
 export { ImgUploadErrNo, ImageRule, useImageUploader, ImageUploader };
-

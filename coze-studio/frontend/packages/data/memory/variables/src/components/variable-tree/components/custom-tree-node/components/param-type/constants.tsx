@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   IconCozBooleanBracket,
   IconCozBrace,
   IconCozBraceBracket,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 import { ViewVariableType } from '@/store';
 
@@ -41,4 +41,3 @@ export const VARIABLE_TYPE_ICONS_MAP: Record<ViewVariableType, ReactNode> = {
   [ViewVariableType.ArrayNumber]: <IconCozNumberBracket />,
   [ViewVariableType.ArrayObject]: <IconCozBraceBracket />,
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { type FC, type PropsWithChildren, type ReactNode } from 'react';
 
 import cs from 'classnames';
-import { Tooltip, type TooltipProps } from '@coze-arch/bot-semi';
+import { Tooltip, type TooltipProps } from '@coze-arch/coze-design';
 import { Form } from '@coze-arch/bot-semi';
 import { IconInfo } from '@coze-arch/bot-icons';
 
@@ -44,4 +44,3 @@ export const FieldLabel: FC<
 );
 
 export default FieldLabel;
-

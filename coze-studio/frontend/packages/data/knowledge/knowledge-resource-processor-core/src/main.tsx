@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import { REPORT_EVENTS } from '@coze-arch/report-events';
 import { Steps } from '@coze-arch/bot-semi';
 import { CustomError } from '@coze-arch/bot-error';
-import { IconCozCheckMarkFill } from '@coze-arch/bot-semi/icons';
+import { IconCozCheckMarkFill } from '@coze-arch/coze-design/icons';
 
 import type {
   UploadBaseState,
@@ -114,4 +114,3 @@ export const Upload = <
     </div>
   );
 };
-

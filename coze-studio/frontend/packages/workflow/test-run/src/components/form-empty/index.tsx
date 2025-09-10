@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 import styles from './input-form-empty.module.less';
 
@@ -26,4 +26,3 @@ export const InputFormEmpty = () => (
     </Typography.Text>
   </div>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { nanoid } from 'nanoid';
 import { ActiveSelection, type Canvas, type FabricObject } from 'fabric';
 import { useLatest } from 'ahooks';
 import { type InputVariable } from '@coze-workflow/base/types';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { snap } from '../utils/snap/snap';
 import { createElement, getNumberBetween } from '../utils';
@@ -406,4 +406,3 @@ export const useCopyPaste = ({
     disabledPaste: !copiedObject1.current,
   };
 };
-

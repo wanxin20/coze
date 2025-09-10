@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { merge, omit } from 'lodash-es';
 import classNames from 'classnames';
 import { type ParsingStrategy, ParsingType } from '@coze-arch/idl/knowledge';
 import { I18n } from '@coze-arch/i18n';
-import { Radio, Divider, type FormApi } from '@coze-arch/bot-semi';
+import { Radio, Divider, type FormApi } from '@coze-arch/coze-design';
 
 import { type PDFDocumentFilterValue } from '@/features/knowledge-type/text/interface';
 
@@ -83,4 +83,3 @@ export const PrecisionParsing = (props: PrecisionParsingProps) => (
     {I18n.t('kl_write_006')}
   </Radio>
 );
-

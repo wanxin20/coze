@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type ReactNode, type FC, type ChangeEvent } from 'react';
 
-import { Switch } from '@coze-arch/bot-semi';
+import { Switch } from '@coze-arch/coze-design';
 
 import { ToolTooltip } from '../tool-tooltip';
 import { ToolItemIconInfo } from '../tool-item-icon/icons/tool-item-icon-info';
@@ -57,4 +57,3 @@ export const ToolItemSwitch: FC<ToolItemSwitchProps> = ({
     />
   </div>
 );
-

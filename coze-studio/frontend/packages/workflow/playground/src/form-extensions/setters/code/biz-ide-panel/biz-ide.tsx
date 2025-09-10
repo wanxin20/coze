@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { FlowNodeFormData } from '@flowgram-adapter/free-layout-editor';
 import { useEntity } from '@flowgram-adapter/free-layout-editor';
 import { type EditorProps, Editor } from '@coze-workflow/code-editor-adapter';
 import { useNodeTestId } from '@coze-workflow/base';
-import { IconCozPlayCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozPlayCircle } from '@coze-arch/coze-design/icons';
 
 import { useTestFormState } from '@/hooks';
 
@@ -128,4 +128,3 @@ export const BizIDE: FC<{
     </div>
   );
 };
-

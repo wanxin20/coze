@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import { IconEdit } from '@coze-arch/bot-icons';
 import { useBaseInfo } from '@coze-agent-ide/bot-plugin-tools/useBaseInfo';
 import { type RenderEnhancedComponentProps } from '@coze-agent-ide/bot-plugin-tools/pluginModal/types';
 import { STARTNODE } from '@coze-agent-ide/bot-plugin-tools/pluginModal/config';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 
 import { SecurityCheckFailed } from '@/components/check_failed';
 
@@ -131,4 +131,3 @@ export const useContentBaseInfo = ({
     classNameWrap: 'plugin-tool-detail-baseInfo',
   };
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
   ApiError,
 } from '@coze-common/chat-core';
 import { APIErrorEvent, emitAPIErrorEvent } from '@coze-arch/bot-http';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { getStopRespondingImplement } from '../use-stop-responding';
 import { useMethodCommonDeps } from '../../context/use-method-common-deps';
@@ -368,4 +368,3 @@ export const getSendNewMessageImplement =
       chatActionLockService.globalAction.unlock('sendMessageToACK');
     }
   };
-

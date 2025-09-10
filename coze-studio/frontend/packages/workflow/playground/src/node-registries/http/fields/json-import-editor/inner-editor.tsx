@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   isGlobalVariableKey,
 } from '@coze-workflow/variable';
 import { I18n } from '@coze-arch/i18n';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import { VariableExtension } from '@/node-registries/http/components/variable-support';
 import { useNodeServiceAndRefreshForTitleChange } from '@/form-extensions/hooks/use-node-available-variables';
@@ -179,4 +179,3 @@ export const InnerEditor = React.forwardRef(
     );
   },
 );
-

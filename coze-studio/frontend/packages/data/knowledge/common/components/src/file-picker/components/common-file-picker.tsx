@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 
-import { Tree } from '@coze-arch/bot-semi';
+import { Tree } from '@coze-arch/coze-design';
 import type { TreeProps, RenderFullLabelProps } from '@coze-arch/bot-semi/Tree';
 import { CommonE2e } from '@coze-data/e2e';
 
@@ -327,4 +327,3 @@ export const CommonFilePicker = React.forwardRef(
     );
   },
 );
-

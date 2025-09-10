@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import { useForm, observer } from '@coze-workflow/test-run/formily';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Popover, Switch, Typography } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Popover, Switch, Typography } from '@coze-arch/coze-design';
 
 import SugLayoutLimit from './sug_layout_limit.png';
 import SugLayoutFull from './sug_layout_full.png';
@@ -70,4 +70,3 @@ export const DisplayAllSwitch: React.FC = observer(() => {
     </div>
   );
 });
-

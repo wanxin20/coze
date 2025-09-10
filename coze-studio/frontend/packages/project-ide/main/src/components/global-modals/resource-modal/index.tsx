@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import {
   useIDEService,
 } from '@coze-project-ide/framework';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWarningCircleFillPalette } from '@coze-arch/bot-semi/icons';
-import { Modal } from '@coze-arch/bot-semi';
+import { IconCozWarningCircleFillPalette } from '@coze-arch/coze-design/icons';
+import { Modal } from '@coze-arch/coze-design';
 import { ResourceCopyScene } from '@coze-arch/bot-api/plugin_develop';
 
 import { LoopContent } from './loop-content';
@@ -160,4 +160,3 @@ export const ResourceModal = () => {
     </Modal>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { workflowApi } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import { CustomError } from '@coze-arch/bot-error';
 import { type ResourceInfo, ResType } from '@coze-arch/bot-api/plugin_develop';
 import { useNavigate } from 'react-router-dom';
@@ -89,4 +89,3 @@ export const useCopyAction = (props: CommonActionProps): CommonActionReturn => {
   };
   return { actionHandler: handleCopy };
 };
-

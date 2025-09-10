@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import webSocketManager, {
   type Connection,
   type FrontierEventMap,
 } from '@coze-common/websocket-manager-adapter';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { getBotDetailIsReadonly } from '../get-read-only';
 import { DotStatus } from '../../types/generate-image';
@@ -251,4 +251,3 @@ export function initAvatarBackgroundWebSocket() {
     }
   }, 10);
 }
-

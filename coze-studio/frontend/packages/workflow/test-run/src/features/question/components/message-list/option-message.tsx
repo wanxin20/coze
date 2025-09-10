@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { useMemo } from 'react';
 
 import classNames from 'classnames';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 import { type ReceivedMessage, type OptionMessageContent } from '../../types';
 import { useSendMessage } from '../../hooks';
@@ -98,4 +98,3 @@ export const OptionMessage: React.FC<OptionMessageProps> = ({ message }) => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import { type Editor } from '@tiptap/react';
 import { I18n } from '@coze-arch/i18n';
-import { Tooltip, type customRequestArgs } from '@coze-arch/bot-semi';
+import { Tooltip, type customRequestArgs } from '@coze-arch/coze-design';
 
 import { type EditorActionProps } from '../module';
 import { CustomUpload, handleCustomUploadRequest } from './custom-upload';
@@ -81,4 +81,3 @@ export const BaseUploadImage = ({
     </CustomUpload>
   );
 };
-

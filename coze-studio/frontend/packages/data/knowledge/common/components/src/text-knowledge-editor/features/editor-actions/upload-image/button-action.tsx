@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozImage } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozImage } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 
 import { BaseUploadImage, type BaseUploadImageProps } from './base';
 
@@ -37,4 +37,3 @@ export const UploadImageButton = (
     )}
   />
 );
-

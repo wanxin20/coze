@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { forwardRef } from 'react';
 import {
   InputNumber as CozeInputNumber,
   type InputNumberProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 export const InputNumber = forwardRef<InputNumberProps, InputNumberProps>(
   props => {
@@ -51,4 +51,3 @@ export const InputNumber = forwardRef<InputNumberProps, InputNumberProps>(
     );
   },
 );
-

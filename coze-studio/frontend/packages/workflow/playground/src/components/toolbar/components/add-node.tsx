@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useRef, type RefObject } from 'react';
 
 import { debounce } from 'lodash-es';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 
 import type { ITool } from '../type';
 import { ADD_NODE_BUTTON_ID } from '../constants';
@@ -66,4 +66,3 @@ export const AddNode = (
     </Button>
   );
 };
-

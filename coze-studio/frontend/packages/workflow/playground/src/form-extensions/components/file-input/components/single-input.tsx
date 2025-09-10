@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozUpload, IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { Typography } from '@coze-arch/bot-semi';
+import { IconCozUpload, IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { Typography } from '@coze-arch/coze-design';
 
 import { FileIcon } from '@/components/file-icon';
 
@@ -129,4 +129,3 @@ export const SingleInput = () => {
     </ImgPreviewPopover>
   );
 };
-

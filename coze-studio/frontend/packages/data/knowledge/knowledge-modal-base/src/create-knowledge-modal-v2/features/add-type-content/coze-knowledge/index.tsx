@@ -95,8 +95,6 @@ export const CozeKnowledgeAddTypeContent = (params: AddTypeContentProps) => {
       setUnitType(UnitType.TABLE_DOC);
     } else if (currentFormatType === FormatType.Image) {
       setUnitType(UnitType.IMAGE_FILE);
-    } else if (currentFormatType === FormatType.FastGPTRAG) {
-      setUnitType(UnitType.TEXT_DOC); // FastGPTRAG 默认使用文本类型
     }
   }, [currentFormatType]);
 

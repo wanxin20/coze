@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
   type WorkflowNodeJSON,
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Space, Toast, Typography } from '@coze-arch/bot-semi';
+import { Button, Space, Toast, Typography } from '@coze-arch/coze-design';
 import { From } from '@coze-agent-ide/plugin-shared';
 import { usePluginApisModal } from '@coze-agent-ide/bot-plugin/components/plugin-apis/use-plugin-apis-modal';
 
@@ -341,4 +341,3 @@ export const useAddNodeModal = (prevAddNodeRef: {
     openPlugin: wrapOpenFunc(openPlugin, closePlugin),
   };
 };
-

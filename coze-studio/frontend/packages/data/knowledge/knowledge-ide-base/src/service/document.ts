@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ import {
   type DocumentInfo,
 } from '@coze-arch/bot-api/knowledge';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { type ProgressMap } from '@/types';
 import { POLLING_TIME } from '@/constant';
@@ -196,4 +196,3 @@ export const useUpdateDocument = ({ onSuccess }) => {
   );
   return { run, loading };
 };
-

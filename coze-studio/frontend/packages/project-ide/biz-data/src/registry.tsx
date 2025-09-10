@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import {
   IconCozDatabase,
   IconCozKnowledge,
   IconCozVariables,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   LayoutPanelType,
   withLazyLoad,
@@ -63,4 +63,3 @@ export const DatabaseWidgetRegistry: WidgetRegistry = {
     return <IconCozDatabase />;
   },
 };
-

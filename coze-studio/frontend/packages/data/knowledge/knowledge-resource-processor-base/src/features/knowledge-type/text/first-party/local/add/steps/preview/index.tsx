@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ import { KnowledgeE2e } from '@coze-data/e2e';
 import { ReviewStatus } from '@coze-arch/idl/knowledge';
 import { I18n } from '@coze-arch/i18n';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { PreProcessRule, SegmentMode, SeperatorType } from '@/types';
 import { SegmentPreview } from '@/features/segment-preview';
@@ -267,4 +267,3 @@ export const SegmentPreviewStep: FC<
     </>
   );
 };
-

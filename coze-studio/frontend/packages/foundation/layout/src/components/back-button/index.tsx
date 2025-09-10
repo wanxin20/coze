@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import { type BackButtonProps } from '@coze-arch/foundation-sdk';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconButton } from '@coze-arch/coze-design';
 import { IconArrowLeft } from '@coze-arch/bot-icons';
 
 import s from './index.module.less';
@@ -32,4 +32,3 @@ export const BackButton = ({ onClickBack }: BackButtonProps) => (
     />
   </div>
 );
-

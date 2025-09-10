@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type ReactNode, useRef, type FC } from 'react';
 
 import classNames from 'classnames';
 import { useHover } from 'ahooks';
-import { Divider } from '@coze-arch/bot-semi';
+import { Divider } from '@coze-arch/coze-design';
 
 import { ToolTooltip } from '../tool-tooltip';
 import {
@@ -208,4 +208,3 @@ export const ToolItem: FC<ToolItemProps> = props => (
     <_ToolItem {...props} />
   </ToolItemContextProvider>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import {
   IconCozCopy,
   IconCozCross,
   IconCozRefresh,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Typography } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Typography } from '@coze-arch/coze-design';
 import { Layout } from '@coze-common/chat-uikit-shared';
 
 import { UIKitTooltip } from '../../../../common/tooltips';
@@ -224,4 +224,3 @@ const FileCard: FC<IFileCardProps> = props => {
 FileCard.displayName = 'FileCard';
 
 export default FileCard;
-

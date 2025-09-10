@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 
 interface CloseModalProps {
   onCancel?: (e: React.MouseEvent) => void;
@@ -26,4 +26,3 @@ export const CloseModal = ({ onCancel }: CloseModalProps) => (
     {I18n.t('Cancel')}
   </Button>
 );
-

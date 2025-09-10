@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { IconCozPauseFill, IconCozVolume } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozPauseFill, IconCozVolume } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 import { useAudioPlayer } from '@coze-workflow/resources-adapter';
 
 interface VoicePlayerProps {
@@ -38,4 +38,3 @@ export const VoicePlayer: React.FC<VoicePlayerProps> = ({ preview }) => {
     />
   );
 };
-

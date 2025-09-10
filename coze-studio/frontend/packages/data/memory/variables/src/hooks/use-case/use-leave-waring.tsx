@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useDataNavigate } from '@coze-data/knowledge-stores';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Toast } from '@coze-arch/bot-semi';
+import { Button, Toast } from '@coze-arch/coze-design';
 
 export const useLeaveWarning = () => {
   const [hasUnsavedChanges, setHasUnsavedChanges] = useState(false);
@@ -77,4 +77,3 @@ export const useLeaveWarning = () => {
     setHasUnsavedChanges,
   };
 };
-

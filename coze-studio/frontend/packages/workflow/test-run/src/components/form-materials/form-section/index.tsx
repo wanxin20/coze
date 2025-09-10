@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import cls from 'classnames';
 import {
   IconCozArrowDownFill,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Collapsible, Tooltip, Typography } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Collapsible, Tooltip, Typography } from '@coze-arch/coze-design';
 
 import css from './index.module.less';
 
@@ -81,4 +81,3 @@ export const FormSection: React.FC<
     </div>
   );
 };
-

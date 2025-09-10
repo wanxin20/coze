@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import React, { useMemo } from 'react';
 
-import { IconCozFocus } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozFocus } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 import { type Span } from '@coze-arch/bot-api/workflow_api';
 
 import { getStrFromSpan } from '../../utils';
@@ -43,4 +43,3 @@ export const FocusButton: React.FC<{
     />
   );
 };
-

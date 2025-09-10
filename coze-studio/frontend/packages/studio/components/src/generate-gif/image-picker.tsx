@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ import { useState } from 'react';
 import classNames from 'classnames';
 import { withSlardarIdButton } from '@coze-studio/bot-utils';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozImage, IconCozUpload } from '@coze-arch/bot-semi/icons';
-import { Button, Image, Popover, Toast, Upload } from '@coze-arch/bot-semi';
+import { IconCozImage, IconCozUpload } from '@coze-arch/coze-design/icons';
+import { Button, Image, Popover, Toast, Upload } from '@coze-arch/coze-design';
 import { FileBizType } from '@coze-arch/bot-api/developer_api';
 import { customUploadRequest } from '@coze-common/biz-components/picture-upload';
 
@@ -123,4 +123,3 @@ export default function ImagePicker(props: ImagePickerProps) {
     </div>
   );
 }
-

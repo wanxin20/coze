@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ import classNames from 'classnames';
 import {
   IconCozArrowDownFill,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Col, Row, Collapsible } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Col, Row, Collapsible } from '@coze-arch/coze-design';
 import { type DecoratorComponentProps } from '@flowgram-adapter/free-layout-editor';
 
 import { FormCard } from '../../components/form-card';
@@ -144,4 +144,3 @@ export const formLayout = {
   key: 'FormLayout',
   component: FormLayoutDecorator,
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type FC } from 'react';
 
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 
 import { Uploader } from './uploader';
 import { TextType } from './text-type';
@@ -47,4 +47,3 @@ export const setters: Record<string, FC<any>> = {
   Uploader,
   RefSelect,
 };
-

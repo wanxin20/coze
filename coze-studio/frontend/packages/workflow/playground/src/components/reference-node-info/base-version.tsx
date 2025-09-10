@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozInfoCircle,
   IconCozWarningCircleFill,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import css from './base-version.module.less';
 
@@ -67,4 +67,3 @@ export const OutDatedVersionInfo: React.FC<OutDatedVersionInfoProps> = ({
     />
   </Tooltip>
 );
-

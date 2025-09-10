@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import { useGetPosition } from '../../src/hooks/use-get-position';
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Toast: {
     error: vi.fn(),
   },
@@ -75,4 +75,3 @@ describe('useGetPosition', () => {
     expect(mockGetPositionSuccess).toHaveBeenCalledWith(mockPosition);
   });
 });
-

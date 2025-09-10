@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { ViewVariableType, useNodeTestId } from '@coze-workflow/base';
-import { SingleSelect } from '@coze-arch/bot-semi';
+import { SingleSelect } from '@coze-arch/coze-design';
 
 import { withField, useField } from '@/form';
 
@@ -60,4 +60,3 @@ export const AceOrDescField = withField<AceOrDescProps>(({ type }) => {
     />
   );
 });
-

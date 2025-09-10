@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useShallow } from 'zustand/react/shallow';
 import { useDiffTaskStore } from '@coze-studio/bot-detail-store/diff-task';
 import { useBotInfoStore } from '@coze-studio/bot-detail-store/bot-info';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCompare } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozCompare } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 export const ModelDiffButton = (props: { readonly?: boolean }) => {
   const { readonly } = props;
@@ -53,4 +53,3 @@ export const ModelDiffButton = (props: { readonly?: boolean }) => {
     </Button>
   );
 };
-

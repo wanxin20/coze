@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 export const LabelWithTooltip = ({ customClassName, maxWidth, content }) => {
   const textRef = useRef<HTMLDivElement>(null);
@@ -52,4 +52,3 @@ export const LabelWithTooltip = ({ customClassName, maxWidth, content }) => {
     </Tooltip>
   );
 };
-

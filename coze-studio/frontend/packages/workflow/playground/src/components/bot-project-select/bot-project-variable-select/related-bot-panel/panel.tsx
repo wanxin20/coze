@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { useService } from '@flowgram-adapter/free-layout-editor';
 import { GlobalVariableService } from '@coze-workflow/variable';
 import { IntelligenceType } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import { useRelatedBotService } from '@/hooks';
 
@@ -174,4 +174,3 @@ export default function Panel({
     </>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { type FC, useState } from 'react';
 import classnames from 'classnames';
 import { type SetterOrDecoratorContext } from '@flowgram-adapter/free-layout-editor';
 import { concatTestId } from '@coze-workflow/base';
-import { Popover } from '@coze-arch/bot-semi';
+import { Popover } from '@coze-arch/coze-design';
 // import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 
 import { ValidationErrorWrapper } from '@/form-extensions/components/validation';
@@ -119,4 +119,3 @@ export const SpeakerMessageSet: FC<{
     </div>
   );
 };
-

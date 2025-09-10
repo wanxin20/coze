@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type ComponentProps, type FC } from 'react';
 
 import classNames from 'classnames';
-import { IconCozCopy } from '@coze-arch/bot-semi/icons';
+import { IconCozCopy } from '@coze-arch/coze-design/icons';
 
 import { ToolItemAction } from '..';
 
@@ -36,4 +36,3 @@ export const ToolItemActionCopy: FC<ToolItemActionCopyProps> = props => {
     </ToolItemAction>
   );
 };
-

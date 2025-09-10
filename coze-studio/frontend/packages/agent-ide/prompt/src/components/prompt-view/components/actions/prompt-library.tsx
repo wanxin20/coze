@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import { type EditorAPI } from '@coze-common/prompt-kit-base/editor';
 import { usePromptLibraryModal } from '@coze-common/prompt-kit';
 import { SpaceType } from '@coze-arch/idl/developer_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozLightbulb } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozLightbulb } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 export const PromptLibrary = (props: {
   readonly: boolean;
@@ -80,4 +80,3 @@ export const PromptLibrary = (props: {
     </div>
   );
 };
-

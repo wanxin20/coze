@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import {
   VARIABLE_TYPE_ALIAS_MAP,
   ViewVariableType,
 } from '@coze-workflow/base/types';
-import { Space, Tooltip } from '@coze-arch/bot-semi';
+import { Space, Tooltip } from '@coze-arch/coze-design';
 
 import { useGetCurrentInputsParameters } from '../../hooks/use-get-current-input-parameters';
 import { VariableTypeTag } from '../../components/variable-type-tag';
@@ -56,4 +56,3 @@ export const useGetNicknameSpeakerDataSource = (): SpeakerSelectDataSource => {
       },
     }));
 };
-

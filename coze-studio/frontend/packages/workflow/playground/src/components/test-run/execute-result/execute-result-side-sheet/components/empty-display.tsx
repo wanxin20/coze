@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IconCozPlayCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozPlayCircle } from '@coze-arch/coze-design/icons';
 import { Typography } from '@coze-arch/bot-semi';
 import { I18n } from '@coze-arch/i18n';
 
@@ -35,4 +35,3 @@ export const EmptyDisplay = () => (
     </div>
   </div>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ import {
   useMessageBoxContext,
 } from '@coze-common/chat-area';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCheckMark, IconCozCopy } from '@coze-arch/bot-semi/icons';
-import { IconButton, Toast, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozCheckMark, IconCozCopy } from '@coze-arch/coze-design/icons';
+import { IconButton, Toast, Tooltip } from '@coze-arch/coze-design';
 
 import { ReportEventNames } from '../../report-events';
 import { useTooltipTrigger } from '../../hooks/use-tooltip-trigger';
@@ -34,15 +34,27 @@ import { useTooltipTrigger } from '../../hooks/use-tooltip-trigger';
 type CopyTextMessageProps = Omit<
   ComponentProps<typeof IconButton>,
   'icon' | 'iconSize' | 'onClick'
->;
+> & {
+  isMustGroupLastAnswerMessage?: boolean;
+  isUseExternalContent?: boolean;
+  externalContent?: string;
+};
 
 export const CopyTextMessage: React.FC<
   PropsWithChildren<CopyTextMessageProps>
-> = ({ className, ...props }) => {
+> = ({
+  className,
+  isMustGroupLastAnswerMessage = true,
+  isUseExternalContent = false,
+  externalContent,
+  ...props
+}) => {
   const { reporter } = useChatArea();
   const { message, meta } = useMessageBoxContext();
 
-  const { content } = message;
+  const content = isUseExternalContent
+    ? externalContent || ''
+    : message.content;
 
   const [isCopySuccessful, setIsCopySuccessful] = useState<boolean>(false);
   const trigger = useTooltipTrigger('hover');
@@ -87,7 +99,7 @@ export const CopyTextMessage: React.FC<
     return null;
   }
 
-  if (!meta.isGroupLastAnswerMessage) {
+  if (!meta.isGroupLastAnswerMessage && isMustGroupLastAnswerMessage) {
     return null;
   }
 
@@ -115,4 +127,3 @@ export const CopyTextMessage: React.FC<
     </Tooltip>
   );
 };
-

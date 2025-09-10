@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ import { useBizWorkflowKnowledgeIDEFullScreenModal } from '@coze-data/knowledge-
 import { I18n } from '@coze-arch/i18n';
 import { ConfigProvider } from '@coze-arch/bot-semi';
 import { DatasetStatus } from '@coze-arch/bot-api/knowledge';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 
 import { useGlobalState, useDataSetInfos, useSpaceId } from '@/hooks';
 
@@ -261,4 +261,3 @@ export const DatasetSelect = ({
     </div>
   );
 };
-

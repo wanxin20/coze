@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,8 @@ import {
   mergeModelFuncConfigStatus,
   useModelCapabilityConfig,
 } from '@coze-agent-ide/bot-editor-context-store';
-import { IconCozWarningCircleFillPalette } from '@coze-arch/bot-semi/icons';
-import { Tag, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozWarningCircleFillPalette } from '@coze-arch/coze-design/icons';
+import { Tag, Tooltip } from '@coze-arch/coze-design';
 
 import { abilityKey2ModelFunctionConfigType } from '../../utils/model-function-config-type-mapping';
 import { useGetToolConfig } from '../../hooks/builtin/use-get-tool-config';
@@ -185,4 +185,3 @@ const ModelCapabilityTipsImpl = () => {
 };
 
 export const ModelCapabilityTips = ModelCapabilityTipsImpl;
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,8 +32,8 @@ import {
   WorkflowNode,
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Popover, Tag } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Popover, Tag } from '@coze-arch/coze-design';
 
 import GlobalVarIcon from '@/form-extensions/components/tree-variable-selector/global-var-icon';
 import { NodeIconOutlined } from '@/components/node-icon';
@@ -273,4 +273,3 @@ export const RefValueDisplay: FC<RefValueDisplayProps> = props => {
     </Popover>
   );
 };
-

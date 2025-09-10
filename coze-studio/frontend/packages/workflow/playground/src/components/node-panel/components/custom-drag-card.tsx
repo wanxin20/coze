@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import React, { type PropsWithChildren } from 'react';
 
 import classNames from 'classnames';
 import { concatTestId, type StandardNodeType } from '@coze-workflow/base';
-import { Tooltip, type TooltipProps } from '@coze-arch/bot-semi';
+import { Tooltip, type TooltipProps } from '@coze-arch/coze-design';
 import { useEntity, useService } from '@flowgram-adapter/free-layout-editor';
 import { type WorkflowNodeJSON } from '@flowgram-adapter/free-layout-editor';
 
@@ -168,4 +168,3 @@ export function CustomDragCard({
     return baseContent;
   }
 }
-

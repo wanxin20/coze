@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type ReactNode } from 'react';
 
 import { type ResourceInfo } from '@coze-arch/idl/plugin_develop';
-import { type TableActionProps } from '@coze-arch/bot-semi';
+import { type TableActionProps } from '@coze-arch/coze-design';
 
 import { type LibraryEntityConfig } from '../../types';
 
@@ -29,4 +29,3 @@ export type UseEntityConfigHook = (params: {
     item: ResourceInfo,
   ) => NonNullable<TableActionProps['actionList']>;
 }) => { config: LibraryEntityConfig; modals: ReactNode };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozUserPermission } from '@coze-arch/bot-semi/icons';
+import { IconCozUserPermission } from '@coze-arch/coze-design/icons';
 import { NavModalItem } from '@coze-agent-ide/space-bot/component';
 
 export const enum SkillsNavItem {
@@ -37,4 +37,3 @@ export const SkillsNav: FC<{
   />
 );
 SkillsNav.displayName = 'SkillsNav';
-

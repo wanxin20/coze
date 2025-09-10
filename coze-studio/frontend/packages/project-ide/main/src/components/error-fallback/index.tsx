@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import React from 'react';
 
-import { IconCozIllusError } from '@coze-arch/bot-semi/illustrations';
-import { EmptyState } from '@coze-arch/bot-semi';
+import { IconCozIllusError } from '@coze-arch/coze-design/illustrations';
+import { EmptyState } from '@coze-arch/coze-design';
 
 export const ErrorFallback = () => (
   <EmptyState
@@ -27,4 +27,3 @@ export const ErrorFallback = () => (
     description="Please try again later."
   />
 );
-

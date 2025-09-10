@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -214,7 +214,7 @@ vi.mock('@coze-arch/bot-flags', () => ({
 vi.mock('../../src/utils/time.ts', () => ({
   getExpireAt: vi.fn(() => '-'),
 }));
-vi.mock('@coze-arch/bot-semi', () => ({}));
+vi.mock('@coze-arch/coze-design', () => ({}));
 vi.mock('@coze-studio/bot-detail-store', () => ({
   initBotDetailStore: vi.fn(),
   useBotDetailStoreSet: {
@@ -353,4 +353,3 @@ describe('usePATPermission', () => {
     expect(result.current.patPermission).toEqual(undefined);
   });
 });
-

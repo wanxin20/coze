@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import { cozeMitt } from '@coze-common/coze-mitt';
 import { logger } from '@coze-arch/logger';
 import { type User } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWarningCircleFill } from '@coze-arch/bot-semi/icons';
-import { Menu, Toast, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozWarningCircleFill } from '@coze-arch/coze-design/icons';
+import { Menu, Toast, Tooltip } from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { useUIModal } from '@coze-arch/bot-semi';
 import { CustomError } from '@coze-arch/bot-error';
@@ -230,4 +230,3 @@ export const MenuDeleteBot: FC<MenuDeleteBotProps> = ({
     </>
   );
 };
-

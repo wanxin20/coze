@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import React, { useState } from 'react';
 import { useEntity } from '@flowgram-adapter/free-layout-editor';
 import { BaseTestButton } from '@coze-workflow/test-run';
 import { I18n } from '@coze-arch/i18n';
-import { type ButtonProps } from '@coze-arch/bot-semi';
+import { type ButtonProps } from '@coze-arch/coze-design';
 
 import { useTestRunReporterService, useGlobalState } from '@/hooks';
 
@@ -63,4 +63,3 @@ export const StartTestRunButton: React.FC<StartTestRunButtonProps> = props => {
     </BaseTestButton>
   );
 };
-

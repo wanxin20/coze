@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { SpaceAppEnum, BaseEnum } from '@coze-arch/web-context';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowLeft } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowLeft } from '@coze-arch/coze-design/icons';
 import {
   Typography,
   Avatar,
   Breadcrumb as SemiBreadcrumb,
   Button,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { type BreadcrumbProps as SemiBreadcrumbProps } from '@coze-arch/bot-semi/Breadcrumb';
@@ -260,4 +260,3 @@ export const UIBreadcrumb: React.FC<BreadCrumbProps> = ({
     </div>
   );
 };
-

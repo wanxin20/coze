@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { type CSSProperties } from 'react';
 
-import { type CommonFieldProps } from '@coze-arch/bot-semi';
+import { type CommonFieldProps } from '@coze-arch/coze-design';
 
 export interface Delta {
   insert: string;
@@ -214,4 +214,3 @@ export enum EditorEventType {
   AFTER_DOM_RENDERER_RECONCILE = 'afterDomRendererReconcile',
   UNDO_DID_INIT = 'undoDidInit',
 }
-

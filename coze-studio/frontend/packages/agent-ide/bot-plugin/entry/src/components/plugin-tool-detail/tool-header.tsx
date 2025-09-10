@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
 } from '@coze-arch/bot-api/plugin_develop';
 import { IconChevronLeft } from '@douyinfe/semi-icons';
 import { usePluginNavigate } from '@coze-studio/bot-plugin-store';
-import { Button, IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { Button, IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { OauthButtonAction } from '@/components/oauth-action';
 
@@ -144,4 +144,3 @@ const ToolHeader: FC<ToolHeaderProps> = ({
 };
 
 export { ToolHeader };
-

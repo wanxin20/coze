@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ import React, { useEffect, useMemo } from 'react';
 import { isString, last } from 'lodash-es';
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowRight, IconCozEye } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozArrowRight, IconCozEye } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 
 import { type Field } from '../types';
 import { useExpand, useValue } from '../hooks';
@@ -184,4 +184,3 @@ const JsonField: React.FC<{
 };
 
 export { JsonField };
-

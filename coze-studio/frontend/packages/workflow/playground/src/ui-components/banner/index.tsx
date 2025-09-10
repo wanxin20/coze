@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@
 import { type FC } from 'react';
 
 import classnames from 'classnames';
-import { Banner, type BannerProps } from '@coze-arch/bot-semi';
+import { Banner, type BannerProps } from '@coze-arch/coze-design';
 import { IconClose } from '@douyinfe/semi-icons';
 
 import styles from './index.module.less';
@@ -35,4 +35,3 @@ export const UIBanner: FC<BannerProps> = props => (
     className={classnames(styles.uiBanner, props.className)}
   />
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 import { useNodeTestId } from '@coze-workflow/base';
-import { Input as UIInput } from '@coze-arch/bot-semi';
+import { Input as UIInput } from '@coze-arch/coze-design';
 
 function Input({
   value,
@@ -48,4 +48,3 @@ export const input = {
   key: 'Input',
   component: Input,
 };
-

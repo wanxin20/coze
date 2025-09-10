@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,8 +44,8 @@ import {
   DocumentSource,
   type DocumentInfo,
 } from '@coze-arch/bot-api/knowledge';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 
 import { getAddSegmentParams } from '@/features/knowledge-type/table/utils';
 import type {
@@ -322,4 +322,3 @@ export const TableUpload = <
     </div>
   );
 };
-

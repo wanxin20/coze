@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useEffect, useState, type FC } from 'react';
 
 import { useTimeoutConfig } from '@coze-workflow/nodes';
 import { logger } from '@coze-arch/logger';
-import { Input } from '@coze-arch/bot-semi';
+import { Input } from '@coze-arch/coze-design';
 
 import { type SettingOnErrorItemProps } from '../../types';
 
@@ -100,4 +100,3 @@ export const Timeout: FC<SettingOnErrorItemProps<number>> = ({
     />
   );
 };
-

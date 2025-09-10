@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
 
 import { isEqual } from 'lodash-es';
 import classNames from 'classnames';
-import { ImagePreview, Skeleton } from '@coze-arch/bot-semi';
+import { ImagePreview, Skeleton } from '@coze-arch/coze-design';
 import { ImageStatus } from '@coze-arch/bot-md-box-adapter/lazy';
 import { type MdBoxImageProps } from '@coze-arch/bot-md-box-adapter';
 
@@ -270,4 +270,3 @@ export const CozeImageWithPreview: FC<CozeImageProps> = props => (
 );
 
 CozeImageWithPreview.displayName = 'CozeImageWithPreview';
-

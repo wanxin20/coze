@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ import {
   colWidthCacheService,
 } from '@coze-common/table-view';
 import { I18n } from '@coze-arch/i18n';
-import { Tag, Tooltip, Typography } from '@coze-arch/bot-semi';
+import { Tag, Tooltip, Typography } from '@coze-arch/coze-design';
 import { safeJSONParse } from '@coze-arch/bot-utils';
 import { ColumnType, SliceStatus } from '@coze-arch/bot-api/knowledge';
 
@@ -269,4 +269,3 @@ export const getTableRenderColumnsData = ({
     };
   }
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type CSSProperties, forwardRef, type PropsWithChildren } from 'react';
 
 import classNames from 'classnames';
-import { Badge, Button } from '@coze-arch/bot-semi';
+import { Badge, Button } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -71,4 +71,3 @@ export const ConnectorTabbar = forwardRef<
     {children}
   </div>
 ));
-

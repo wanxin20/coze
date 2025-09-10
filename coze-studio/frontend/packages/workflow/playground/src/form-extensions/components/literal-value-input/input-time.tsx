@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC, useRef } from 'react';
 
 import classNames from 'classnames';
-import { DatePicker } from '@coze-arch/bot-semi';
+import { DatePicker } from '@coze-arch/coze-design';
 
 import { type LiteralValueInputProps } from './type';
 
@@ -81,4 +81,3 @@ export const InputTime: FC<LiteralValueInputProps> = ({
     />
   );
 };
-

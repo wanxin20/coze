@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { useKnowledgeStore } from '@coze-data/knowledge-stores';
 import { type DocumentChunk } from '@coze-data/knowledge-common-components/text-knowledge-editor/scenes/base';
 import { BaseTextKnowledgeEditor } from '@coze-data/knowledge-common-components/text-knowledge-editor';
 import { I18n } from '@coze-arch/i18n';
-import { EmptyState } from '@coze-arch/bot-semi';
+import { EmptyState } from '@coze-arch/coze-design';
 import { IconSegmentEmpty } from '@coze-arch/bot-icons';
 
 import styles from '../styles/index.module.less';
@@ -84,4 +84,3 @@ export const BaseContent: React.FC<BaseContentProps> = ({
     </div>
   );
 };
-

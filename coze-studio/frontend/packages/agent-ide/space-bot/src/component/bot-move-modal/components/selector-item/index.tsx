@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classnames from 'classnames';
-import { IconCozCheckMarkFill } from '@coze-arch/bot-semi/icons';
+import { IconCozCheckMarkFill } from '@coze-arch/coze-design/icons';
 import { type BotSpace } from '@coze-arch/bot-api/developer_api';
 
 interface ISelectorItemProps {
@@ -63,4 +63,3 @@ export function SelectorItem(props: ISelectorItemProps) {
     </div>
   );
 }
-

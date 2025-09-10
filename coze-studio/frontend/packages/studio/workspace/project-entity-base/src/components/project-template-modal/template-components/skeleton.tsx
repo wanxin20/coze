@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Skeleton } from '@coze-arch/bot-semi';
+import { Skeleton } from '@coze-arch/coze-design';
 
 import { ProjectTemplateGroup } from './project-template-group';
 
@@ -32,4 +32,3 @@ export const TemplateGroupSkeleton: React.FC = () => (
     <CardSkeleton />
   </ProjectTemplateGroup>
 );
-

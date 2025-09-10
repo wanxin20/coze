@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useState, useEffect } from 'react';
 // import { useMutation } from '@tanstack/react-query';
 import { EventType, workflowApi } from '@coze-workflow/base/api';
 import { I18n } from '@coze-arch/i18n';
-import { SideSheet } from '@coze-arch/bot-semi';
+import { SideSheet } from '@coze-arch/coze-design';
 import { typeSafeJSONParse } from '@coze-arch/bot-utils';
 import { UIIconButton } from '@coze-arch/bot-semi';
 import { useService } from '@flowgram-adapter/free-layout-editor';
@@ -143,4 +143,3 @@ export const ChatTestRunPauseSideSheet = () => {
     return null;
   }
 };
-

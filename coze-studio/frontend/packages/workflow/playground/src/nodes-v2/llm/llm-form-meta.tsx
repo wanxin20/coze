@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,8 +37,8 @@ import {
   ValueExpressionType,
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus, IconCozMinus } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozPlus, IconCozMinus } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { type IModelValue } from '@/typing';
 import { WorkflowModelsService } from '@/services';
@@ -533,4 +533,3 @@ export const LLM_FORM_META: FormMetaV2<FormData> = {
     return formattedValue;
   },
 };
-

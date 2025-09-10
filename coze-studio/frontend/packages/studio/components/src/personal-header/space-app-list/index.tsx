@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { isString } from 'lodash-es';
 import classNames from 'classnames';
 import { SpaceAppEnum } from '@coze-arch/web-context';
 import { I18n, type I18nKeysNoOptionsType } from '@coze-arch/i18n';
-import { Space, Badge } from '@coze-arch/bot-semi';
+import { Space, Badge } from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { getFlags } from '@coze-arch/bot-flags';
@@ -144,4 +144,3 @@ export const SpaceAppList = () => {
     </Space>
   );
 };
-

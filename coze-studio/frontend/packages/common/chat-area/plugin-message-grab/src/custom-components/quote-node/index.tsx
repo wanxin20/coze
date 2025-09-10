@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
 } from '@coze-common/text-grab';
 import { type GrabNode } from '@coze-common/text-grab';
 import { useShowBackGround } from '@coze-common/chat-area';
-import { Image, ImagePreview } from '@coze-arch/bot-semi';
+import { Image, ImagePreview } from '@coze-arch/coze-design';
 
 import { typeSafeQuoteNodeColorVariants } from '../variants';
 import DefaultImage from '../../assets/image-default.png';
@@ -129,4 +129,3 @@ export const QuoteNode: FC<{
     </>
   );
 };
-

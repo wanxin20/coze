@@ -1,12 +1,12 @@
 {
   "name": "@coze-arch/tailwind-config",
   "version": "0.0.1",
-  "type": "module",
   "author": "huangjian@bytedance.com",
   "maintainers": [],
   "exports": {
     ".": "./src/index.js",
     "./coze": "./src/coze.js",
+    "./util": "./src/util.js",
     "./design-token": "./src/design-token.ts"
   },
   "main": "src/index.js",

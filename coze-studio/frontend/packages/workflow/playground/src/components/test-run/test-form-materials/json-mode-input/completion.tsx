@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import { workflowApi } from '@coze-workflow/base';
 import { type EditorAPI } from '@coze-editor/editor/preset-code';
 import { I18n } from '@coze-arch/i18n';
 import { upLoadFile } from '@coze-arch/bot-utils';
-import { IconCozUpload, IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { Toast, Upload } from '@coze-arch/bot-semi';
+import { IconCozUpload, IconCozPlus } from '@coze-arch/coze-design/icons';
+import { Toast, Upload } from '@coze-arch/coze-design';
 import { EditorSelection } from '@codemirror/state';
 
 import { validate } from '@/hooks/use-upload/validate';
@@ -231,4 +231,3 @@ export const VoiceButton: React.FC<VoiceButtonProps> = ({
     </>
   );
 };
-

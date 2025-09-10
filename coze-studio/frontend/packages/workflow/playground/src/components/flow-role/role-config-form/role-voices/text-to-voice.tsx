@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Typography, Switch } from '@coze-arch/bot-semi';
+import { Typography, Switch } from '@coze-arch/coze-design';
 
 interface TextToVoiceProps {
   value?: boolean;
@@ -42,4 +42,3 @@ export const TextToVoice: React.FC<TextToVoiceProps> = ({
     />
   </div>
 );
-

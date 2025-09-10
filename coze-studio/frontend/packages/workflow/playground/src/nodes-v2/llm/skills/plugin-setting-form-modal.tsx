@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   Nav,
   NavItem,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { type PluginFCSetting } from './types';
 import { OutputParamsForm, type ResponseSettings } from './output-params-form';
@@ -161,4 +161,3 @@ export const PluginSettingFormModal: FC<
     </Modal>
   );
 };
-

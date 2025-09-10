@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import {
   type DocumentProgress,
 } from '@coze-arch/bot-api/knowledge';
 import { type UploadFileData } from '@coze-arch/bot-api/developer_api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { SUCCESSFUL_UPLOAD_PROGRESS } from '../constants';
 
@@ -197,4 +197,3 @@ export const isThirdResegment = (opt: OptType, type: UnitType | undefined) =>
   [UnitType.TABLE_GOOGLE_DRIVE, UnitType.TABLE_FEISHU].includes(type);
 
 export const isIncremental = (opt: OptType) => opt === OptType.INCREMENTAL;
-

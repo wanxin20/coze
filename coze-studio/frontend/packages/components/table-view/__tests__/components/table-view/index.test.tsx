@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ vi.mock('@coze-arch/i18n', () => ({
   },
 }));
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   useTheme: () => ({ theme: 'light' }),
 }));
 
@@ -292,4 +292,3 @@ describe('TableView 组件', () => {
     expect(height).toBe(209);
   });
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,13 +24,13 @@ import {
   ResourceType,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlugin, IconCozWorkflow } from '@coze-arch/bot-semi/icons';
+import { IconCozPlugin, IconCozWorkflow } from '@coze-arch/coze-design/icons';
 import {
   type StepProps,
   Steps,
   TagGroup,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { type UITagProps } from '@coze-arch/bot-semi';
 
@@ -320,4 +320,3 @@ export function ProjectPublishProgress({
     </Steps>
   );
 }
-

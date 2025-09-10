@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type FC } from 'react';
 
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 interface Props {
   label?: string;
@@ -28,4 +28,3 @@ export const OptionItem: FC<Props> = ({ label, tooltip }) => (
     <div className="pl-2">{label}</div>
   </Tooltip>
 );
-

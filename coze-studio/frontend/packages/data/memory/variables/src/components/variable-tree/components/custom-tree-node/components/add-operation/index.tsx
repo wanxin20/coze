@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React from 'react';
 
 import { IconAdd } from '@coze-arch/bot-icons';
-import { IconCozAddNode } from '@coze-arch/bot-semi/icons';
-import { IconButton, type ButtonProps } from '@coze-arch/bot-semi';
+import { IconCozAddNode } from '@coze-arch/coze-design/icons';
+import { IconButton, type ButtonProps } from '@coze-arch/coze-design';
 
 type AddOperationProps = React.PropsWithChildren<{
   readonly?: boolean;
@@ -67,4 +67,3 @@ export default function AddOperation({
     />
   );
 }
-

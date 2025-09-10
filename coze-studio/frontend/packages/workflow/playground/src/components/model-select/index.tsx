@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import {
 import { type WorkflowNodeEntity } from '@flowgram-adapter/free-layout-editor';
 import { GenerationDiversity, useNodeTestId } from '@coze-workflow/base';
 import { JsonViewer } from '@coze-common/json-viewer';
-import { IconCozSetting } from '@coze-arch/bot-semi/icons';
-import { IconButton, type PopoverProps } from '@coze-arch/bot-semi';
+import { IconCozSetting } from '@coze-arch/coze-design/icons';
+import { IconButton, type PopoverProps } from '@coze-arch/coze-design';
 import { type OptionItem } from '@coze-arch/bot-semi/Radio';
 import { Popover } from '@coze-arch/bot-semi';
 
@@ -202,4 +202,3 @@ export const ModelSelect: FC<ModelSelectProps> = ({
     </PopupContainer>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ import {
 } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozBroom } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip, Modal } from '@coze-arch/bot-semi';
+import { IconCozBroom } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip, Modal } from '@coze-arch/coze-design';
 
 import { MAX_JSON_LENGTH } from '../../constants';
 import { formatJson } from './utils/format-json';
@@ -225,4 +225,3 @@ export const JSONEditor: FC<JSONEditorProps> = props => {
     </Modal>
   );
 };
-

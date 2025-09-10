@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
 
 import classNames from 'classnames';
 import { useUpdateEffect } from 'ahooks';
-import { Avatar, Typography } from '@coze-arch/bot-semi';
+import { Avatar, Typography } from '@coze-arch/coze-design';
 import {
   MdBoxLazy,
   type MdBoxLazyProps,
@@ -268,4 +268,3 @@ const CozeImageWithSizeProps: FC<CozeImageProps> = props => {
 };
 
 CozeImageWithSizeProps.displayName = 'CozeImageWithSizeProps';
-

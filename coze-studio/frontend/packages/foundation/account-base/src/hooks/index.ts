@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,14 +48,14 @@ export const useHasError = () => useUserStore(state => state.hasError);
 const currentUidLSKey = 'coze_current_uid';
 /**
  * It is used to detect logout events that occur under other tabs when multiple tabs are opened and trigger a prompt at the current time
- * @Param Banner trigger prompt specific implementation
+ * @Param alert trigger prompt specific implementation
  */
 export const useAlterOnLogout = (alert: () => void) => {
   const visibility = useDocumentVisibility();
   const loginStatus = useLoginStatus();
 
   const isLogined = loginStatus === 'logined';
-  const memoizedBanner = useMemoizedFn(() => {
+  const memoizedAlert = useMemoizedFn(() => {
     alert();
   });
 
@@ -86,4 +86,3 @@ export const useAlterOnLogout = (alert: () => void) => {
 export const useUserLabel = () => useUserStore(state => state.userLabel);
 
 export const useUserAuthInfo = () => useUserStore(state => state.userAuthInfos);
-

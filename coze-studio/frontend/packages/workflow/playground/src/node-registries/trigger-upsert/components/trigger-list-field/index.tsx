@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,14 +25,14 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozIllusEmpty,
   IconCozIllusEmptyDark,
-} from '@coze-arch/bot-semi/illustrations';
+} from '@coze-arch/coze-design/illustrations';
 import {
   IconCozEye,
   IconCozPlayCircle,
   IconCozRefresh,
   IconCozTrashCan,
   IconCozTrigger,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Button,
   EmptyState,
@@ -40,7 +40,7 @@ import {
   Modal,
   Table,
   Toast,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { Notify } from '@/node-registries/common/components';
 import { useGlobalState } from '@/hooks';
@@ -329,4 +329,3 @@ export const TriggerListField = withField<TriggerListProps>(
     );
   },
 );
-

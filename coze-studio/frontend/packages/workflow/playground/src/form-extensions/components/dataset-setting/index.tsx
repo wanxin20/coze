@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { RewriteTips, RerankTips } from '@coze-common/biz-tooltip-ui';
 import { type Dataset, FormatType } from '@coze-arch/idl/knowledge';
 import { I18n } from '@coze-arch/i18n';
 import { IconWarningInfo } from '@coze-arch/bot-icons';
-import { Popover } from '@coze-arch/bot-semi';
+import { Popover } from '@coze-arch/coze-design';
 
 import { CheckboxWithLabel } from '../checkbox-with-label';
 import { Strategy, type DataSetInfo } from './type';
@@ -411,4 +411,3 @@ export const DataSetSetting: FC<DataSetSettingProps> = ({
     </div>
   );
 };
-

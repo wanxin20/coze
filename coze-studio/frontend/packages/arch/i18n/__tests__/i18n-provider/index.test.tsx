@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 
 import { I18nProvider } from '../../src/i18n-provider';
 
-vi.mock('@coze-arch/bot-semi/locales', () => ({
+vi.mock('@coze-arch/coze-design/locales', () => ({
   CDLocaleProvider: vi.fn(() => ({
     render: vi.fn().mockImplementation(r => r),
   })),
@@ -83,4 +83,3 @@ describe('I18nProvider', () => {
     expect(mockI18n.t(key)).toBe('translated-test-key');
   });
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { type SelectProps } from '@coze-arch/bot-semi';
+import { type SelectProps } from '@coze-arch/coze-design';
 
 export type Value = string | number | undefined;
 
@@ -41,4 +41,3 @@ export interface EnumImageModelLabelProps {
   disabledTooltip?: string;
   disabled?: boolean;
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ vi.mock('@coze-arch/i18n', () => ({
   },
 }));
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Menu: {
     SubMenu: ({ children, mode }: any) => (
       <div data-testid="menu-submenu" data-mode={mode}>
@@ -77,7 +77,7 @@ vi.mock('@douyinfe/semi-icons', () => ({
   IconClose: () => <div data-testid="icon-close"></div>,
 }));
 
-vi.mock('@coze-arch/bot-semi/icons', () => ({
+vi.mock('@coze-arch/coze-design/icons', () => ({
   IconCozEdit: () => <div data-testid="icon-edit"></div>,
   IconCozTrashCan: () => <div data-testid="icon-trash"></div>,
 }));
@@ -368,4 +368,3 @@ describe('EditToolBar 组件', () => {
     expect(toolbar).toHaveStyle('margin-left: -203.5px');
   });
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   OAuthStatus,
 } from '@coze-arch/idl/plugin_develop';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
 import {
   Button,
   type ColumnProps,
@@ -32,7 +32,7 @@ import {
   Space,
   Tooltip,
   Modal,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { IllustrationConstruction } from '@douyinfe/semi-illustrations';
 
 import { usePluginPermissionManage } from '@/hook/use-plugin-permission-manage';
@@ -197,4 +197,3 @@ const Empty = () => (
     </div>
   </div>
 );
-

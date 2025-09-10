@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IconCozPeople } from '@coze-arch/bot-semi/icons';
+import { IconCozPeople } from '@coze-arch/coze-design/icons';
 
 import { ToolItemIcon } from '..';
 
@@ -23,4 +23,3 @@ export const ToolItemIconPeople = () => (
     <IconCozPeople className="text-base coz-fg-secondary" />
   </ToolItemIcon>
 );
-

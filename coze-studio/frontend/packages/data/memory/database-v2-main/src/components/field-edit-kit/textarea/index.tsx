@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import React, { useState, type FC, useRef } from 'react';
 import { isUndefined, cloneDeep } from 'lodash-es';
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { TextArea } from '@coze-arch/bot-semi';
+import { TextArea } from '@coze-arch/coze-design';
 
 import {
   type ChangeDataParams,
@@ -115,4 +115,3 @@ export const EditKitTextarea: FC<IProps> = props => {
     />
   );
 };
-

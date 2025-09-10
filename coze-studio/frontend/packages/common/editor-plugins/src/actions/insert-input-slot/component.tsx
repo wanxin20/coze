@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,9 +18,9 @@ import cls from 'classnames';
 import { useEditor } from '@coze-editor/editor/react';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInputSlot } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
-import { type ButtonProps } from '@coze-arch/bot-semi';
+import { IconCozInputSlot } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
+import { type ButtonProps } from '@coze-arch/coze-design';
 
 import { insertInputSlot } from '../../input-slot/action/insert-input-slot-action';
 import {
@@ -75,4 +75,3 @@ export const InsertInputSlotAction: React.FC<InsertInputSlotProps> = props => {
     </div>
   );
 };
-

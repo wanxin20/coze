@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useMemo } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { Select, IconButton, type SelectProps } from '@coze-arch/bot-semi';
+import { IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { Select, IconButton, type SelectProps } from '@coze-arch/coze-design';
 
 import { type LanguageOption } from './voice-data-select/use-language-options';
 import { VoiceDataSelect } from './voice-data-select';
@@ -97,4 +97,3 @@ export const VoiceSelect: React.FC<VoiceSelectProps> = ({
     />
   </div>
 );
-

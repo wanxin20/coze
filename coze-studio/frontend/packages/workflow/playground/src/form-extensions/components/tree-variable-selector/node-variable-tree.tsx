@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import React, {
 
 import classNames from 'classnames';
 import { useNodeTestId } from '@coze-workflow/base';
-import { Tree } from '@coze-arch/bot-semi';
+import { Tree } from '@coze-arch/coze-design';
 import { type TreeNodeData, type TreeProps } from '@coze-arch/bot-semi/Tree';
 
 import { renderLabelWithItem } from './utils';
@@ -147,4 +147,3 @@ export const NodeVariableTree = React.forwardRef(
     );
   },
 );
-

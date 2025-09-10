@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ import {
   IconCozSound,
   IconCozClock,
   IconCozClockBracket,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 const iconFile = <IconCozFolder />;
 const iconFileArray = <IconCozFolderBracket />;
@@ -77,4 +77,3 @@ export const VARIABLE_TYPE_ICON_MAP: Record<ViewVariableType, ReactElement> = {
   [ViewVariableType.ArrayVoice]: iconFileArray,
   [ViewVariableType.ArrayTime]: <IconCozClockBracket />,
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@ import {
   IconCozDocument,
   IconCozLongArrowTopRight,
   IconCozTrigger,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Button,
   Divider,
@@ -42,7 +42,7 @@ import {
   Menu,
   Popover,
   Tooltip,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { useFlags } from '@coze-arch/bot-flags';
 
 import { usePublishStatus } from '../hooks/use-publish-status';
@@ -276,4 +276,3 @@ const MenuItem = ({
     </div>
   </Menu.Item>
 );
-

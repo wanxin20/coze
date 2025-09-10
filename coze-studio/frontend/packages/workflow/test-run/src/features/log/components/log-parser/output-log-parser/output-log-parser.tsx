@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ import { type FlowNodeEntity } from '@flowgram-adapter/free-layout-editor';
 import { StandardNodeType } from '@coze-workflow/base/types';
 import { I18n } from '@coze-arch/i18n';
 import { NodeExeStatus } from '@coze-arch/bot-api/workflow_api';
-import { IconCozWarningCircle } from '@coze-arch/bot-semi/icons';
-import { SegmentTab, Tag, Typography, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozWarningCircle } from '@coze-arch/coze-design/icons';
+import { SegmentTab, Tag, Typography, Tooltip } from '@coze-arch/coze-design';
 
 import { LogWrap } from '../log-wrap';
 import { DataViewer } from '../../data-viewer';
@@ -134,4 +134,3 @@ export const OutputLogParser: React.FC<{
     </LogWrap>
   );
 };
-

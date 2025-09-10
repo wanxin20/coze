@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { type SetterOrDecoratorContext } from '@flowgram-adapter/free-layout-edi
 import { concatTestId } from '@coze-workflow/base';
 import { RoleType } from '@coze-arch/idl/social_api';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Space, Form } from '@coze-arch/bot-semi';
+import { Button, Space, Form } from '@coze-arch/coze-design';
 
 import {
   MessageGenerateMode,
@@ -234,4 +234,3 @@ export const MessageSetForm: FC<MessageSetFormProps> = props => {
     </div>
   );
 };
-

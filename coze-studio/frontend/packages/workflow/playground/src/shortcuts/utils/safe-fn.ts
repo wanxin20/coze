@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { reporter, logger } from '@coze-arch/logger';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 export const safeFn =
   (fn: Function) =>
@@ -38,4 +38,3 @@ export const safeFn =
       logger.error(e);
     }
   };
-

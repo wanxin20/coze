@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useRef, type FC, useState, useEffect } from 'react';
 import classnames from 'classnames';
 import { IconChevronRight, IconTick } from '@douyinfe/semi-icons';
 import { concatTestId } from '@coze-workflow/base';
-import { Popover, Space, Dropdown } from '@coze-arch/bot-semi';
+import { Popover, Space, Dropdown } from '@coze-arch/coze-design';
 
 import { type RenderSelectOptionParams } from './types';
 import { RoleSelectPanel } from './role-select-panel';
@@ -83,4 +83,3 @@ export const RoleSelectOptionItem: FC<RenderSelectOptionParams> = props => {
     </div>
   );
 };
-

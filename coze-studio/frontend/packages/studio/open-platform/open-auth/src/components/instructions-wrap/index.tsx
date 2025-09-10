@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { type ReactNode, type FC } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip, Typography, Space } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip, Typography, Space } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 export const LinkDocs: FC<{ text?: string; onClick?: () => void }> = ({
@@ -65,4 +65,3 @@ export const Tips: FC<{ tips: string | ReactNode; className?: string }> = ({
     </div>
   </Tooltip>
 );
-

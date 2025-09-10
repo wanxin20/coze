@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useCallback } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozFilter } from '@coze-arch/bot-semi/icons';
-import { Select, IconButton } from '@coze-arch/bot-semi';
+import { IconCozFilter } from '@coze-arch/coze-design/icons';
+import { Select, IconButton } from '@coze-arch/coze-design';
 import { SpanStatus } from '@coze-arch/bot-api/workflow_api';
 
 interface StatusSelectProps {
@@ -59,4 +59,3 @@ export const StatusSelect: React.FC<StatusSelectProps> = ({
     />
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 // TODO first encapsulates a business component for joint debugging, and then abstracts it into a general request select.
 import React, { Suspense, lazy } from 'react';
 
-import { InputNumber, Tooltip } from '@coze-arch/bot-semi';
+import { InputNumber, Tooltip } from '@coze-arch/coze-design';
 import { Slider } from '@coze-arch/bot-semi';
 import { IconInfo } from '@coze-arch/bot-icons';
 
@@ -142,4 +142,3 @@ export const SettingSlider = (props: {
     />
   );
 };
-

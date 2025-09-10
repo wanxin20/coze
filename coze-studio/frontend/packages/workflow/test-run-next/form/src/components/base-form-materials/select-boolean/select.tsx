@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { useCallback, useMemo } from 'react';
 
 import { clsx } from 'clsx';
-import { Select, type SelectProps } from '@coze-arch/bot-semi';
+import { Select, type SelectProps } from '@coze-arch/coze-design';
 
 import css from './select.module.less';
 
@@ -59,4 +59,3 @@ export const SelectBoolean: React.FC<SelectBooleanProps> = ({
     </Select>
   );
 };
-

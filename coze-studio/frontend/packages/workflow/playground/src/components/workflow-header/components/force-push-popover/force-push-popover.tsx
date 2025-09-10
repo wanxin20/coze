@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Button, Popover, Typography } from '@coze-arch/bot-semi';
+import { Button, Popover, Typography } from '@coze-arch/coze-design';
 
 import styles from './force-push-popover.module.less';
 
@@ -80,4 +80,3 @@ export const ForcePushPopover: React.FC<
     {children}
   </Popover>
 );
-

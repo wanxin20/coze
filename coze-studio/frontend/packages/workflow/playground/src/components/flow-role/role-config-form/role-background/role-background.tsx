@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useState } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEdit, IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { Typography, CozAvatar, IconButton } from '@coze-arch/bot-semi';
+import { IconCozEdit, IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { Typography, CozAvatar, IconButton } from '@coze-arch/coze-design';
 import { type BackgroundImageInfo } from '@coze-arch/bot-api/workflow_api';
 
 import { BackgroundModal } from './background-upload';
@@ -75,4 +75,3 @@ export const RoleBackground: React.FC<RoleBackgroundProps> = ({
     </div>
   );
 };
-

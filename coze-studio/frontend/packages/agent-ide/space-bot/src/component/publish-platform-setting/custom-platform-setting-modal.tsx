@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
 import { useRef } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
 import {
   Button,
   Form,
@@ -28,7 +28,7 @@ import {
   Input,
   Modal,
   Space,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { FileBizType, IconType } from '@coze-arch/bot-api/developer_api';
 import { useIsCurrentPersonalEnterprise } from '@coze-foundation/enterprise-store-adapter';
 import { PictureUpload } from '@coze-common/biz-components/picture-upload';
@@ -269,4 +269,3 @@ const CustomPlatformSettingModal = ({
 };
 
 export { CustomPlatformSettingModal };
-

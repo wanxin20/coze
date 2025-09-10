@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useState } from 'react';
 
-import { Divider } from '@coze-arch/bot-semi';
+import { Divider } from '@coze-arch/coze-design';
 
 import { ZoomSelect } from './zoom-select';
 import { MinimapSwitch } from './minimap-switch';
@@ -40,4 +40,3 @@ export const Tools = () => {
     </div>
   );
 };
-

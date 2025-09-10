@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import classNames from 'classnames';
 import { useMount } from 'ahooks';
 import { CommonE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEdit } from '@coze-arch/bot-semi/icons';
+import { IconCozEdit } from '@coze-arch/coze-design/icons';
 import { type FileItem, type UploadProps } from '@coze-arch/bot-semi/Upload';
 import { type CommonFieldProps } from '@coze-arch/bot-semi/Form';
 import { UIButton, Toast, withField, Image, Upload } from '@coze-arch/bot-semi';
@@ -294,4 +294,3 @@ const _PictureUpload = (props: PackageUploadProps) => {
 };
 export const PictureUpload: FC<CommonFieldProps & PackageUploadProps> =
   withField(_PictureUpload);
-

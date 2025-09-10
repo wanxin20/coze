@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
 } from 'react';
 
 import cls from 'classnames';
-import { List } from '@coze-arch/bot-semi';
+import { List } from '@coze-arch/coze-design';
 
 import useScroll from './use-scroll';
 import { type InfiniteListProps, type InfiniteListRef } from './type';
@@ -121,4 +121,3 @@ function Index<T extends object>(
 export const InfiniteList = forwardRef(Index) as <T>(
   props: InfiniteListProps<T> & { ref?: RefObject<InfiniteListRef<T>> },
 ) => JSX.Element;
-

@@ -14,9 +14,6 @@
   },
   "dependencies": {
     "@coze-arch/bot-api": "workspace:*",
-    "@coze-arch/coze-design": "0.0.6-alpha.346d77",
-    "@coze-arch/i18n": "workspace:*",
-    "@coze-data/knowledge-api": "workspace:*",
     "@coze-data/knowledge-ide-base": "workspace:*",
     "@coze-data/knowledge-stores": "workspace:*",
     "classnames": "^2.3.2",

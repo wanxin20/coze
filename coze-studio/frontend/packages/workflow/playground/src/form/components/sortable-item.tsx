@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { Draggable } from 'react-beautiful-dnd';
 
 import classNames from 'classnames';
 import { useNodeTestId } from '@coze-workflow/base';
-import { IconCozHandle } from '@coze-arch/bot-semi/icons';
+import { IconCozHandle } from '@coze-arch/coze-design/icons';
 
 import { getCanvasOffset } from '@/utils';
 import { useGlobalState } from '@/hooks';
@@ -80,4 +80,3 @@ export const SortableItem: React.FC<SortableItemProps> = ({
     </Draggable>
   );
 };
-

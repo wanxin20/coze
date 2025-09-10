@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,8 @@ import {
 } from '@coze-workflow/base';
 import { type OptionItem } from '@coze-arch/bot-semi/Radio';
 import { type Model } from '@coze-arch/bot-api/developer_api';
-import { IconCozSetting } from '@coze-arch/bot-semi/icons';
-import { IconButton, Popover } from '@coze-arch/bot-semi';
+import { IconCozSetting } from '@coze-arch/coze-design/icons';
+import { IconButton, Popover } from '@coze-arch/coze-design';
 
 import { useWorkflowModels } from '@/hooks';
 import PopupContainer from '@/components/popup-container';
@@ -197,4 +197,3 @@ export const modelSelect = {
   key: 'ModelSelect',
   component: ModelSelect,
 };
-

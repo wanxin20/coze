@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import cls from 'classnames';
 import {
   IconCozArrowRight,
   IconCozArrowLeft,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 import { CarouselItem } from './carousel-item';
 
@@ -241,4 +241,3 @@ export const Carousel: React.FC<CarouselProps> = ({
     </div>
   );
 };
-

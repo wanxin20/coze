@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,17 +16,17 @@
 
 import React, { useMemo, useState } from 'react';
 
+import { useIDEGlobalStore } from '@coze-project-ide/framework';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozChat } from '@coze-arch/bot-semi/icons';
-import { Modal, Select, Typography, Toast } from '@coze-arch/bot-semi';
+import { IconCozChat } from '@coze-arch/coze-design/icons';
+import { Modal, Select, Typography, Toast } from '@coze-arch/coze-design';
 import {
   type Workflow,
   type ProjectConversation,
 } from '@coze-arch/bot-api/workflow_api';
 import { workflowApi } from '@coze-arch/bot-api';
-import { useIDEGlobalStore } from '@coze-project-ide/framework';
 
-import { DEFAULT_UNIQUE_ID, DEFAULT_CONVERSATION_NAME } from '../../constants';
+import { DEFAULT_CONVERSATION_NAME } from '../../constants';
 
 import s from './index.module.less';
 
@@ -154,7 +154,7 @@ export const useDeleteChat = ({
                 style={{ width: '50%' }}
                 dropdownStyle={{ width: 220 }}
                 size="small"
-                defaultValue={DEFAULT_UNIQUE_ID}
+                defaultValue={optionList[0]?.value}
                 optionList={optionList}
                 onChange={value => {
                   const selectItem = staticList.find(
@@ -200,4 +200,3 @@ export const useDeleteChat = ({
     modalDom,
   };
 };
-

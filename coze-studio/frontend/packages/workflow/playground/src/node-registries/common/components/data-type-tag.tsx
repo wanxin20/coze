@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { ViewVariableType } from '@coze-workflow/base';
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 
 const ViewDataTypeMap = {
   [ViewVariableType.String]: 'String',
@@ -49,4 +49,3 @@ export function DataTypeTag({ type, disabled }: DataTypeTagProps) {
     </Tag>
   );
 }
-

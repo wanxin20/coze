@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { type FC } from 'react';
 
-import { Tooltip, type TooltipProps } from '@coze-arch/bot-semi';
+import { Tooltip, type TooltipProps } from '@coze-arch/coze-design';
 
 interface Props extends TooltipProps {
   disabled?: boolean;
@@ -29,4 +29,3 @@ export const TooltipWithDisabled: FC<Props> = ({ disabled, ...props }) => {
 
   return <Tooltip {...props}></Tooltip>;
 };
-

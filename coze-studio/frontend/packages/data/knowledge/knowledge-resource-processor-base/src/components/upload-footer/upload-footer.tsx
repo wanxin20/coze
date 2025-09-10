@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   type FooterBtnProps,
   type FooterPrefixType,
 } from '@coze-data/knowledge-resource-processor-core';
-import { Button, Tooltip } from '@coze-arch/bot-semi';
+import { Button, Tooltip } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -85,4 +85,3 @@ export const UploadFooter = (props: UploadFooterProps) => {
     </div>
   );
 };
-

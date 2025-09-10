@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
 } from '@coze-workflow/base/types';
 import { InputType, PluginParamTypeFormat } from '@coze-workflow/base/api';
 import { I18n } from '@coze-arch/i18n';
-import { Tag, Typography } from '@coze-arch/bot-semi';
+import { Tag, Typography } from '@coze-arch/coze-design';
 import { type OverflowListProps } from '@coze-arch/bot-semi/OverflowList';
 import { Popover, OverflowList } from '@coze-arch/bot-semi';
 
@@ -225,4 +225,3 @@ export const WorkflowParameters: FC<WorkflowParametersProps> = ({
     </div>
   );
 };
-

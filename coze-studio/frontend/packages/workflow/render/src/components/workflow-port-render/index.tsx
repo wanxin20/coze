@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   WorkflowLinesManager,
   type WorkflowPortEntity,
 } from '@flowgram-adapter/free-layout-editor';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import { PORT_BG_CLASS_NAME } from '../../constants/points';
 import { Warning } from './warning';
@@ -165,4 +165,3 @@ export const WorkflowPortRender: React.FC<WorkflowPortRenderProps> =
     }
     return content;
   });
-

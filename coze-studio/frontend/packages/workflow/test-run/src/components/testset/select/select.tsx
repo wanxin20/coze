@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import {
   type SemiSelect,
   type SelectProps,
   Tag,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type CaseDataDetail } from '@coze-arch/bot-api/debugger_api';
 import { debuggerApi } from '@coze-arch/bot-api';
 
@@ -270,4 +270,3 @@ export const TestsetSelect = forwardRef<TestsetSelectAPI, TestsetSelectProps>(
     );
   },
 );
-

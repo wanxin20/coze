@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ import {
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { type TreeNodeData } from '@coze-arch/bot-semi/Tree';
-import { Tooltip, Space } from '@coze-arch/bot-semi';
+import { Tooltip, Space } from '@coze-arch/coze-design';
 
 import { VariableTypeTag } from '../variable-type-tag';
 import { type VariableMetaWithNode } from '../../typings';
@@ -498,4 +498,3 @@ export const sortTreeDataByGroup = (
     .reduce<ITreeNodeData[]>((acc, cur) => acc.concat(groupMap[cur]), [])
     .concat(noGroupArr);
 };
-

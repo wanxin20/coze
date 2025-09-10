@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { expect, vi, describe, test } from 'vitest';
 import { fireEvent, render, screen } from '@testing-library/react';
-import { type SelectProps } from '@coze-arch/bot-semi';
+import { type SelectProps } from '@coze-arch/coze-design';
 
 import { SinglelineSelect } from '../src/components/singleline-select';
 
@@ -27,7 +27,7 @@ vi.mock('@coze-arch/i18n', () => ({
   },
 }));
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   // eslint-disable-next-line @typescript-eslint/naming-convention
   Select: (props: SelectProps) => {
     const { optionList, onChange } = props;
@@ -85,4 +85,3 @@ describe('singleline select test', () => {
     expect(handleChangeMock).toBeCalledWith('test');
   });
 });
-

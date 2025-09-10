@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useEffect, useState, type ComponentProps } from 'react';
 
-import { withField, FormInput, FormTextArea } from '@coze-arch/bot-semi';
+import { withField, FormInput, FormTextArea } from '@coze-arch/coze-design';
 
 interface PromptInfoInputProps {
   readonly?: boolean;
@@ -88,4 +88,3 @@ const ReadonlyInput = withField(ReadonlyInputCom, {
   valueKey: 'value',
   onKeyChangeFnName: 'onChange',
 });
-

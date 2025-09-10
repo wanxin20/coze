@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type ReactNode } from 'react';
 
 import { useShallow } from 'zustand/react/shallow';
-import { Space, Skeleton } from '@coze-arch/bot-semi';
+import { Space, Skeleton } from '@coze-arch/coze-design';
 import { useSpaceStore } from '@coze-foundation/space-store';
 
 import { type IWorkspaceListItem } from './components/workspace-list-item';
@@ -67,4 +67,3 @@ export const WorkspaceSubMenu = ({
 };
 
 export { IWorkspaceListItem };
-

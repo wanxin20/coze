@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import { VCSCanvasType } from '@coze-workflow/base/api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCheckMarkCircleFillPalette } from '@coze-arch/bot-semi/icons';
-import { Tag } from '@coze-arch/bot-semi';
+import { IconCozCheckMarkCircleFillPalette } from '@coze-arch/coze-design/icons';
+import { Tag } from '@coze-arch/coze-design';
 
 import { useGlobalState } from '../../../hooks';
 
@@ -73,4 +73,3 @@ export const PublishStatus = () => {
     </Tag>
   );
 };
-

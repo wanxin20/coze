@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import semver from 'semver';
 import type { PublishWorkflowRequest } from '@coze-arch/idl/workflow_api';
 import { type SetDefaultTestCaseReq } from '@coze-arch/idl/debugger_api';
 import { I18n } from '@coze-arch/i18n';
-import { Form, Button, Popover, type useFormApi } from '@coze-arch/bot-semi';
+import { Form, Button, Popover, type useFormApi } from '@coze-arch/coze-design';
 import { debuggerApi } from '@coze-arch/bot-api';
 
 import { useGlobalState } from '@/hooks';
@@ -316,4 +316,3 @@ export const PublishWithVersionV2: React.FC<PublishWithVersionProps> = ({
     </Popover>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import { PUBLIC_SPACE_ID, workflowApi } from '@coze-workflow/base';
 import { type Workflow } from '@coze-arch/idl/workflow_api';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import { Image } from '@coze-arch/bot-semi';
 import {
   type WorkflowJSON,
@@ -137,4 +137,3 @@ export const TemplateCard = ({
     </div>
   );
 };
-

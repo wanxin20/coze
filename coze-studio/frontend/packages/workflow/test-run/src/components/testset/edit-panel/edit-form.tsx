@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import React, {
 
 import { isNil, cloneDeep } from 'lodash-es';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowLeft } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowLeft } from '@coze-arch/coze-design/icons';
 import {
   Form,
   FormTextArea,
@@ -33,7 +33,7 @@ import {
   type FormApi,
   Tooltip,
   Toast,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import {
   type CaseDataDetail,
   type CaseDataBase,
@@ -305,4 +305,3 @@ export const TestsetEditForm: React.FC<TestsetEditFormProps> = ({ data }) => {
     </ResizablePanel>
   );
 };
-

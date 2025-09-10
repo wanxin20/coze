@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import {
   Checkbox,
   type CheckboxProps as BaseCheckboxProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { withField, useField } from '@/form';
 
@@ -39,4 +39,3 @@ export const CheckboxField = withField<CheckboxProps>(props => {
     </div>
   );
 });
-

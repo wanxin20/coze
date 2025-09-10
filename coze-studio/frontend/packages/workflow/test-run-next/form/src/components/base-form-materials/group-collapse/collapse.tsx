@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import { useInViewport } from 'ahooks';
 import {
   IconCozArrowDownFill,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Collapsible, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Collapsible, Tooltip } from '@coze-arch/coze-design';
 
 import css from './collapse.module.less';
 
@@ -80,4 +80,3 @@ export const GroupCollapse: React.FC<
     </div>
   );
 };
-

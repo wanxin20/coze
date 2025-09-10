@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   createReportEvent,
 } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { openNewWindow, getParamsFromQuery } from '@coze-arch/bot-utils';
 import { BotPageFromEnum } from '@coze-arch/bot-typings/common';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
@@ -336,4 +336,3 @@ export const DuplicateBot: FC<DuplicateBotProps> = ({
     </>
   );
 };
-

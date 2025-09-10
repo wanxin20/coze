@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import { useNodeTestId } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 
 import { Strategy } from '../../type';
 
@@ -77,4 +77,3 @@ export const SearchStrategy: React.FC<SearchStrategyProps> = props => {
     </Select>
   );
 };
-

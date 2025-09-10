@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
 
 import classNames from 'classnames';
 import { useLatest } from 'ahooks';
-import { ConfigProvider, Tooltip } from '@coze-arch/bot-semi';
+import { ConfigProvider, Tooltip } from '@coze-arch/coze-design';
 
 import { setters } from '../setters';
 import { PopInScreen } from '../pop-in-screen';
@@ -322,4 +322,3 @@ export const Form: FC<IProps> = props => {
     </ConfigProvider>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,8 @@ import {
   IconCozPlus,
   IconCozFolder,
   IconCozTray,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Menu, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Menu, Tooltip } from '@coze-arch/coze-design';
 import { ProjectResourceGroupType } from '@coze-arch/bot-api/plugin_develop';
 
 import {
@@ -166,4 +166,3 @@ export const ResourceGroupActions: React.FC<ResourceGroupActionsProps> = ({
     </Menu>
   );
 };
-

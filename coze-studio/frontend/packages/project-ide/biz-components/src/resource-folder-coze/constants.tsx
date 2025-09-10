@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   IconCozPlugin,
   IconCozDocument,
   IconCozVariables,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   ProjectResourceActionKey,
   ProjectResourceGroupType,
@@ -104,4 +104,3 @@ export const TAB_SIZE = 14;
 export const ITEM_HEIGHT = 28;
 /* Disable folder feature */
 export const DISABLE_FOLDER = true;
-

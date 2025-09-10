@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { KnowledgeE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
-import { Radio } from '@coze-arch/bot-semi';
+import { Radio } from '@coze-arch/coze-design';
 
 import { SegmentMode } from '@/types';
 
@@ -29,4 +29,3 @@ export const AutomaticCleaning = () => (
     {I18n.t('datasets_createFileModel_step3_auto')}
   </Radio>
 );
-

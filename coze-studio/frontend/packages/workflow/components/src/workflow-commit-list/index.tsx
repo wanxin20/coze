@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,8 @@ import {
   withQueryClient,
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozFocus } from '@coze-arch/bot-semi/icons';
-import { EmptyState, Spin, Timeline, Typography } from '@coze-arch/bot-semi';
+import { IconCozFocus } from '@coze-arch/coze-design/icons';
+import { EmptyState, Spin, Timeline, Typography } from '@coze-arch/coze-design';
 
 import { useVersionHistory } from './use-version-history';
 import { type WorkflowCommitListProps } from './type';
@@ -210,4 +210,3 @@ const WorkflowCommitListComp: FC<WorkflowCommitListProps> = withQueryClient(
 export const WorkflowCommitList = Object.assign(WorkflowCommitListComp, {
   Item: CommitItem,
 });
-

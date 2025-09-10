@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type FC } from 'react';
 
-import { Tooltip, type TooltipProps } from '@coze-arch/bot-semi';
+import { Tooltip, type TooltipProps } from '@coze-arch/coze-design';
 
 import s from './index.module.less';
 
@@ -41,4 +41,3 @@ export const ToolTooltip: FC<ToolTooltipsProps> = props => {
     <>{children}</>
   );
 };
-

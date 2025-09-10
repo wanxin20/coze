@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { useShallow } from 'zustand/react/shallow';
 import classNames from 'classnames';
 import { type PublishConnectorInfo } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { FormSelect, type optionRenderProps } from '@coze-arch/bot-semi';
+import { FormSelect, type optionRenderProps } from '@coze-arch/coze-design';
 
 import { useProjectPublishStore } from '@/store';
 import {
@@ -129,4 +129,3 @@ export function WebSdkBind({ checked, record, onClick }: WebSdkBindProps) {
     </div>
   );
 }
-

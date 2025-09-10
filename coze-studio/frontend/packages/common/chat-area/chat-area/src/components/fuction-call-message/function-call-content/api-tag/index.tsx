@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 
 export interface APITagProps {
   type: 'Request' | 'Response';
@@ -25,4 +25,3 @@ export const APITag: React.FC<APITagProps> = ({ type }) => (
     {type}
   </Tag>
 );
-

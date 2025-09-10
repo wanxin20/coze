@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useCallback, useEffect, useState, useContext } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { ConfigProvider, Typography } from '@coze-arch/bot-semi';
+import { ConfigProvider, Typography } from '@coze-arch/coze-design';
 import {
   type FlowNodeEntity,
   useConfigEntity,
@@ -186,4 +186,3 @@ export const BaseNode = ({ node }: { node: FlowNodeEntity }) => {
     </ConfigProvider>
   );
 };
-

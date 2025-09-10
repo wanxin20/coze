@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozDocumentAddTop } from '@coze-arch/bot-semi/icons';
-import { Menu } from '@coze-arch/bot-semi';
+import { IconCozDocumentAddTop } from '@coze-arch/coze-design/icons';
+import { Menu } from '@coze-arch/coze-design';
 
 import { useAddEmptyChunkAction } from '@/text-knowledge-editor/hooks/use-case/chunk-actions';
 import { eventBus } from '@/text-knowledge-editor/event';
@@ -68,4 +68,3 @@ export const AddBeforeAction: React.FC<PreviewContextMenuItemProps> = ({
     </Menu.Item>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { IntelligenceType } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
 import { useFlags } from '@coze-arch/bot-flags';
 import { useIsPublishRecordReady } from '@coze-studio/publish-manage-hooks';
-import { IconCozCheckMarkCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozCheckMarkCircle } from '@coze-arch/coze-design/icons';
 
 import { useProjectPublishStore } from '../store';
 import { ProjectPublishProgress } from '../publish-progress';
@@ -94,4 +94,3 @@ export const PublishRecord: FC<{
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -59,14 +59,14 @@ import {
   SearchScope,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n, type I18nKeysNoOptionsType } from '@coze-arch/i18n';
-import { IconCozLoading, IconCozPlus } from '@coze-arch/bot-semi/icons';
+import { IconCozLoading, IconCozPlus } from '@coze-arch/coze-design/icons';
 import {
   Button,
   IconButton,
   Search,
   Select,
   Spin,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { SpaceType } from '@coze-arch/bot-api/developer_api';
 
@@ -399,4 +399,3 @@ export const Develop: FC<DevelopProps> = ({ spaceId }) => {
     </>
   );
 };
-

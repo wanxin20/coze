@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   Toast,
   type UploadProps,
   type FileItem,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type BackgroundImageInfo } from '@coze-arch/bot-api/workflow_api';
 
 import { checkImageWidthAndHeight, getPictureValue } from './utils';
@@ -200,4 +200,3 @@ export const BackgroundModal: React.FC<BackgroundModalProps> = ({
     </Modal>
   );
 };
-

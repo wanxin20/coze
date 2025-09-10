@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   type ModelParamClass,
   type Model,
 } from '@coze-arch/bot-api/developer_api';
-import { Select, Radio, RadioGroup } from '@coze-arch/bot-semi';
+import { Select, Radio, RadioGroup } from '@coze-arch/coze-design';
 
 import { cacheData, getCamelNameName, getValueByType } from '../utils';
 import styles from '../index.module.less';
@@ -297,4 +297,3 @@ export const ModelSetting: FC<ModelSettingProps> = ({
     </div>
   );
 };
-

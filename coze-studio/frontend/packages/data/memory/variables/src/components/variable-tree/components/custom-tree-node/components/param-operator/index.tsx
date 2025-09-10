@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 /* eslint-disable @coze-arch/no-deep-relative-import */
 import { VariableE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { Tooltip, IconButton, Switch } from '@coze-arch/bot-semi';
+import { IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { Tooltip, IconButton, Switch } from '@coze-arch/coze-design';
 
 import { ObjectLikeTypes } from '@/store/variable-groups/types';
 import { useVariableContext } from '@/context';
@@ -100,4 +100,3 @@ export default function ParamOperator({
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { lazy, Suspense } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { usePersonaStore } from '@coze-studio/bot-detail-store/persona';
 import { useBotDetailIsReadonly } from '@coze-studio/bot-detail-store';
-import { Spin } from '@coze-arch/bot-semi';
+import { Spin } from '@coze-arch/coze-design';
 const AgentIdePrompt = lazy(() => import('./agent-ide-prompt'));
 
 export interface PromptEditorEntryProps {
@@ -60,4 +60,3 @@ export const PromptEditorEntry: React.FC<PromptEditorEntryProps> = ({
     </Suspense>
   );
 };
-

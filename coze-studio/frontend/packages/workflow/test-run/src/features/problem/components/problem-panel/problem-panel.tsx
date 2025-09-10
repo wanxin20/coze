@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Spin } from '@coze-arch/bot-semi';
+import { Spin } from '@coze-arch/coze-design';
 
 import { ProblemGroup } from '../problem-group';
 import { type ProblemItem } from '../../types';
@@ -68,4 +68,3 @@ export const ProblemPanel: React.FC<ProblemPanelProps> = ({
     </BasePanel>
   );
 };
-

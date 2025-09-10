@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, type PropsWithChildren } from 'react';
 
 import classNames from 'classnames';
 import { useShowBackGround } from '@coze-common/chat-area';
-import { IconCozQuotation } from '@coze-arch/bot-semi/icons';
+import { IconCozQuotation } from '@coze-arch/coze-design/icons';
 
 import { typeSafeQuoteNodeColorVariants } from '../variants';
 
@@ -48,4 +48,3 @@ export const QuoteTopUI: FC<PropsWithChildren> = ({ children }) => {
     </div>
   );
 };
-

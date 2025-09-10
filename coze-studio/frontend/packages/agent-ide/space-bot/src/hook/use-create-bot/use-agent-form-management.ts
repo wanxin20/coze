@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useState, useRef } from 'react';
 
-import { type Form } from '@coze-arch/bot-semi';
+import { type Form } from '@coze-arch/coze-design';
 import { type DraftBot } from '@coze-arch/bot-api/developer_api';
 
 import { type AgentInfoFormValue } from './agent-info-form';
@@ -104,4 +104,3 @@ export const useAgentFormManagement = ({
     resetFormState,
   };
 };
-

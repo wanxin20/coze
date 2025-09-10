@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { useMemo } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Switch } from '@coze-arch/bot-semi';
+import { Switch } from '@coze-arch/coze-design';
 
 import { JsonEditorAdapter as JsonEditorAdapterNew } from '@/components/test-run/test-form-materials/json-editor/new';
 
@@ -143,4 +143,3 @@ export const ErrorForm: React.FC<ErrorFormProps> = ({
     />
   );
 };
-

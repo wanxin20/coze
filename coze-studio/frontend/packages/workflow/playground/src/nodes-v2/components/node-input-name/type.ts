@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import type { CSSProperties } from 'react';
 
 import type { InputValueVO, RefExpression } from '@coze-workflow/base';
-import { type InputProps } from '@coze-arch/bot-semi';
+import { type InputProps } from '@coze-arch/coze-design';
 
 import { type ComponentProps } from '@/nodes-v2/components/types';
 
@@ -52,4 +52,3 @@ export type NodeInputNameProps = Omit<
   inputPrefix?: InputProps['prefix'];
   disabled?: boolean;
 };
-

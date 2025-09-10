@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import classNames from 'classnames';
 import { VerboseMsgType } from '@coze-common/chat-core';
 import { exhaustiveCheckSimple } from '@coze-common/chat-area-utils';
 import { I18n } from '@coze-arch/i18n';
-import { Tag, Typography } from '@coze-arch/bot-semi';
+import { Tag, Typography } from '@coze-arch/coze-design';
 import { MockHitStatus } from '@coze-arch/bot-api/debugger_api';
 
 import { isVerboseContent } from '../../../utils/verbose';
@@ -252,4 +252,3 @@ export const FunctionCallMessagesCollapse: React.FC<
     </CollapsePanelWithHeader>
   );
 };
-

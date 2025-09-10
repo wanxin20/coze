@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 
 import { usePluginLimitModal } from '@coze-studio/components';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCoin } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozCoin } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 import { UIButton } from '@coze-arch/bot-semi';
 
 import { usePluginCredits } from '@/components/workflow-header/hooks';
@@ -78,4 +78,3 @@ export const CreditButton: React.FC = () => {
     </>
   );
 };
-

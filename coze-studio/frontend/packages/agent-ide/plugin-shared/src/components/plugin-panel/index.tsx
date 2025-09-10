@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -78,12 +78,12 @@ import { AvatarName } from '@coze-studio/components';
 
 import { PluginPerfStatics } from './plugin-perf-statics';
 import { withSlardarIdButton } from '@coze-studio/bot-utils';
-import { Tag, Tooltip } from '@coze-arch/bot-semi';
+import { Tag, Tooltip } from '@coze-arch/coze-design';
 
 import {
   IconCozDesktop,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 import { isBoolean, isUndefined } from 'lodash-es';
 import {
@@ -659,4 +659,3 @@ export const PluginPanel: React.FC<PluginPanelProps> = ({
     </Collapse.Panel>
   );
 };
-

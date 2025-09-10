@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozKnowledgeFill } from '@coze-arch/bot-semi/icons';
+import { IconCozKnowledgeFill } from '@coze-arch/coze-design/icons';
 
 export enum SkillKnowledgeSiderCategory {
   Library = 'library',
@@ -84,4 +84,3 @@ export const SkillKnowledgeSider: React.FC<Props> = ({
     ) : null}
   </>
 );
-

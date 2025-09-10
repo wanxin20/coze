@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ import {
   type CreatePersonalAccessTokenAndPermissionResponseData,
   type GetPersonalAccessTokenAndPermissionResponseData,
 } from '@coze-arch/bot-api/pat_permission_api';
-import { Form, type FormApi, Modal, Spin, Toast } from '@coze-arch/bot-semi';
+import { Form, type FormApi, Modal, Spin, Toast } from '@coze-arch/coze-design';
 
 import { usePatForm, type FormApiInfo } from '@/hooks/pat/action/use-pat-form';
 
@@ -172,4 +172,3 @@ export const PermissionModal = forwardRef(function PermissionModal(
     </Modal>
   );
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { Component, type ReactNode } from 'react';
 
-import { CDLocaleProvider } from '@coze-arch/bot-semi/locales';
+import { CDLocaleProvider } from '@coze-arch/coze-design/locales';
 
 import { type Intl } from '../intl';
 import { i18nContext, type I18nContext } from './context';
@@ -50,4 +50,3 @@ export class I18nProvider extends Component<I18nProviderProps> {
     );
   }
 }
-

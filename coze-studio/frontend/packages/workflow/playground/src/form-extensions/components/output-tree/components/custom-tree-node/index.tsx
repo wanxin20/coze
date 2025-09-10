@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
   VARIABLE_TYPE_ALIAS_MAP,
   type ViewVariableType,
 } from '@coze-workflow/base';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 import { type RenderFullLabelProps } from '@coze-arch/bot-semi/Tree';
 
 import { LevelLine } from '@/form-extensions/components/level-line';
@@ -358,4 +358,3 @@ export default function CustomTreeNode(props: CustomTreeNodeProps) {
     </div>
   );
 }
-

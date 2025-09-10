@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { WorkflowExecStatus } from '@coze-workflow/base';
 import { SelectSpaceModal } from '@coze-studio/components';
 import { I18n } from '@coze-arch/i18n';
-import { Toast, Tooltip } from '@coze-arch/bot-semi';
+import { Toast, Tooltip } from '@coze-arch/coze-design';
 import { openNewWindow } from '@coze-arch/bot-utils';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { UIButton } from '@coze-arch/bot-semi';
@@ -150,4 +150,3 @@ export const DuplicateButton = ({ mode }: Props) => {
     </>
   );
 };
-

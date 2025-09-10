@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { type ReactNode } from 'react';
 
 import { type FieldItemType } from '@coze-arch/bot-api/developer_api';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tag, Tooltip, Typography } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tag, Tooltip, Typography } from '@coze-arch/coze-design';
 
 import { FIELD_TYPE_OPTIONS } from '../../constants/database-field';
 
@@ -58,4 +58,3 @@ export function DatabaseFieldTitle({
     </div>
   );
 }
-

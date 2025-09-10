@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import { connect } from '@formily/react';
-import { Switch as CozSwitch } from '@coze-arch/bot-semi';
+import { Switch as CozSwitch } from '@coze-arch/coze-design';
 
 export interface SwitchProps {
   value?: boolean;
@@ -29,4 +29,3 @@ const SwitchAdapter: React.FC<SwitchProps> = ({ value, ...props }) => (
 );
 
 export const Switch = connect(SwitchAdapter);
-

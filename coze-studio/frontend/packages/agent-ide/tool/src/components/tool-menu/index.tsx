@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import classNames from 'classnames';
-import { Menu, Popover, IconButton } from '@coze-arch/bot-semi';
+import { Menu, Popover, IconButton } from '@coze-arch/coze-design';
 import { IconMenu } from '@coze-arch/bot-icons';
 
 import { ToolMenuDropdownMenu } from '../tool-menu-dropdown-menu';
@@ -77,4 +77,3 @@ export const ToolMenu: FC<IProps> = ({
     </div>
   );
 };
-

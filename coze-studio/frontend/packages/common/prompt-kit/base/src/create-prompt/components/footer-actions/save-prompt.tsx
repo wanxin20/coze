@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 interface SavePromptProps {
   mode: 'info' | 'edit' | 'create';
   isSubmitting?: boolean;
@@ -31,4 +31,3 @@ export const SavePrompt = ({
     {mode === 'info' ? I18n.t('prompt_detail_copy_prompt') : I18n.t('Confirm')}
   </Button>
 );
-

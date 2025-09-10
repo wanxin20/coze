@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Button, Tooltip } from '@coze-arch/bot-semi';
+import { Button, Tooltip } from '@coze-arch/coze-design';
 
 import { type WorkFlowModalModeProps, type WorkflowInfo } from '../../type';
 export type LibButtonProps = Pick<WorkFlowModalModeProps, 'onImport'> & {
@@ -56,4 +56,3 @@ export const LibButton: React.FC<LibButtonProps> = ({ data, onImport }) => {
     </Tooltip>
   );
 };
-

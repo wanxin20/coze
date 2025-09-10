@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import React, {
 } from 'react';
 
 import classnames from 'classnames';
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
-import { Popover, Input } from '@coze-arch/bot-semi';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+import { Popover, Input } from '@coze-arch/coze-design';
 import type { TreeNodeData } from '@coze-arch/bot-semi/Tree';
 import { type ValidateStatus } from '@coze-arch/bot-semi/Input';
 import { IconClear } from '@douyinfe/semi-icons';
@@ -263,4 +263,3 @@ export const CompositeSelect: FC<CompositeSelectProps> = props => {
     </Popover>
   );
 };
-

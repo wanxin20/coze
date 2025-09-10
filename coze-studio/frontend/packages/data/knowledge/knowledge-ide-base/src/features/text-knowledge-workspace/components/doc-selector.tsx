@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import { useDebounceFn } from 'ahooks';
 import { KnowledgeE2e } from '@coze-data/e2e';
 import { logger } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEdit } from '@coze-arch/bot-semi/icons';
+import { IconCozEdit } from '@coze-arch/coze-design/icons';
 import {
   Popover,
   Select,
@@ -30,7 +30,7 @@ import {
   Button,
   TextArea,
   Search,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type OptionProps } from '@coze-arch/bot-semi/Select';
 import { type FormatType } from '@coze-arch/bot-api/knowledge';
 
@@ -226,4 +226,3 @@ export const DocSelector = ({
     />
   );
 };
-

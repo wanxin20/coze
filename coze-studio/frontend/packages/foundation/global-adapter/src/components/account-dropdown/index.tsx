@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { GlobalLayoutAccountDropdown } from '@coze-foundation/layout';
 import { useLogout } from '@coze-foundation/account-ui-adapter';
 import { I18n } from '@coze-arch/i18n';
 import { useUserInfo } from '@coze-arch/foundation-sdk';
-import { IconCozExit, IconCozSetting } from '@coze-arch/bot-semi/icons';
-import { Dropdown } from '@coze-arch/bot-semi';
+import { IconCozExit, IconCozSetting } from '@coze-arch/coze-design/icons';
+import { Dropdown } from '@coze-arch/coze-design';
 
 import { UserInfoMenu } from './user-info-menu';
 import { useAccountSettings } from './account-settings';
@@ -77,4 +77,3 @@ export const AccountDropdown = () => {
     </GlobalLayoutAccountDropdown>
   );
 };
-

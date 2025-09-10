@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -315,7 +315,7 @@ export interface PluginPricingRule {
   rule_id?: string;
 }
 
-export interface QuotaBanner {
+export interface QuotaAlert {
   /** 触发告警的API名称 */
   api_name?: string;
   /** 触发告警时,已使用的容量 */
@@ -388,4 +388,3 @@ export interface UpdatePluginQuotaRuleResponse {
   BaseResp?: base.BaseResp;
 }
 /* eslint-enable */
-

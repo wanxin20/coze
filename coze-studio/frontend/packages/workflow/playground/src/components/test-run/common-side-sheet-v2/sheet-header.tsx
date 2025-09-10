@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useCallback } from 'react';
 
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconButton } from '@coze-arch/coze-design';
 import { IconCozeCross } from '@coze-arch/bot-icons';
 
 import { useTestFormState } from '@/hooks';
@@ -43,4 +43,3 @@ export const CommonSideSheetHeaderV2: React.FC<React.PropsWithChildren> = ({
     </div>
   );
 };
-

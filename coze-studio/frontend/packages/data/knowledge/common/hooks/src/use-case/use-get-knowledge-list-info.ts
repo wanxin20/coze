@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { useErrorHandler } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
 import { CustomError } from '@coze-arch/bot-error';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 export const useGetKnowledgeListInfo = (params: { datasetID: string }) => {
   const spaceId = useSpaceStore(s => s.space.id);
@@ -61,4 +61,3 @@ export const useGetKnowledgeListInfo = (params: { datasetID: string }) => {
     },
   );
 };
-

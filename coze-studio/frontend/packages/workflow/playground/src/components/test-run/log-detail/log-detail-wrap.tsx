@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import copy from 'copy-to-clipboard';
 import cls from 'classnames';
 import { logger } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
-import { Toast, Tooltip, Typography } from '@coze-arch/bot-semi';
+import { Toast, Tooltip, Typography } from '@coze-arch/coze-design';
 import { UIIconButton, UITag } from '@coze-arch/bot-semi';
 import { IconCopy } from '@coze-arch/bot-icons';
 
@@ -102,4 +102,3 @@ export const LogDetailWrap: React.FC<
     </>
   );
 };
-

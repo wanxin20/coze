@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { useMemo } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Loading } from '@coze-arch/bot-semi';
+import { Loading } from '@coze-arch/coze-design';
 import { ResourceCopyScene } from '@coze-arch/bot-api/plugin_develop';
 
 import styles from './styles.module.less';
@@ -78,4 +78,3 @@ export const LoopContent = ({
     </div>
   );
 };
-

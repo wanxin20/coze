@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,8 +32,8 @@ import { useNodeTestId } from '@coze-workflow/base';
 import {
   IconCozArrowDownFill,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Collapsible, Image } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Collapsible, Image } from '@coze-arch/coze-design';
 
 import {
   FormItemFeedback,
@@ -307,4 +307,3 @@ const FormCard: React.FC<PropsWithChildren<FormCardProps>> & {
 FormCard.Action = Action;
 
 export { FormCard };
-

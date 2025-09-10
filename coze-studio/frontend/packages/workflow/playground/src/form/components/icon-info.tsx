@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 
 interface IconInfoProps {
   tooltip: string | React.ReactNode;
@@ -28,4 +28,3 @@ export function IconInfo({ tooltip }: IconInfoProps) {
     </Tooltip>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import {
   IconCozArrowDown,
   IconCozCheckMarkCircle,
   IconCozListDisorder,
-} from '@coze-arch/bot-semi/icons';
-import { Typography, Tag } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Typography, Tag } from '@coze-arch/coze-design';
 import { MockHitStatus } from '@coze-arch/bot-api/debugger_api';
 import { Layout } from '@coze-common/chat-uikit-shared';
 
@@ -312,4 +312,3 @@ export const CollapsePanelHeader: React.FC<
     </div>
   );
 };
-

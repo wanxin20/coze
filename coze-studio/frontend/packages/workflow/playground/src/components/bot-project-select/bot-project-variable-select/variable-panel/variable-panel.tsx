@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import cls from 'classnames';
 import { useGlobalVariableServiceState } from '@coze-workflow/variable';
 import { VARIABLE_TYPE_ALIAS_MAP } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEmpty } from '@coze-arch/bot-semi/icons';
-import { Select, Tag, Typography } from '@coze-arch/bot-semi';
+import { IconCozEmpty } from '@coze-arch/coze-design/icons';
+import { Select, Tag, Typography } from '@coze-arch/coze-design';
 
 import { type Variable, type VariablesPanelProps } from '../types';
 import styles from '../index.module.less';
@@ -138,4 +138,3 @@ export default function VariablePanel({
     </>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,7 +66,7 @@ const checkShouldAlertMaxToken = (inputMaxToken: number | undefined) => {
  * Prompt when the user model max_token field < = 5
  * Avoid user misoperation and cannot use the model normally
  */
-const modelMaxTokenBanner = () => {
+const modelMaxTokenAlert = () => {
   const { useModelStore, useMultiAgentStore } = useBotDetailStoreSet.getStore();
   const botMode = useBotInfoStore.getState().mode;
   const maxTokens = useModelStore.getState().config.max_tokens;
@@ -265,4 +265,3 @@ const useInit = (props: AgentInitProps = { initCallback: {} }) => {
 };
 
 export { useInit };
-

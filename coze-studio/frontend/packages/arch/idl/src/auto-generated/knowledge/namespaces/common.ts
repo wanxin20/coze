@@ -125,8 +125,6 @@ export enum FormatType {
   VolcanoUnstructured = 5,
   /** 火山数据库 */
   VolcanoDatabase = 6,
-  /** FastGPTRAG */
-  FastGPTRAG = 7,
 }
 
 export enum FrequencyType {

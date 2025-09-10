@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import { json } from '@coze-editor/editor/language-json';
 import { I18n } from '@coze-arch/i18n';
 import { UIButton, withField } from '@coze-arch/bot-semi';
 import { type editor as monacoEditorNameSpace } from '@coze-arch/bot-monaco-editor/types';
-import { IconCozBroom, IconCozRefresh } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozBroom, IconCozRefresh } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 import { EditorView } from '@codemirror/view';
 
 import type { ComponentAdapterCommonProps } from '../../types';
@@ -274,4 +274,3 @@ const JsonEditorSemi = withField(JsonEditorAdapter, {
 });
 
 export { JsonEditorSemi };
-

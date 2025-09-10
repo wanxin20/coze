@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,7 +36,7 @@ import {
   EditorEventType,
   normalizeSchema,
 } from '@coze-common/md-editor-adapter';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
 import {
   type FileItem,
   Form,
@@ -44,7 +44,7 @@ import {
   FormSelect,
   Typography,
   type optionRenderProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import {
   uploadCustomRequest,
@@ -240,4 +240,3 @@ export const TemplateConfigForm = forwardRef<
     </Form>
   );
 });
-

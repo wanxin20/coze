@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,9 +23,8 @@ import {
   TestFormFieldName,
 } from '@coze-workflow/test-run-next';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozStopCircle } from '@coze-arch/bot-semi/icons';
-import { } from '@coze-arch/bot-semi';
-// AIButton might need to be replaced with a different component;
+import { IconCozStopCircle } from '@coze-arch/coze-design/icons';
+import { AIButton } from '@coze-arch/coze-design';
 
 import { useAIGenerate } from './use-ai-generate';
 import { GenerateModeSelect, GenerateMode } from './generate-mode-select';
@@ -113,4 +112,3 @@ export const AIGenerateButton: React.FC<AIGenerateButtonProps> = ({
     </div>
   );
 };
-

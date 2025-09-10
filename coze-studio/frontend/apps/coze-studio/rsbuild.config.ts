@@ -19,7 +19,12 @@ import path from 'path';
 import { defineConfig } from '@coze-arch/rsbuild-config';
 import { GLOBAL_ENVS } from '@coze-arch/bot-env';
 
-const API_PROXY_TARGET = `http://localhost:${
+// 在 Docker 环境中使用容器名，否则使用 localhost
+const API_HOST = process.env.NODE_ENV === 'development' && process.env.DOCKER_ENV 
+  ? 'coze-server' 
+  : 'localhost';
+
+const API_PROXY_TARGET = `http://${API_HOST}:${
   process.env.WEB_SERVER_PORT || 8888
 }/`;
 
@@ -29,6 +34,12 @@ const mergedConfig = defineConfig({
     proxy: [
       {
         context: ['/api'],
+        target: API_PROXY_TARGET,
+        secure: false,
+        changeOrigin: true,
+      },
+      {
+        context: ['/v1'],
         target: API_PROXY_TARGET,
         secure: false,
         changeOrigin: true,

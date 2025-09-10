@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@ import { WorkflowNodesService } from '@coze-workflow/nodes';
 import { StandardNodeType } from '@coze-workflow/base';
 import { reporter } from '@coze-arch/logger';
 import { handlePluginRiskWarning } from '@coze-agent-ide/plugin-risk-warning';
-import { Popover } from '@coze-arch/bot-semi';
+import { Popover } from '@coze-arch/coze-design';
 
 import { WorkflowPlaygroundContext } from '@/workflow-playground-context';
 import {
@@ -314,4 +314,3 @@ export const NodePanel: FC<NodePanelRenderProps> = props => {
     </Popover>
   );
 };
-

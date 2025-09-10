@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useShallow } from 'zustand/react/shallow';
 import { type PublishConnectorInfo } from '@coze-arch/idl/intelligence_api';
-import { FormSelect } from '@coze-arch/bot-semi';
+import { FormSelect } from '@coze-arch/coze-design';
 import { IconCozArrowDown } from '@coze-arch/bot-icons';
 
 import { useProjectPublishStore } from '@/store';
@@ -65,4 +65,3 @@ export const UnionSelect = ({ record }: UnionSelectProps) => {
     </div>
   );
 };
-

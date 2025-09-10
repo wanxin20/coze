@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,13 +20,13 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozCrossCircle,
   IconCozLoading,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Toast,
   Tooltip,
   Upload,
   type customRequestArgs,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import styles from './image-upload.module.less';
 
@@ -117,4 +117,3 @@ export const ImageUpload = (props: {
     </Tooltip>
   );
 };
-

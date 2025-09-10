@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import React, { type FC, type ReactNode, type PropsWithChildren } from 'react';
 
 import { connect, mapProps } from '@formily/react';
 import { isDataField } from '@formily/core';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip, Typography, Tag } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip, Typography, Tag } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -119,4 +119,3 @@ const FormItem = connect(
 );
 
 export { FormItem };
-

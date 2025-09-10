@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type DataSetInfo } from '@coze-arch/bot-api/memory';
 import { type Dataset } from '@coze-arch/bot-api/knowledge';
 import { UIBreadcrumb } from '@coze-studio/components';
-import { Layout } from '@coze-arch/bot-semi';
+import { Layout } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -39,4 +39,3 @@ export const KnowledgePreviewNavigation = ({
     }
   ></Layout.Header>
 );
-

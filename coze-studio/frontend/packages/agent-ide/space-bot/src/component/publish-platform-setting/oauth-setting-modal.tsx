@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   Form,
   Spin,
   Modal,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { CheckboxGroup, withField } from '@coze-arch/bot-semi';
 import { type FormSchemaItem } from '@coze-arch/bot-api/connector_api';
 import {
@@ -202,4 +202,3 @@ const OauthSettingModal = ({
 };
 
 export { OauthSettingModal };
-

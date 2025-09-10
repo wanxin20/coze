@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -43,8 +43,8 @@ import {
   IconCozMinus,
   IconCozPlus,
   IconCozSideExpand,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Spin, Tag, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Spin, Tag, Tooltip } from '@coze-arch/coze-design';
 
 import { SegmentMode } from '../../types';
 
@@ -359,4 +359,3 @@ export const SegmentPreview = (props: ISegmentPreviewProps) => {
     </div>
   );
 };
-

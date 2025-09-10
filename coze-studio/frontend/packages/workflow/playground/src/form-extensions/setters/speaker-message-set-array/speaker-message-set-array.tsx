@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import { useCurrentEntity } from '@flowgram-adapter/free-layout-editor';
 import { concatTestId, useNodeTestId } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { IconNo, IconAdd } from '@coze-arch/bot-icons';
-import { Button, IconButton } from '@coze-arch/bot-semi';
+import { Button, IconButton } from '@coze-arch/coze-design';
 
 import { withValidation } from '@/form-extensions/components/validation';
 
@@ -181,4 +181,3 @@ export const SpeakerMessageSetArray =
       </SpeakerMessageSetArrayContextProvider>
     );
   });
-

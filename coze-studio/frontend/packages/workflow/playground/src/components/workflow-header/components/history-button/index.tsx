@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { IconHistory } from '@coze-arch/bot-icons';
 
@@ -68,4 +68,3 @@ const WorkflowHistory = () => {
 };
 
 export const HistoryButton = () => <WorkflowHistory />;
-

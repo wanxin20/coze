@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Banner } from '@coze-arch/bot-semi';
+import { Banner } from '@coze-arch/coze-design';
 
 export const ConfigurationBanner = () => (
   <Banner
@@ -24,4 +24,3 @@ export const ConfigurationBanner = () => (
     description={I18n.t('knowledge_limit_20')}
   />
 );
-

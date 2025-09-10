@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from 'react';
 
-import { IconCozPlus, IconCozMinus } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozPlus, IconCozMinus } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import type { Setter } from '../types';
 import type { Field } from './types';
@@ -138,4 +138,3 @@ export const Array: Setter<Array<any>, ArrayOptions> = ({
     </div>
   );
 };
-

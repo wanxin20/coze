@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ import { type FC } from 'react';
 import { useShallow } from 'zustand/react/shallow';
 import { PluginName, useWriteablePlugin } from '@coze-common/chat-area';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozQuotation } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozQuotation } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { getMessage } from '../../utils/get-message';
 import { type GrabPluginBizContext } from '../../types/plugin-biz-context';
@@ -110,4 +110,3 @@ export const QuoteButton: FC<QuoteButtonProps> = ({ onClose, onClick }) => {
     </Tooltip>
   );
 };
-

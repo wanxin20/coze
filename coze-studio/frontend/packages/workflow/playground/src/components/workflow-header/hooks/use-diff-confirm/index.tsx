@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type FC, useEffect, useMemo, useRef, useState } from 'react';
 
 import { useUnmount } from 'ahooks';
 import { OperateType } from '@coze-workflow/base/api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import { UIModal } from '@coze-arch/bot-semi';
 import { I18n } from '@coze-arch/i18n';
 
@@ -160,4 +160,3 @@ export const useDiffConfirm = ({
     },
   };
 };
-

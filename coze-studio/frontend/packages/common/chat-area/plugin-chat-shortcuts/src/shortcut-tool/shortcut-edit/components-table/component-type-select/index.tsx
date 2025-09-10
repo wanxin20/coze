@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import React, {
 
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { Toast, UIInput, Popover, Form } from '@coze-arch/bot-semi';
 import { IconChevronDown } from '@douyinfe/semi-icons';
 
@@ -253,4 +253,3 @@ const getComponentTypeOptionMap = (
     ),
   },
 });
-

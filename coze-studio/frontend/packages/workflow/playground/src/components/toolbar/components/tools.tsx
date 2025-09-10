@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useRef, type RefObject } from 'react';
 
 import cls from 'classnames';
 import { usePlayground } from '@flowgram-adapter/free-layout-editor';
-import { Divider } from '@coze-arch/bot-semi';
+import { Divider } from '@coze-arch/coze-design';
 
 import { useTemplateService } from '@/hooks/use-template-service';
 
@@ -87,4 +87,3 @@ export const Tools = (props: ITool) => {
     </div>
   );
 };
-

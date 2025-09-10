@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   withField,
   type InputProps,
   type CommonFieldProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import styles from './name-input.module.less';
 
@@ -59,4 +59,3 @@ function InnerInput(props: InputProps) {
 export const TestsetNameInput = withField(InnerInput, {}) as (
   props: CommonFieldProps & InputProps,
 ) => JSX.Element;
-

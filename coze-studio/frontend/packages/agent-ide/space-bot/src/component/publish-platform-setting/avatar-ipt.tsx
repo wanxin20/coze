@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type CSSProperties, type ForwardedRef, forwardRef } from 'react';
 
 import classNames from 'classnames';
-import { Avatar, Upload, type UploadProps } from '@coze-arch/bot-semi';
+import { Avatar, Upload, type UploadProps } from '@coze-arch/coze-design';
 
 import CozeLogoPng from '../../assets/image/coze-logo.png';
 import CozeHoverPng from '../../assets/image/coze-avatar-hover.png';
@@ -95,4 +95,3 @@ const AvatarIpt = forwardRef(
 );
 
 export { AvatarIpt };
-

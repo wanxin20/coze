@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
   type FabricSchema,
 } from '@coze-workflow/fabric-canvas';
 import { type InputVariable } from '@coze-workflow/base/types';
-import { IconCozScaling } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozScaling } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 
 import { useNodeFormPanelState } from '@/hooks/use-node-side-sheet-store';
@@ -136,4 +136,3 @@ export const Canvas: FC<
     </div>
   );
 };
-

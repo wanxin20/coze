@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Spin, Image } from '@coze-arch/bot-semi';
+import { Spin, Image } from '@coze-arch/coze-design';
 
 import { getIconByExtension, getFileExtension } from './utils';
 import { FileItemStatus, PREVIEW_IMAGE_TYPE } from './constants';
@@ -64,4 +64,3 @@ export const FileIcon = (props: FileIconProps) => {
 
   return <Icon style={{ width: size, height: size, fontSize: size }} />;
 };
-

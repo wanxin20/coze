@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { type FC, useState } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowDown, IconCozLoading } from '@coze-arch/bot-semi/icons';
-import { Typography } from '@coze-arch/bot-semi';
+import { IconCozArrowDown, IconCozLoading } from '@coze-arch/coze-design/icons';
+import { Typography } from '@coze-arch/coze-design';
 
 import styles from './styles.module.less';
 export const LoadMoreCard: FC<{
@@ -53,4 +53,3 @@ export const LoadMoreCard: FC<{
     </div>
   );
 };
-

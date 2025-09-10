@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozDebug } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip, type ButtonProps } from '@coze-arch/bot-semi';
+import { IconCozDebug } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip, type ButtonProps } from '@coze-arch/coze-design';
 
 type TraceIconButtonProps = ButtonProps;
 
@@ -29,4 +29,3 @@ export const TraceIconButton: React.FC<TraceIconButtonProps> = props => (
     />
   </Tooltip>
 );
-

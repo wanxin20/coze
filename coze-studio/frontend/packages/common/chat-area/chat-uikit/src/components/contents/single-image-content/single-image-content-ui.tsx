@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { Image } from '@coze-arch/bot-semi';
+import { Image } from '@coze-arch/coze-design';
 
 import EmptyImage from '../../../assets/image-empty.png';
 
@@ -50,4 +50,3 @@ export const SingleImageContentUI: React.FC<SingleImageContentUIProps> = ({
 );
 
 SingleImageContentUI.displayName = 'SingleImageContentUI';
-

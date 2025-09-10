@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { nanoid } from 'nanoid';
 import { ViewVariableType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Switch, Tooltip } from '@coze-arch/bot-semi';
+import { Switch, Tooltip } from '@coze-arch/coze-design';
 
 import { INPUT_CHAT_HISTORY_SETTING_ENABLE } from '@/node-registries/intent/constants';
 import {
@@ -108,4 +108,3 @@ export const ChatHistoryPanel = withField(() => {
     </div>
   ) : null;
 });
-

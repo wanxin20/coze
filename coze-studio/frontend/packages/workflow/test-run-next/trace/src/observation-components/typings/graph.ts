@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type ReactNode } from 'react';
 
-import { type TooltipProps } from '@coze-arch/bot-semi';
+import { type TooltipProps } from '@coze-arch/coze-design';
 
 import { type TraceFrontendSpan } from '../typings/idl';
 import { type TreeProps } from '../common/tree';
@@ -126,4 +126,3 @@ export interface SpanNodeRenderOptions {
 }
 
 export type DisplayMode = 'default' | 'simplification';
-

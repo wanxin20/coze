@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { type ApiNodeDetailDTO } from '@coze-workflow/nodes';
 import { type DebugExample } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { useViewExample } from '@coze-agent-ide/bot-plugin-tools/useViewExample';
-import { Typography, ConfigProvider } from '@coze-arch/bot-semi';
+import { Typography, ConfigProvider } from '@coze-arch/coze-design';
 
 interface Props {
   debugExample: DebugExample;
@@ -61,4 +61,3 @@ export const ViewExample = (props: Props) => {
     </ConfigProvider>
   );
 };
-

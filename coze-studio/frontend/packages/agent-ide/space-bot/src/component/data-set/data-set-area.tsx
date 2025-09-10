@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,8 +32,8 @@ import { useDatasetStore } from '@coze-data/knowledge-data-set-for-agent';
 import { BotE2e } from '@coze-data/e2e';
 import { REPORT_EVENTS as ReportEventNames } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCopy, IconCozMinusCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip, Popover } from '@coze-arch/bot-semi';
+import { IconCozCopy, IconCozMinusCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip, Popover } from '@coze-arch/coze-design';
 import { OpenBlockEvent, emitEvent } from '@coze-arch/bot-utils';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { UIButton, UITag, Toast } from '@coze-arch/bot-semi';
@@ -439,4 +439,3 @@ export const useDataSetArea = () => {
     initRef,
   };
 };
-

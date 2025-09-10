@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ import { useMultiAgentStore } from '@coze-studio/bot-detail-store/multi-agent';
 import { useBotSkillStore } from '@coze-studio/bot-detail-store/bot-skill';
 import { useBotInfoStore } from '@coze-studio/bot-detail-store/bot-info';
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { Form, UIModal, type UIModalProps } from '@coze-arch/bot-semi';
 import { PluginStatus } from '@coze-arch/bot-api/plugin_develop';
 import { ToolType, BotMode } from '@coze-arch/bot-api/playground_api';
@@ -346,4 +346,3 @@ export const ShortcutEditModal: FC<ShortcutEditModalProps> = props => {
     </>
   );
 };
-

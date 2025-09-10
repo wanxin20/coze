@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useWorkflowResourceAction } from '@coze-workflow/components';
 import { useUserInfo } from '@coze-foundation/account-adapter';
 import { ResType, WorkflowMode } from '@coze-arch/idl/plugin_develop';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozChat, IconCozWorkflow } from '@coze-arch/bot-semi/icons';
-import { Menu, Tag } from '@coze-arch/bot-semi';
+import { IconCozChat, IconCozWorkflow } from '@coze-arch/coze-design/icons';
+import { Menu, Tag } from '@coze-arch/coze-design';
 
 import { BaseLibraryItem } from '../../components/base-library-item';
 import WorkflowDefaultIcon from '../../assets/workflow_default_icon.png';
@@ -77,18 +77,15 @@ export const useWorkflowConfig: UseEntityConfigHook = ({
           >
             {I18n.t('library_resource_type_workflow')}
           </Menu.Item>
-          {/* The open-source version does not support conversation streaming for the time being */}
-          {!IS_OPEN_SOURCE ? (
-            <Menu.Item
-              data-testid="workspace.library.header.create.chatflow"
-              icon={<IconCozChat />}
-              onClick={() => {
-                openCreateModal(WorkflowMode.ChatFlow);
-              }}
-            >
-              {I18n.t('wf_chatflow_76')}
-            </Menu.Item>
-          ) : null}
+          <Menu.Item
+            data-testid="workspace.library.header.create.chatflow"
+            icon={<IconCozChat />}
+            onClick={() => {
+              openCreateModal(WorkflowMode.ChatFlow);
+            }}
+          >
+            {I18n.t('wf_chatflow_76')}
+          </Menu.Item>
         </>
       ),
       target: [ResType.Workflow, ResType.Imageflow],
@@ -124,4 +121,3 @@ export const useWorkflowConfig: UseEntityConfigHook = ({
     },
   };
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 
 import style from './index.module.less';
 
@@ -67,4 +67,3 @@ export const AuthEmpty = (props: CommonEmptyAuthProps) => {
     </div>
   );
 };
-

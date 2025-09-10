@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,8 @@ import {
   type UploadProps,
   type OnChangeProps,
 } from '@coze-arch/bot-semi/Upload';
-import { IconCozUpload } from '@coze-arch/bot-semi/icons';
-import { Toast, Upload } from '@coze-arch/bot-semi';
+import { IconCozUpload } from '@coze-arch/coze-design/icons';
+import { Toast, Upload } from '@coze-arch/coze-design';
 
 import { UNIT_MAX_MB } from '../../constants';
 import {
@@ -128,4 +128,3 @@ export const UploadUnitFile: FC<UploadUnitFileProps> = props => {
     </Upload>
   );
 };
-

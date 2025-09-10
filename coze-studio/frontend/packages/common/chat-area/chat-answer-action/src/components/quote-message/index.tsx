@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,8 +35,8 @@ import {
   useMessageBoxContext,
   type WriteableChatAreaPlugin,
 } from '@coze-common/chat-area';
-import { IconCozQuotation } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozQuotation } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { useTooltipTrigger } from '../../hooks/use-tooltip-trigger';
 import { useQuotePlugin } from '../../hooks/use-quote-plugin';
@@ -171,4 +171,3 @@ export const QuoteMessageImpl: React.FC<
 };
 
 QuoteMessage.displayName = 'QuoteMessage';
-

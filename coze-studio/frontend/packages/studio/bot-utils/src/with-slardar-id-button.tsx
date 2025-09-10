@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type ReactNode } from 'react';
 import copy from 'copy-to-clipboard';
 import { getSlardarInstance } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Toast } from '@coze-arch/bot-semi';
+import { Button, Toast } from '@coze-arch/coze-design';
 
 export const withSlardarIdButton = (node: ReactNode) => {
   const copySlardarId = () => {
@@ -42,4 +42,3 @@ export const withSlardarIdButton = (node: ReactNode) => {
     </div>
   );
 };
-

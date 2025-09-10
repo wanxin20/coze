@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   type Chunk,
 } from '@coze-data/knowledge-common-components/text-knowledge-editor';
 import { I18n } from '@coze-arch/i18n';
-import { Form, Input, Modal, Toast } from '@coze-arch/bot-semi';
+import { Form, Input, Modal, Toast } from '@coze-arch/coze-design';
 import { MemoryApi } from '@coze-arch/bot-api';
 
 import { useGetWebInfo } from './hooks/get-web-info';
@@ -179,4 +179,3 @@ export const useBrowseUrlModal = (props: BrowseUrlModalProps) => {
     ) : null,
   };
 };
-

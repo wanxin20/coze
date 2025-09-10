@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -105,11 +105,10 @@ vi.mock('react-router-dom', () => ({
   }),
 }));
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Toast: {
     success: vi.fn(),
     warning: vi.fn(),
   },
   withField: vi.fn(),
 }));
-

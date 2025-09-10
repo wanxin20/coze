@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import {
   UploadUnitTable,
 } from '@coze-data/knowledge-resource-processor-base';
 import { I18n } from '@coze-arch/i18n';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 import { type TableType } from '@coze-arch/bot-api/memory';
 import { MemoryApi } from '@coze-arch/bot-api';
 
@@ -110,4 +110,3 @@ export function StepUpload({
     </>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { useBlocker } from 'react-router-dom';
 
 import { I18n } from '@coze-arch/i18n';
-import { Modal } from '@coze-arch/bot-semi';
+import { Modal } from '@coze-arch/coze-design';
 
 export const useRouteLeavingGuard = (when: boolean) => {
   const blocker = useBlocker(
@@ -43,4 +43,3 @@ export const useRouteLeavingGuard = (when: boolean) => {
     modal,
   };
 };
-

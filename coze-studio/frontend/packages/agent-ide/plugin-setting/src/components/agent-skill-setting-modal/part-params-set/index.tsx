@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -49,7 +49,7 @@ import {
   childrenRecordName,
 } from '@coze-agent-ide/bot-plugin-tools/pluginModal/config';
 import { DefaultValueInput } from '@coze-agent-ide/bot-plugin-tools/defaultValueInput';
-import { Button, Toast } from '@coze-arch/bot-semi';
+import { Button, Toast } from '@coze-arch/coze-design';
 
 import s from './index.module.less';
 
@@ -388,4 +388,3 @@ const PartParams = (
 };
 
 export { PartParams };
-

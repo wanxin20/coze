@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type PropsWithChildren } from 'react';
 
 import { concatTestId } from '@coze-workflow/base';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 export interface NodeCategoryPanelProps {
@@ -51,4 +51,3 @@ export const NodeCategoryPanel = function ({
     </div>
   );
 };
-

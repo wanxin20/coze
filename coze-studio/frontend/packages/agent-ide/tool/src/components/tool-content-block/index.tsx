@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import classNames from 'classnames';
 import { usePageRuntimeStore } from '@coze-studio/bot-detail-store/page-runtime';
 import { useBotInfoStore } from '@coze-studio/bot-detail-store/bot-info';
 import { useBotDetailIsReadonly } from '@coze-studio/bot-detail-store';
-import { Collapsible } from '@coze-arch/bot-semi';
+import { Collapsible } from '@coze-arch/coze-design';
 import {
   type OpenBlockEvent,
   handleEvent,
@@ -311,4 +311,3 @@ export const ToolContentBlock: React.FC<
     </div>
   );
 };
-

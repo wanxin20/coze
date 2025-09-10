@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import { OperateType } from '@coze-workflow/base/api';
 import { withQueryClient } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { TextArea } from '@coze-arch/bot-semi';
+import { TextArea } from '@coze-arch/coze-design';
 import { sendTeaEvent, EVENT_NAMES } from '@coze-arch/bot-tea';
 import { Typography } from '@coze-arch/bot-semi';
 
@@ -114,4 +114,3 @@ export const DiffModal = withQueryClient(
     );
   },
 );
-

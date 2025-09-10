@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   Input as InputCore,
   CozInputNumber,
   Select,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { getAccept } from '@/hooks/use-upload';
 import { useGlobalState } from '@/hooks/use-global-state';
@@ -274,4 +274,3 @@ export const DefaultValueInput: FC<DefaultValueInputProps> = ({
     <InputComponent defaultValue={data.defaultValue} data={data} {...props} />
   );
 };
-

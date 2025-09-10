@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import type React from 'react';
 
 import type { FormatType } from '@coze-arch/bot-api/memory';
-import type { CommonFieldProps } from '@coze-arch/bot-semi';
+import type { CommonFieldProps } from '@coze-arch/coze-design';
 
 export interface SelectFormatTypeModuleProps {
   onChange: (type: FormatType) => void;
@@ -26,4 +26,3 @@ export interface SelectFormatTypeModuleProps {
 export type SelectFormatTypeModule = React.ComponentType<
   SelectFormatTypeModuleProps & Omit<CommonFieldProps, 'change'>
 >;
-

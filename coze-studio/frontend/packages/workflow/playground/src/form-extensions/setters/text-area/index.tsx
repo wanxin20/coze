@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import { TextArea as UITextArea } from '@coze-arch/bot-semi';
+import { TextArea as UITextArea } from '@coze-arch/coze-design';
 import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -46,4 +46,3 @@ export const textArea = {
   key: 'TextArea',
   component: TextArea,
 };
-

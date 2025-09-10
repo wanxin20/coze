@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
   IconCozPlus,
   IconCozTrashCan,
   IconCozVolume,
-} from '@coze-arch/bot-semi/icons';
-import { Avatar, Button, IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Avatar, Button, IconButton } from '@coze-arch/coze-design';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { type VoiceDetail } from '@coze-arch/bot-api/multimedia_api';
 import { MultimediaApi } from '@coze-arch/bot-api';
@@ -199,4 +199,3 @@ const VoiceSelect: React.FC<Props> = props => {
 };
 
 export { VoiceSelect };
-

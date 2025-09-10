@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-import { IconCozPlayFill } from '@coze-arch/bot-semi/icons';
-import { Button, type ButtonProps } from '@coze-arch/bot-semi';
+import { IconCozPlayFill } from '@coze-arch/coze-design/icons';
+import { Button, type ButtonProps } from '@coze-arch/coze-design';
 
 export const BaseTestButton: React.FC<ButtonProps> = props => (
   <Button color="green" icon={<IconCozPlayFill />} {...props} />
 );
-

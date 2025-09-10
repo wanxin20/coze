@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
 } from '@coze-arch/idl/intelligence_api';
 import { CopyTaskType } from '@coze-arch/idl';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Toast } from '@coze-arch/bot-semi';
+import { Button, Toast } from '@coze-arch/coze-design';
 import { intelligenceApi } from '@coze-arch/bot-api';
 
 import { type DraftIntelligenceList } from '../type';
@@ -160,4 +160,3 @@ export const useProjectCopyPolling = ({
     };
   }, []);
 };
-

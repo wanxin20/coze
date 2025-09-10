@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Avatar, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Avatar, Tooltip } from '@coze-arch/coze-design';
 import { type PublishConnectorInfo } from '@coze-arch/bot-api/developer_api';
 import { type BotMonetizationConfigData } from '@coze-arch/bot-api/benefit';
 
@@ -90,4 +90,3 @@ export function MonetizePublishInfo({
     </div>
   );
 }
-

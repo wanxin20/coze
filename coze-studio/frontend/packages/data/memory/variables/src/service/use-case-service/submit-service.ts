@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { I18n } from '@coze-arch/i18n';
 import { MemoryApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { useVariableGroupsStore } from '../../store';
 /**
@@ -44,4 +44,3 @@ export async function submit(projectID: string) {
  */
 export const checkProjectID = (projectID: unknown): projectID is string =>
   typeof projectID === 'string' && projectID.length > 0;
-

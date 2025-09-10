@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPencilPaper } from '@coze-arch/bot-semi/icons';
+import { IconCozPencilPaper } from '@coze-arch/coze-design/icons';
 import { UnitType } from '@coze-data/knowledge-resource-processor-core';
 import { KnowledgeE2e } from '@coze-data/e2e';
 
@@ -36,4 +36,3 @@ export const TextCustom: ImportKnowledgeRadioSourceModule['Component'] = () => (
 export const TextCustomModule: ImportKnowledgeRadioSourceModule = {
   Component: TextCustom,
 };
-

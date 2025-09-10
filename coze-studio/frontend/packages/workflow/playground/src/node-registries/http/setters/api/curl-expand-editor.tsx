@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import {
   IconCozImport,
   IconCozMoon,
   IconCozSun,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Modal, Toast } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Modal, Toast } from '@coze-arch/coze-design';
 
 import { CURLParser, type ParsedResult } from '@/utils';
 import {
@@ -159,4 +159,3 @@ export const CurlExpandEditor: FC<{
     />
   );
 };
-

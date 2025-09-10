@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import {
   Toast,
   Tooltip,
   Avatar,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 const { Select, TextArea } = Form;
 
@@ -248,4 +248,3 @@ export const usePluginFeatModal = () => {
     modal,
   };
 };
-

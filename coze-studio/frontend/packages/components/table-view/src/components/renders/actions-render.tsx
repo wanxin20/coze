@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import classNames from 'classnames';
-import { IconCozEdit, IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozEdit, IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 
 import { type TableViewRecord } from '../types';
 
@@ -68,4 +68,3 @@ export const ActionsRender = ({
     </div>
   );
 };
-

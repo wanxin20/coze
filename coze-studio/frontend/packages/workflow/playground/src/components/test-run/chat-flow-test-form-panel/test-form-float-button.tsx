@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozAdjust } from '@coze-arch/bot-semi/icons';
-import { Typography } from '@coze-arch/bot-semi';
+import { IconCozAdjust } from '@coze-arch/coze-design/icons';
+import { Typography } from '@coze-arch/coze-design';
 
 import { useChatFlowTestFormStore } from './test-form-provider';
 
@@ -41,7 +41,7 @@ export const TestFormFloatButton = ({
   }
 
   return (
-    <>
+    <div className={css['float-button-container']}>
       <div
         className={css['float-button']}
         onClick={handleOpenForm}
@@ -56,7 +56,6 @@ export const TestFormFloatButton = ({
         </Typography.Text>
         <IconCozAdjust className="coz-fg-dim" />
       </div>
-    </>
+    </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   IconCozArrowDown,
   IconCozMouse,
   IconCozTablet,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { Popover, Typography } from '@coze-arch/bot-semi';
 
 import { PadIcon } from './icons/pad';
@@ -178,4 +178,3 @@ export const MousePadSelector: React.FC<
     );
   },
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
 } from '@coze-workflow/test-run/formily';
 import { I18n } from '@coze-arch/i18n';
 import { type VoiceConfig } from '@coze-arch/bot-api/workflow_api';
-import { IconCozEdit, IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { IconButton, Button, Modal, Typography } from '@coze-arch/bot-semi';
+import { IconCozEdit, IconCozPlus } from '@coze-arch/coze-design/icons';
+import { IconButton, Button, Modal, Typography } from '@coze-arch/coze-design';
 
 import { VoiceSelect } from './voice-select';
 import {
@@ -165,4 +165,3 @@ export const AddVoices: React.FC = observer(() => {
     </>
   );
 });
-

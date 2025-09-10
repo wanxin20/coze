@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ vi.mock('@coze-common/chat-core', () => ({
   messageSource: vi.fn(),
 }));
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   UIToast: {
     error: vi.fn(),
   },
@@ -46,4 +46,3 @@ describe('isFallbackErrorMessage', () => {
     expect(isFallbackErrorMessage(message)).toBe(false);
   });
 });
-

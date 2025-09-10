@@ -21,7 +21,6 @@ import { type BaseKnowledgeIDEProps } from './types';
 import { BaseKnowledgeTextIDE } from './text-ide';
 import { BaseKnowledgeTableIDE } from './table-ide';
 import { BaseKnowledgeImgIDE } from './img-ide';
-import { BaseKnowledgeFastGPTRAGIDE } from './fastgptrag-ide';
 
 export type { BaseKnowledgeIDEProps };
 
@@ -35,9 +34,6 @@ export const BaseKnowledgeIDE = (props: BaseKnowledgeIDEProps) => {
   }
   if (format_type === FormatType.Image) {
     return <BaseKnowledgeImgIDE {...props} />;
-  }
-  if (format_type === FormatType.FastGPTRAG) {
-    return <BaseKnowledgeFastGPTRAGIDE {...props} />;
   }
   return null;
 };

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type PropsWithChildren, type FC, type ReactNode } from 'react';
 
 import classnames from 'classnames';
-import { Tag, Tooltip } from '@coze-arch/bot-semi';
+import { Tag, Tooltip } from '@coze-arch/coze-design';
 
 import styles from './condition-tag.module.less';
 
@@ -56,4 +56,3 @@ export const ConditionTag: FC<
     );
   }
 };
-

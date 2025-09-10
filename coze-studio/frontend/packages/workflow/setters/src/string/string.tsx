@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import cx from 'classnames';
-import { Input } from '@coze-arch/bot-semi';
+import { Input } from '@coze-arch/coze-design';
 
 import { type Setter } from '../types';
 
@@ -79,4 +79,3 @@ export const String: Setter<string, StringOptions> = ({
     />
   );
 };
-

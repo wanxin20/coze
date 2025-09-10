@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { useEffect } from 'react';
 
-import { TabBar } from '@coze-arch/bot-semi';
+import { TabBar } from '@coze-arch/coze-design';
 import { useProjectRole } from '@coze-common/auth';
 import {
   useProjectId,
@@ -73,4 +73,3 @@ const Conversation = () => {
 };
 
 export default Conversation;
-

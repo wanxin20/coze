@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Avatar } from '@coze-arch/bot-semi';
+import { Avatar } from '@coze-arch/coze-design';
 
 interface Props {
   src?: string;
@@ -23,4 +23,3 @@ interface Props {
 export function Icon({ src }: Props) {
   return <Avatar className="w-[16px] h-[16px]" shape="square" src={src} />;
 }
-

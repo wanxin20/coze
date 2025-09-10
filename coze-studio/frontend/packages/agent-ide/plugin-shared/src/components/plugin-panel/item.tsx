@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ import {
 import { ProductStatus, type public_api } from '@coze-arch/bot-api/product_api';
 import { type PluginApi } from '@coze-arch/bot-api/plugin_develop';
 import { useViewExample } from '@coze-agent-ide/bot-plugin-tools/useViewExample';
-import { Popconfirm } from '@coze-arch/bot-semi';
+import { Popconfirm } from '@coze-arch/coze-design';
 import { OverflowList } from '@blueprintjs/core';
 
 import { From } from '../../types/plugin-modal-types';
@@ -288,4 +288,3 @@ export const PluginItem: React.FC<PluginItemProps> = ({
     </>
   );
 };
-

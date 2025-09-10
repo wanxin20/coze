@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
   FormatType,
   type DocumentInfo,
 } from '@coze-arch/bot-api/knowledge';
-import { Space, Tag } from '@coze-arch/bot-semi';
+import { Space, Tag } from '@coze-arch/coze-design';
 
 import { getSourceName } from '@/utils';
 import { DOCUMENT_UPDATE_TYPE_MAP } from '@/constant';
@@ -88,4 +88,3 @@ export const DocTag: React.FC<DocTagProps> = ({ documentInfo }) => {
     </Space>
   );
 };
-

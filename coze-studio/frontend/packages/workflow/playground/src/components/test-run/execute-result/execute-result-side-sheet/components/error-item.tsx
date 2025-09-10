@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   type NodeData,
 } from '@coze-workflow/nodes';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
 import {
   Tag,
   Typography,
@@ -34,7 +34,7 @@ import {
   Popover,
   Checkbox,
   Avatar,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useScrollToError } from '../hooks/use-scroll-to-error';
 import { COLOR_STYLE_MAP } from '../../../../workflow-header/constants';
@@ -179,4 +179,3 @@ export const ErrorLineItem = ({
     />
   );
 };
-

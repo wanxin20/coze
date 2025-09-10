@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozStore, IconCozTray } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozStore, IconCozTray } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 import { type FlowNodeEntity } from '@flowgram-adapter/free-layout-editor';
 
 import { useNodeOrigin } from './use-node-origin';
@@ -52,4 +52,3 @@ export const ReferenceNodeOrigin: React.FC<ReferenceNodeOriginProps> = ({
 
   return null;
 };
-

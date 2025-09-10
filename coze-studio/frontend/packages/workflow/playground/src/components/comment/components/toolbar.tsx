@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,8 +34,8 @@ import {
   IconCozStrikethrough,
   IconCozTextStyle,
   IconCozUnderscore,
-} from '@coze-arch/bot-semi/icons';
-import { Dropdown, Input } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Dropdown, Input } from '@coze-arch/coze-design';
 
 import { type CommentEditorModel } from '../model';
 import {
@@ -364,4 +364,3 @@ export const CommentToolbar: FC<ICommentToolbar> = props => {
     </div>
   );
 };
-

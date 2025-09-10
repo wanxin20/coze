@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   TextArea,
   Typography,
   withField,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { renderDocumentFilterValue } from '@/utils/render-document-filter-value';
 import { type PDFDocumentFilterValue } from '@/features/knowledge-type/text/interface';
@@ -89,4 +89,3 @@ const PDFFilterImpl: React.FC<{
 export const PDFFilter: ComponentType<
   ComponentProps<typeof PDFFilterImpl> & CommonFieldProps
 > = withField(PDFFilterImpl);
-

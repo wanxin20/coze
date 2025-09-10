@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { useRef } from 'react';
 
-import { Input } from '@coze-arch/bot-semi';
+import { Input } from '@coze-arch/coze-design';
 
 import { type BaseFileProps } from '../types';
 import { JsonEditorAdapter } from '../../json-editor';
@@ -63,4 +63,3 @@ const URLInput: React.FC<BaseFileProps> = props => {
 };
 
 export { URLInput };
-

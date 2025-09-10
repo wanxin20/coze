@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -40,7 +40,7 @@ import {
   CreateFormPluginModal,
   usePluginApisModal,
 } from '@coze-agent-ide/bot-plugin/component';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { useResourceOperation } from './use-resource-operation';
 // import { useImportLibraryPlugin } from './use-import-library-plugin';
@@ -245,4 +245,3 @@ const usePluginResource = (): UsePluginResourceReturn => {
 };
 
 export default usePluginResource;
-

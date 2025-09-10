@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import React, {
 } from 'react';
 
 import classnames from 'classnames';
-import { IconCozMore } from '@coze-arch/bot-semi/icons';
-import { Tooltip, IconButton } from '@coze-arch/bot-semi';
+import { IconCozMore } from '@coze-arch/coze-design/icons';
+import { Tooltip, IconButton } from '@coze-arch/coze-design';
 import { Dropdown } from '@coze-arch/bot-semi';
 
 import s from './overflow-tag-list.module.less';
@@ -160,4 +160,3 @@ export function OverflowTagList<T extends TagProps = TagProps>({
     </div>
   );
 }
-

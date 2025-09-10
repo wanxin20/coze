@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozSkill,
   IconCozUserPermission,
-} from '@coze-arch/bot-semi/icons';
-import { MenuItem, MenuSubMenu } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { MenuItem, MenuSubMenu } from '@coze-arch/coze-design';
 import {
   NavModal,
   PluginPermissionManageList,
@@ -127,4 +127,3 @@ const getMenus = (onSwitchNavItem: (navItem: SkillsNavItem) => void) => {
     ),
   };
 };
-

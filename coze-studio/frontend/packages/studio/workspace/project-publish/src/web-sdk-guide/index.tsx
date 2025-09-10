@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useState } from 'react';
 import { getOpenSDKUrl } from '@coze-studio/open-env-adapter';
 import { I18n } from '@coze-arch/i18n';
 import { MdBoxLazy } from '@coze-arch/bot-md-box-adapter/lazy';
-import { Button, Modal, Typography } from '@coze-arch/bot-semi';
+import { Button, Modal, Typography } from '@coze-arch/coze-design';
 
 import s from './index.module.less';
 
@@ -123,4 +123,3 @@ export function useWebSdkGuideModal() {
 
   return { node, show };
 }
-

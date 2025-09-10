@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ import {
   Typography,
   CozPagination,
   Empty,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { RowEditModal } from '../row-edit-modal';
 import { resizeFn } from '../../utils/table';
@@ -286,4 +286,3 @@ export function DatabaseTableData({
     </div>
   );
 }
-

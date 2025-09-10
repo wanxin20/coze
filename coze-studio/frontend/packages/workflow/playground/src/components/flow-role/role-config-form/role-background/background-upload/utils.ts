@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { floor, pick } from 'lodash-es';
 import ColorThief from 'colorthief';
 import { MODE_CONFIG } from '@coze-common/chat-uikit';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import { CustomError } from '@coze-arch/bot-error';
 import { type BackgroundImageInfo } from '@coze-arch/bot-api/workflow_api';
 import {
@@ -166,4 +166,3 @@ export const computeThemeColor = (
       .then(colors => resolve(colors))
       .catch(error => reject(error));
   });
-

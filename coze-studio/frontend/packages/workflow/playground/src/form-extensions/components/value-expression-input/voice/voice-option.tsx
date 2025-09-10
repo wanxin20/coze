@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import classnames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { Avatar, Tag } from '@coze-arch/bot-semi';
+import { Avatar, Tag } from '@coze-arch/coze-design';
 
 import voiceAvatar from '../assets/voice_avatar.png';
 
@@ -77,4 +77,3 @@ export const VoiceOption = ({ onClick }: OptionProps) => (
     </div>
   </>
 );
-

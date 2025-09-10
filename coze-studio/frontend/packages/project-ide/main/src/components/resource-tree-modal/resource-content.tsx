@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,9 +24,9 @@ import { type DependencyTree } from '@coze-arch/bot-api/workflow_api';
 import {
   IconCozIllusNone,
   IconCozIllusError,
-} from '@coze-arch/bot-semi/illustrations';
-import { IconCozRefresh } from '@coze-arch/bot-semi/icons';
-import { EmptyState } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/illustrations';
+import { IconCozRefresh } from '@coze-arch/coze-design/icons';
+import { EmptyState } from '@coze-arch/coze-design';
 
 import s from './styles.module.less';
 
@@ -81,4 +81,3 @@ export const ResourceContent = ({
     </ErrorBoundary>
   );
 };
-

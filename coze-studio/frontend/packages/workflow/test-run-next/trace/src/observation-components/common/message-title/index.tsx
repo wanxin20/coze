@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { IconCozCopy, IconCozCopyCheck } from '@coze-arch/bot-semi/icons';
-import { Typography } from '@coze-arch/bot-semi';
+import { IconCozCopy, IconCozCopyCheck } from '@coze-arch/coze-design/icons';
+import { Typography } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -56,4 +56,3 @@ export const MessageTitle = (props: MessageTitleProps) => {
     </div>
   );
 };
-

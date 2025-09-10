@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { type ViewVariableType } from '@coze-workflow/variable';
 import { VARIABLE_TYPE_ALIAS_MAP } from '@coze-workflow/base/types';
 import { I18n } from '@coze-arch/i18n';
 import { type SelectProps } from '@coze-arch/bot-semi/Select';
-import { Select, Space, Dropdown } from '@coze-arch/bot-semi';
+import { Select, Space, Dropdown } from '@coze-arch/coze-design';
 
 import { useGetCurrentInputsParameters } from '../../hooks/use-get-current-input-parameters';
 import { VariableTypeTag } from '../../components/variable-type-tag';
@@ -109,4 +109,3 @@ export const LocalInputSelect: FC<
     />
   );
 };
-

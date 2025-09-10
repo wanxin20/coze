@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type FC } from 'react';
 
-import { ConfigProvider } from '@coze-arch/bot-semi';
+import { ConfigProvider } from '@coze-arch/coze-design';
 import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 
 import { CodeSetterContext } from './context';
@@ -71,4 +71,3 @@ export const code = {
   key: 'Code',
   component: CodeSetter,
 };
-

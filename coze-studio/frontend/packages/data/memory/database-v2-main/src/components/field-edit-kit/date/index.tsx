@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { isEmpty, cloneDeep } from 'lodash-es';
 import { format } from 'date-fns';
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { type BaseDatePicker, DatePicker } from '@coze-arch/bot-semi';
+import { type BaseDatePicker, DatePicker } from '@coze-arch/coze-design';
 
 import {
   type ChangeDataParams,
@@ -161,4 +161,3 @@ export const EditKitDatePicker: FC<IProps> = props => {
     />
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ import { ProductEntityType } from '@coze-arch/bot-api/product_api';
 import { useBotSkillStore } from '@coze-studio/bot-detail-store/bot-skill';
 import { type WorkFlowItemType } from '@coze-studio/bot-detail-store';
 import { useNavigateWorkflowEditPage } from '@coze-agent-ide/navigate';
-import { Toast, Space, Typography, Button } from '@coze-arch/bot-semi';
+import { Toast, Space, Typography, Button } from '@coze-arch/coze-design';
 
 const { Text } = Typography;
 
@@ -145,4 +145,3 @@ export function BotWorkflowModal({
     />
   );
 }
-

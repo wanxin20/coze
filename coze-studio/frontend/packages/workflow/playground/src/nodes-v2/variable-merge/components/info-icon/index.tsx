@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import { type FC } from 'react';
 
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 
 interface Props {
   tooltip: string;
@@ -28,4 +28,3 @@ export const InfoIcon: FC<Props> = ({ tooltip }) => (
     <IconCozInfoCircle className="text-lg coz-fg-secondary shrink-0" />
   </Tooltip>
 );
-

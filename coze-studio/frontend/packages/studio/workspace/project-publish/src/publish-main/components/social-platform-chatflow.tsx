@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import { CheckType } from '@coze-arch/idl/workflow_api';
 import { ConnectorClassification } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { FormSelect, type optionRenderProps } from '@coze-arch/bot-semi';
+import { FormSelect, type optionRenderProps } from '@coze-arch/coze-design';
 
 import { useProjectPublishStore } from '@/store';
 
@@ -108,4 +108,3 @@ export const SocialPlatformChatflow: React.FC<{ className?: string }> = ({
     </div>
   );
 };
-

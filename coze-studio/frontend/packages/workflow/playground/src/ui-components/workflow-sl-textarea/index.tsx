@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import React, {
 } from 'react';
 
 import cs from 'classnames';
-import { TextArea } from '@coze-arch/bot-semi';
+import { TextArea } from '@coze-arch/coze-design';
 import { sleep } from '@coze-arch/bot-utils';
 import { type TooltipProps } from '@coze-arch/bot-semi/Tooltip';
 import { type TextAreaProps } from '@coze-arch/bot-semi/Input';
@@ -177,4 +177,3 @@ export default function WorkflowSLTextArea(props: WorkflowSLTextAreaProps) {
     </div>
   );
 }
-

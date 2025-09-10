@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import classNames from 'classnames';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 import { Checkbox } from '@coze-arch/bot-semi';
 import { IconInfo } from '@coze-arch/bot-icons';
 
@@ -93,4 +93,3 @@ export const CheckboxWithLabel: FC<CheckboxItemProps> = ({
     {children}
   </div>
 );
-

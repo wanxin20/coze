@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Tag } from '@coze-arch/bot-semi';
-import { type ColumnProps } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
+import { type ColumnProps } from '@coze-arch/coze-design';
 import { type PersonalAccessToken } from '@coze-arch/bot-api/pat_permission_api';
 
 import { getStatus } from '@/utils/time';
@@ -34,4 +34,3 @@ export const columnStatusConf: () => ColumnProps<PersonalAccessToken> = () => ({
     );
   },
 });
-

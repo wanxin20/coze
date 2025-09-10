@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { forwardRef } from 'react';
 
 import classNames from 'classnames';
-import { IconButton, type ButtonProps } from '@coze-arch/bot-semi';
+import { IconButton, type ButtonProps } from '@coze-arch/coze-design';
 import { type Button as SemiButton } from '@douyinfe/semi-ui';
 
 import styles from './index.module.less';
@@ -38,4 +38,3 @@ export const OutlinedIconButton = forwardRef<
     {...restProps}
   />
 ));
-

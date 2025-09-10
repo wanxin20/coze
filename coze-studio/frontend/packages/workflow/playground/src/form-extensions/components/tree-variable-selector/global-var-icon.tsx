@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   IconCozFolder,
   IconCozPeople,
   IconCozSetting,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 const GLOBAL_VAR_ICON_MAP: Record<string, ReactNode> = {
   [GlobalVariableKey.App]: <IconCozFolder />,
@@ -32,4 +32,3 @@ const GLOBAL_VAR_ICON_MAP: Record<string, ReactNode> = {
 export default function GlobalVarIcon({ nodeId }: { nodeId: string }) {
   return <>{GLOBAL_VAR_ICON_MAP[nodeId]}</>;
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ import { usePluginNavigate } from '@coze-studio/bot-plugin-store';
 import { type STATUS } from '@coze-agent-ide/bot-plugin-tools/pluginModal/types';
 import { Debug } from '@coze-agent-ide/bot-plugin-tools/pluginModal/debug';
 import { useDebugFooter } from '@coze-agent-ide/bot-plugin-tools/example/useDebugFooter';
-import { IconCozPlayFill } from '@coze-arch/bot-semi/icons';
-import { Button, Modal } from '@coze-arch/bot-semi';
+import { IconCozPlayFill } from '@coze-arch/coze-design/icons';
+import { Button, Modal } from '@coze-arch/coze-design';
 
 interface UseContentDebugProps {
   debugApiInfo?: PluginAPIInfo;
@@ -128,4 +128,3 @@ export const useContentDebug = ({
     ),
   };
 };
-

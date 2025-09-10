@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import { IconCozArrowRightFill } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowRightFill } from '@coze-arch/coze-design/icons';
 
 export const ExpandableArrow = ({ expand }: { expand?: boolean }) => (
   <IconCozArrowRightFill
@@ -24,4 +24,3 @@ export const ExpandableArrow = ({ expand }: { expand?: boolean }) => (
     style={expand ? { transform: 'rotate(90deg)' } : undefined}
   />
 );
-

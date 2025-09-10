@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,14 +18,14 @@ import { type FC, type ReactNode, useState } from 'react';
 
 import { omit } from 'lodash-es';
 import classNames from 'classnames';
-import { IconCozArrowDownFill } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowDownFill } from '@coze-arch/coze-design/icons';
 import {
   Menu,
   Button,
   Tooltip,
   type ButtonProps,
   type MenuProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { getButtonPaddingStyle } from './button-padding-table';
 
@@ -109,4 +109,3 @@ export const DebugDropdownButton: FC<DebugDropdownButtonProps> = props => {
     </Tooltip>
   );
 };
-

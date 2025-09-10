@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Space, Image, Typography, Tooltip } from '@coze-arch/bot-semi';
+import { Space, Image, Typography, Tooltip } from '@coze-arch/coze-design';
 
 const doRenderTooltip = (content, children) => (
   <Tooltip content={content}>{children}</Tooltip>
@@ -37,4 +37,3 @@ const NameWithIcon = ({ name, icon }: { name: string; icon: string }) => (
 );
 
 export { NameWithIcon };
-

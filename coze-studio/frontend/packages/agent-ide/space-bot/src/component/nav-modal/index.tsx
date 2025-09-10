@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { type FC, type ReactNode, type HtmlHTMLAttributes } from 'react';
 
 import { merge } from 'lodash-es';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
-import { Button, Modal, type ModalProps } from '@coze-arch/bot-semi';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
+import { Button, Modal, type ModalProps } from '@coze-arch/coze-design';
 
 import './index.less';
 
@@ -158,4 +158,3 @@ export const NavModalItem: FC<NavModalItemProps> = props => {
 
 NavModal.displayName = 'NavModal';
 NavModalItem.displayName = 'NavModalItem';
-

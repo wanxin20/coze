@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type ModeOption } from '@coze-agent-ide/space-bot/component';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWorkflow } from '@coze-arch/bot-semi/icons';
+import { IconCozWorkflow } from '@coze-arch/coze-design/icons';
 import { IconSingleMode } from '@coze-arch/bot-icons';
 import { BotMode } from '@coze-arch/bot-api/developer_api';
 
@@ -38,4 +38,3 @@ export const modeOptionList: ModeOption[] = [
     showText: true,
   },
 ];
-

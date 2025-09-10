@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   Placeholder,
 } from '@coze-editor/editor/react';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
-import { Modal, Form, Toast, type FormApi } from '@coze-arch/bot-semi';
+import { Modal, Form, Toast, type FormApi } from '@coze-arch/coze-design';
 import { sendTeaEvent, EVENT_NAMES } from '@coze-arch/bot-tea';
 import { PlaygroundApi } from '@coze-arch/bot-api';
 import {
@@ -377,4 +377,3 @@ export const PromptConfiguratorModal = (
     </PromptConfiguratorProvider>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   Tag,
   type TagProps,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import {
   MINI_PROGRAM_DOUYIN_DOWNLOAD_CONNECTOR_ID,
@@ -171,4 +171,3 @@ export function ConnectorStatus({
     </div>
   );
 }
-

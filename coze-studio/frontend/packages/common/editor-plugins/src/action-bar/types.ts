@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-import { type ButtonProps } from '@coze-arch/bot-semi';
+import { type ButtonProps } from '@coze-arch/coze-design';
 
 export interface ActionController {
   hideActionBar: () => void;
   rePosition: (position?: 'topLeft' | 'bottomRight') => void;
 }
 export type ActionSize = ButtonProps['size'];
-

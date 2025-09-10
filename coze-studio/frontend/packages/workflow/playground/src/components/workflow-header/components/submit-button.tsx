@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ import { reporter } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
 import { sendTeaEvent, EVENT_NAMES } from '@coze-arch/bot-tea';
 import { UIButton } from '@coze-arch/bot-semi';
-import { Toast, Tooltip } from '@coze-arch/bot-semi';
+import { Toast, Tooltip } from '@coze-arch/coze-design';
 
 import { getWorkflowHeaderTestId } from '../utils';
 import { useDiffConfirm, useMergeConfirm } from '../hooks';
@@ -223,4 +223,3 @@ export const SubmitButton = () => {
     </>
   );
 };
-

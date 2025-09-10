@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React, { useState } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 import { useNodeRender } from '@flowgram-adapter/free-layout-editor';
 
 import styles from './node-status-bar.module.less';
@@ -111,4 +111,3 @@ export const NodeStatusBar: React.FC<
     </div>
   );
 };
-

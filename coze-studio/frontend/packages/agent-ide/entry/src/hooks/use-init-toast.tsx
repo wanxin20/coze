@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useEffect } from 'react';
 
 import queryString from 'query-string';
 import { I18n } from '@coze-arch/i18n';
-import { Toast, Space, Typography, Button } from '@coze-arch/bot-semi';
+import { Toast, Space, Typography, Button } from '@coze-arch/coze-design';
 import { appendUrlParam } from '@coze-arch/bot-utils';
 import { ProductEntityType } from '@coze-arch/bot-api/product_api';
 import { useNavigate } from 'react-router-dom';
@@ -66,4 +66,3 @@ export const useInitToast = (spaceId: any) => {
     }
   }, [spaceId]);
 };
-

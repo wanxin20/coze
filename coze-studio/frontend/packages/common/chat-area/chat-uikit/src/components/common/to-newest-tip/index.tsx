@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { IconCozLongArrowUp } from '@coze-arch/bot-semi/icons';
+import { IconCozLongArrowUp } from '@coze-arch/coze-design/icons';
 
 import { OutlinedIconButton } from '../button';
 import { type ToNewestTipProps } from './type';
@@ -45,4 +45,3 @@ export const ToNewestTipUI = (props: ToNewestTipProps) => {
 };
 
 ToNewestTipUI.displayName = 'UIKitToNewestTip';
-

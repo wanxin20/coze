@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import { type FC } from 'react';
 
-import { IconCozPencilPaper } from '@coze-arch/bot-semi/icons';
-import { Popover, IconButton, TextArea } from '@coze-arch/bot-semi';
+import { IconCozPencilPaper } from '@coze-arch/coze-design/icons';
+import { Popover, IconButton, TextArea } from '@coze-arch/coze-design';
 
 import { type ParamNameProps } from '../param-description';
 
@@ -69,4 +69,3 @@ export const ParamDescPopover: FC<ParamNameProps> = props => {
     </Popover>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { noop } from 'lodash-es';
 import { produce } from 'immer';
 import { typeSafeJsonParse } from '@coze-common/chat-area-utils';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Input, Space, Typography } from '@coze-arch/bot-semi';
+import { Button, Input, Space, Typography } from '@coze-arch/coze-design';
 
 import {
   isInputWorkflowNodeContent,
@@ -101,4 +101,3 @@ export const InputNodeRender: React.FC<InputRenderNodeProps> = ({
     </NodeWrapperUI>
   );
 };
-

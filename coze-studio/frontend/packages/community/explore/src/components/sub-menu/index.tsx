@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
   IconCozTemplateFill,
   IconCozPlugin,
   IconCozPluginFill,
-} from '@coze-arch/bot-semi/icons';
-import { Space } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Space } from '@coze-arch/coze-design';
 
 import { useExploreRoute } from '../../hooks/use-explore-route';
 
@@ -65,4 +65,3 @@ export const ExploreSubMenu = () => {
     </Space>
   );
 };
-

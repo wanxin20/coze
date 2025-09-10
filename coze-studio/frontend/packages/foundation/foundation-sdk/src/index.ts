@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { type useCurrentTheme as useCurrentThemeOfSDK } from '@coze-arch/foundation-sdk';
-import { useTheme } from '@coze-arch/bot-semi';
+import { useTheme } from '@coze-arch/coze-design';
 
 export const useCurrentTheme: typeof useCurrentThemeOfSDK = () =>
   useTheme().theme;
@@ -41,4 +41,3 @@ export {
 export { BackButton, SideSheetMenu } from '@coze-foundation/layout';
 
 export { useSpace } from './space';
-

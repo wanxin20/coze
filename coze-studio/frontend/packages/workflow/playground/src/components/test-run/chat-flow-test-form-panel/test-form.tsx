@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,8 +30,8 @@ import {
   PremiumPaywallBannerScene,
 } from '@coze-studio/premium-components-adapter';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlayFill } from '@coze-arch/bot-semi/icons';
-import { Button, Toast, Typography } from '@coze-arch/bot-semi';
+import { IconCozPlayFill } from '@coze-arch/coze-design/icons';
+import { Button, Toast, Typography } from '@coze-arch/coze-design';
 
 import { type WorkflowNodeEntity } from '@/test-run-kit';
 import { useValidateWorkflow } from '@/hooks/use-validate-workflow';
@@ -178,4 +178,3 @@ export const ChatFlowTestForm: React.FC<TestWorkflowFormPanelProps> = ({
     </TestsetManageProvider>
   );
 };
-

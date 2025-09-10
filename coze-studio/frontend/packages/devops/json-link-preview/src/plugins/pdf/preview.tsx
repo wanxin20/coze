@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,8 @@ import {
   IconCozDownload,
   IconCozArrowLeft,
   IconCozArrowRight,
-} from '@coze-arch/bot-semi/icons';
-import { Spin, Button, Typography } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Spin, Button, Typography } from '@coze-arch/coze-design';
 
 import { downloadFile, fetchResource } from '../../utils/download';
 import { LoadError } from '../../common/load-error';
@@ -239,4 +239,3 @@ export default function PdfPreviewContent({
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Tooltip, Typography } from '@coze-arch/bot-semi';
+import { Tooltip, Typography } from '@coze-arch/coze-design';
 import { IconInfo } from '@coze-arch/bot-icons';
 
 export const LabelWithTooltip = ({
@@ -39,4 +39,3 @@ export const LabelWithTooltip = ({
     </Tooltip>
   </div>
 );
-

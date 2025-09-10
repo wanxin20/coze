@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ import { nanoid } from 'nanoid';
 import classNames from 'classnames';
 import { useBotDetailIsReadonly } from '@coze-studio/bot-detail-store';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
-import { Button, Collapsible } from '@coze-arch/bot-semi';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+import { Button, Collapsible } from '@coze-arch/coze-design';
 import { Popover } from '@coze-arch/bot-semi';
 import { MdBoxLazy } from '@coze-arch/bot-md-box-adapter/lazy';
 import { IconInfo } from '@coze-arch/bot-icons';
@@ -199,4 +199,3 @@ export const ModelFormGenerationDiversityGroupItem: React.FC<
     />
   );
 };
-

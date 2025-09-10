@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC, useContext } from 'react';
 
 import { I18n, type I18nKeysNoOptionsType } from '@coze-arch/i18n';
-import { Banner, Select } from '@coze-arch/bot-semi';
+import { Banner, Select } from '@coze-arch/coze-design';
 
 import WorkflowModalContext from '../workflow-modal-context';
 import {
@@ -99,4 +99,3 @@ const WorkflowModalFilterForDouyin: FC<WorkFlowModalModeProps> = props => {
 };
 
 export { WorkflowModalFilterForDouyin };
-

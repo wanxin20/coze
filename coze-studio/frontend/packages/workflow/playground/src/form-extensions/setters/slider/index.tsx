@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   type SetterExtension,
 } from '@flowgram-adapter/free-layout-editor';
 import { useNodeTestId } from '@coze-workflow/base';
-import { Slider as UISlider } from '@coze-arch/bot-semi';
+import { Slider as UISlider } from '@coze-arch/coze-design';
 
 type SelectProps = SetterComponentProps;
 
@@ -51,4 +51,3 @@ export const slider: SetterExtension = {
   key: 'Slider',
   component: Slider,
 };
-

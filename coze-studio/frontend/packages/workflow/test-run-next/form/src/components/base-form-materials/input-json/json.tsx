@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import {
   safeFormatJsonString,
 } from '@coze-workflow/test-run-shared';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozBroom } from '@coze-arch/bot-semi/icons';
-import { Tooltip, IconButton } from '@coze-arch/bot-semi';
+import { IconCozBroom } from '@coze-arch/coze-design/icons';
+import { Tooltip, IconButton } from '@coze-arch/coze-design';
 
 import css from './json.module.less';
 
@@ -86,4 +86,3 @@ export const InputJson: React.FC<InputJsonProps> = ({
     </div>
   );
 };
-

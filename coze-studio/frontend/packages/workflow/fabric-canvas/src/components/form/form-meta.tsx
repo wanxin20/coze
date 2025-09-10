@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 /* eslint-disable @coze-arch/max-line-per-function */
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowDown, IconCozPalette } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozArrowDown, IconCozPalette } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import { MyIconButton } from '../icon-button';
 import { defaultProps } from '../../utils';
@@ -392,4 +392,3 @@ export const formMetas: IFormMeta = {
     ],
   },
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useState } from 'react';
 
 import { DiffEditor } from '@monaco-editor/react';
 import { I18n } from '@coze-arch/i18n';
-import { Modal } from '@coze-arch/bot-semi';
+import { Modal } from '@coze-arch/coze-design';
 import { Divider, Spin, Typography } from '@coze-arch/bot-semi';
 import {
   DiffStyle,
@@ -182,4 +182,3 @@ export const TextDiffView: React.FC<DiffNodeRenderProps> = ({
     </div>
   );
 };
-

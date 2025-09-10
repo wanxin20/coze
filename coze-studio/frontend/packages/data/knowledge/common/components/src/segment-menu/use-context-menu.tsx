@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useState } from 'react';
 
 import { useKnowledgeParams } from '@coze-data/knowledge-stores';
 import { I18n } from '@coze-arch/i18n';
-import { Menu, MenuSubMenu } from '@coze-arch/bot-semi';
+import { Menu, MenuSubMenu } from '@coze-arch/coze-design';
 
 import { type LevelDocumentTree } from './types';
 
@@ -134,4 +134,3 @@ export function useSegmentContextMenu({
     },
   };
 }
-

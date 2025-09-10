@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +23,14 @@ import {
   IconCozEdit,
   IconCozPlus,
   IconCozTrashCan,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Typography } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Typography } from '@coze-arch/coze-design';
 import { type ProjectConversation } from '@coze-arch/bot-api/workflow_api';
 
 import { TitleWithTooltip } from '../title-with-tooltip';
 import commonStyles from '../conversation-content/index.module.less';
 import { EditInput } from '../conversation-content/edit-input';
-import { DEFAULT_UNIQUE_ID, type ErrorCode } from '../constants';
+import { type ErrorCode } from '../constants';
 
 import s from './index.module.less';
 
@@ -140,9 +140,7 @@ export const StaticChatList = ({
                 {item.conversation_name}
               </Text>
             )}
-            {editingUniqueId === item.unique_id ||
-            item.unique_id === DEFAULT_UNIQUE_ID ||
-            !canEdit ? null : (
+            {editingUniqueId === item.unique_id || !canEdit ? null : (
               <div className={commonStyles.icons}>
                 <IconButton
                   size="small"
@@ -171,4 +169,3 @@ export const StaticChatList = ({
     </>
   );
 };
-

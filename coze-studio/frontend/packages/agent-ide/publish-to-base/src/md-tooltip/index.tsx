@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import ReactMarkdown from 'react-markdown';
 import { type FC, type ReactNode } from 'react';
 
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import {
   MARKDOWN_TOOLTIP_CONTENT_MAX_WIDTH,
@@ -57,4 +57,3 @@ export const MdTooltip: FC<{
     </Tooltip>
   );
 };
-

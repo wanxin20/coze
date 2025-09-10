@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +17,7 @@
 import { useState, useEffect, useRef, Suspense } from 'react';
 
 import { nanoid } from 'nanoid';
+import { debounce } from 'lodash-es';
 import cls from 'classnames';
 import { connect, mapProps } from '@formily/react';
 import type { Editor } from '@coze-common/md-editor-adapter';
@@ -26,7 +27,7 @@ import {
   LazyEditorFullInputInner,
   ToolbarItemEnum,
 } from '@coze-common/md-editor-adapter';
-import { Modal } from '@coze-arch/bot-semi';
+import { Modal } from '@coze-arch/coze-design';
 
 import css from './full-input.module.less';
 
@@ -56,23 +57,25 @@ const InnerFullInputAdapter: React.FC<FullInputProps> = ({
   const businessKeyRef = useRef(nanoid());
   const innerValueRef = useRef<string | undefined>();
 
-  const handleChange = (v: string) => {
-    if (!editorRef.current) {
-      return;
-    }
-    /**
-     * deltas => md
-     */
-    const content = editorRef.current.getContent();
-    const { markdown } = delta2md(content.deltas[0], content.deltas);
-    /**
-     * Changes may come from user input or initialization, do a diff to ensure performance
-     */
-    if (markdown !== innerValueRef.current) {
-      innerValueRef.current = markdown;
-      onChange(markdown);
-    }
-  };
+  const handleChange = useRef(
+    debounce((v: string) => {
+      if (!editorRef.current) {
+        return;
+      }
+      /**
+       * deltas => md
+       */
+      const content = editorRef.current.getContent();
+      const { markdown } = delta2md(content.deltas[0], content.deltas);
+      /**
+       * Changes may come from user input or initialization, do a diff to ensure performance
+       */
+      if (markdown !== innerValueRef.current) {
+        innerValueRef.current = markdown;
+        onChange(markdown);
+      }
+    }, 500),
+  ).current;
 
   useEffect(() => {
     if (value !== innerValueRef.current) {
@@ -83,6 +86,13 @@ const InnerFullInputAdapter: React.FC<FullInputProps> = ({
       editorRef.current?.setHTML(md2html(value || ''));
     }
   }, [value]);
+
+  useEffect(
+    () => () => {
+      handleChange.cancel();
+    },
+    [handleChange],
+  );
 
   return (
     <Suspense fallback={null}>
@@ -151,4 +161,3 @@ export const FullInput = connect(
   FullInputAdapter,
   mapProps({ validateStatus: true }),
 );
-

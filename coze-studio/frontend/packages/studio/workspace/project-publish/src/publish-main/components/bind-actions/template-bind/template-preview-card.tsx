@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { AvatarName } from '@coze-studio/components';
 import { type UserInfo } from '@coze-arch/idl/product_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozImage } from '@coze-arch/bot-semi/icons';
-import { Image, Typography } from '@coze-arch/bot-semi';
+import { IconCozImage } from '@coze-arch/coze-design/icons';
+import { Image, Typography } from '@coze-arch/coze-design';
 
 export interface TemplatePreviewCardProps {
   userInfo?: UserInfo;
@@ -84,4 +84,3 @@ export function TemplatePreviewCard({
     </div>
   );
 }
-

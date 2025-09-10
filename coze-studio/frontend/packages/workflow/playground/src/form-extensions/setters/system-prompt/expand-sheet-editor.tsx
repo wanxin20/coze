@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ import { type EditorAPI, useEditor } from '@coze-common/prompt-kit-base/editor';
 import { RecommendPannel } from '@coze-common/prompt-kit/prompt-recommend';
 import { I18n } from '@coze-arch/i18n';
 import { UIIconButton } from '@coze-arch/bot-semi';
-import { IconCozCrossFill } from '@coze-arch/bot-semi/icons';
+import { IconCozCrossFill } from '@coze-arch/coze-design/icons';
 
 import { useNodeFormPanelState } from '@/hooks/use-node-side-sheet-store';
 import { useGlobalState } from '@/hooks';
@@ -156,4 +156,3 @@ export const ExpandSheetEditor: FC<ExpressionEditorProps> = props => {
     </div>
   );
 };
-

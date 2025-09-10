@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozPlayCircle,
   IconCozStopCircle,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip, type ButtonProps } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip, type ButtonProps } from '@coze-arch/coze-design';
 
 import { useValidateWorkflow } from '@/hooks/use-validate-workflow';
 import {
@@ -140,4 +140,3 @@ export const TriggerTestRunButton: React.FC<
     />
   );
 };
-

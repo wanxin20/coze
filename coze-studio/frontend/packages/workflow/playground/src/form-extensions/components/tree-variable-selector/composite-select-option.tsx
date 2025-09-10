@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import { isGlobalVariableKey } from '@coze-workflow/variable';
 import { useNodeTestId, type ViewVariableType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { type TreeNodeData } from '@coze-arch/bot-semi/Tree';
-import { IconCozArrowRight } from '@coze-arch/bot-semi/icons';
-import { Popover } from '@coze-arch/bot-semi';
+import { IconCozArrowRight } from '@coze-arch/coze-design/icons';
+import { Popover } from '@coze-arch/coze-design';
 
 import { useGlobalState } from '@/hooks';
 import {
@@ -165,4 +165,3 @@ export const CompositeSelectOption = React.forwardRef(
     );
   },
 );
-

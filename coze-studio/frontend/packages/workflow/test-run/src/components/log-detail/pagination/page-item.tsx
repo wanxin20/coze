@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { isNumber } from 'lodash-es';
 import cls from 'classnames';
 import { type NodeResult } from '@coze-workflow/base/api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWarningCircleFill } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozWarningCircleFill } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import styles from './page-item.module.less';
 
@@ -96,4 +96,3 @@ export const PageItem: React.FC<PageItemProps> = ({
     </div>
   );
 };
-

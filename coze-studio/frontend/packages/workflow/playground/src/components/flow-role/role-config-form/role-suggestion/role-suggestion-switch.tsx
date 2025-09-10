@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import {
   type ObjectField,
 } from '@coze-workflow/test-run/formily';
 import { SuggestReplyInfoMode } from '@coze-arch/bot-api/workflow_api';
-import { Switch } from '@coze-arch/bot-semi';
+import { Switch } from '@coze-arch/coze-design';
 
 export const RoleSuggestionSwitch: React.FC = observer(() => {
   const field = useField<ObjectField>();
@@ -47,4 +47,3 @@ export const RoleSuggestionSwitch: React.FC = observer(() => {
     />
   );
 });
-

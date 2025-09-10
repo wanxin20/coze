@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ import {
 } from '@coze-common/biz-components/picture-upload';
 import { I18n } from '@coze-arch/i18n';
 import { FileBizType, IconType } from '@coze-arch/bot-api/developer_api';
-import { Form } from '@coze-arch/bot-semi';
+import { Form } from '@coze-arch/coze-design';
 
 import { DATA_REFACTOR_CLASS_NAME } from '../constant';
 
@@ -186,4 +186,3 @@ export function useEditKnowledgeModal(props: UseEditKnowledgeModalProps) {
     },
   };
 }
-

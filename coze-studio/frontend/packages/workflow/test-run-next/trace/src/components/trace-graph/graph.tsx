@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
   type Span,
   type TraceFrontendSpan,
 } from '@coze-arch/bot-api/workflow_api';
-import { IconCozExit } from '@coze-arch/bot-semi/icons';
-import { Typography, Select, IconButton } from '@coze-arch/bot-semi';
+import { IconCozExit } from '@coze-arch/coze-design/icons';
+import { Typography, Select, IconButton } from '@coze-arch/coze-design';
 
 import { FocusButton } from '../focus-button';
 import { getGotoNodeParams } from '../../utils';
@@ -150,4 +150,3 @@ export const TraceGraph: React.FC<TraceGraphProps> = ({
     </div>
   );
 };
-

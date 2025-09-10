@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Avatar, Tag } from '@coze-arch/bot-semi';
+import { Avatar, Tag } from '@coze-arch/coze-design';
 import { type Model } from '@coze-arch/bot-api/developer_api';
 
 /** Minimalist ModelOption for Button Display or Select Selected Bar */
@@ -39,4 +39,3 @@ export function ModelOptionThumb({ model }: { model: Model }) {
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import '@testing-library/jest-dom';
 import { ActionsRender } from '../../../src/components/renders/actions-render';
 
 // Use the callback function form of vi.mock to avoid linter errors
-vi.mock('@coze-arch/bot-semi/icons', () => ({
+vi.mock('@coze-arch/coze-design/icons', () => ({
   IconCozEdit: () => <div data-testid="edit-icon" />,
   IconCozTrashCan: () => <div data-testid="delete-icon" />,
 }));
@@ -34,7 +34,7 @@ vi.mock('@coze-arch/i18n', () => ({
   },
 }));
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Button: ({ children, onClick, icon, ...props }: any) => (
     <button data-testid="button" onClick={onClick} icon={icon} {...props}>
       {children}
@@ -130,4 +130,3 @@ describe('ActionsRender', () => {
     expect(buttons).toHaveLength(1);
   });
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,7 +38,7 @@ import { useGetKnowledgeListInfo } from '@coze-data/knowledge-common-hooks/use-c
 import { useReportTti } from '@coze-arch/report-tti';
 import { I18n } from '@coze-arch/i18n';
 import { renderHtmlTitle } from '@coze-arch/bot-utils';
-import { Layout } from '@coze-arch/bot-semi';
+import { Layout } from '@coze-arch/coze-design';
 
 import { UploadActionNavbar } from '@/components/upload-navbar';
 
@@ -131,4 +131,3 @@ export const KnowledgeResourceProcessorLayout = ({
     </DataErrorBoundary>
   );
 };
-

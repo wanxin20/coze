@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,13 +17,13 @@
 import { useState } from 'react';
 
 import cls from 'classnames';
-// import { type ModalHeight } from '@coze-arch/bot-semi/types';
-// import { type ButtonColor } from '@coze-arch/bot-semi/types';
+// import { type ModalHeight } from '@coze-arch/coze-design/types';
+// import { type ButtonColor } from '@coze-arch/coze-design/types';
 import {
   // type ButtonProps,
   Modal,
   type ModalProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type UseModalReturnValue } from '@coze-arch/bot-semi/src/components/ui-modal';
 import { type UseModalParams, useModal } from '@coze-arch/bot-semi';
 
@@ -83,4 +83,3 @@ export const useDataModalWithCoze = ({
     canOk: !disableOk,
   };
 };
-

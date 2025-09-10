@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   useMessageBoxContext,
 } from '@coze-common/chat-area';
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { TriggerEnabled } from '@coze-arch/bot-api/developer_api';
 
 import { getShowBotTriggerButton } from '../../utils/get-show-bot-trigger-button';
@@ -134,4 +134,3 @@ export const BotTriggerConfigButtonGroup: React.FC<
     </div>
   );
 };
-

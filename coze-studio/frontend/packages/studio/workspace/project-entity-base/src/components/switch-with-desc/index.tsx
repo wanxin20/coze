@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import cls from 'classnames';
-import { Switch, type SwitchProps } from '@coze-arch/bot-semi';
+import { Switch, type SwitchProps } from '@coze-arch/coze-design';
 
 export function SwitchWithDesc({
   value,
@@ -44,4 +44,3 @@ export function SwitchWithDesc({
     </div>
   );
 }
-

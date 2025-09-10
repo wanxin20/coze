@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,14 +18,14 @@ import React, { type JSX } from 'react';
 
 import classnames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozSetting } from '@coze-arch/bot-semi/icons';
+import { IconCozSetting } from '@coze-arch/coze-design/icons';
 import {
   Typography,
   Space,
   IconButton,
   Divider,
   Avatar,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { useNavigate } from 'react-router-dom';
@@ -122,4 +122,3 @@ export const TopBar = (props: TopBarProps) => {
     </div>
   );
 };
-

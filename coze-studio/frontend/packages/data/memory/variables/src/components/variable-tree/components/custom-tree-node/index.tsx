@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import isNumber from 'lodash-es/isNumber';
 import { cloneDeep } from 'lodash-es';
 import classNames from 'classnames';
 import { type RenderFullLabelProps } from '@coze-arch/bot-semi/Tree';
-import { IconCozArrowRight } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowRight } from '@coze-arch/coze-design/icons';
 
 import { type Variable, type ViewVariableType } from '@/store';
 
@@ -200,4 +200,3 @@ export default function CustomTreeNode(props: CustomTreeNodeProps) {
     </div>
   );
 }
-

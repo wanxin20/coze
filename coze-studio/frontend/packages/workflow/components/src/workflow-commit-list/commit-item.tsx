@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import dayjs from 'dayjs';
 import classNames from 'classnames';
 import { type VersionMetaInfo, OperateType } from '@coze-workflow/base/api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozMore } from '@coze-arch/bot-semi/icons';
+import { IconCozMore } from '@coze-arch/coze-design/icons';
 import {
   Avatar,
   IconButton,
@@ -30,7 +30,7 @@ import {
   Space,
   Tag,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { type WorkflowCommitListProps } from './type';
 
@@ -221,4 +221,3 @@ export const CommitItem: FC<CommitItemProps> = ({
     </div>
   );
 };
-

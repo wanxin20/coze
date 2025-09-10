@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import cx from 'classnames';
-import { TextArea, type TextAreaProps } from '@coze-arch/bot-semi';
+import { TextArea, type TextAreaProps } from '@coze-arch/coze-design';
 
 import { useField } from '../hooks';
 import { withField } from '../hocs';
@@ -40,4 +40,3 @@ export const TextareaField = withField(
     );
   },
 );
-

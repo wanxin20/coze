@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { IconButton, Space, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { IconButton, Space, Tooltip } from '@coze-arch/coze-design';
 import { SliceStatus } from '@coze-arch/bot-api/knowledge';
 
 import { type Chunk } from '@/text-knowledge-editor/types/chunk';
@@ -97,4 +97,3 @@ export const HoverEditBar: React.FC<HoverEditBarProps> = ({
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import cls from 'classnames';
 import { ActionKey } from '@coze-arch/idl/resource';
 import { type ResourceAction } from '@coze-arch/idl/plugin_develop';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozMore } from '@coze-arch/bot-semi/icons';
-import { Tooltip, Typography } from '@coze-arch/bot-semi';
+import { IconCozMore } from '@coze-arch/coze-design/icons';
+import { Tooltip, Typography } from '@coze-arch/coze-design';
 const { Text } = Typography;
 
 export interface LibraryItemProps {
@@ -139,4 +139,3 @@ export const LibraryItem = ({
     </>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
 } from '@coze-studio/bot-detail-store';
 import { BotE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
-import { IconButton, Modal, Button } from '@coze-arch/bot-semi';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
+import { IconButton, Modal, Button } from '@coze-arch/coze-design';
 import {
   type BotTableRWMode,
   type AlterBotTableResponse,
@@ -324,4 +324,3 @@ export function DatabaseCreateTableModal({
     </Modal>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   type ProductDraftStatus,
   type SchemaType,
 } from '@coze-workflow/base';
-import { type TableActionProps } from '@coze-arch/bot-semi';
+import { type TableActionProps } from '@coze-arch/coze-design';
 import { type ResourceInfo } from '@coze-arch/bot-api/plugin_develop';
 export { type ResourceInfo };
 
@@ -81,4 +81,3 @@ export interface DeleteActionReturn extends CommonActionReturn {
 export interface PublishActionReturn extends CommonActionReturn {
   publishModal: ReactNode;
 }
-

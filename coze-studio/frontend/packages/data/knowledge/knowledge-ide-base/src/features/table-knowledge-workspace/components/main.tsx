@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import classnames from 'classnames';
 import { useKnowledgeStore } from '@coze-data/knowledge-stores';
 import { type TableViewMethods } from '@coze-common/table-view';
 import { I18n } from '@coze-arch/i18n';
-import { EmptyState, Spin, Layout } from '@coze-arch/bot-semi';
+import { EmptyState, Spin, Layout } from '@coze-arch/coze-design';
 import { IconSegmentEmpty } from '@coze-arch/bot-icons';
 import { type DocumentInfo } from '@coze-arch/bot-api/knowledge';
 
@@ -162,4 +162,3 @@ export const TableKnowledgeWorkspace = ({
     </TableUIContext.Provider>
   );
 };
-

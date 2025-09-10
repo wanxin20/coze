@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type FC } from 'react';
 
-import { Select, type SelectProps } from '@coze-arch/bot-semi';
+import { Select, type SelectProps } from '@coze-arch/coze-design';
 
 type IProps = SelectProps & { label: string };
 export const LabelSelect: FC<IProps> = props => {
@@ -28,4 +28,3 @@ export const LabelSelect: FC<IProps> = props => {
     </div>
   );
 };
-

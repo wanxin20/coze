@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ import {
 } from '@flowgram-adapter/common';
 import { ValidationService } from '@coze-workflow/base/services';
 import type { StandardNodeType } from '@coze-workflow/base';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { WorkflowGlobalStateEntity } from '../entities';
 import { WorkflowCustomDragService } from './workflow-drag-service';
@@ -208,4 +208,3 @@ export class WorkflowLinesService {
     );
   }
 }
-

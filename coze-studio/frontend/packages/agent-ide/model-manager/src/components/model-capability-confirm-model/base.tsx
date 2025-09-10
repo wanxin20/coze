@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,14 +19,14 @@ import { useState, type FC } from 'react';
 import { groupBy } from 'lodash-es';
 import { useBotSkillStore } from '@coze-studio/bot-detail-store/bot-skill';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
 import {
   Button,
   Checkbox,
   Modal,
   IconButton,
   Space,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import {
   type Model,
   ModelFuncConfigStatus,
@@ -333,4 +333,3 @@ export const mapConfigTypeToAlertItem = (
   groupTitle: getGroupTittleByConfigType(type),
   title: getTitleByConfigType(type),
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC, type ReactNode } from 'react';
 
 import classNames from 'classnames';
-import { Typography, Highlight } from '@coze-arch/bot-semi';
+import { Typography, Highlight } from '@coze-arch/coze-design';
 
 interface LibraryItemProps {
   title: string;
@@ -95,4 +95,3 @@ export const LibraryItem: FC<LibraryItemProps> = ({
     </div>
   </div>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,8 +33,8 @@ import {
 } from '@coze-studio/bot-detail-store';
 import { IconShortcutTrash } from '@coze-arch/bot-icons';
 import { botInputLengthService } from '@coze-agent-ide/bot-input-length-limit';
-import { IconCozHandle } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozHandle } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import s from '../index.module.less';
 import { settingAreaScrollId } from '../const';
@@ -194,4 +194,3 @@ export const SuggestQuestionItemContent: React.FC<{
     </div>
   );
 };
-

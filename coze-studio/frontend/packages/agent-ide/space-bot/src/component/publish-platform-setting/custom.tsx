@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   IconCozEdit,
   IconCozMore,
   IconCozPlus,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Dropdown,
   IconButton,
@@ -34,7 +34,7 @@ import {
   type ColumnProps,
   Table,
   Tooltip,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type ConnectorMetaInfo } from '@coze-arch/bot-api/connector_api';
 import { NavLink } from 'react-router-dom';
 import {
@@ -323,4 +323,3 @@ const CustomPlatform = ({
 };
 
 export { CustomPlatform };
-

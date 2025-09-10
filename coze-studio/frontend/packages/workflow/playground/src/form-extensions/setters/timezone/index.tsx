@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ import {
   Highlight,
   type CascaderData,
   type FilterRenderProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { generatedTimezones } from './utils/timezone';
 import { UNKNOWN_TIME_ZONE_OFFSET } from './const';
@@ -195,4 +195,3 @@ export const timezone: SetterExtension = {
   key: 'Timezone',
   component: TimezoneCascader,
 };
-

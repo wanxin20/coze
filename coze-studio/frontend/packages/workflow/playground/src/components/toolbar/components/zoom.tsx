@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@
 import { useMemo, useState, type CSSProperties } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
-import { Dropdown, Divider } from '@coze-arch/bot-semi';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+import { Dropdown, Divider } from '@coze-arch/coze-design';
 import { usePlaygroundTools } from '@flowgram-adapter/free-layout-editor';
 import { usePlayground } from '@flowgram-adapter/free-layout-editor';
 
@@ -132,4 +132,3 @@ export const Zoom = () => {
     </Dropdown>
   );
 };
-

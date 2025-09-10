@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,7 +56,7 @@ import {
 } from '@coze-arch/bot-api/knowledge';
 import { SpaceType } from '@coze-arch/bot-api/developer_api';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { Input } from '@coze-arch/bot-semi';
+import { Input } from '@coze-arch/coze-design';
 
 import { DATA_REFACTOR_CLASS_NAME } from '../../constant';
 
@@ -630,4 +630,3 @@ const useKnowledgeFilter = ({
 };
 
 export { useKnowledgeFilter };
-

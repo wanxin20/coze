@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, useState } from 'react';
 
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWarningCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozWarningCircle } from '@coze-arch/coze-design/icons';
 import { Skeleton } from '@coze-arch/bot-semi';
 import { type FileInfo } from '@coze-arch/bot-api/playground_api';
 
@@ -112,4 +112,3 @@ export const IconListField = () => (
     </div>
   </div>
 );
-

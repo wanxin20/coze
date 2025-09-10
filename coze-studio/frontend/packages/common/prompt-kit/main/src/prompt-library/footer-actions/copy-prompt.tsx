@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import copy from 'copy-to-clipboard';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Toast } from '@coze-arch/bot-semi';
+import { Button, Toast } from '@coze-arch/coze-design';
 
 export const CopyPrompt = (props: {
   editor: EditorAPI;
@@ -39,4 +39,3 @@ export const CopyPrompt = (props: {
     </Button>
   );
 };
-

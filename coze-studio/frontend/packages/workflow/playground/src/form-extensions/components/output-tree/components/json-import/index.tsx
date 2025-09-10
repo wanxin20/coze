@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { useEffect, useState, type FC } from 'react';
 import classNames from 'classnames';
 import type { ViewVariableType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozImport } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozImport } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 import { useCurrentEntity } from '@flowgram-adapter/free-layout-editor';
 
 import { useNodeFormPanelState } from '@/hooks/use-node-side-sheet-store';
@@ -235,4 +235,3 @@ export const JSONImportPlaceholder: FC<{
 }> = ({ enable, hideAddButton }) => (
   <div style={{ width: hideAddButton ? 32 : 60 }}></div>
 );
-

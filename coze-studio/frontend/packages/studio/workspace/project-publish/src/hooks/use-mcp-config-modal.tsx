@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
   ConnectorConfigStatus,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle, IconCozEmpty } from '@coze-arch/bot-semi/icons';
+import { IconCozInfoCircle, IconCozEmpty } from '@coze-arch/coze-design/icons';
 import {
   Modal,
   Search,
@@ -42,7 +42,7 @@ import {
   Tooltip,
   Space,
   EmptyState,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { workflowApi } from '@coze-arch/bot-api';
 
@@ -297,4 +297,3 @@ export const UseMcpConfigModal = ({
     ),
   };
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ import {
   useToolValidData,
   type ToolEntryCommonProps,
 } from '@coze-agent-ide/tool';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import tableExample from '../../assets/image/table-memory/table-example.png';
 import tableExampleCn from '../../assets/image/table-memory/table-example-cn.png';
@@ -297,4 +297,3 @@ export const TableMemory: FC<TableMemoryProps> = props => (
     <BaseTableMemory {...props} />
   </DataErrorBoundary>
 );
-

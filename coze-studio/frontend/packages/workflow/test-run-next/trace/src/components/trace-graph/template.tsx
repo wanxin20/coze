@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 
-import { IconCozIllusEmpty } from '@coze-arch/bot-semi/illustrations';
-import { Spin } from '@coze-arch/bot-semi';
+import { IconCozIllusEmpty } from '@coze-arch/coze-design/illustrations';
+import { Spin } from '@coze-arch/coze-design';
 
 import css from './template.module.less';
 
@@ -30,4 +30,3 @@ export const LoadingTemplate = () => (
     <Spin />
   </div>
 );
-

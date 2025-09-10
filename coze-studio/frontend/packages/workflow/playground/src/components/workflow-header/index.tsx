@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import React from 'react';
 
-import { IconCozArrowLeft } from '@coze-arch/bot-semi/icons';
-import { IconButton, CozAvatar } from '@coze-arch/bot-semi';
+import { IconCozArrowLeft } from '@coze-arch/coze-design/icons';
+import { IconButton, CozAvatar } from '@coze-arch/coze-design';
 
 import { WorkflowInfo } from '../workflow-header-info';
 import { useGlobalState } from '../../hooks';
@@ -83,4 +83,3 @@ const WorkFlowHeader: React.FC = () => {
 };
 
 export default React.memo(WorkFlowHeader);
-

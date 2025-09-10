@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import {
   IconCozWorkflow,
   IconCozChat,
   IconCozArrowDown,
-} from '@coze-arch/bot-semi/icons';
-import { Menu, Button } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Menu, Button } from '@coze-arch/coze-design';
 import { CustomError } from '@coze-arch/bot-error';
 
 import WorkflowModalContext from '../workflow-modal-context';
@@ -80,8 +80,7 @@ export const CreateWorkflowBtn: FC<
 
   return (
     <>
-      {/* will support soon */}
-      {showSingleButton || IS_OPEN_SOURCE ? (
+      {showSingleButton ? (
         <Button
           className={className}
           color="hgltplus"
@@ -169,4 +168,3 @@ export const CreateWorkflowBtn: FC<
     </>
   );
 };
-

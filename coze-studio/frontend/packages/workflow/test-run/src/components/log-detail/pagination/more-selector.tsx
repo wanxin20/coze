@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,8 @@ import { type NodeResult } from '@coze-workflow/base/api';
 import {
   IconCozWarningCircleFill,
   IconCozArrowDownFill,
-} from '@coze-arch/bot-semi/icons';
-import { Popover, Typography } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Popover, Typography } from '@coze-arch/coze-design';
 
 import { PageItem, checkHasError, checkHasWarning } from './page-item';
 
@@ -153,4 +153,3 @@ export const MoreSelector: React.FC<MoreSelectorProps> = ({
     </Popover>
   );
 };
-

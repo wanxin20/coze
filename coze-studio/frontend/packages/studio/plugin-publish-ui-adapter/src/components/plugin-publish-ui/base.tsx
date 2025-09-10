@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type CSSProperties, useRef, useState } from 'react';
 
 import { cloneDeep } from 'lodash-es';
-import { Button, type ButtonProps, type FormApi } from '@coze-arch/bot-semi';
+import { Button, type ButtonProps, type FormApi } from '@coze-arch/coze-design';
 
 import {
   VersionDescForm,
@@ -83,4 +83,3 @@ export const PluginPublishUI: React.FC<PluginPublishUIProps> = ({
     </div>
   );
 };
-

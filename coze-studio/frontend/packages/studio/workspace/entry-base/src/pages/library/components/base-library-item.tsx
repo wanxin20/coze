@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import { type ReactNode } from 'react';
 
-import { IconCozCheckMarkCircleFill } from '@coze-arch/bot-semi/icons';
-import { Space, Typography, CozAvatar } from '@coze-arch/bot-semi';
+import { IconCozCheckMarkCircleFill } from '@coze-arch/coze-design/icons';
+import { Space, Typography, CozAvatar } from '@coze-arch/coze-design';
 import {
   PublishStatus,
   type ResourceInfo,
@@ -84,4 +84,3 @@ export const BaseLibraryItem: React.FC<{
     </div>
   </div>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import classNames from 'classnames';
 import { type FieldError } from '@flowgram-adapter/free-layout-editor';
 import { IconHandle } from '@douyinfe/semi-icons';
 import { useNodeTestId } from '@coze-workflow/base';
-import { IconCozMinusCircle } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozMinusCircle } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { FormItemFeedback } from '@/nodes-v2/components/form-item-feedback';
 import { ExpressionEditor } from '@/nodes-v2/components/expression-editor';
@@ -187,4 +187,3 @@ export const OptionItem = forwardRef<HTMLDivElement, OptionItemProps>(
     );
   },
 );
-

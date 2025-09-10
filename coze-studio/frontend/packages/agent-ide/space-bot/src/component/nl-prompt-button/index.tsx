@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type PropsWithChildren, useRef } from 'react';
 
 import { useBotDetailIsReadonly } from '@coze-studio/bot-detail-store';
-import { AIButton, type ButtonProps } from '@coze-arch/bot-semi';
+import { AIButton, type ButtonProps } from '@coze-arch/coze-design';
 
 import { usePromptEditor } from '../../context/editor-kit';
 import { useBotEditorService } from '../../context/bot-editor-service';
@@ -62,4 +62,3 @@ export const NLPromptButton: React.FC<PropsWithChildren<ButtonProps>> = ({
     </div>
   );
 };
-

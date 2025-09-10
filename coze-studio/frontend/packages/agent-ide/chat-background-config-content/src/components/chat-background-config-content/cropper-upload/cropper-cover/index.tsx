@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useMemo } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 import { IconSpin } from '@douyinfe/semi-icons';
 
 import s from './index.module.less';
@@ -171,4 +171,3 @@ export const CropperCover: React.FC<CropperCoverProps> = ({
     ),
     [mode, loading, hasUrl],
   );
-

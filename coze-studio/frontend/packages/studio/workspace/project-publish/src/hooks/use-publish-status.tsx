@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,8 @@ import {
   IconCozCheckMarkCircle,
   IconCozClock,
   IconCozCrossCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Modal, Select, Tag, type TagProps } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Modal, Select, Tag, type TagProps } from '@coze-arch/coze-design';
 import { type OptionProps } from '@coze-arch/bot-semi/Select';
 import { intelligenceApi } from '@coze-arch/bot-api';
 import { EProjectPermission, useProjectAuth } from '@coze-common/auth';
@@ -259,4 +259,3 @@ export function usePublishStatus({
     ),
   };
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import { logger } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
 import { ComponentType, type infra } from '@coze-arch/bot-api/debugger_api';
 import { debuggerApi } from '@coze-arch/bot-api';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 import { type TestFormField } from '../types';
 import {
@@ -397,4 +397,3 @@ export const useTestFormSchema = (
 
   return { generate };
 };
-

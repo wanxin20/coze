@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,7 +62,7 @@ import { MemoryApi } from '@coze-arch/bot-api';
 import {
   IconCozWarning as IconAlertTriangle,
   IconCozCross as IconClose,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 import { BotDebugButton } from '../bot-debug-button';
 import tableTempEN from '../../assets/table-template-en.png';
@@ -653,4 +653,3 @@ export const DatabaseModal: React.FC<DatabaseModalProps> = props => {
     </Modal>
   );
 };
-

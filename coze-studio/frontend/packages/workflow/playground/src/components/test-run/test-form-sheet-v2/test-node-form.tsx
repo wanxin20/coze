@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,8 +36,8 @@ import {
 } from '@coze-studio/premium-components-adapter';
 import { IntelligenceType } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
-import { IconButton, Toast, Typography } from '@coze-arch/bot-semi';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
+import { IconButton, Toast, Typography } from '@coze-arch/coze-design';
 
 import {
   useExecStateEntity,
@@ -292,4 +292,3 @@ const TestNodeForm: React.FC<TestNodeFormProps> = ({ node }) => {
 };
 
 export { TestNodeForm, TestNodeResultNotice };
-

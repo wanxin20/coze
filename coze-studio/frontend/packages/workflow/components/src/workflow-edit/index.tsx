@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -38,14 +38,14 @@ import { REPORT_EVENTS } from '@coze-arch/report-events';
 import { reporter } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
 import { useUserInfo } from '@coze-arch/foundation-sdk';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
 import {
   Button,
   LoadingButton,
   Space,
   Toast,
   Tooltip,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { Form, Typography, UIFormTextArea, UIModal } from '@coze-arch/bot-semi';
 import { CustomError } from '@coze-arch/bot-error';
@@ -481,4 +481,3 @@ export function CreateWorkflowModal({
     </UIModal>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import ChatCore, {
 } from '@coze-common/chat-core';
 import { type Reporter } from '@coze-arch/logger';
 import { APIErrorEvent, emitAPIErrorEvent } from '@coze-arch/bot-http';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { getIsSuggestion } from '../utils/suggestions';
 import {
@@ -298,4 +298,3 @@ const getUpdateMessageToFinish =
     };
     updateMessage(newMessage);
   };
-

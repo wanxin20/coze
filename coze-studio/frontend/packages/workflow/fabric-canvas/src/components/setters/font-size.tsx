@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { type FC, useCallback, useMemo } from 'react';
 
 import { clamp } from 'lodash-es';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozFontSize } from '@coze-arch/bot-semi/icons';
-import { Select, type SelectProps, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozFontSize } from '@coze-arch/coze-design/icons';
+import { Select, type SelectProps, Tooltip } from '@coze-arch/coze-design';
 
 interface IProps extends Omit<SelectProps, 'onChange'> {
   value: number;
@@ -81,4 +81,3 @@ export const FontSize: FC<IProps> = props => {
     </div>
   );
 };
-

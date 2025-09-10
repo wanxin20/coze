@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import {
 import { reporter } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
 import { typeSafeJSONParse } from '@coze-arch/bot-utils';
-import { Button, Space } from '@coze-arch/bot-semi';
+import { Button, Space } from '@coze-arch/coze-design';
 
 import { WorkflowPlayground } from './workflow-playground';
 import {
@@ -295,4 +295,3 @@ export function useWorkflowPlayground(props?: UseWorkflowPlaygroundProps) {
     testRunBtnsComp,
   };
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +47,7 @@ import {
 } from '@coze-workflow/base/api';
 import { I18n } from '@coze-arch/i18n';
 import { CustomError } from '@coze-arch/bot-error';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { reporter, wait } from '../utils';
 import { type WorkflowInfo, WorkflowModalFrom } from '../types';
@@ -533,4 +533,3 @@ export function useWorkflowList({
     handleDelete,
   } as const;
 }
-

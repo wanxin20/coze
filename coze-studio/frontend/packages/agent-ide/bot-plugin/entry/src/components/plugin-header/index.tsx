@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   Typography,
   Space,
   Avatar,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { IconCardSearchOutlined, IconEdit } from '@coze-arch/bot-icons';
 import {
   CreationMethod,
@@ -150,4 +150,3 @@ const PluginHeader = ({
 );
 
 export default PluginHeader;
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import {
   IconCozCrossCircle,
   IconCozWarningCircle,
   type OriginIconProps,
-} from '@coze-arch/bot-semi/icons';
-import { type StepProps } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { type StepProps } from '@coze-arch/coze-design';
 
 export interface PublishStepIconProps {
   status: StepProps['status'] | 'warn';
@@ -52,4 +52,3 @@ export function PublishStepIcon({ status }: PublishStepIconProps) {
       return null;
   }
 }
-

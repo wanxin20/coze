@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Radio, Typography } from '@coze-arch/bot-semi';
+import { Radio, Typography } from '@coze-arch/coze-design';
 
 interface SourceRadioProps {
   title: string;
@@ -52,4 +52,3 @@ export const SourceRadio = (props: SourceRadioProps) => {
     </Radio>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type ReactNode } from 'react';
 
 import cls from 'classnames';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 interface IDocumentItemProps {
   id: string;
@@ -51,4 +51,3 @@ export const DocumentItem: React.FC<IDocumentItemProps> = props => {
 };
 
 export default DocumentItem;
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useUnmount } from 'ahooks';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import ImageUploader, { ImgUploadErrNo } from './image-uploader';
 
@@ -228,4 +228,3 @@ export default function useImageUploader(
     setImgValue,
   };
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { memo } from 'react';
 
-import { Typography, Highlight } from '@coze-arch/bot-semi';
+import { Typography, Highlight } from '@coze-arch/coze-design';
 
 import {
   type CommonRenderProps,
@@ -162,4 +162,3 @@ const MemoText = memo(Text, (pre, cur) => {
 });
 
 export { MemoText };
-

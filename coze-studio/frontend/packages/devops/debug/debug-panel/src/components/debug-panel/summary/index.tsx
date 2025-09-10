@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import copy from 'copy-to-clipboard';
 import classNames from 'classnames';
 import { logger } from '@coze-arch/logger';
 import { I18n, type I18nKeysNoOptionsType } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { UIToast } from '@coze-arch/bot-semi';
 import { SpanStatus } from '@coze-arch/bot-api/debugger_api';
@@ -115,4 +115,3 @@ export const PanelSummary = (props: PanelSummaryProps) => {
     </>
   );
 };
-

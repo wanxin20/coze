@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
 } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
 
 import EmptyLibraryIcon from '../assets/empty-library-icon.svg';
 import {
@@ -158,4 +158,3 @@ export const Index = (
 export const LibraryList = forwardRef(Index) as <T>(
   props: LibraryListProps & { ref?: RefObject<InfiniteListRef<T>> },
 ) => JSX.Element;
-

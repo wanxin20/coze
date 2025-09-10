@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { type ReactNode } from 'react';
 
 import classNames from 'classnames';
-import { type TagColor } from '@coze-arch/bot-semi/types';
-import { Tag } from '@coze-arch/bot-semi';
+import { type TagColor } from '@coze-arch/coze-design/types';
+import { Tag } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -42,4 +42,3 @@ export const TagRender = ({
     {value}
   </Tag>
 );
-

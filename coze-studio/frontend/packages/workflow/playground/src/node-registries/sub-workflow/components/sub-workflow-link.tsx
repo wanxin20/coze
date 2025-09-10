@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React, { useMemo, type FC } from 'react';
 
 import { type WorkflowDetailInfoData } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozExit } from '@coze-arch/bot-semi/icons';
+import { IconCozExit } from '@coze-arch/coze-design/icons';
 
 import { useGlobalState } from '@/hooks';
 
@@ -92,4 +92,3 @@ export const createSubWorkflowLink = (
 ) => (
   <SubWorkflowLink workflowDetail={workflowDetail} identifier={identifier} />
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import { ResType } from '@coze-arch/bot-api/plugin_develop';
 import {
   IconCozDatabase,
   IconCozKnowledge,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 import useKnowledgeResource from './use-knowledge-resource';
 import useImportData from './use-import-data';
@@ -136,4 +136,3 @@ const useDataResource = (): UseDataResourceReturn => {
 };
 
 export default useDataResource;
-

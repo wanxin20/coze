@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React from 'react';
 
 import { AvatarBackgroundNoticeDot } from '@coze-studio/components';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozImage } from '@coze-arch/bot-semi/icons';
-import { Button, Popconfirm } from '@coze-arch/bot-semi';
+import { IconCozImage } from '@coze-arch/coze-design/icons';
+import { Button, Popconfirm } from '@coze-arch/coze-design';
 import { IconEdit, IconNo } from '@coze-arch/bot-icons';
 import { type BackgroundImageInfo } from '@coze-arch/bot-api/developer_api';
 import {
@@ -103,4 +103,3 @@ export const ChatBackGroundContent: React.FC<ChatBackGroundContentProps> = ({
     </div>
   );
 };
-

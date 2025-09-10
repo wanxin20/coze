@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozIllusDone } from '@coze-arch/bot-semi/illustrations';
+import { IconCozIllusDone } from '@coze-arch/coze-design/illustrations';
 
 import styles from './empty.module.less';
 
@@ -25,4 +25,3 @@ export const EmptyFiled = () => (
     <p>{I18n.t('workflow_batch_no_failed_entries')}</p>
   </div>
 );
-

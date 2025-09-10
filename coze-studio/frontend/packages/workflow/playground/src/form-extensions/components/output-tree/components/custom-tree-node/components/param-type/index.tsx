@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import {
   type ViewVariableType,
   useNodeTestId,
 } from '@coze-workflow/base';
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 import { type SelectProps } from '@coze-arch/bot-semi/Select';
 
 import { VariableTypeSelector } from '@/form-extensions/components/variable-type-selector';
@@ -153,4 +153,3 @@ export default function ParamType({
     </ValidationErrorWrapper>
   );
 }
-

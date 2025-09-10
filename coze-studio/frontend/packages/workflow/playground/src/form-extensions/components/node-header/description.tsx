@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type FC, useState, useRef } from 'react';
 import classnames from 'classnames';
 import { useNodeTestId } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Typography, TextArea, Tag, Divider } from '@coze-arch/bot-semi';
+import { Typography, TextArea, Tag, Divider } from '@coze-arch/coze-design';
 
 import { useNodeRenderScene } from '@/hooks';
 
@@ -129,4 +129,3 @@ export const Description: FC<DescriptionProps> = props => {
     );
   }
 };
-

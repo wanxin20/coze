@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   Layout,
   Cascader,
   Space,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { renderHtmlTitle } from '@coze-arch/bot-utils';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import {
@@ -297,4 +297,3 @@ export const BaseLibraryPage = forwardRef<
     );
   },
 );
-

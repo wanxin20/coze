@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
   Typography,
   Avatar,
   type TagProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { Popover } from '@coze-arch/bot-semi';
 import { IconInfo } from '@coze-arch/bot-icons';
 import { useFlags } from '@coze-arch/bot-flags';
@@ -193,4 +193,3 @@ export const ModelOptionItem: React.FC<OptionItemProps> = ({
     </div>
   );
 };
-

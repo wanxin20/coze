@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { type FC } from 'react';
 
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 
 import { type MergeGroup } from '../../types';
 import { useGroupTypeAlias } from './use-group-type-alias';
@@ -33,4 +33,3 @@ export const GroupTypeTag: FC<Props> = ({ mergeGroup }) => {
     </Tag>
   ) : null;
 };
-

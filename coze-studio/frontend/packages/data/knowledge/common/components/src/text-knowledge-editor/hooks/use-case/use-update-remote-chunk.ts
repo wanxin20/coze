@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { type Chunk } from '@/text-knowledge-editor/types/chunk';
 import { isEditorContentChange } from '@/text-knowledge-editor/services/use-case/is-editor-content-change';
@@ -56,4 +56,3 @@ export const useUpdateRemoteChunk = ({
     updateRemoteChunk,
   };
 };
-

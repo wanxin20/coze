@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import cls from 'classnames';
 import { explore } from '@coze-studio/api-schema';
 import { useSpaceList } from '@coze-foundation/space-store';
 import { I18n } from '@coze-arch/i18n';
-import { Image, Input, Modal, Space, Toast } from '@coze-arch/bot-semi';
+import { Image, Input, Modal, Space, Toast } from '@coze-arch/coze-design';
 import { type ProductEntityType } from '@coze-arch/bot-api/product_api';
 
 import { type CardInfoProps } from '../type';
@@ -168,4 +168,3 @@ export const TempCardBody: FC<
     />
   </div>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React, { type FC } from 'react';
 
 import { type CommonexcludeType } from '@coze-arch/bot-semi/Form';
 import { type BotTableRWMode } from '@coze-arch/bot-api/memory';
-import { type CommonFieldProps, withField } from '@coze-arch/bot-semi';
+import { type CommonFieldProps, withField } from '@coze-arch/coze-design';
 export interface DatabaseModeSelectProps {
   disabled?: boolean;
   type?: 'button' | 'select';
@@ -35,4 +35,3 @@ export const FormDatabaseModeSelect: React.FunctionComponent<
   valueKey: 'value',
   onKeyChangeFnName: 'onChange',
 });
-

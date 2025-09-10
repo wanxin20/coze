@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ import {
   IconCozCompass,
   IconCozCompassFill,
   IconCozDocument,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 import { AccountDropdown } from '../account-dropdown';
 import { useHasSider } from './hooks/use-has-sider';
@@ -94,4 +94,3 @@ export const GlobalLayoutComposed: FC<PropsWithChildren> = ({ children }) => {
     </RequireAuthContainer>
   );
 };
-

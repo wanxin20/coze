@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { DatePicker } from '@coze-arch/bot-semi';
+import { DatePicker } from '@coze-arch/coze-design';
 
 import { type DefaultValueInputProps } from './types';
 
@@ -52,4 +52,3 @@ export function InputTime({
     />
   );
 }
-

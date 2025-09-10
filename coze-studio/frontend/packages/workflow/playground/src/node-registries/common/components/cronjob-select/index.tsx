@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import { cronJobTranslator } from '@coze-workflow/components';
 import { CronJobType, type CronJobValue } from '@coze-workflow/nodes';
 import { ValueExpressionType, ValueExpression } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 
 import { Text } from '@/form-extensions/components/text';
 
@@ -138,4 +138,3 @@ export const CronJobSelect: FC<CronJobSelectProps> = ({
     </div>
   );
 };
-

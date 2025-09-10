@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import {
   useLatestSectionId,
 } from '@coze-common/chat-area';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozRefresh } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozRefresh } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { getShowRegenerate } from '../../utils/get-show-regenerate';
 import { useTooltipTrigger } from '../../hooks/use-tooltip-trigger';
@@ -65,4 +65,3 @@ export const RegenerateMessage: React.FC<
     </Tooltip>
   );
 };
-

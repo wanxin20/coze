@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import classNames from 'classnames';
 import { MessageBox as UIKitMessageBox } from '@coze-common/chat-uikit';
 import { ContentType } from '@coze-common/chat-core';
 import { I18n } from '@coze-arch/i18n';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 import { IconAlertStroked } from '@coze-arch/bot-icons';
 import { IconSpin } from '@douyinfe/semi-icons';
 import { Layout } from '@coze-common/chat-uikit-shared';
@@ -155,4 +155,3 @@ export const BuildInSendMessageBox: ComponentTypesMap['sendMessageBox'] =
   );
 
 BuildInSendMessageBox.displayName = 'BuildInSendMessageBox';
-

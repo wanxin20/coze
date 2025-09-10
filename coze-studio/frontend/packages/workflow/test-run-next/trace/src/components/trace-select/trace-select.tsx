@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { useCallback, useMemo } from 'react';
 
 import { useMemoizedFn } from 'ahooks';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 
 import { getTimeFromSpan } from '../../utils';
 import { useTraceListStore } from '../../contexts';
@@ -93,4 +93,3 @@ export const TraceSelect: React.FC = () => {
     </div>
   );
 };
-

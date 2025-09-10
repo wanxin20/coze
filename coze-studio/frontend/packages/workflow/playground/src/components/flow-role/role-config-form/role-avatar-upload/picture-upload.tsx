@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useRef, useState } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEdit } from '@coze-arch/bot-semi/icons';
-import { CozAvatar, Toast, Upload } from '@coze-arch/bot-semi';
+import { IconCozEdit } from '@coze-arch/coze-design/icons';
+import { CozAvatar, Toast, Upload } from '@coze-arch/coze-design';
 import { type FileItem, type UploadProps } from '@coze-arch/bot-semi/Upload';
 import { FileBizType } from '@coze-arch/bot-api/developer_api';
 
@@ -157,4 +157,3 @@ export const RoleAvatarUpload = (props: PackageUploadProps) => {
     </div>
   );
 };
-

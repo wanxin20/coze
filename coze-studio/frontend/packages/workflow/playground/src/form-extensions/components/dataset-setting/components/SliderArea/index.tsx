@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { type ReactNode } from 'react';
 
 import classNames from 'classnames';
-import { Slider } from '@coze-arch/bot-semi';
+import { Slider } from '@coze-arch/coze-design';
 
 import s from './index.module.less';
 
@@ -93,4 +93,3 @@ export const SliderArea: React.FC<SliderAreaProps> = ({
     </div>
   </div>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import cls from 'classnames';
 import { connect, mapProps } from '@formily/react';
-import { TextArea as TextAreaCore } from '@coze-arch/bot-semi';
+import { TextArea as TextAreaCore } from '@coze-arch/coze-design';
 
 import css from './text-area.module.less';
 
@@ -45,4 +45,3 @@ export const TextArea = connect(
   TextAreaAdapter,
   mapProps({ validateStatus: true }),
 );
-

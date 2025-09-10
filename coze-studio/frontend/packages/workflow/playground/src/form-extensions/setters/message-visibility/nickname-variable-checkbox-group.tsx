@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
 } from '@coze-workflow/variable';
 import { VARIABLE_TYPE_ALIAS_MAP } from '@coze-workflow/base/types';
 import { concatTestId } from '@coze-workflow/base';
-import { Tooltip, Checkbox, CheckboxGroup } from '@coze-arch/bot-semi';
+import { Tooltip, Checkbox, CheckboxGroup } from '@coze-arch/coze-design';
 
 import { VariableTypeTag } from '../../components/variable-type-tag';
 import { type NicknameVariable, type NicknameVariableSetting } from './types';
@@ -118,4 +118,3 @@ const RefVariableLabel: FC<{
     </>
   );
 };
-

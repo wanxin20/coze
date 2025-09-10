@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import cls from 'classnames';
-import { DatePicker } from '@coze-arch/bot-semi';
+import { DatePicker } from '@coze-arch/coze-design';
 
 import css from './time.module.less';
 
@@ -48,4 +48,3 @@ export const InputTime: React.FC<InputTimeProps> = ({
     {...props}
   />
 );
-

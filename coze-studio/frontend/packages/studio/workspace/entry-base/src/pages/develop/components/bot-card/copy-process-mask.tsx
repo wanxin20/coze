@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozLoading,
   IconCozWarningCircleFillPalette,
-} from '@coze-arch/bot-semi/icons';
-import { Button, Space } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Button, Space } from '@coze-arch/coze-design';
 import { intelligenceApi } from '@coze-arch/bot-api';
 
 export interface CopyProcessMaskProps {
@@ -106,4 +106,3 @@ export const CopyProcessMask: React.FC<CopyProcessMaskProps> = ({
     </div>
   );
 };
-

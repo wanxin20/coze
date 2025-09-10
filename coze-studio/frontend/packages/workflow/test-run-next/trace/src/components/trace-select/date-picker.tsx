@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +17,12 @@
 import { useCallback } from 'react';
 
 import dayjs from 'dayjs';
-import { IconCozCalendar } from '@coze-arch/bot-semi/icons';
+import { IconCozCalendar } from '@coze-arch/coze-design/icons';
 import {
   DatePicker as DatePickerCore,
   type DatePickerProps as DatePickerCoreProps,
   IconButton,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 type DatePickerProps = Pick<DatePickerCoreProps, 'value'> & {
   onChange: (v: [Date, Date]) => void;
@@ -63,4 +63,3 @@ export const DatePicker: React.FC<DatePickerProps> = ({
     />
   );
 };
-

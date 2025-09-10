@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React, { type FC, type PropsWithChildren, useState } from 'react';
 
 import type { ShortCutCommand } from '@coze-agent-ide/tool-config';
 import { useChatAreaLayout } from '@coze-common/chat-area';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 import { Typography } from '@coze-arch/bot-semi';
 import { Layout } from '@coze-common/chat-uikit-shared';
 
@@ -92,4 +92,3 @@ export const TooltipWithContent: FC<
     </Tooltip>
   );
 };
-

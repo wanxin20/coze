@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import { Row, Col } from '@coze-arch/bot-semi';
+import { Row, Col } from '@coze-arch/coze-design';
 import { ModeTab } from '@coze-project-ide/ui-adapter';
 
 import { ProjectInfo } from './project-info';
@@ -44,4 +44,3 @@ export const TopBar = () => (
     </Row>
   </div>
 );
-

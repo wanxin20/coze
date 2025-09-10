@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ import { type ILevelSegment } from '@coze-data/knowledge-stores';
 import { type DocumentChunk } from '@coze-data/knowledge-common-components/text-knowledge-editor/scenes/base';
 import { type LevelDocumentChunk } from '@coze-data/knowledge-common-components/text-knowledge-editor';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tag, Tooltip, Typography } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tag, Tooltip, Typography } from '@coze-arch/coze-design';
 import { type OptionProps } from '@coze-arch/bot-semi/Select';
 import {
   DocumentStatus,
@@ -108,4 +108,3 @@ export const getDocumentOptions = (
     };
   });
 };
-

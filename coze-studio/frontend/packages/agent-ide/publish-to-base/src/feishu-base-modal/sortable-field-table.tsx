@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,8 +31,8 @@ import {
 import classNames from 'classnames';
 import { SortableList } from '@coze-studio/components/sortable-list';
 import { type ITemRenderProps, type ConnectDnd } from '@coze-studio/components';
-import { IconCozHandle, IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozHandle, IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 
 import { MdTooltip } from '../md-tooltip';
 
@@ -238,4 +238,3 @@ const FieldTableHeader: FC<{ headers: HeaderItem[] }> = ({ headers }) => (
     ))}
   </TableFieldLine>
 );
-

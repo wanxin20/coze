@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Typography, Select, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Typography, Select, Tooltip } from '@coze-arch/coze-design';
 import { InputMode } from '@coze-arch/bot-api/workflow_api';
 
 import tooltipImg from './tooltip.png';
@@ -84,4 +84,3 @@ export const RoleDefaultInput: React.FC<RoleDefaultInputProps> = ({
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,7 +44,7 @@ import {
   IconCozPlugin,
   IconCozTable,
   IconCozVariables,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 
 const datasetIconMap = {
   [FormatType.Text]: <IconCozDocument />,
@@ -189,4 +189,3 @@ export const ResourceList = ({
     </div>
   );
 };
-

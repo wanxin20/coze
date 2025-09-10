@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ export default {
   presets: [require('@coze-arch/tailwind-config')],
   content: [
     './src/**/*.{html,tsx}',
-    './node_modules/@coze-arch/bot-semi/dist/**/*.{js,jsx,css}',
+    './node_modules/@coze-arch/coze-design/dist/**/*.{js,jsx,css}',
   ],
   corePlugins: {
     preflight: false, // Turn off @tailwind base default styles to avoid affecting existing styles
@@ -30,4 +30,3 @@ export default {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   plugins: [require('@coze-arch/tailwind-config/coze')],
 } satisfies Config;
-

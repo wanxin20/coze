@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   IconCozNotionFill,
   IconCozPencilPaper,
   IconCozWechatFill,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { DocumentSource } from '@coze-arch/bot-api/knowledge';
 
 type TDocumentSource = {
@@ -62,4 +62,3 @@ export const ICON_MAP: TDocumentSource = {
     <IconCozWechatFill className="text-[16px] mr-[8px]" />
   ),
 };
-

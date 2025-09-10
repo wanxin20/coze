@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import type {
   WorkflowShortcutsContribution,
   WorkflowShortcutsRegistry,
 } from '@coze-workflow/render';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { WorkflowGlobalStateEntity } from '@/typing';
 import { type WorkflowExportData } from '@/shortcuts/type';
@@ -147,4 +147,3 @@ export class WorkflowLoadShortcutsContribution
     return true;
   }
 }
-

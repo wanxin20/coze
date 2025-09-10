@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import { debounce } from 'lodash-es';
 import { I18n } from '@coze-arch/i18n';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 import {
   BaseDelimiterSelector,
@@ -77,4 +77,3 @@ export const SettingForm = ({
     </div>
   );
 };
-

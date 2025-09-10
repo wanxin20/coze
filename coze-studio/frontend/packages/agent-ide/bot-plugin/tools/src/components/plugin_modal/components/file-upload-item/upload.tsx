@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import { userStoreService } from '@coze-studio/user-store';
 import { I18n } from '@coze-arch/i18n';
 import { uploadFileV2 } from '@coze-arch/bot-utils';
 import { FileTypeEnum, getFileInfo } from '@coze-studio/file-kit/logic';
-import { Upload, Toast, type UploadProps } from '@coze-arch/bot-semi';
+import { Upload, Toast, type UploadProps } from '@coze-arch/coze-design';
 
 interface PluginFileUploadProps {
   render: (props: { fileState: FileState; clearFile: () => void }) => ReactNode;
@@ -162,4 +162,3 @@ export const PluginFileUpload: FC<PluginFileUploadProps> = ({
     </Upload>
   );
 };
-

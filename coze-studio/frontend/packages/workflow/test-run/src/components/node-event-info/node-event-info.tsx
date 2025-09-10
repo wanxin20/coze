@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import { Avatar, Typography } from '@coze-arch/bot-semi';
+import { Avatar, Typography } from '@coze-arch/coze-design';
 import { type NodeEvent } from '@coze-arch/bot-api/workflow_api';
 
 import styles from './node-event-info.module.less';
@@ -36,4 +36,3 @@ export const NodeEventInfo: React.FC<NodeEventInfoProps> = ({ event }) => {
     </div>
   );
 };
-

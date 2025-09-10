@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { useShallow } from 'zustand/react/shallow';
 import { isBoolean } from 'lodash-es';
 import { useMount } from 'ahooks';
 import { I18n } from '@coze-arch/i18n';
-import { Modal } from '@coze-arch/bot-semi';
+import { Modal } from '@coze-arch/coze-design';
 import {
   usePremiumStore,
   usePremiumType,
@@ -141,4 +141,3 @@ export function ModelSelect({
     />
   );
 }
-

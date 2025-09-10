@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type FC } from 'react';
 import { useKnowledgeStore } from '@coze-data/knowledge-stores';
 import { KnowledgeE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
-import { Divider } from '@coze-arch/bot-semi';
+import { Divider } from '@coze-arch/coze-design';
 
 import { FilterPhotoType } from '@/types';
 
@@ -74,4 +74,3 @@ export const PhotoFilter: FC = () => {
     </div>
   );
 };
-

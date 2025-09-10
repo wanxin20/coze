@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import classNames from 'classnames';
 import {
   IconCozCheckMarkCircleFill,
   IconCozInfoCircleFill,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { Typography } from '@coze-arch/bot-semi';
 import { type TransferResourceInfo } from '@coze-arch/bot-api/playground_api';
 
@@ -87,4 +87,3 @@ export function ItemGridView(props: IItemGridView) {
     </>
   );
 }
-

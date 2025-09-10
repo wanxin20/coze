@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,14 +23,14 @@ import {
   IconCozPeopleFill,
   IconCozTeamFill,
   IconCozCheckMarkCircleFillPalette,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Avatar,
   Typography,
   Tag,
   Popover,
   IconButton,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { formatDate } from '@coze-arch/bot-utils';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { IconEditNew } from '@coze-arch/bot-icons';
@@ -149,4 +149,3 @@ export const BotInfoCard = ({
     </Popover>
   );
 };
-

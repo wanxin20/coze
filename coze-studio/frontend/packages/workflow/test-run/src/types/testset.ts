@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type ReactNode } from 'react';
 
-import { type CommonFieldProps } from '@coze-arch/bot-semi';
+import { type CommonFieldProps } from '@coze-arch/coze-design';
 
 export type ValidateSchemaResult = 'pending' | 'empty' | 'invalid' | 'ok';
 export type TestsetEditMode = 'create' | 'edit';
@@ -53,4 +53,3 @@ export interface NodeFormSchema {
 export interface NodeFormItem {
   (props: CommonFieldProps): ReactNode;
 }
-

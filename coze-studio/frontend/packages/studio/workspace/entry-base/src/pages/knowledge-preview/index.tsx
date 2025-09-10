@@ -78,10 +78,6 @@ export const KnowledgePreviewPage = () => {
       }}
     >
       {(() => {
-        // 如果是FastGPTRAG类型，使用专门的组件
-        if (params.type === 'fastgptrag' || searchParams.get('type') === 'fastgptrag') {
-          return <BizLibraryKnowledgeIDE />;
-        }
         if (params.biz === 'agentIDE') {
           return <BizAgentKnowledgeIDE />;
         }

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,13 +16,13 @@
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCross, IconCozTrashCan } from '@coze-arch/bot-semi/icons';
+import { IconCozCross, IconCozTrashCan } from '@coze-arch/coze-design/icons';
 import {
   Button,
   Divider,
   IconButton,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 export interface BatchDeleteToolbarProps {
   selectedCount?: number;
@@ -60,4 +60,3 @@ export function BatchDeleteToolbar({
     </div>
   );
 }
-

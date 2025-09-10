@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,10 +16,9 @@
 
 import React from 'react';
 
-import { IconCozChat, IconCozWorkflow } from '@coze-arch/bot-semi/icons';
+import { IconCozChat, IconCozWorkflow } from '@coze-arch/coze-design/icons';
 import { WorkflowMode } from '@coze-arch/bot-api/workflow_api';
 export const WORKFLOW_SUB_TYPE_ICON_MAP = {
   [WorkflowMode.Workflow]: <IconCozWorkflow />,
   [WorkflowMode.ChatFlow]: <IconCozChat />,
 };
-

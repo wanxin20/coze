@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,14 +24,14 @@ import {
   IntelligenceType,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozMore } from '@coze-arch/bot-semi/icons';
+import { IconCozMore } from '@coze-arch/coze-design/icons';
 import {
   Space,
   Avatar,
   Typography,
   Popover,
   Button,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { CustomError } from '@coze-arch/bot-error';
 import {
@@ -167,4 +167,3 @@ export const FavoritesListItem: FC<IntelligenceData> = ({
     </div>
   );
 };
-

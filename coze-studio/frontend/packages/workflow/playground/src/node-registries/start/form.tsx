@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { TriggerForm } from '@coze-workflow/nodes';
 import { FILE_TYPES, ViewVariableType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Switch } from '@coze-arch/bot-semi';
+import { Switch } from '@coze-arch/coze-design';
 import { useFlags } from '@coze-arch/bot-flags';
 
 import { withNodeConfigForm } from '@/node-registries/common/hocs';
@@ -207,4 +207,3 @@ export const FormRender = withNodeConfigForm(() => {
     </>
   );
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { type Editor } from '@tiptap/react';
-import { Menu } from '@coze-arch/bot-semi';
+import { Menu } from '@coze-arch/coze-design';
 
 import { type EditorActionRegistry } from '@/text-knowledge-editor/features/editor-actions/registry';
 interface EditorContextMenuProps {
@@ -67,4 +67,3 @@ export const EditorContextMenu: React.FC<EditorContextMenuProps> = props => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useNavigate } from 'react-router-dom';
 import React, { useCallback } from 'react';
 
-import { IconCozArrowLeft } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozArrowLeft } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 import { useSpaceId } from '@coze-project-ide/framework';
 
 export const GoBackButton: React.FC = () => {
@@ -36,4 +36,3 @@ export const GoBackButton: React.FC = () => {
     />
   );
 };
-

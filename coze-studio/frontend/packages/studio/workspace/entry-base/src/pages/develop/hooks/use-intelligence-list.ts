@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
   type SearchScope,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import { intelligenceApi } from '@coze-arch/bot-api';
 
 import { type DraftIntelligenceList } from '../type';
@@ -201,4 +201,3 @@ export const useIntelligenceList = ({
 
   return { listResp, containerRef, cancelTokenRef };
 };
-

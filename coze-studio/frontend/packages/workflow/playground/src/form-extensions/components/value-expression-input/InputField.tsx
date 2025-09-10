@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React, { type FC, type CSSProperties } from 'react';
 
 import { ViewVariableType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { InputNumber, Switch, Input, DatePicker } from '@coze-arch/bot-semi';
+import { InputNumber, Switch, Input, DatePicker } from '@coze-arch/coze-design';
 import { type SelectProps } from '@coze-arch/bot-semi/Select';
 
 export type InputType =
@@ -168,4 +168,3 @@ export const InputField: FC<InputFieldProps> = props => {
 
   return <div>InputField</div>;
 };
-

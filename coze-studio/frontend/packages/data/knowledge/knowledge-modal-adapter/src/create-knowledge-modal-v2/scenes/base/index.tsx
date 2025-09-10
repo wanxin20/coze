@@ -29,13 +29,12 @@ import { Button, Form, LoadingButton } from '@coze-arch/coze-design';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { FormatType } from '@coze-arch/bot-api/memory';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { FastGPTRAGApi } from '@coze-data/knowledge-api/fastgptrag-api';
 
 import styles from './index.module.less';
 
 export interface UseCreateKnowledgeModalParams {
   projectID?: string;
-  onFinish?: (datasetId: string, type: UnitType, shouldUpload: boolean, formatType?: FormatType) => void;
+  onFinish?: (datasetId: string, type: UnitType, shouldUpload: boolean) => void;
   beforeCreate?: (shouldUpload: boolean) => void;
 }
 export const useCreateKnowledgeModalV2 = (
@@ -53,20 +52,6 @@ export const useCreateKnowledgeModalV2 = (
 
   const createDataset = async () => {
     await formRef.current?.formApi.validate();
-    
-    // 如果是FastGPTRAG类型，使用FastGPTRAG API
-    if (currentFormatType === FormatType.FastGPTRAG) {
-      const { id: datasetId } = await FastGPTRAGApi.createDataset({
-        name: formRef.current?.formApi.getValue('name'),
-        intro: formRef.current?.formApi.getValue('description'),
-        type: 'dataset',
-        vectorModel: 'text-embedding-3-small',
-        agentModel: 'gpt-4o-mini',
-      });
-      return datasetId;
-    }
-    
-    // 普通知识库使用原有API
     const { dataset_id: datasetId } = await KnowledgeApi.CreateDataset({
       project_id: projectID || undefined,
       name: formRef.current?.formApi.getValue('name'),
@@ -105,7 +90,7 @@ export const useCreateKnowledgeModalV2 = (
             beforeCreate?.(false);
             const datasetId = await createDataset();
             if (onFinish) {
-              onFinish(datasetId || '', unitType, false, currentFormatType);
+              onFinish(datasetId || '', unitType, false);
             } else {
               resourceNavigate.toResource?.('knowledge', datasetId);
             }
@@ -120,7 +105,7 @@ export const useCreateKnowledgeModalV2 = (
             beforeCreate?.(true);
             const datasetId = await createDataset();
             if (onFinish) {
-              onFinish(datasetId || '', unitType, true, currentFormatType);
+              onFinish(datasetId || '', unitType, true);
             } else {
               resourceNavigate.upload?.({ type: unitType });
             }

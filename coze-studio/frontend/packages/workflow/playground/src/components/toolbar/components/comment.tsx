@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useCallback, useState } from 'react';
 
 import { StandardNodeType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozComment } from '@coze-arch/bot-semi/icons';
-import { Tooltip, IconButton } from '@coze-arch/bot-semi';
+import { IconCozComment } from '@coze-arch/coze-design/icons';
+import { Tooltip, IconButton } from '@coze-arch/coze-design';
 import { FlowNodeTransformData } from '@flowgram-adapter/free-layout-editor';
 import {
   WorkflowDocument,
@@ -119,4 +119,3 @@ export const Comment = () => {
     </Tooltip>
   );
 };
-

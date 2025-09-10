@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import {
   type ParamsTypeDefine,
   sendTeaEvent,
 } from '@coze-arch/bot-tea';
-import { Button, Image } from '@coze-arch/bot-semi';
+import { Button, Image } from '@coze-arch/coze-design';
 
 import styles from './card.module.less';
 
@@ -170,4 +170,3 @@ export const ProjectTemplateCard: React.FC<ProjectTemplateCardContentProps> = ({
     </ProjectTemplateCardUI>
   );
 };
-

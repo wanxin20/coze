@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,8 +36,8 @@ import {
 import {
   IconCozArrowRightFill,
   IconCozMore,
-} from '@coze-arch/bot-semi/icons';
-import { Dropdown, IconButton, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Dropdown, IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { LinkDropItem } from './link-drop-item';
 
@@ -239,4 +239,3 @@ export const MoreMenuButton: FC = () => {
     </Dropdown>
   );
 };
-

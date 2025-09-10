@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,8 @@ import {
   type ViewVariableType,
   type ValueExpression,
 } from '@coze-workflow/variable';
-import { IconCozMinus } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozMinus } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { RefTagColor } from '@/form-extensions/components/value-expression-input/ref-value-display';
 import { type CustomFilterVar } from '@/form-extensions/components/tree-variable-selector/types';
@@ -125,4 +125,3 @@ export const GroupVariablesItem: FC<Props> = ({
     </Field>
   );
 };
-

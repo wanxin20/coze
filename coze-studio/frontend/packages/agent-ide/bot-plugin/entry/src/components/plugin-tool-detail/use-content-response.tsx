@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ import {
 import { useResponseParams } from '@coze-agent-ide/bot-plugin-tools/useResponseParams';
 import { type RenderEnhancedComponentProps } from '@coze-agent-ide/bot-plugin-tools/pluginModal/types';
 import { RESPONSENODE } from '@coze-agent-ide/bot-plugin-tools/pluginModal/config';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 
 import { OauthButtonAction } from '@/components/oauth-action';
 import { SecurityCheckFailed } from '@/components/check_failed';
@@ -171,4 +171,3 @@ export const useContentResponse = ({
     classNameWrap: 'plugin-tool-detail-response',
   };
 };
-

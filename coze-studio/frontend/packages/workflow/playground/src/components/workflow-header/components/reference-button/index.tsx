@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useState, useEffect } from 'react';
 
 import { workflowApi } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozBinding } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozBinding } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 import {
   WorkflowStorageType,
   type DependencyTree,
@@ -109,4 +109,3 @@ export const ReferenceButton = ({ workflowId }: { workflowId: string }) => {
     </>
   );
 };
-

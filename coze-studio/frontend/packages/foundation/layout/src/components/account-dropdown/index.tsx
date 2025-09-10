@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
 } from 'react';
 
 import classNames from 'classnames';
-import { Avatar, Badge, Dropdown } from '@coze-arch/bot-semi';
+import { Avatar, Badge, Dropdown } from '@coze-arch/coze-design';
 import { useUserInfo } from '@coze-foundation/account-adapter';
 
 import { reportNavClick } from '../global-layout/utils';
@@ -146,4 +146,3 @@ export const GlobalLayoutAccountDropdown: FC<
     </>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import {
   type InputVariable,
 } from '@coze-workflow/base/types';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozImage, IconCozString } from '@coze-arch/bot-semi/icons';
-import { Tag } from '@coze-arch/bot-semi';
+import { IconCozImage, IconCozString } from '@coze-arch/coze-design/icons';
+import { Tag } from '@coze-arch/coze-design';
 
 import {
   type FabricObjectWithCustomProps,
@@ -125,4 +125,3 @@ export const RefTitle: FC<IProps> = props => {
     </div>
   );
 };
-

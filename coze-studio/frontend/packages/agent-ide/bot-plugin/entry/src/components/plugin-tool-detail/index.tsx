@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import {
   REPORT_EVENTS as ReportEventNames,
 } from '@coze-arch/report-events';
 import { useErrorHandler } from '@coze-arch/logger';
-import { Spin, Collapse } from '@coze-arch/bot-semi';
+import { Spin, Collapse } from '@coze-arch/coze-design';
 import { CustomError } from '@coze-arch/bot-error';
 import {
   type APIParameter,
@@ -352,4 +352,3 @@ export const ToolDetailPage: FC<ToolDetailPageProps> = ({
     <Spin size="large" spinning style={{ height: '100%', width: '100%' }} />
   );
 };
-

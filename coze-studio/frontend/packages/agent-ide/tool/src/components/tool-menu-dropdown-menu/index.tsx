@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
 } from '@coze-agent-ide/tool-config';
 import { usePageRuntimeStore } from '@coze-studio/bot-detail-store/page-runtime';
 import { I18n } from '@coze-arch/i18n';
-import { Menu, Checkbox } from '@coze-arch/bot-semi';
+import { Menu, Checkbox } from '@coze-arch/coze-design';
 import { TabStatus } from '@coze-arch/bot-api/developer_api';
 
 import { ToolTooltip } from '../tool-tooltip';
@@ -128,4 +128,3 @@ export const ToolMenuDropdownMenu: FC<IProps> = () => {
     </div>
   );
 };
-

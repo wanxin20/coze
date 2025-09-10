@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React, { useEffect } from 'react';
 
 import { useShallow } from 'zustand/react/shallow';
 import { useErrorHandler } from '@coze-arch/logger';
-import { Form, Spin } from '@coze-arch/bot-semi';
+import { Form, Spin } from '@coze-arch/coze-design';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { useParams } from 'react-router-dom';
 
@@ -100,4 +100,3 @@ export function ProjectPublish(): JSX.Element {
     />
   );
 }
-

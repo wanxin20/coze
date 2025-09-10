@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useCallback, useEffect, useRef, useState, type FC } from 'react';
 import { IconCrossStroked } from '@douyinfe/semi-icons';
 import { json as languageJSON } from '@coze-editor/editor/language-json';
 import { I18n } from '@coze-arch/i18n';
-import { Button, IconButton, Tooltip, Modal } from '@coze-arch/bot-semi';
+import { Button, IconButton, Tooltip, Modal } from '@coze-arch/coze-design';
 import {
   IconInfo,
   IconUpdateOutlined,
@@ -201,4 +201,3 @@ export const JSONEditor: FC<JSONEditorProps> = props => {
     </div>
   );
 };
-

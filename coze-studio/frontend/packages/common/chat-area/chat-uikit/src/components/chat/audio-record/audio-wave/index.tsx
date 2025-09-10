@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { Space } from '@coze-arch/bot-semi';
+import { Space } from '@coze-arch/coze-design';
 
 import { getBarBgColor, getBarHeights } from './utils';
 import { type AudioWaveProps } from './type';
@@ -63,4 +63,3 @@ export const AudioWave = ({
     </Space>
   );
 };
-

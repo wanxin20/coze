@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useState } from 'react';
 
 import { REPORT_EVENTS } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozUpload } from '@coze-arch/bot-semi/icons';
+import { IconCozUpload } from '@coze-arch/coze-design/icons';
 import {
   Upload,
   Input,
@@ -26,7 +26,7 @@ import {
   Typography,
   Spin,
   Toast,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type UploadProps } from '@coze-arch/bot-semi/Upload';
 import { IconImageFailOutlined } from '@coze-arch/bot-icons';
 import { CustomError } from '@coze-arch/bot-error';
@@ -190,4 +190,3 @@ export const useImagePreview = ({
     close,
   };
 };
-

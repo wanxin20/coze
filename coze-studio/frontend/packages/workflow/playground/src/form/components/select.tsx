@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,10 @@
  * limitations under the License.
  */
 
-import { Select as BaseSelect, type SelectProps } from '@coze-arch/bot-semi';
+import { Select as BaseSelect, type SelectProps } from '@coze-arch/coze-design';
 
-export { type SelectProps } from '@coze-arch/bot-semi';
+export { type SelectProps } from '@coze-arch/coze-design';
 
 export const Select = (props: SelectProps) => (
   <BaseSelect size="small" {...props} />
 );
-

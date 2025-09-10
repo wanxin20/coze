@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
 } from '@coze-workflow/components';
 import { WorkflowMode } from '@coze-arch/idl/developer_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { useGlobalState } from '@/hooks';
 import { IconNameDescCard } from '@/form-extensions/components/icon-name-desc-card';
@@ -167,4 +167,3 @@ export const TriggerBindWorkflowField =
       );
     },
   );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   Upload,
   Toast,
   type FileItem as SemiFileItem,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { typeSafeJSONParse } from '@coze-arch/bot-utils';
 import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 
@@ -209,4 +209,3 @@ export const fileUpload = {
   key: 'FileUpload',
   component: FileUpload,
 };
-

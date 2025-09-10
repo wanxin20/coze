@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import {
   IconCozBot,
   IconCozClock,
   IconCozSuccessRate,
-} from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 import { formatNumber, formatPercent, formatTime } from '@coze-arch/bot-utils';
 
 import s from './index.module.less';
@@ -80,4 +80,3 @@ export const PluginPerfStatics = (props: PluginPerfStaticsProps) => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,7 +31,7 @@ export default defineConfig({
     environment: 'happy-dom',
     server: {
       deps: {
-        inline: ['@coze-arch/bot-semi', 'lottie-web'],
+        inline: ['@coze-arch/coze-design', 'lottie-web'],
       },
     },
   },
@@ -39,4 +39,3 @@ export default defineConfig({
     'import.meta.vitest': undefined,
   },
 });
-

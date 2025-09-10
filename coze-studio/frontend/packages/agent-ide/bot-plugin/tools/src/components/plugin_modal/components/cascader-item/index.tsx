@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, useEffect, useState } from 'react';
 
 import cl from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { type CascaderProps } from '@coze-arch/bot-semi';
+import { type CascaderProps } from '@coze-arch/coze-design';
 import { Typography, UICascader } from '@coze-arch/bot-semi';
 import { IconAlertCircle } from '@douyinfe/semi-icons';
 
@@ -162,4 +162,3 @@ export const CascaderItem: FC<CProps> = ({
     </span>
   );
 };
-

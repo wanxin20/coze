@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Button, Typography } from '@coze-arch/bot-semi';
+import { Button, Typography } from '@coze-arch/coze-design';
 
 import css from './upload-modal-footer.module.less';
 
@@ -49,4 +49,3 @@ export const UploadModalFooter: React.FC<UploadModalFooterProps> = ({
     </div>
   </div>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import {
   IconCozDatabaseFill,
   IconCozLongTermMemory,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   IconSpanAgent,
   IconSpanBMBatch,
@@ -217,4 +217,3 @@ export const TOPOLOGY_EDGE_STATUS_MAP: Record<
     nodeClassName: 'common-node-container_error',
   },
 };
-

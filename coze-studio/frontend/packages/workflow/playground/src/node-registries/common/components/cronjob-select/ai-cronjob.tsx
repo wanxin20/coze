@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,14 +26,14 @@ import {
   ViewVariableType,
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozStopCircle, IconCozApply } from '@coze-arch/bot-semi/icons';
+import { IconCozStopCircle, IconCozApply } from '@coze-arch/coze-design/icons';
 import {
   AIButton,
   Button,
   IconButton,
   Input,
   Popconfirm,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useRefInput } from '@/hooks/use-ref-input';
 import { useGlobalState } from '@/hooks';
@@ -261,4 +261,3 @@ export const AICronjobSelect = ({
     </div>
   );
 };
-

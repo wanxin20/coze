@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import { InputNumber } from '@coze-arch/bot-semi';
+import { InputNumber } from '@coze-arch/coze-design';
 import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 
 type TemperatureProps = SetterComponentProps;
@@ -29,4 +29,3 @@ export const temperature = {
   key: 'Temperature',
   component: Temperature,
 };
-

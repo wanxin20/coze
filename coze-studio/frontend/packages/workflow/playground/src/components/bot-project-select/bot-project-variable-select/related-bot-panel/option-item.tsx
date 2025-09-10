@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozArrowRight,
   IconCozCheckMarkFill,
-} from '@coze-arch/bot-semi/icons';
-import { Avatar, Tag, Typography } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Avatar, Tag, Typography } from '@coze-arch/coze-design';
 import { useHover } from '@coze-arch/hooks';
 
 import type { IBotSelectOption } from '@/components/bot-project-select/types';
@@ -101,4 +101,3 @@ export default function OptionItem({
     </div>
   );
 }
-

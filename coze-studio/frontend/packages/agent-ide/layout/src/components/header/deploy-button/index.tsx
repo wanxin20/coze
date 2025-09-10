@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { Fragment } from 'react';
 
 import { usePageRuntimeStore } from '@coze-studio/bot-detail-store/page-runtime';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCheckMarkCircleFillPalette } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozCheckMarkCircleFillPalette } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 import { type Type } from '@coze-arch/bot-semi/Button';
 import { BotDebugButton } from '@coze-agent-ide/space-bot/component';
 
@@ -108,4 +108,3 @@ export const DeployButtonUI = ({
     btn
   );
 };
-

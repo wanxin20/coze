@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,7 +37,7 @@ import { useCurrentEnterpriseInfo } from '@coze-foundation/enterprise-store-adap
 import { PictureUpload } from '@coze-common/biz-components/picture-upload';
 import { logger } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus, IconCozTrashCan } from '@coze-arch/bot-semi/icons';
+import { IconCozPlus, IconCozTrashCan } from '@coze-arch/coze-design/icons';
 import {
   Cascader,
   Col,
@@ -50,7 +50,7 @@ import {
   Row,
   Typography,
   withField,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { safeJSONParse } from '@coze-arch/bot-utils';
 import { useFlags } from '@coze-arch/bot-flags';
 import {
@@ -709,4 +709,3 @@ export const PluginForm: FC<{
     </Form>
   );
 };
-

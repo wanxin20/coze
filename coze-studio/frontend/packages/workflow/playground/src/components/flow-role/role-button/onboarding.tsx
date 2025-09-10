@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   Button,
   Typography,
   type PopoverProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { localStorageService } from '@coze-foundation/local-storage';
 
 import img from './onboarding.png';
@@ -85,4 +85,3 @@ export const OnBoardingPopover: React.FC<
     </Tooltip>
   );
 };
-

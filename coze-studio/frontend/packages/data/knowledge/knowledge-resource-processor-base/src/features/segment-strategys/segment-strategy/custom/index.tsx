@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   CheckboxGroup,
   Radio,
   type SelectProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import {
   PreProcessRule,
@@ -192,4 +192,3 @@ export const CustomSegment = ({
     {I18n.t('datasets_createFileModel_step3_custom')}
   </Radio>
 );
-

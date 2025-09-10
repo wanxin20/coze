@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,14 +26,14 @@ import { MemoryApi } from '@coze-arch/bot-api';
 import {
   IconCozRefresh,
   IconCozCrossCircleFill,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Table,
   Select,
   IconButton,
   Tooltip,
   Empty,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 export interface VariablesValueProps {
   projectID: string;
@@ -173,4 +173,3 @@ export function VariablesValue({ projectID, version }: VariablesValueProps) {
     </div>
   );
 }
-

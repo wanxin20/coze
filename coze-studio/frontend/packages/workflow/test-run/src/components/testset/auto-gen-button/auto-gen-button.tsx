@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,9 +17,8 @@
 import { useCallback } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozStopCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip, } from '@coze-arch/bot-semi';
-// AIButton might need to be replaced with a different component;
+import { IconCozStopCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip, AIButton } from '@coze-arch/coze-design';
 
 import { useAutoGen } from './use-auto-gen';
 
@@ -65,4 +64,3 @@ export const AutoGenButton: React.FC<AutoGenButtonProps> = ({ onGenerate }) => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type ReactNode } from 'react';
 
-import { type CascaderData } from '@coze-arch/bot-semi';
+import { type CascaderData } from '@coze-arch/coze-design';
 import {
   type LibraryResourceListRequest,
   type ResType,
@@ -93,4 +93,3 @@ export interface BaseLibraryPageProps {
   isPersonalSpace?: boolean;
   entityConfigs: LibraryEntityConfig[];
 }
-

@@ -105,8 +105,6 @@ export enum FormatType {
   VolcanoStructured = 4,
   /** 火山非结构化 火山知识库特有 */
   VolcanoUnstructured = 5,
-  /** FastGPTRAG */
-  FastGPTRAG = 7,
 }
 
 export enum SliceStatus {

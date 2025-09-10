@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useEditor } from '@coze-editor/editor/react';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCopy } from '@coze-arch/bot-semi/icons';
-import { Button, Toast } from '@coze-arch/bot-semi';
+import { IconCozCopy } from '@coze-arch/coze-design/icons';
+import { Button, Toast } from '@coze-arch/coze-design';
 export const CopyAction = () => {
   const editor = useEditor<EditorAPI>();
   return (
@@ -35,4 +35,3 @@ export const CopyAction = () => {
     />
   );
 };
-

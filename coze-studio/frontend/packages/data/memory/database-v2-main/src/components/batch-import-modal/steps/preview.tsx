@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ import {
 import { ColumnType } from '@coze-arch/bot-api/knowledge';
 import { FieldItemType } from '@coze-arch/bot-api/developer_api';
 import { MemoryApi } from '@coze-arch/bot-api';
-import { Spin } from '@coze-arch/bot-semi';
+import { Spin } from '@coze-arch/coze-design';
 
 import { type TableFieldData } from '../../database-table-data/type';
 
@@ -117,4 +117,3 @@ export function StepPreview({
     />
   );
 }
-

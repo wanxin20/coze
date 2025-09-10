@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import classnames from 'classnames';
-import { useTheme } from '@coze-arch/bot-semi';
+import { useTheme } from '@coze-arch/coze-design';
 
 import { SearchNoMask } from './mask';
 import { SearchNoCard, type CardProps } from './card';
@@ -82,4 +82,3 @@ export function SearchNoResult({
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
 } from '@coze-editor/editor/react';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
 import { I18n } from '@coze-arch/i18n';
-import { Popover } from '@coze-arch/bot-semi';
+import { Popover } from '@coze-arch/coze-design';
 import { type ViewUpdate } from '@codemirror/view';
 import { syntaxTree } from '@codemirror/language';
 
@@ -138,4 +138,3 @@ export const LibrarySearchPopover = ({
     </>
   );
 };
-

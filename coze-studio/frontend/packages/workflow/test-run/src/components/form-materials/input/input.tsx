@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,9 +15,8 @@
  */
 
 import { connect, mapProps } from '@formily/react';
-import { Input as InputCore } from '@coze-arch/bot-semi';
+import { Input as InputCore } from '@coze-arch/coze-design';
 
 const InputAdapter = props => <InputCore size="small" {...props} />;
 
 export const Input = connect(InputAdapter, mapProps({ validateStatus: true }));
-

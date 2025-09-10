@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { Space, Typography, Tooltip } from '@coze-arch/bot-semi';
+import { Space, Typography, Tooltip } from '@coze-arch/coze-design';
 import { Image } from '@coze-arch/bot-semi';
 
 import AvatarDefault from '../../assets/avatar_default.png';
@@ -115,4 +115,3 @@ export const AvatarName = ({
     ) : null}
   </Space>
 );
-

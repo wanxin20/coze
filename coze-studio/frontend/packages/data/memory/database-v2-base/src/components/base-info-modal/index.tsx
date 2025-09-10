@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
   type RenderAutoGenerateParams,
 } from '@coze-common/biz-components/picture-upload';
 import { I18n } from '@coze-arch/i18n';
-import { Form, type FormApi, Modal } from '@coze-arch/bot-semi';
+import { Form, type FormApi, Modal } from '@coze-arch/coze-design';
 import { FormatType } from '@coze-arch/bot-api/memory';
 import { FileBizType, IconType } from '@coze-arch/bot-api/developer_api';
 import { KnowledgeApi } from '@coze-arch/bot-api';
@@ -288,4 +288,3 @@ export const DatabaseBaseInfoModal: FC<DatabaseBaseInfoModalProps> = ({
     </Modal>
   );
 };
-

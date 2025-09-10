@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Button, Space, Typography } from '@coze-arch/bot-semi';
+import { Button, Space, Typography } from '@coze-arch/coze-design';
 
 import { type QuestionRenderNodeProps } from './type';
 import { NodeWrapperUI } from './node-wrapper-ui';
@@ -55,4 +55,3 @@ export const QuestionNodeRender: React.FC<QuestionRenderNodeProps> = ({
     </NodeWrapperUI>
   );
 };
-

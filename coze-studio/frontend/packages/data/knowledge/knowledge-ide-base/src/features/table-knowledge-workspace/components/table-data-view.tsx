@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import {
 import { KnowledgeE2e } from '@coze-data/e2e';
 import { TableView } from '@coze-common/table-view';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { Button } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { Button } from '@coze-arch/coze-design';
 import { DocumentStatus } from '@coze-arch/bot-api/knowledge';
 
 import styles from '../styles/index.module.less';
@@ -181,4 +181,3 @@ export const TableDataView = () => {
     </>
   );
 };
-

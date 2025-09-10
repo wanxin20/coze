@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useState, type MouseEvent } from 'react';
 
 import { logger } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { IconButton, Popconfirm } from '@coze-arch/bot-semi';
+import { IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { IconButton, Popconfirm } from '@coze-arch/coze-design';
 
 export const DeleteButton = ({
   className,
@@ -76,4 +76,3 @@ export const DeleteButton = ({
     </div>
   );
 };
-

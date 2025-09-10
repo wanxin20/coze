@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,8 @@ import {
   IconCozFolder,
   IconCozPeople,
   IconCozSetting,
-} from '@coze-arch/bot-semi/icons';
-import { Tag } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tag } from '@coze-arch/coze-design';
 
 import { useVariableWithNodeInfo } from '@/node-registries/http/fields/hooks/use-variable-with-node';
 import { useNodeServiceAndRefreshForTitleChange } from '@/form-extensions/hooks/use-node-available-variables';
@@ -175,4 +175,3 @@ export const UrlField = (props: UrlFieldProps, ref) => {
     </div>
   );
 };
-

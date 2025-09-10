@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Tag, Tooltip } from '@coze-arch/bot-semi';
+import { Tag, Tooltip } from '@coze-arch/coze-design';
 
 interface FailedTagProps {
   statusDescription: string | undefined;
@@ -31,4 +31,3 @@ export const FailedTag: FC<FailedTagProps> = ({ statusDescription }) => (
     </span>
   </Tooltip>
 );
-

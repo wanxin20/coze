@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC, useState } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozSetting } from '@coze-arch/bot-semi/icons';
+import { IconCozSetting } from '@coze-arch/coze-design/icons';
 
 import { type KnowledgeGlobalSetting } from './types';
 import { TooltipAction } from './tooltip-action';
@@ -53,4 +53,3 @@ export const KnowledgeSetting: FC<KnowledgeSettingProps> = props => {
     </>
   );
 };
-

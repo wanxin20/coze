@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   IconCozPencilPaper,
   IconCozPlug,
   IconCozWechatFill,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { FormatType, type DocumentSource } from '@coze-arch/bot-api/knowledge';
 
 export function isNoMore(data, pageSize) {
@@ -140,4 +140,3 @@ export function escapeHtml(unsafe: string): string {
     .replace(/<(?!(img|table|tr|td|th)\b[^>]*>|\/(?:table|tr|td|th)>)/g, '&lt;')
     .replace(/\n/g, '<br />');
 }
-

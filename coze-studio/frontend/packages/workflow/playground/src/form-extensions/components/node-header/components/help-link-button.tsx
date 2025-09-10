@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { get } from 'lodash-es';
 import { type FlowNodeType } from '@flowgram-adapter/free-layout-editor';
 import { type NodeData } from '@coze-workflow/nodes';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
-import { IconCozQuestionMarkCircle } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozQuestionMarkCircle } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 export const HelpLinkButton = ({
   helpLink,
@@ -56,4 +56,3 @@ export const HelpLinkButton = ({
     </>
   );
 };
-

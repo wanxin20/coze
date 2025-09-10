@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type FC, useRef, useState } from 'react';
 import { type ShortCutCommand } from '@coze-agent-ide/tool-config';
 import { Deferred } from '@coze-common/chat-area-utils';
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { UIModal } from '@coze-arch/bot-semi';
 
 export interface HasUnusedComponentsConfirmModalProps {
@@ -107,4 +107,3 @@ export const useHasUnusedComponentsConfirmModal = () => {
     open,
   };
 };
-

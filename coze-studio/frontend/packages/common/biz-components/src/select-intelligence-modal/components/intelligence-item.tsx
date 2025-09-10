@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import { type IntelligenceData } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 import { formatDate, getFormatDateType } from '@coze-arch/bot-utils';
 
 import { highlightService } from '../services/use-case-services/highlight-text.service';
@@ -87,4 +87,3 @@ export const IntelligenceItem: React.FC<IntelligenceItemProps> = ({
     </div>
   );
 };
-

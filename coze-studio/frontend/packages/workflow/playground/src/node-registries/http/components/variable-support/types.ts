@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import type { EditorAPI } from '@coze-editor/editor/preset-universal';
-import type { Tree } from '@coze-arch/bot-semi';
+import type { Tree } from '@coze-arch/coze-design';
 import type { TreeNodeData } from '@coze-arch/bot-semi/Tree';
 
 export interface VariableWithNodeInfo {
@@ -89,4 +89,3 @@ export interface RangeType {
   from: number;
   to: number;
 }
-

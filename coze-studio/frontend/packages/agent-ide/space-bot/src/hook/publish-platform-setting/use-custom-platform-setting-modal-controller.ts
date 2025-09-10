@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import { reporter } from '@coze-arch/logger';
 import { AppType } from '@coze-arch/idl/pat_permission_api';
 import { SpaceRoleType } from '@coze-arch/idl/developer_api';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import {
   type UpdateConnectorRequest,
   type CreateConnectorRequest,
@@ -254,4 +254,3 @@ const useCustomPlatformSettingModalController = (
 };
 
 export { useCustomPlatformSettingModalController };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type RefObject, useLayoutEffect, useState } from 'react';
 import { type Root, createRoot } from 'react-dom/client';
 import cls from 'classnames';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 import { WidgetType } from '@codemirror/view';
 
 import { getLibraryTooltip } from '../utils/get-library-tooltip';
@@ -287,4 +287,3 @@ export const LibraryBlockWidgetReactCom = (props: {
     </Tooltip>
   );
 };
-

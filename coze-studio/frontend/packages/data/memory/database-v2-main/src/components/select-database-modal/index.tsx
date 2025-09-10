@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -57,7 +57,7 @@ import {
   Spin,
   Select,
   Empty,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useLibraryCreateDatabaseModal } from '../../hooks/use-library-create-database-modal';
 import tipsTemplateEN from '../../assets/tips-template-en.png';
@@ -597,4 +597,3 @@ export const SelectDatabaseModal: FC<SelectDatabaseModalProps> = props => {
 
   return <>{renderDatabase()}</>;
 };
-

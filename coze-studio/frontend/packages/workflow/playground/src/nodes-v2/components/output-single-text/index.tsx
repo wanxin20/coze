@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { type CSSProperties } from 'react';
 
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -34,4 +34,3 @@ export const OutputSingleText = ({ label, type, required, style }: Props) => (
     {type ? <Tag className={styles.tag}>{type}</Tag> : null}
   </p>
 );
-

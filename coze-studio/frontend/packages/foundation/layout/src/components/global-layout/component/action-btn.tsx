@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { useState, type FC } from 'react';
 
 import classNames from 'classnames';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { reportNavClick } from '../utils';
 import { type LayoutButtonItem } from '../types';
@@ -85,4 +85,3 @@ export const GlobalLayoutActionBtn: FC<LayoutButtonItem> = ({
     </>
   );
 };
-

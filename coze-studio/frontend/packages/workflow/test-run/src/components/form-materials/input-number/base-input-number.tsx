@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useCallback } from 'react';
 
-import { CozInputNumber, type InputNumberProps } from '@coze-arch/bot-semi';
+import { CozInputNumber, type InputNumberProps } from '@coze-arch/coze-design';
 
 export type BaseInputNumberAdapterProps = {
   value?: number | string;
@@ -42,4 +42,3 @@ export const BaseInputNumberAdapter: React.FC<BaseInputNumberAdapterProps> = ({
     />
   );
 };
-

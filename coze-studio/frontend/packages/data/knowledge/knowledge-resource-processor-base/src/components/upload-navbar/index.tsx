@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import {
   useDataNavigate,
   useKnowledgeParams,
 } from '@coze-data/knowledge-stores';
-import { IconCozArrowLeft } from '@coze-arch/bot-semi/icons';
-import { IconButton, Typography } from '@coze-arch/bot-semi';
+import { IconCozArrowLeft } from '@coze-arch/coze-design/icons';
+import { IconButton, Typography } from '@coze-arch/coze-design';
 
 interface UploadActionNavbarProps {
   title: string;
@@ -61,4 +61,3 @@ export const UploadActionNavbar = ({ title }: UploadActionNavbarProps) => {
     </div>
   );
 };
-

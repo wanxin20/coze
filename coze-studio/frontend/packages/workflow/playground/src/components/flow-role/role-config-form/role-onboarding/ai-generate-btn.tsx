@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,7 @@ import { useState } from 'react';
 import { useForm, observer } from '@coze-workflow/test-run/formily';
 import { workflowApi } from '@coze-workflow/base';
 import { CopilotType } from '@coze-arch/bot-api/workflow_api';
-import { } from '@coze-arch/bot-semi';
-// AIButton might need to be replaced with a different component;
+import { AIButton } from '@coze-arch/coze-design';
 
 import { useGlobalState } from '@/hooks';
 
@@ -88,4 +87,3 @@ export const AIGenerateBtn: React.FC = observer(() => {
     />
   );
 });
-

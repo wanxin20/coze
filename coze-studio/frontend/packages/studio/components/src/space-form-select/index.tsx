@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { forwardRef, useEffect } from 'react';
 
 import { useShallow } from 'zustand/react/shallow';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozTeamFill } from '@coze-arch/bot-semi/icons';
+import { IconCozTeamFill } from '@coze-arch/coze-design/icons';
 import {
   Avatar,
   type CommonFieldProps,
@@ -28,7 +28,7 @@ import {
   Tag,
   Typography,
   withField,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type BotSpace, SpaceType } from '@coze-arch/bot-api/developer_api';
 import { useSpaceStore, useRefreshSpaces } from '@coze-foundation/space-store';
 
@@ -132,4 +132,3 @@ export const SpaceFormSelect = forwardRef<
     rules={[{ required: true }]}
   />
 ));
-

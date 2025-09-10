@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC, useRef } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 import { Form, ArrayField, UIButton, Typography } from '@coze-arch/bot-semi';
 import { IconPlay } from '@douyinfe/semi-icons';
 
@@ -108,4 +108,3 @@ export const MessageForm: FC<MessageFormProps> = props => {
     </Form>
   );
 };
-

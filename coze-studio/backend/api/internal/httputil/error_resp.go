@@ -25,6 +25,7 @@ import (
 
 	"github.com/coze-dev/coze-studio/backend/pkg/errorx"
 	"github.com/coze-dev/coze-studio/backend/pkg/logs"
+	"github.com/coze-dev/coze-studio/backend/types/errno"
 )
 
 type data struct {
@@ -41,7 +42,14 @@ func InternalError(ctx context.Context, c *app.RequestContext, err error) {
 
 	if errors.As(err, &customErr) && customErr.Code() != 0 {
 		logs.CtxWarnf(ctx, "[ErrorX] error:  %v %v \n", customErr.Code(), err)
-		c.AbortWithStatusJSON(http.StatusOK, data{Code: customErr.Code(), Msg: customErr.Msg()})
+		
+		// 检查是否是认证失败错误，返回正确的HTTP状态码
+		statusCode := http.StatusOK
+		if customErr.Code() == errno.ErrUserAuthenticationFailed {
+			statusCode = http.StatusUnauthorized
+		}
+		
+		c.AbortWithStatusJSON(statusCode, data{Code: customErr.Code(), Msg: customErr.Msg()})
 		return
 	}
 

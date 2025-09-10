@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { withField } from '@coze-arch/bot-semi';
+import { withField } from '@coze-arch/coze-design';
 
 import { ExpressionEditorContainer } from '../expression-editor/container';
 
@@ -34,4 +34,3 @@ const MessageContent = props => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const MessageContentField: any = withField(MessageContent);
-

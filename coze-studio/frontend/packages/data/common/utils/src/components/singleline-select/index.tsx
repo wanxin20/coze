@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import cs from 'classnames';
 import { useReactive } from 'ahooks';
-import { Select, type SelectProps } from '@coze-arch/bot-semi';
+import { Select, type SelectProps } from '@coze-arch/coze-design';
 import type { InputProps } from '@coze-arch/bot-semi/Input';
 import { CommonE2e } from '@coze-data/e2e';
 
@@ -66,4 +66,3 @@ export const SinglelineSelect: React.FC<SinglelineSelectProps> = props => {
 };
 
 export default SinglelineSelect;
-

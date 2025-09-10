@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,8 @@ import { KnowledgeE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
 import { IconCozArrowDown } from '@coze-arch/bot-icons';
 import { FormatType } from '@coze-arch/bot-api/knowledge';
-import { IconCozArrowUp } from '@coze-arch/bot-semi/icons';
-import { Button, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozArrowUp } from '@coze-arch/coze-design/icons';
+import { Button, Tooltip } from '@coze-arch/coze-design';
 
 import { ImportKnowledgeSourceMenu } from '@/features/import-knowledge-source-menu';
 
@@ -115,4 +115,3 @@ export {
   getDefaultFormatTooltip,
   createBtnDisableToolTip,
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import {
   type PublishConnectorInfo,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tag, type TagProps, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tag, type TagProps, Tooltip } from '@coze-arch/coze-design';
 
 import { getConfigStatus } from '../utils/get-config-status';
 
@@ -87,4 +87,3 @@ export const ConfigStatus = ({ record }: { record: PublishConnectorInfo }) => {
     </div>
   );
 };
-

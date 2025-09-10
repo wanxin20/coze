@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import classNames from 'classnames';
 import {
   IconCozCheckMarkFill,
   IconCozMinusCircleFillPalette,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { type PicTask } from '@coze-arch/bot-api/playground_api';
 
 import s from './index.module.less';
@@ -117,4 +117,3 @@ export const ImageList: React.FC<ImageListProps> = ({
     </div>
   );
 };
-

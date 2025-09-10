@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type ReactNode, type FC } from 'react';
 
 import classNames from 'classnames';
-import { IconCozBroom } from '@coze-arch/bot-semi/icons';
+import { IconCozBroom } from '@coze-arch/coze-design/icons';
 import { Layout } from '@coze-common/chat-uikit-shared';
 
 import { UIKitTooltip } from '../../../../common/tooltips';
@@ -61,4 +61,3 @@ const ClearHistoryButton: FC<IProps> = props => {
 };
 
 export default ClearHistoryButton;
-

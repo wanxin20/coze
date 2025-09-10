@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   getBotState,
 } from '@coze-common/chat-area';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import { messageReportEvent } from '@coze-arch/bot-utils';
 import { CustomError } from '@coze-arch/bot-error';
 
@@ -117,4 +117,3 @@ export const messageLifeCycleServiceGenerator: WriteableMessageLifeCycleServiceG
     messageReportEvent.receiveMessageEvent.error();
   },
 });
-

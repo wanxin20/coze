@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ import {
   Switch,
   Tooltip,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { IconInfo } from '@coze-arch/bot-icons';
 import { type GetSysVariableConfResponse } from '@coze-arch/bot-api/memory';
 import { MemoryApi } from '@coze-arch/bot-api';
@@ -367,4 +367,3 @@ export const useSystemVariables = (
     loading,
   };
 };
-

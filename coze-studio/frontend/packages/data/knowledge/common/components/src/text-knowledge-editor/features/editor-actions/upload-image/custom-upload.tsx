@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type PropsWithChildren } from 'react';
 import { DataNamespace, dataReporter } from '@coze-data/reporter';
 import { REPORT_EVENTS as ReportEventNames } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
-import { Upload, Toast, type customRequestArgs } from '@coze-arch/bot-semi';
+import { Upload, Toast, type customRequestArgs } from '@coze-arch/coze-design';
 import { type UploadProps } from '@coze-arch/bot-semi/Upload';
 import { CustomError } from '@coze-arch/bot-error';
 import { FileBizType } from '@coze-arch/bot-api/developer_api';
@@ -129,4 +129,3 @@ export const handleCustomUploadRequest = async ({
     onFinally?.();
   }
 };
-

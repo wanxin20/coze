@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import { type FormatType } from '@coze-arch/bot-api/knowledge';
 import {
   // IconCozArrowDownFill,
   IconCozEdit,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Popover,
   Select,
@@ -36,7 +36,7 @@ import {
   Button,
   TextArea,
   Search,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useUpdateDocument } from '@/service/document';
 
@@ -232,4 +232,3 @@ export const DocSelector = ({
     />
   );
 };
-

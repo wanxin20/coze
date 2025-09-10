@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
   StorageLocation,
 } from '@coze-arch/bot-api/knowledge';
 import { PlaygroundApi } from '@coze-arch/bot-api';
-import { Toast, Button } from '@coze-arch/bot-semi';
+import { Toast, Button } from '@coze-arch/coze-design';
 
 import { ActionType } from '@/types';
 
@@ -273,4 +273,3 @@ export const NavBarActionButton = ({
     </Button>
   );
 };
-

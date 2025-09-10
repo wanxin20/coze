@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { CustomError } from '@coze-arch/bot-error';
 import { type AuthLoginInfo } from '@coze-arch/bot-api/developer_api';
 import { DeveloperApi } from '@coze-arch/bot-api';
 import { connector2Redirect } from '@coze-foundation/account-adapter';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 export const useRevokeAuth = ({
   id,
@@ -98,4 +98,3 @@ export const logAndToastAuthInfoError = () => {
     content: withSlardarIdButton(I18n.t('error')),
   });
 };
-

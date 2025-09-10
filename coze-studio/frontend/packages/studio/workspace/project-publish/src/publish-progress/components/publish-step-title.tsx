@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Tag, type TagProps, Typography } from '@coze-arch/bot-semi';
+import { Tag, type TagProps, Typography } from '@coze-arch/coze-design';
 
 export interface PublishStepTitleProps {
   title: string;
@@ -39,4 +39,3 @@ export function PublishStepTitle({ title, tag, color }: PublishStepTitleProps) {
     </div>
   );
 }
-

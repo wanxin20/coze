@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { type ReactNode, useState } from 'react';
 
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Search, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Search, Tooltip } from '@coze-arch/coze-design';
 import { type ILevelSegment } from '@coze-data/knowledge-stores';
 
 import MergeOperation from '../assets/merge-operation.png';
@@ -182,4 +182,3 @@ const SegmentMenu: React.FC<ISegmentMenuProps> = props => {
 };
 
 export default SegmentMenu;
-

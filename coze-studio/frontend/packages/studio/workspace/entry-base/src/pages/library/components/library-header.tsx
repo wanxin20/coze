@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { Button, Menu } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { Button, Menu } from '@coze-arch/coze-design';
 
 import { type LibraryEntityConfig } from '../types';
 
@@ -49,4 +49,3 @@ export const LibraryHeader: React.FC<{
     </Menu>
   </div>
 );
-

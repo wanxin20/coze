@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useRef, useMemo, useEffect } from 'react';
 
 import cls from 'classnames';
 import BigNumber, { type BigNumber as IBigNumber } from 'bignumber.js';
-import { IconCozArrowDown, IconCozArrowUp } from '@coze-arch/bot-semi/icons';
-import { Input, type InputProps } from '@coze-arch/bot-semi';
+import { IconCozArrowDown, IconCozArrowUp } from '@coze-arch/coze-design/icons';
+import { Input, type InputProps } from '@coze-arch/coze-design';
 
 import css from './base-input-number-v2.module.less';
 
@@ -143,4 +143,3 @@ export const InputNumberV2Adapter: React.FC<InputNumberV2Props> = ({
     />
   );
 };
-

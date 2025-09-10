@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { EnterpriseRoleType } from '@coze-arch/idl/pat_permission_api';
 import { I18n } from '@coze-arch/i18n';
-import { Space } from '@coze-arch/bot-semi';
+import { Space } from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import {
   useCurrentEnterpriseRoles,
@@ -103,4 +103,3 @@ const PublishPlatformSetting = () => {
 };
 
 export { PublishPlatformSetting };
-

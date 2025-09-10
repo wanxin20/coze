@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import cls from 'classnames';
 import {
   IconCozStarFill,
   IconCozQuestionMarkCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Avatar, Divider, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Avatar, Divider, Tooltip } from '@coze-arch/coze-design';
 
 export type ModelOptionGroupProps =
   | {
@@ -85,4 +85,3 @@ export function ModelOptionGroup({
     </section>
   );
 }
-

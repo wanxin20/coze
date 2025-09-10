@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useDataNavigate } from '@coze-data/knowledge-stores';
 import { OptType } from '@coze-data/knowledge-resource-processor-core';
 import { I18n } from '@coze-arch/i18n';
 import { UpdateType } from '@coze-arch/bot-api/knowledge';
-import { Menu } from '@coze-arch/bot-semi';
+import { Menu } from '@coze-arch/coze-design';
 
 import {
   type TableConfigMenuModule,
@@ -55,4 +55,3 @@ export const ConfigurationTableStructure = (
 export const ConfigurationTableStructureModule: TableConfigMenuModule = {
   Component: ConfigurationTableStructure,
 };
-

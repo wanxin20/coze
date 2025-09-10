@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   Typography,
   SideSheet,
   Select,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { IconCloseNoCycle } from '@coze-arch/bot-icons';
 import { useNavigate } from 'react-router-dom';
@@ -257,4 +257,3 @@ export function useHistoryDrawer({
     close: () => setVisible(false),
   };
 }
-

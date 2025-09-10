@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,8 +33,8 @@ import {
   IconCozArrowUp,
   IconCozChatSetting,
   IconCozVariables,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { HEADER_HEIGHT } from '../../constants/styles';
 
@@ -90,22 +90,19 @@ export const Configuration = () => {
           onClick={handleSwitchExpand}
         />
       </div>
-      {/* will support soon */}
-      {IS_OPEN_SOURCE ? null : (
-        <div
-          className={classnames(
-            styles.item,
-            compareURI(context?.uri, SESSION_CONFIG_URI) && styles.activate,
-          )}
-          onClick={handleOpenSession}
-        >
-          <IconCozChatSetting
-            className="coz-fg-plus"
-            style={{ marginRight: 4 }}
-          />
-          {I18n.t('wf_chatflow_101')}
-        </div>
-      )}
+      <div
+        className={classnames(
+          styles.item,
+          compareURI(context?.uri, SESSION_CONFIG_URI) && styles.activate,
+        )}
+        onClick={handleOpenSession}
+      >
+        <IconCozChatSetting
+          className="coz-fg-plus"
+          style={{ marginRight: 4 }}
+        />
+        {I18n.t('wf_chatflow_101')}
+      </div>
       <div
         className={classnames(
           styles.item,
@@ -119,4 +116,3 @@ export const Configuration = () => {
     </div>
   );
 };
-

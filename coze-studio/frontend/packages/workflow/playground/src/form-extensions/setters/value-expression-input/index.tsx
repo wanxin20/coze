@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   type SetterExtension,
 } from '@flowgram-adapter/free-layout-editor';
 import { type ViewVariableType, useNodeTestId } from '@coze-workflow/base';
-import { type SelectProps } from '@coze-arch/bot-semi';
+import { type SelectProps } from '@coze-arch/coze-design';
 
 import { useRefInputProps } from '@/hooks/use-ref-input';
 
@@ -112,4 +112,3 @@ export const valueExpressionInput: SetterExtension = {
     });
   },
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,8 @@ import {
   type Dataset,
   type DocumentInfo,
 } from '@coze-arch/bot-api/knowledge';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
-import { IconButton, Avatar, Space } from '@coze-arch/bot-semi';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
+import { IconButton, Avatar, Space } from '@coze-arch/coze-design';
 
 import { getFormatTypeFromUnitType } from '@/utils';
 import { RenderDocumentIcon } from '@/components/render-document-icon';
@@ -119,4 +119,3 @@ export const KnowledgeModalNavBar: React.FC<KnowledgeModalNavBarProps> = ({
     </div>
   );
 };
-

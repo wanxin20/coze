@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 /** Text component, beyond automatic... and show tooltip */
 import { type FC } from 'react';
 
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 import { type Position } from '@coze-arch/bot-semi/Tooltip';
 
 interface IText {
@@ -49,4 +49,3 @@ export const Text: FC<IText> = props => {
     </Typography.Paragraph>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   type IDataSetInfo,
 } from '@coze-data/knowledge-modal-base';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Modal } from '@coze-arch/bot-semi';
+import { Button, Modal } from '@coze-arch/coze-design';
 
 import { type KnowledgeGlobalSetting } from './types';
 import { defaultKnowledgeGlobalSetting } from './constants';
@@ -94,4 +94,3 @@ export const KnowledgeSettingFormModal: FC<
     </Modal>
   );
 };
-

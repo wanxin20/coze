@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, useState } from 'react';
 
 import { CozeBrand } from '@coze-studio/components/coze-brand';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Form } from '@coze-arch/bot-semi';
+import { Button, Form } from '@coze-arch/coze-design';
 import { SignFrame, SignPanel } from '@coze-arch/bot-semi';
 
 import { useLoginService } from './service';
@@ -121,4 +121,3 @@ export const LoginPage: FC = () => {
     </SignFrame>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   type UserLabel,
   type BotSpace,
 } from '@coze-arch/idl/developer_api';
-import { type DropDownMenuItemItem } from '@coze-arch/bot-semi';
+import { type DropDownMenuItemItem } from '@coze-arch/coze-design';
 
 export {
   type OAuth2RedirectConfig,
@@ -166,4 +166,3 @@ export interface MenuItem {
  * Get space information based on spaceId
  */
 export declare function useSpace(spaceId: string): BotSpace | undefined;
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type CSSProperties } from 'react';
 
 import { useNodeTestId } from '@coze-workflow/base';
-import { Slider } from '@coze-arch/bot-semi';
+import { Slider } from '@coze-arch/coze-design';
 
 export const SliderWithInput = (props: {
   value: number;
@@ -61,4 +61,3 @@ export const SliderWithInput = (props: {
     </div>
   );
 };
-

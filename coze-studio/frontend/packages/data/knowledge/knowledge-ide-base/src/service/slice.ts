@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ import {
   type ListSliceRequest,
 } from '@coze-arch/bot-api/knowledge';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { type ISliceInfo } from '@/types/slice';
 
@@ -187,4 +187,3 @@ export const useCreateSlice = ({ onReload }) => {
     createSlice,
   };
 };
-

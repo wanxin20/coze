@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   withLazyLoad,
   type WidgetRegistry,
 } from '@coze-project-ide/framework';
-import { IconCozPlugin } from '@coze-arch/bot-semi/icons';
+import { IconCozPlugin } from '@coze-arch/coze-design/icons';
 
 export const PluginWidgetRegistry: WidgetRegistry = {
   match: /\/plugin\/.*/,
@@ -36,4 +36,3 @@ export const PluginWidgetRegistry: WidgetRegistry = {
     return <IconCozPlugin />;
   },
 };
-

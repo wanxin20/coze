@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
   safeAsyncThrow,
   typeSafeJsonParseEnhanced,
 } from '@coze-common/chat-area-utils';
-import { Skeleton } from '@coze-arch/bot-semi';
+import { Skeleton } from '@coze-arch/coze-design';
 import { type IImageContent } from '@coze-common/chat-uikit-shared';
 
 import { type IImageMessageContentProps } from '../image-content';
@@ -167,4 +167,3 @@ const SingleImageContentWithAutoSizeImpl: FC<
 };
 
 SingleImageContentWithAutoSize.displayName = 'SingleImageContentWithAutoSize';
-

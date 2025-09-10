@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Avatar } from '@coze-arch/bot-semi';
+import { Avatar } from '@coze-arch/coze-design';
 
 import { type ReceivedMessage } from '../../types';
 import { ContentType, MessageType } from '../../constants';
@@ -66,4 +66,3 @@ export const MessageItem: React.FC<MessageItemProps> = ({
     </div>
   );
 };
-

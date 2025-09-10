@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
   Command,
 } from '@coze-project-ide/framework';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozDocument } from '@coze-arch/bot-semi/icons';
-import { Image, Button } from '@coze-arch/bot-semi';
+import { IconCozDocument } from '@coze-arch/coze-design/icons';
+import { Image, Button } from '@coze-arch/coze-design';
 
 import EnWorkflowFrame from '@/assets/en-workflow-frame.png';
 import EnUIBuilderFrame from '@/assets/en-ui-builder-frame.png';
@@ -160,4 +160,3 @@ export const WidgetDefaultRenderer = () => {
     </div>
   );
 };
-

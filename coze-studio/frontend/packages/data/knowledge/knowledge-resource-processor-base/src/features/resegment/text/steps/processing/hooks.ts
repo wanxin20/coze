@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ import { REPORT_EVENTS } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
 import { CustomError } from '@coze-arch/bot-error';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { isLocalTextDocument } from '@/utils/is-local-text-document';
 import { convertFilterStrategyToParams } from '@/utils/convert-filter-strategy-to-params';
@@ -109,4 +109,3 @@ export const useResegment = <T extends UploadTextResegmentStore>(
   );
   return handleProcessText;
 };
-

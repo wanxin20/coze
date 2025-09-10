@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import { CozAvatar } from '@coze-arch/bot-semi';
+import { CozAvatar } from '@coze-arch/coze-design';
 
 import { OverflowTagList } from '../../fields/overflow-tag-list';
 
@@ -51,4 +51,3 @@ export const SkillTags: React.FC<{ skillTags: SkillTag[] }> = ({
     />
   );
 };
-

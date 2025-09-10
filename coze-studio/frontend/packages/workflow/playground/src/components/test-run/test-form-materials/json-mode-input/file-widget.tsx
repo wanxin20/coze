@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useMemo } from 'react';
 import { type Root } from 'react-dom/client';
 import { FileIcon, FileItemStatus, isImageFile } from '@coze-workflow/test-run';
 import { I18n } from '@coze-arch/i18n';
-import { Typography, Popover, Image } from '@coze-arch/bot-semi';
+import { Typography, Popover, Image } from '@coze-arch/coze-design';
 import { type EditorView, WidgetType } from '@codemirror/view';
 import { EditorSelection } from '@codemirror/state';
 
@@ -105,4 +105,3 @@ export class FileWidget extends WidgetType {
     this.root?.unmount();
   }
 }
-

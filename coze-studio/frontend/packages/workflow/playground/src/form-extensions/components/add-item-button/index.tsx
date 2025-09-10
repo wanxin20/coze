@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React, { type FC } from 'react';
 
 import classnames from 'classnames';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 interface Props {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
@@ -62,4 +62,3 @@ export const AddItemButton: FC<Props> = ({
 
   return !disabled ? ButtonContent : null;
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import classnames from 'classnames';
-import { Checkbox } from '@coze-arch/bot-semi';
+import { Checkbox } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -44,4 +44,3 @@ export const BigCheckbox: FC<CheckboxProps> = ({
     {children}
   </Checkbox>
 );
-

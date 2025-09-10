@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Button, Space } from '@coze-arch/bot-semi';
+import { Button, Space } from '@coze-arch/coze-design';
 
 import { PATInstructionWrap } from '@/components/instructions-wrap';
 
@@ -46,4 +46,3 @@ export const TopBody: FC<{
     </div>
   </Space>
 );
-

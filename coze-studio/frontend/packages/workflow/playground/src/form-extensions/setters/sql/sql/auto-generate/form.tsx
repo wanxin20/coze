@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { IconClose } from '@douyinfe/semi-icons';
 import { useNodeTestId } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { type FormState } from '@coze-arch/bot-semi/Form';
-import { Button, Space, Form as BotSemiForm } from '@coze-arch/bot-semi';
+import { Button, Space, Form as BotSemiForm } from '@coze-arch/coze-design';
 
 import { useNl2SqlMutation } from './use-nl2sql-mutation';
 import { Result } from './result';
@@ -140,4 +140,3 @@ export const Form: React.FC<FormProps> = ({ onSubmit, onCancel }) => {
     </div>
   );
 };
-

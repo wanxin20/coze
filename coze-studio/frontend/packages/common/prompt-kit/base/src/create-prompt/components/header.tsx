@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEdit } from '@coze-arch/bot-semi/icons';
-import { Tooltip, Divider, IconButton } from '@coze-arch/bot-semi';
+import { IconCozEdit } from '@coze-arch/coze-design/icons';
+import { Tooltip, Divider, IconButton } from '@coze-arch/coze-design';
 interface PromptHeaderProps {
   canEdit: boolean;
   onEditIconClick?: () => void;
@@ -55,4 +55,3 @@ export const PromptHeader = ({
 
   return <>{I18n.t('prompt_detail_prompt_detail')}</>;
 };
-

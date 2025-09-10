@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
 import React from 'react';
 
 import { useNodeTestId } from '@coze-workflow/base';
-import { Checkbox as UICheckbox } from '@coze-arch/bot-semi';
+import { Checkbox as UICheckbox } from '@coze-arch/coze-design';
 
 import { type TreeNodeCustomData } from '../../type';
 import { useOutputTreeContext } from '../../../../context';
@@ -51,4 +51,3 @@ export default function ParamRequired({
     </div>
   );
 }
-

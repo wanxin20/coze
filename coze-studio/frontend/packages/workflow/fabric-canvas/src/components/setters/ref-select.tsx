@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +19,13 @@ import { type FC } from 'react';
 import cls from 'classnames';
 import { ViewVariableType } from '@coze-workflow/base/types';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozImage, IconCozString } from '@coze-arch/bot-semi/icons';
+import { IconCozImage, IconCozString } from '@coze-arch/coze-design/icons';
 import {
   type RenderSelectedItemFn,
   Select,
   type SelectProps,
   Tag,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useGlobalContext } from '../../context';
 
@@ -133,4 +133,3 @@ export const RefSelect: FC<IProps> = props => {
     </div>
   );
 };
-

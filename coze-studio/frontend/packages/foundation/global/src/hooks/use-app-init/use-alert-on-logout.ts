@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { useRef } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Modal } from '@coze-arch/bot-semi';
+import { Modal } from '@coze-arch/coze-design';
 import { useAlterOnLogout as useAlertOnLogoutImpl } from '@coze-foundation/account-adapter';
 
 export const useAlertOnLogout = () => {
@@ -40,4 +40,3 @@ export const useAlertOnLogout = () => {
   };
   useAlertOnLogoutImpl(callback);
 };
-

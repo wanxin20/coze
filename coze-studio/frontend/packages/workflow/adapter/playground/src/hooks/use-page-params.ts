@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { useMount } from 'ahooks';
 import { type WorkflowPlaygroundProps } from '@coze-workflow/playground';
 import { OperateType } from '@coze-workflow/base/api';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 /** Process details page parameters */
 interface SearchParams {
@@ -114,4 +114,3 @@ export function usePageParams() {
     subExecuteId,
   };
 }
-

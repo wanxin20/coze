@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useState, useEffect } from 'react';
 
 import { useWorkflowNode } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { CozAvatar } from '@coze-arch/bot-semi';
+import { CozAvatar } from '@coze-arch/coze-design';
 import { useWorkflowModels } from '@/hooks';
 import { Field } from './field';
 
@@ -57,4 +57,3 @@ export function Model() {
     </Field>
   );
 }
-

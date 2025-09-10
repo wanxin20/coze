@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,7 +47,7 @@ import {
   IconCozMore,
   IconCozTrigger,
   IconCozWarningCircleFill,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   IconButton,
   Typography,
@@ -55,7 +55,7 @@ import {
   Input,
   Tag,
   Divider,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { PluginType } from '@coze-arch/bot-api/developer_api';
 
 import { useNodeSideSheetStore } from '@/hooks/use-node-side-sheet-store';
@@ -538,4 +538,3 @@ export const NodeHeader: React.FC<NodeHeaderProps> = ({
     </div>
   );
 };
-

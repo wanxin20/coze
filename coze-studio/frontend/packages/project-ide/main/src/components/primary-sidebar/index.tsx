@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,8 +24,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozSideExpand,
   IconCozBinding,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Button } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Button } from '@coze-arch/coze-design';
 import { useFlags } from '@coze-arch/bot-flags';
 
 import { ResourceList } from '../resource-list';
@@ -108,4 +108,3 @@ const PrimarySidebarCore = ({
   );
 };
 export const PrimarySidebar = withQueryClient(PrimarySidebarCore);
-

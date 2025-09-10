@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ import { type FC } from 'react';
 import { useRequest } from 'ahooks';
 import { type ProductInfo } from '@coze-studio/api-schema/marketplace';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozIllusError } from '@coze-arch/bot-semi/illustrations';
-import { EmptyState } from '@coze-arch/bot-semi';
+import { IconCozIllusError } from '@coze-arch/coze-design/illustrations';
+import { EmptyState } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -65,4 +65,3 @@ export const PageList: FC<{
     </div>
   );
 };
-

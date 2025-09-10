@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
   FormTextArea,
   Avatar,
   useFieldState,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { IntelligenceType } from '@coze-arch/bot-api/intelligence_api';
 import { ComponentType } from '@coze-arch/bot-api/debugger_api';
 
@@ -292,4 +292,3 @@ export const EditFormSection: React.FC<EditFormSectionProps> = ({
     </Form.Section>
   );
 };
-

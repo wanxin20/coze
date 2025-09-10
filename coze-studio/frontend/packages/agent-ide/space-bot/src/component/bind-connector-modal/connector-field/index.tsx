@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import { logger } from '@coze-arch/logger';
 import { I18n, type I18nKeysNoOptionsType } from '@coze-arch/i18n';
-import { IconCozTrashCan, IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { TagGroup, ArrayField, Button } from '@coze-arch/bot-semi';
+import { IconCozTrashCan, IconCozPlus } from '@coze-arch/coze-design/icons';
+import { TagGroup, ArrayField, Button } from '@coze-arch/coze-design';
 import { typeSafeJSONParse } from '@coze-arch/bot-utils';
 import { type RuleItem } from '@coze-arch/bot-semi/Form';
 import { UIFormInput, Form, Typography } from '@coze-arch/bot-semi';
@@ -196,4 +196,3 @@ export const ConnectorField = (props: ConnectorFieldProps) => {
       return null;
   }
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   type LabelHandler,
   HoverService,
 } from '@coze-project-ide/client';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 // Custom IDE HoverService style
 @injectable()
@@ -67,4 +67,3 @@ class TooltipContribution implements LabelHandler {
 }
 
 export { TooltipContribution };
-

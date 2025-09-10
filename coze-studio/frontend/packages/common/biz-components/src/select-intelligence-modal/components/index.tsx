@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React, { useRef, useState } from 'react';
 
 import { type IntelligenceData } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { Modal, Search } from '@coze-arch/bot-semi';
+import { Modal, Search } from '@coze-arch/coze-design';
 
 import { useIntelligenceSearch } from '../hooks/use-case/use-intelligence-search';
 import { IntelligenceList } from './intelligence-list';
@@ -79,4 +79,3 @@ export const SelectIntelligenceModal: React.FC<
     </Modal>
   );
 };
-

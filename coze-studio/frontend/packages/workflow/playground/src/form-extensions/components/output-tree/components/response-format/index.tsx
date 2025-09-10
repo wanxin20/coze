@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { IconInfo } from '@coze-arch/bot-icons';
-import { Select, Tooltip } from '@coze-arch/bot-semi';
+import { Select, Tooltip } from '@coze-arch/coze-design';
 
 import { type TreeNodeCustomData } from '../custom-tree-node/type';
 
@@ -156,4 +156,3 @@ export const ResponseFormatSelect: FC<IResponseFormatSelect> = props => {
     </Select>
   );
 };
-

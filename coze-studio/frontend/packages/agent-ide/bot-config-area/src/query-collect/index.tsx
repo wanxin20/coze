@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,8 @@ import {
   useGenerateLink,
   useGetUserQueryCollectOption,
 } from '@coze-agent-ide/space-bot/hook';
-import { IconCozEye } from '@coze-arch/bot-semi/icons';
-import { Modal, Switch, Form, type FormApi } from '@coze-arch/bot-semi';
+import { IconCozEye } from '@coze-arch/coze-design/icons';
+import { Modal, Switch, Form, type FormApi } from '@coze-arch/coze-design';
 
 import { getUrlValue, isValidUrl } from './utils';
 import { Tips } from './tips';
@@ -199,4 +199,3 @@ export const QueryCollect: FC = () => {
     </>
   );
 };
-

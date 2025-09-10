@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { useDataCallbacks } from '@coze-data/knowledge-stores';
 import { type DatabaseTabs } from '@coze-data/database-v2-base/types';
 import { I18n } from '@coze-arch/i18n';
 import { MemoryApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { DatabaseDetail } from '../../components/database-detail';
 
@@ -123,4 +123,3 @@ export const DatabaseInner = ({
     />
   );
 };
-

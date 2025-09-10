@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 
-import { Input } from '@coze-arch/bot-semi';
+import { Input } from '@coze-arch/coze-design';
 
 import { type CommonComponentProps } from '../../type';
 import { MOUSEUP_IGNORE_CLASS_NAME } from '../../constant';
@@ -137,4 +137,3 @@ const NameInput = ({
   );
 };
 export { NameInput };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useState } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozSendFill } from '@coze-arch/bot-semi/icons';
-import { Input, IconButton } from '@coze-arch/bot-semi';
+import { IconCozSendFill } from '@coze-arch/coze-design/icons';
+import { Input, IconButton } from '@coze-arch/coze-design';
 
 import { useSendMessage } from '../../hooks';
 
@@ -65,4 +65,3 @@ export const AnswerInput = () => {
     </div>
   );
 };
-

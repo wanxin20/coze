@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC, type ReactNode } from 'react';
 
 import classNames from 'classnames';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 export interface SubMenuItemProps {
   icon?: ReactNode;
@@ -63,4 +63,3 @@ export const SubMenuItem: FC<SubMenuItemProps> = ({
     {suffix}
   </div>
 );
-

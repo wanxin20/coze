@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import { StandardNodeType } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { Typography, UIButton } from '@coze-arch/bot-semi';
 import { IconAlertFilled } from '@coze-arch/bot-icons';
-import { IconCozTrashCan } from '@coze-arch/bot-semi/icons';
+import { IconCozTrashCan } from '@coze-arch/coze-design/icons';
 
 import { NodeIcon } from '../node-icon';
 import { WorkflowEditService } from '../../services';
@@ -106,4 +106,3 @@ export const SystemError = ({ node }: { node: FlowNodeEntity }) => {
 export const nodeSystemErrorRender = ({ context }: NodeErrorRenderProps) => (
   <SystemError node={context.node} />
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useState, useRef, useEffect } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { Typography, Input, Button } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { Typography, Input, Button } from '@coze-arch/coze-design';
 
 import styles from './style.module.less';
 
@@ -116,4 +116,3 @@ export function useSlotNode({
     node: outSlotNode,
   };
 }
-

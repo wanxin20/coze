@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
   FieldItemType,
 } from '@coze-arch/bot-api/memory';
 import { MemoryApi } from '@coze-arch/bot-api';
-import { type ColumnProps, Spin, Table } from '@coze-arch/bot-semi';
+import { type ColumnProps, Spin, Table } from '@coze-arch/coze-design';
 
 import { type TableFieldData } from '../../database-table-data/type';
 
@@ -191,4 +191,3 @@ function getTableStructureColumns(): ColumnProps<TableFieldData>[] {
     },
   ];
 }
-

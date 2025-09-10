@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type MouseEventHandler, type FC, type ReactNode } from 'react';
 
-import { Tooltip, IconButton } from '@coze-arch/bot-semi';
+import { Tooltip, IconButton } from '@coze-arch/coze-design';
 
 export const TooltipAction: FC<{
   icon: ReactNode;
@@ -36,4 +36,3 @@ export const TooltipAction: FC<{
     </Tooltip>
   );
 };
-

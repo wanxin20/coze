@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,11 +22,10 @@ export default defineConfig(
     dirname: __dirname,
     preset: 'web',
     ssr: {
-      noExternal: ['@coze-arch/bot-semi', '@douyinfe/semi-ui'],
+      noExternal: ['@coze-arch/coze-design', '@douyinfe/semi-ui'],
     },
   },
   {
     fixSemi: true,
   },
 );
-

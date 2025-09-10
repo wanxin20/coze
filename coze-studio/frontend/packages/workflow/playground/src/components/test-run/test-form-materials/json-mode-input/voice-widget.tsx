@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import { useRequest } from 'ahooks';
 import { type VoiceDetail } from '@coze-arch/bot-api/multimedia_api';
 import { MultimediaApi } from '@coze-arch/bot-api';
 import { useAudioPlayer } from '@coze-workflow/resources-adapter';
-import { IconCozVolume, IconCozPauseFill } from '@coze-arch/bot-semi/icons';
-import { Avatar, Spin } from '@coze-arch/bot-semi';
+import { IconCozVolume, IconCozPauseFill } from '@coze-arch/coze-design/icons';
+import { Avatar, Spin } from '@coze-arch/coze-design';
 import { type EditorView, WidgetType } from '@codemirror/view';
 import { EditorSelection } from '@codemirror/state';
 
@@ -135,4 +135,3 @@ export class VoiceWidget extends WidgetType {
     this.root?.unmount();
   }
 }
-

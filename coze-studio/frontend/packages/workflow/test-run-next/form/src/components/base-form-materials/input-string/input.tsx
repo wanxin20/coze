@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import clsx from 'clsx';
-import { TextArea } from '@coze-arch/bot-semi';
+import { TextArea } from '@coze-arch/coze-design';
 
 import css from './input.module.less';
 
@@ -32,4 +32,3 @@ export const InputString: React.FC<InputStringProps> = props => (
     {...props}
   />
 );
-

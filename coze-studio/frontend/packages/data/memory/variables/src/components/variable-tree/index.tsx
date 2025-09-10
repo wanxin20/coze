@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,8 +31,8 @@ import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 import { type TreeProps } from '@coze-arch/bot-semi/Tree';
 import { type VariableChannel } from '@coze-arch/bot-api/memory';
-import { IconCozPlus } from '@coze-arch/bot-semi/icons';
-import { IconButton, Toast, Tree, useFormApi } from '@coze-arch/bot-semi';
+import { IconCozPlus } from '@coze-arch/coze-design/icons';
+import { IconButton, Toast, Tree, useFormApi } from '@coze-arch/coze-design';
 
 import { traverse } from '@/utils/traverse';
 import { useVariableGroupsStore, ViewVariableType } from '@/store';
@@ -373,4 +373,3 @@ export function Index(
 
 // Export components that can call the ref method
 export const VariableTree = React.forwardRef(Index);
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -55,7 +55,7 @@ import {
   IconCozTriangle,
   IconCozVariables,
   type OriginIconProps,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   ConfigProvider,
   EmptyState,
@@ -64,7 +64,7 @@ import {
   Select,
   Tag,
   Tooltip,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { ColorPicker } from '../setters/color-picker';
 import { MyIconButton } from '../icon-button';
@@ -676,4 +676,3 @@ export const TopBar: FC<IProps> = props => {
     </div>
   );
 };
-

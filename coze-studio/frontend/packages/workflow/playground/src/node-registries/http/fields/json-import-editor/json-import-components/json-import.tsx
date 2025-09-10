@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React from 'react';
 
 import classNames from 'classnames';
 import { useNodeTestId } from '@coze-workflow/base';
-import { IconCozEdit } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozEdit } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { useNodeFormPanelState } from '@/hooks/use-node-side-sheet-store';
 
@@ -97,4 +97,3 @@ export const JsonImport = ({
     </div>
   );
 };
-

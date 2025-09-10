@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import React, {
 import { debounce } from 'lodash-es';
 import cs from 'classnames';
 import { type ExpressionEditorTreeNode } from '@coze-workflow/sdk';
-import { type TextAreaProps } from '@coze-arch/bot-semi';
+import { type TextAreaProps } from '@coze-arch/coze-design';
 import { type PopoverProps } from '@coze-arch/bot-semi/Popover';
 
 import { getCssVarStyle } from './util';
@@ -109,4 +109,3 @@ const VarQueryTextarea: FC<UsageWithVarTextAreaProps> = props => {
 };
 
 export default VarQueryTextarea;
-

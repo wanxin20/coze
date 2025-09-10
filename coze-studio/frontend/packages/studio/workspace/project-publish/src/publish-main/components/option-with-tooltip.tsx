@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,12 +17,12 @@
 import { type PropsWithChildren } from 'react';
 
 import classNames from 'classnames';
-import { IconCozCheckMarkFill } from '@coze-arch/bot-semi/icons';
+import { IconCozCheckMarkFill } from '@coze-arch/coze-design/icons';
 import {
   type optionRenderProps,
   Tooltip,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 export type OptionWithTooltipProps = PropsWithChildren<{
   option: optionRenderProps;
@@ -64,4 +64,3 @@ export function OptionWithTooltip({
     optionNode
   );
 }
-

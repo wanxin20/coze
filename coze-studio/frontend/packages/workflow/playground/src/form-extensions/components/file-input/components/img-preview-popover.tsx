@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useState, type PropsWithChildren } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { Popover, Image } from '@coze-arch/bot-semi';
+import { Popover, Image } from '@coze-arch/coze-design';
 import { IconImageOverlay } from '@coze-arch/bot-icons';
 
 import {
@@ -97,4 +97,3 @@ export const ImgPreviewPopover = (
 
   return <>{children}</>;
 };
-

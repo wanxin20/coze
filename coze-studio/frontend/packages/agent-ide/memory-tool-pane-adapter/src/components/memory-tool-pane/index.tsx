@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozVariables,
   IconCozDatabase,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { BotPageFromEnum } from '@coze-arch/bot-typings/common';
 import {
   DatabaseDebug,
@@ -75,4 +75,3 @@ export const MemoryToolPane: React.FC = () => {
   }, [variables.length, isFromStore, databaseList.length]);
   return <BaseComponent menuList={menuList} />;
 };
-

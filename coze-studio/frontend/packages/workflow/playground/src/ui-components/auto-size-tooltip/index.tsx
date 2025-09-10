@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { type PropsWithChildren, useRef } from 'react';
 
 import classNames from 'classnames';
-import { Tooltip, type TooltipProps } from '@coze-arch/bot-semi';
+import { Tooltip, type TooltipProps } from '@coze-arch/coze-design';
 
 import styles from './index.module.less';
 
@@ -72,4 +72,3 @@ export default function AutoSizeTooltip({
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Skeleton } from '@coze-arch/bot-semi';
+import { Skeleton } from '@coze-arch/coze-design';
 export const RecommendCardLoading = () => (
   <div className="flex flex-col flex-shrink-0 flex-nowrap px-3 py-2 aspect-[180/120] rounded-lg border coz-stroke-primary coz-bg-max">
     <Skeleton
@@ -27,4 +27,3 @@ export const RecommendCardLoading = () => (
     ></Skeleton>
   </div>
 );
-

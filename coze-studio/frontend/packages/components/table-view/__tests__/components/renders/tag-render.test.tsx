@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { TagRender } from '../../../src/components/renders/tag-render';
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Tag: ({ children, color, ...props }: any) => (
     <div data-testid="tag" data-color={color} {...props}>
       {children}
@@ -89,4 +89,3 @@ describe('TagRender', () => {
     expect(tag).toHaveTextContent('');
   });
 });
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import { type APIParameter } from '@coze-workflow/base/api';
 import { REPORT_EVENTS as ReportEventNames } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
 import { CustomError } from '@coze-arch/bot-error';
-import { IconCozCopy, IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tag, Toast } from '@coze-arch/bot-semi';
+import { IconCozCopy, IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tag, Toast } from '@coze-arch/coze-design';
 
 import { VariableTypeTag } from '@/form-extensions/components/variable-type-tag';
 import { IconNameDescCard } from '@/form-extensions/components/icon-name-desc-card';
@@ -130,4 +130,3 @@ export const BoundItemCard: FC<BoundItemCardProps> = props => {
     />
   );
 };
-

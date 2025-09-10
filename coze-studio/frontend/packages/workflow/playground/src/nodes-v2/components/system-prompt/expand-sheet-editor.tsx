@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -50,8 +50,8 @@ import {
   IconCozCrossFill,
   IconCozLightbulb,
   IconCozTrayArrowUp,
-} from '@coze-arch/bot-semi/icons';
-import { Tooltip, IconButton, Button } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tooltip, IconButton, Button } from '@coze-arch/coze-design';
 
 import { focusToAnchor } from '@/nodes-v2/components/system-prompt/utils';
 import { useNodeFormPanelState } from '@/hooks/use-node-side-sheet-store';
@@ -272,4 +272,3 @@ export const ExpandSheetEditor: FC<ExpandSheetEditorProps> = props => {
     </>
   );
 };
-

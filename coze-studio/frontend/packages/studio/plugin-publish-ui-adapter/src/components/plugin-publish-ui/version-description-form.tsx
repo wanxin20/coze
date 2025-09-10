@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type PublishPluginRequest } from '@coze-arch/idl/plugin_develop';
 import { I18n } from '@coze-arch/i18n';
-import { type BaseFormProps, Form } from '@coze-arch/bot-semi';
+import { type BaseFormProps, Form } from '@coze-arch/coze-design';
 
 export type VersionDescFormValue = Pick<
   PublishPluginRequest,
@@ -51,4 +51,3 @@ export const VersionDescForm: React.FC<
     />
   </Form>
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import {
   IconCozEdit,
   IconCozTrashCan,
   IconCozWarningCircle,
-} from '@coze-arch/bot-semi/icons';
-import { Typography, IconButton, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Typography, IconButton, Tooltip } from '@coze-arch/coze-design';
 import { type CaseDataDetail } from '@coze-arch/bot-api/debugger_api';
 
 import styles from './select-item.module.less';
@@ -176,4 +176,3 @@ export const NormalSelectItem: React.FC<NormalSelectItemProps> = ({
     />
   );
 };
-

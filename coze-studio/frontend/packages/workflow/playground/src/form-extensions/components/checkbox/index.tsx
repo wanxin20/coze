@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React from 'react';
 
 import { useNodeTestId } from '@coze-workflow/base';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip, Checkbox as SemiCheckbox } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip, Checkbox as SemiCheckbox } from '@coze-arch/coze-design';
 
 export const Checkbox = props => {
   const { value, onChange, context, options, readonly } = props;
@@ -44,4 +44,3 @@ export const Checkbox = props => {
     </div>
   );
 };
-

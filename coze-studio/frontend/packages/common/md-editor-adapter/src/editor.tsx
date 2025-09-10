@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import {
   useEffect,
 } from 'react';
 
-import { TextArea, withField } from '@coze-arch/bot-semi';
+import { TextArea, withField } from '@coze-arch/coze-design';
 
 import {
   type EditorInputProps,
@@ -41,6 +41,7 @@ export const EditorFullInputInner = forwardRef<EditorHandle, EditorInputProps>(
       ...restProps
     } = props;
     const [value, setValue] = useState(propsValue);
+    const [isComposing, setIsComposing] = useState(false);
 
     // Create a mutable reference to store the latest value
     const valueRef = useRef(value);
@@ -104,7 +105,15 @@ export const EditorFullInputInner = forwardRef<EditorHandle, EditorInputProps>(
         value={value}
         onChange={v => {
           setValue(v);
+          if (isComposing) {
+            return;
+          }
           propsOnChange?.(v);
+        }}
+        onCompositionStart={() => setIsComposing(true)}
+        onCompositionEnd={e => {
+          setIsComposing(false);
+          propsOnChange?.(e.currentTarget.value);
         }}
       />
     );
@@ -118,4 +127,3 @@ export const EditorInput: typeof EditorFullInputInner = withField(
     onKeyChangeFnName: 'onChange',
   },
 );
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import {
   ResType,
 } from '@coze-arch/idl/plugin_develop';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozDatabase } from '@coze-arch/bot-semi/icons';
-import { Menu, Table, Toast } from '@coze-arch/bot-semi';
+import { IconCozDatabase } from '@coze-arch/coze-design/icons';
+import { Menu, Table, Toast } from '@coze-arch/coze-design';
 import { MemoryApi } from '@coze-arch/bot-api';
 import { useLibraryCreateDatabaseModal } from '@coze-data/database-v2';
 
@@ -115,4 +115,3 @@ export const useDatabaseConfig: UseEntityConfigHook = ({
     },
   };
 };
-

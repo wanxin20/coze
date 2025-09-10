@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC } from 'react';
 
 import classnames from 'classnames';
 import { type WithCustomStyle } from '@coze-workflow/base/types';
-import { Popover, Space } from '@coze-arch/bot-semi';
+import { Popover, Space } from '@coze-arch/coze-design';
 import { type TreeNodeData } from '@coze-arch/bot-semi/Tree';
 
 import { NodeIcon } from '../../../components/node-icon';
@@ -128,4 +128,3 @@ export const ValueDisplay: FC<WithCustomStyle> = props => {
     </Popover>
   );
 };
-

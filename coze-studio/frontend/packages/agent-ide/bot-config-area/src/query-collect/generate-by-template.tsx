@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type FC, type MouseEvent, useEffect, useRef, useState } from 'react';
 import { get } from 'lodash-es';
 import { useBotInfoStore } from '@coze-studio/bot-detail-store/bot-info';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozTamplate } from '@coze-arch/bot-semi/icons';
+import { IconCozTamplate } from '@coze-arch/coze-design/icons';
 import {
   Button,
   Form,
@@ -27,7 +27,7 @@ import {
   IconButton,
   Popover,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type GenerateUserQueryCollectPolicyRequest } from '@coze-arch/bot-api/playground_api';
 
 import { Tips } from './tips';
@@ -235,4 +235,3 @@ export const GenerateByTemplate: FC<GenerateByTemplateProps> = ({
     </Popover>
   );
 };
-

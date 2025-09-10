@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import {
   SingleAgentModelView as SingleAgentModelViewBase,
   type SingleAgentModelViewProps,
 } from '@coze-agent-ide/bot-config-area';
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
-import { Button, Tag } from '@coze-arch/bot-semi';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+import { Button, Tag } from '@coze-arch/coze-design';
 
 const itemKey = Symbol.for('SingleAgentModelView');
 
@@ -74,4 +74,3 @@ export function SingleAgentModelView(props: SingleAgentModelViewProps) {
     />
   );
 }
-

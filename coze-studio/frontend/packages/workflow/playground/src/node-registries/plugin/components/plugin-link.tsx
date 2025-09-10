@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import React from 'react';
 import { type ApiNodeIdentifier } from '@coze-workflow/nodes';
 import { I18n } from '@coze-arch/i18n';
 import { PluginProductStatus } from '@coze-arch/bot-api/developer_api';
-import { IconCozLoading, IconCozExit } from '@coze-arch/bot-semi/icons';
+import { IconCozLoading, IconCozExit } from '@coze-arch/coze-design/icons';
 
 import { useGlobalState } from '@/hooks';
 
@@ -98,4 +98,3 @@ export const PluginLink = ({
 export const createPluginLink = (identifier: ApiNodeIdentifier) => (
   <PluginLink identifier={identifier} />
 );
-

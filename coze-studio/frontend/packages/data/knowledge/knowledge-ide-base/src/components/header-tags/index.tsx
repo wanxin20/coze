@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import {
   DocumentStatus,
   StorageLocation,
 } from '@coze-arch/bot-api/knowledge';
-import { Space, Tag } from '@coze-arch/bot-semi';
+import { Space, Tag } from '@coze-arch/coze-design';
 
 import { type ProgressMap } from '@/types';
 import { DOCUMENT_UPDATE_TYPE_MAP } from '@/constant';
@@ -167,4 +167,3 @@ export const HeaderTags = ({
     </div>
   );
 };
-

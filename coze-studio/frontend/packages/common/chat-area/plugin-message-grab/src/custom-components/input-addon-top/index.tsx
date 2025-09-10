@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useEffect, type FC } from 'react';
 
 import { useShallow } from 'zustand/react/shallow';
 import { PluginName, useWriteablePlugin } from '@coze-common/chat-area';
-import { IconCozCross, IconCozQuotation } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozCross, IconCozQuotation } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { QuoteNode } from '../quote-node';
 import { type GrabPluginBizContext } from '../../types/plugin-biz-context';
@@ -94,4 +94,3 @@ export const QuoteInputAddonTop: FC<IProps> = () => {
     </div>
   );
 };
-

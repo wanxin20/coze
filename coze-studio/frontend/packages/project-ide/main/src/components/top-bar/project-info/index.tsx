@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import {
 import {
   IconCozEdit,
   IconCozCheckMarkCircleFillPalette,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   CozAvatar,
   Typography,
@@ -35,7 +35,7 @@ import {
   IconButton,
   Toast,
   Popover,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useProjectInfo } from '../../../hooks';
 import { InfoContent } from './info-content';
@@ -131,4 +131,3 @@ export const ProjectInfo = () => {
     </div>
   );
 };
-

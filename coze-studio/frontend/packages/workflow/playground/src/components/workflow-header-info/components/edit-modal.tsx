@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { useBoolean } from 'ahooks';
 import { CreateWorkflowModal } from '@coze-workflow/components';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEdit } from '@coze-arch/bot-semi/icons';
-import { IconButton, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozEdit } from '@coze-arch/coze-design/icons';
+import { IconButton, Tooltip } from '@coze-arch/coze-design';
 
 import { useLatestWorkflowJson, useGlobalState } from '../../../hooks';
 
@@ -60,4 +60,3 @@ export const EditModal = () => {
     </>
   );
 };
-

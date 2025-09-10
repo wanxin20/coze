@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import classNames from 'classnames';
 import { useIsPublishRecordReady } from '@coze-studio/publish-manage-hooks';
 import { IntelligenceType } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircleFill } from '@coze-arch/bot-semi/icons';
+import { IconCozInfoCircleFill } from '@coze-arch/coze-design/icons';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { type ColumnProps } from '@coze-arch/bot-semi/Table';
 import {
@@ -279,4 +279,3 @@ export const PublishResult = ({
     </div>
   );
 };
-

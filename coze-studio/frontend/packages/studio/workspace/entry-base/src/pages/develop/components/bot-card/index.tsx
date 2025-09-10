@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,8 +35,8 @@ import {
   IconCozMore,
   IconCozStarFill,
   IconCozWarningCircleFill,
-} from '@coze-arch/bot-semi/icons';
-import { Avatar, IconButton, Menu, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Avatar, IconButton, Menu, Tooltip } from '@coze-arch/coze-design';
 import { formatDate, getFormatDateType } from '@coze-arch/bot-utils';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { ConnectorDynamicStatus } from '@coze-arch/bot-api/developer_api';
@@ -397,4 +397,3 @@ export const BotCard: React.FC<BotCardProps> = ({
     </>
   );
 };
-

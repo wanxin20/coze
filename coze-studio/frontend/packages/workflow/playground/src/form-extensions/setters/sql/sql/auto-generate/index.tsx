@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { useState } from 'react';
 
 import { useNodeTestId } from '@coze-workflow/base';
-import { Popover } from '@coze-arch/bot-semi';
+import { Popover } from '@coze-arch/coze-design';
 
 import { useCurrentDatabaseID } from '@/hooks';
 
@@ -74,4 +74,3 @@ export const AutoGenerate: React.FC<AutoGenerateProps> = ({
     </Popover>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
 } from '@coze-data/knowledge-resource-processor-core';
 import { I18n } from '@coze-arch/i18n';
 import { type TableType, type TableSheet } from '@coze-arch/bot-api/memory';
-import { Button, Modal } from '@coze-arch/bot-semi';
+import { Button, Modal } from '@coze-arch/coze-design';
 
 import { type TableFieldData } from '../database-table-data/type';
 import { StepUpload } from './steps/upload';
@@ -155,4 +155,3 @@ export function BatchImportModal({
     </Modal>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,13 +22,13 @@ import { BrowserUpgradeWrap } from '@coze-foundation/browser-upgrade-banner';
 import { I18nProvider } from '@coze-arch/i18n/i18n-provider';
 import { I18n } from '@coze-arch/i18n';
 import { useUserInfo } from '@coze-arch/foundation-sdk';
-import { zh_CN, en_US } from '@coze-arch/bot-semi/locales';
+import { zh_CN, en_US } from '@coze-arch/coze-design/locales';
 import {
   CDLocaleProvider,
   ThemeProvider,
   enUS,
   zhCN,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { LocaleProvider } from '@coze-arch/bot-semi';
 
 import { GlobalLayoutComposed } from '@/components/global-layout-composed';
@@ -71,4 +71,3 @@ export const GlobalLayout: FC = () => {
     </I18nProvider>
   );
 };
-

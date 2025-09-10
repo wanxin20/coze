@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import React from 'react';
 
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tag, Tooltip, Typography } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tag, Tooltip, Typography } from '@coze-arch/coze-design';
 
 import css from './item.module.less';
 
@@ -88,4 +88,3 @@ export const FieldItem: React.FC<React.PropsWithChildren<FieldItemProps>> = ({
     {feedback ? <div className={css['item-feedback']}>{feedback}</div> : null}
   </div>
 );
-

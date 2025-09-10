@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { useCallback, useMemo } from 'react';
 
-import { Switch as UISwitch } from '@coze-arch/bot-semi';
+import { Switch as UISwitch } from '@coze-arch/coze-design';
 import { type SetterComponentProps } from '@flowgram-adapter/free-layout-editor';
 
 type SwitchProps = SetterComponentProps;
@@ -48,4 +48,3 @@ export const switchSetter = {
   key: 'Switch',
   component: Switch,
 };
-

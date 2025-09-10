@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   Space,
   Typography,
   Tooltip,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 const ellipsis = {
   showTooltip: true,
@@ -102,4 +102,3 @@ export const UserInfoMenu = () => {
     </Dropdown.Item>
   );
 };
-

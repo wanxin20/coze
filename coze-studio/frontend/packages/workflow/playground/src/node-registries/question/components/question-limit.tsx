@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,14 +21,14 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozSetting,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   IconButton,
   Tooltip,
   Typography,
   Popover,
   Divider,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useReadonly } from '@/nodes-v2/hooks/use-readonly';
 import { ExpressionEditorField } from '@/node-registries/common/fields';
@@ -160,4 +160,3 @@ export const QuestionLimit = () => {
     </div>
   );
 };
-

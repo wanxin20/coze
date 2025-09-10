@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,14 +18,14 @@ import { type ReactNode } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
 import {
   Badge,
   Button,
   Avatar,
   Modal,
   type ModalProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useHiddenSession } from '../../hooks/use-hidden-session';
 import ProjectImg from '../../assets/project-img.png';
@@ -180,4 +180,3 @@ export const GuideModal: React.FC<GuideModalProps> = ({
 );
 
 GuideModal.displayName = 'GuideModal';
-

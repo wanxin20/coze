@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,8 @@ import cls from 'classnames';
 import { useEditor } from '@coze-editor/editor/react';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowRightFill } from '@coze-arch/bot-semi/icons';
-import { Tabs, TabPane, Button } from '@coze-arch/bot-semi';
+import { IconCozArrowRightFill } from '@coze-arch/coze-design/icons';
+import { Tabs, TabPane, Button } from '@coze-arch/coze-design';
 import {
   insertToNewline,
   type PromptContextInfo,
@@ -275,4 +275,3 @@ export const RecommendPannel = forwardRef<
   RecommendPannelRef,
   RecommendPannelProps
 >((props, ref) => <Index {...props} ref={ref} />);
-

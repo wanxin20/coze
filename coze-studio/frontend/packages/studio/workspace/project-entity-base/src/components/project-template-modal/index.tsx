@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,8 +28,8 @@ import {
   IllustrationFailure,
   IllustrationFailureDark,
 } from '@douyinfe/semi-illustrations';
-import { IconCozRefresh } from '@coze-arch/bot-semi/icons';
-import { Button, Empty, Modal, type ModalProps } from '@coze-arch/bot-semi';
+import { IconCozRefresh } from '@coze-arch/coze-design/icons';
+import { Button, Empty, Modal, type ModalProps } from '@coze-arch/coze-design';
 
 import {
   type BeforeProjectTemplateCopyCallback,
@@ -248,4 +248,3 @@ export const ProjectTemplateModal: React.FC<
     />
   </Modal>
 );
-

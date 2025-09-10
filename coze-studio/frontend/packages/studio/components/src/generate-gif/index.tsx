@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { PicType } from '@coze-arch/bot-api/playground_api';
 import { PlaygroundApi } from '@coze-arch/bot-api';
 import webSocketManager from '@coze-common/websocket-manager-adapter';
-import { TextArea } from '@coze-arch/bot-semi';
+import { TextArea } from '@coze-arch/coze-design';
 
 import { type ImageItem } from '../image-list';
 import { GenerateButton } from '../generate-button';
@@ -151,4 +151,3 @@ export const GenerateGif: React.FC<GenerateGifProps> = ({
     </div>
   );
 };
-

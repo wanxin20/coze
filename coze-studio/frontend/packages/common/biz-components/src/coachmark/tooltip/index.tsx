@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type TooltipRenderProps, type StepMerged } from 'react-joyride';
 import { type FC, type MouseEvent, useCallback } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 
 import { Container } from '../container';
 
@@ -131,4 +131,3 @@ export const Tooltip: FC<
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { type FC } from 'react';
 
-import { Image } from '@coze-arch/bot-semi';
+import { Image } from '@coze-arch/coze-design';
 import {
   type IOnImageClickParams,
   type IBaseContentProps,
@@ -77,4 +77,3 @@ export const ImageContent: FC<IImageMessageContentProps> = props => (
 );
 
 ImageContent.displayName = 'ImageContent';
-

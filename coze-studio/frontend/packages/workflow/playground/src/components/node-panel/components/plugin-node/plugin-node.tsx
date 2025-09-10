@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, type MouseEvent } from 'react';
 
 import classNames from 'classnames';
 import { type StandardNodeType } from '@coze-workflow/base';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import { type PluginNodeTemplate, type PluginApiNodeTemplate } from '@/typing';
 
@@ -117,4 +117,3 @@ export const PluginNode: FC<PluginNodeProps> = ({
   };
   return renderPluginNode();
 };
-

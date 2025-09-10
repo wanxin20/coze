@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { FormInput, useFormApi } from '@coze-arch/bot-semi';
+import { FormInput, useFormApi } from '@coze-arch/coze-design';
 
 import { type Variable } from '@/store';
 import { useVariableContext } from '@/context';
@@ -104,4 +104,3 @@ export const ParamName = (props: {
     </div>
   );
 };
-

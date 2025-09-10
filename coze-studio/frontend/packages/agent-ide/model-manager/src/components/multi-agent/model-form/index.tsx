@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import { CustomError } from '@coze-arch/bot-error';
 import { useBotEditor } from '@coze-agent-ide/bot-editor-context-store';
 
 import { ModelForm } from '../../model-form';
-import { useAgentModelCapabilityCheckAndBanner } from '../../model-capability-confirm-model';
+import { useAgentModelCapabilityCheckAndAlert } from '../../model-capability-confirm-model';
 import { ReportEventNames } from '../../../report-events/report-event-names';
 import { useHandleModelForm } from '../../../hooks/model-form/use-handle-model-form';
 
@@ -91,7 +91,7 @@ export const MultiAgentModelForm: React.FC<{ agentId: string }> = ({
     [modelId],
   );
 
-  const checkAndBanner = useAgentModelCapabilityCheckAndAlert();
+  const checkAndAlert = useAgentModelCapabilityCheckAndAlert();
 
   return (
     <div className={styles['form-wrapper']}>
@@ -110,4 +110,3 @@ export const MultiAgentModelForm: React.FC<{ agentId: string }> = ({
     </div>
   );
 };
-

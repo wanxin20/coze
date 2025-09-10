@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import { useBotInfoStore } from '@coze-studio/bot-detail-store/bot-info';
 import { type WorkFlowItemType } from '@coze-studio/bot-detail-store';
 import { usePageJumpResponse, PageType, SceneType } from '@coze-arch/bot-hooks';
 import { useNavigateWorkflowEditPage } from '@coze-agent-ide/navigate';
-import { Toast, Space, Typography, Button } from '@coze-arch/bot-semi';
+import { Toast, Space, Typography, Button } from '@coze-arch/coze-design';
 const { Text } = Typography;
 
 export interface UseWorkFlowListReturnValue {
@@ -219,4 +219,3 @@ function safeParse<T>(jsonString: string): T | undefined {
     return undefined;
   }
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { every, some } from 'lodash-es';
 import { useRequest } from 'ahooks';
 import { type PublishConnectorInfo } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { FormSelect, useFormApi } from '@coze-arch/bot-semi';
+import { FormSelect, useFormApi } from '@coze-arch/coze-design';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { type OptionProps } from '@coze-arch/bot-semi/Select';
 import { IconCozArrowDown } from '@coze-arch/bot-icons';
@@ -138,4 +138,3 @@ export const ApiBind = (props: ApiBindProps) => {
     </div>
   );
 };
-

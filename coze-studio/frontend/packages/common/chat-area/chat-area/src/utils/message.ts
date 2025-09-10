@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
 } from '@coze-common/chat-core';
 import { safeAsyncThrow } from '@coze-common/chat-area-utils';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import {
   type CardMessage,
@@ -293,4 +293,3 @@ export const toastBySendMessageResult = (
 export const isFallbackErrorMessage = (message: Pick<Message, 'message_id'>) =>
   /** If it is an error cover message, it is fixed to the end of the _error, which has been agreed with the server level */
   message.message_id.endsWith('_error');
-

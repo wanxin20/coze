@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   Radio,
   RadioGroup,
   type RadioGroupProps as BaseRadioGroupProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useField } from '../hooks';
 import { withField } from '../hocs';
@@ -58,4 +58,3 @@ export const RadioGroupField: React.FC<RadioGroupGroup & FieldProps> =
       </RadioGroup>
     );
   });
-

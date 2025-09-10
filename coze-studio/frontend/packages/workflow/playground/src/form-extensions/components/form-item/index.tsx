@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import React, {
 
 import classNames from 'classnames';
 import { type WithCustomStyle } from '@coze-workflow/base/types';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Row, Col } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Row, Col } from '@coze-arch/coze-design';
 import { type ColProps } from '@coze-arch/bot-semi/Grid';
 
 import {
@@ -198,4 +198,3 @@ export const FormItem: FC<
     );
   }
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { CozAvatar } from '@coze-arch/bot-semi';
+import { CozAvatar } from '@coze-arch/coze-design';
 
 import { EmptyRoleAvatar } from '../empty-role-avatar';
 
@@ -30,4 +30,3 @@ export const RoleAvatar: React.FC<RoleAvatarProps> = ({ url }) => {
   }
   return <CozAvatar src={url} className={css['role-avatar']} size="small" />;
 };
-

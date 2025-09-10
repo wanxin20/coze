@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,8 @@
 
 import copy from 'copy-to-clipboard';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCopy } from '@coze-arch/bot-semi/icons';
-import { Typography, Toast } from '@coze-arch/bot-semi';
+import { IconCozCopy } from '@coze-arch/coze-design/icons';
+import { Typography, Toast } from '@coze-arch/coze-design';
 import { UIIconButton } from '@coze-arch/bot-semi';
 
 import { useExecStateEntity } from '../../../hooks';
@@ -72,4 +72,3 @@ export const ExecuteLogId = () => {
     </>
   );
 };
-

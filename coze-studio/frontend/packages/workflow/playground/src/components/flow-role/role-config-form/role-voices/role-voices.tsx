@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 import { type VoiceConfig } from '@coze-arch/bot-api/workflow_api';
 import { type VoiceDetail } from '@coze-arch/bot-api/multimedia_api';
 import { MultimediaApi } from '@coze-arch/bot-api';
@@ -59,4 +59,3 @@ export const RoleVoices: React.FC<RoleVoicesProps> = ({ value }) => {
     </div>
   );
 };
-

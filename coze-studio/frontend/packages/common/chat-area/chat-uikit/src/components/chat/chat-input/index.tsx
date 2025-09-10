@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -36,8 +36,8 @@ import { useControllableValue, useUpdateEffect } from 'ahooks';
 import {
   IconCozKeyboard,
   IconCozMicrophone,
-} from '@coze-arch/bot-semi/icons';
-import { Divider, IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Divider, IconButton } from '@coze-arch/coze-design';
 import {
   type IChatInputProps,
   type InputMode,
@@ -525,4 +525,3 @@ export const ChatInput = forwardRef<InputRefObject, IChatInputProps>(
 );
 
 ChatInput.displayName = 'UiKitChatInput';
-

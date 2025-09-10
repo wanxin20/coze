@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { nanoid } from 'nanoid';
 import classNames from 'classnames';
 import { useUpdateEffect, useMemoizedFn } from 'ahooks';
 import { I18n } from '@coze-arch/i18n';
-import { Upload, Toast } from '@coze-arch/bot-semi';
+import { Upload, Toast } from '@coze-arch/coze-design';
 
 import { FileIcon, FileItemStatus } from '../file-icon';
 import { typeSafeJSONParse } from '../../utils';
@@ -229,4 +229,3 @@ export const FileUpload: React.FC<FileUploadProps> = props => {
     </ClickAwayListener>
   );
 };
-

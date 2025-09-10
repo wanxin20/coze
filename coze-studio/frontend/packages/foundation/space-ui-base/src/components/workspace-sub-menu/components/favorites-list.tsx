@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import { intelligenceApi } from '@coze-arch/bot-api';
 import { useSpaceStore } from '@coze-foundation/space-store';
 import { cozeMitt, type RefreshFavListParams } from '@coze-common/coze-mitt';
 import { CustomError } from '@coze-arch/bot-error';
-import { Space, Loading } from '@coze-arch/bot-semi';
+import { Space, Loading } from '@coze-arch/coze-design';
 
 import { FavoritesListItem } from './favorites-list-item';
 
@@ -219,4 +219,3 @@ export const FavoritesList: FC = () => {
     </div>
   );
 };
-

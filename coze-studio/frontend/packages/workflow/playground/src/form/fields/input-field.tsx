@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import {
   Input,
   type InputProps as BaseInputProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useField } from '../hooks';
 import { withField } from '../hocs';
@@ -43,4 +43,3 @@ export const InputField: React.FC<InputProps & FieldProps> =
       />
     );
   });
-

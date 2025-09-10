@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,14 +35,14 @@ import {
   IconCozArrowLeft,
   IconCozEdit,
   IconCozInfoCircle,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Space,
   IconButton,
   Avatar,
   Tooltip,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { getUnitType } from '@/utils';
 import { type ProgressMap } from '@/types';
@@ -257,4 +257,3 @@ export const KnowledgeIDENavBar = ({
     </div>
   );
 };
-

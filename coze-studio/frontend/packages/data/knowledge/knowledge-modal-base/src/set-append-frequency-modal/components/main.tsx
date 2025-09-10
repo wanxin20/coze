@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useState, useEffect } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
 import { type AuthFrequencyInfo } from '@coze-arch/bot-api/knowledge';
-import { Toast, Modal } from '@coze-arch/bot-semi';
+import { Toast, Modal } from '@coze-arch/coze-design';
 
 import { saveSettingChange } from '../service/use-case/save-setting-change';
 import { useInit } from '../hooks/life-cycle/use-init';
@@ -100,4 +100,3 @@ export const SetAppendFrequencyModal = (props: {
     </Modal>
   );
 };
-

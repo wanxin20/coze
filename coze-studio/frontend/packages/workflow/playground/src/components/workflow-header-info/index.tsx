@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozInfoCircle,
   IconCozCheckMarkCircleFillPalette,
-} from '@coze-arch/bot-semi/icons';
-import { Typography, Tag, Tooltip, IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Typography, Tag, Tooltip, IconButton } from '@coze-arch/coze-design';
 
 import { WorkflowReferencesTip } from '../workflow-references/references-tip';
 import { ExecuteState } from '../test-run/execute-result/execute-result-side-sheet/components/execute-state';
@@ -133,4 +133,3 @@ export const WorkflowInfo = () => {
     </div>
   );
 };
-

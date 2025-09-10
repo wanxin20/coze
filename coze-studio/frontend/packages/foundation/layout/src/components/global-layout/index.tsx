@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useLocation } from 'react-router-dom';
 import { type FC, type PropsWithChildren, useState, useEffect } from 'react';
 
 import cls from 'classnames';
-import { Layout, SideSheet } from '@coze-arch/bot-semi';
+import { Layout, SideSheet } from '@coze-arch/coze-design';
 
 import { type LayoutProps } from './types';
 import { useLayoutResponsive } from './hooks';
@@ -78,4 +78,3 @@ export const GlobalLayout: FC<PropsWithChildren<LayoutProps>> = ({
     </GlobalLayoutProvider>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { type FC } from 'react';
 import cls from 'classnames';
 import { type explore } from '@coze-studio/api-schema';
 import { I18n } from '@coze-arch/i18n';
-import { Avatar, Space, Tag, Toast, Tooltip } from '@coze-arch/bot-semi';
+import { Avatar, Space, Tag, Toast, Tooltip } from '@coze-arch/coze-design';
 
 import { PluginAuthMode, type AuthMode } from '../type';
 import { CardInfo } from '../components/info';
@@ -117,4 +117,3 @@ const PluginCardBody: FC<PluginCardProps> = props => {
     </div>
   );
 };
-

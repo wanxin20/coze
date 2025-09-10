@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import {
   type CreateProjectHookProps,
 } from '@coze-studio/project-entity-adapter';
 import { cozeMitt } from '@coze-common/coze-mitt';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { type DraftIntelligenceList } from '../type';
 
@@ -121,4 +121,3 @@ export const useIntelligenceActions = ({
     },
   };
 };
-

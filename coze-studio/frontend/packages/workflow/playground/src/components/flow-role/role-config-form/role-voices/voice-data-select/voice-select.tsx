@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useInViewport } from 'ahooks';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEmpty } from '@coze-arch/bot-semi/icons';
+import { IconCozEmpty } from '@coze-arch/coze-design/icons';
 import {
   CozAvatar,
   SegmentTab,
@@ -26,7 +26,7 @@ import {
   Tag,
   Typography,
   type SelectProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type VoiceConfig } from '@coze-arch/bot-api/workflow_api';
 import { VoiceScene } from '@coze-arch/bot-api/playground_api';
 
@@ -175,4 +175,3 @@ export const VoiceDataSelect: React.FC<VoiceDataSelectProps> = ({
     </>
   );
 };
-

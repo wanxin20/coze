@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { Spin, IconButton } from '@coze-arch/bot-semi';
+import { Spin, IconButton } from '@coze-arch/coze-design';
 import { IconAdd } from '@coze-arch/bot-icons';
 
 import { VariableTree } from '../variable-tree';
@@ -105,4 +105,3 @@ export const GroupTable = (props: {
     </table>
   );
 };
-

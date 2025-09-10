@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useEffect, useState } from 'react';
 import cls from 'classnames';
 import { useEditor } from '@coze-editor/editor/react';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
-import { Popover, Button, Typography } from '@coze-arch/bot-semi';
+import { Popover, Button, Typography } from '@coze-arch/coze-design';
 import { PlaygroundApi } from '@coze-arch/bot-api';
 import { ThemeExtension } from '@coze-common/editor-plugins/theme';
 import { LibraryBlockWidget } from '@coze-common/editor-plugins/library-insert';
@@ -195,4 +195,3 @@ export const ViewAll = ({
     </div>
   </div>
 );
-

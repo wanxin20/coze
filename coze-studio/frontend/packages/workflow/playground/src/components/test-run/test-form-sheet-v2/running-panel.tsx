@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import React from 'react';
 
 import cls from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozLoading } from '@coze-arch/bot-semi/icons';
+import { IconCozLoading } from '@coze-arch/coze-design/icons';
 
 import styles from './styles.module.less';
 
@@ -37,4 +37,3 @@ export default function RunningPanel() {
     </div>
   );
 }
-

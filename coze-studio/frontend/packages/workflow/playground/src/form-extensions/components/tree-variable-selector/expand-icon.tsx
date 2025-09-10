@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { type MouseEvent } from 'react';
 
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
 
 export const ExpandIcon = ({
   onClick,
@@ -28,4 +28,3 @@ export const ExpandIcon = ({
     onClick={onClick}
   />
 );
-

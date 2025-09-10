@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { type ColumnProps } from '@coze-arch/bot-semi';
+import { type ColumnProps } from '@coze-arch/coze-design';
 import { type PersonalAccessToken } from '@coze-arch/bot-api/pat_permission_api';
 
 import { columnStatusConf } from './column-status';
@@ -52,4 +52,3 @@ export const patColumn = {
   ColumnOpBody,
   columnOpConf,
 };
-

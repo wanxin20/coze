@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,8 +25,8 @@ import {
   IconCozArrowRight,
   IconCozMinus,
   IconCozPlus,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 export interface FilePreviewProps {
   fileType?: string;
@@ -124,4 +124,3 @@ export const FilePreview: React.FC<FilePreviewProps> = ({
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,8 +30,8 @@ import {
   IconCozStarFill,
   IconCozVideoFill,
   IconCozWrenchFill,
-} from '@coze-arch/bot-semi/icons';
-import { Avatar, Tooltip } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Avatar, Tooltip } from '@coze-arch/coze-design';
 import { type Model, ModelTagValue } from '@coze-arch/bot-api/developer_api';
 
 export function ModelOptionAvatar({ model }: { model: Model }) {
@@ -173,4 +173,3 @@ const FEATURE_ICON_MAP: Record<
     bg: 'coz-mg-color-cyan',
   },
 };
-

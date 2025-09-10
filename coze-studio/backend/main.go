@@ -108,7 +108,7 @@ func startHttpServer() {
 	s.Use(corsHandler)
 	s.Use(middleware.AccessLogMW())
 	s.Use(middleware.OpenapiAuthMW())
-	// s.Use(middleware.SessionAuthMW()) // 暂时禁用session认证
+	s.Use(middleware.SessionAuthMW()) // Session认证中间件
 	s.Use(middleware.I18nMW()) // must after SessionAuthMW
 
 	router.GeneratedRegister(s)

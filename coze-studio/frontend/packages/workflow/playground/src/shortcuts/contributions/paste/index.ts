@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -45,7 +45,7 @@ import {
 } from '@coze-workflow/render';
 import { type WorkflowNodeJSON } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { WorkflowGlobalStateEntity } from '@/typing';
 import {
@@ -436,4 +436,3 @@ export class WorkflowPasteShortcutsContribution
     await new Promise(resolve => requestAnimationFrame(resolve));
   }
 }
-

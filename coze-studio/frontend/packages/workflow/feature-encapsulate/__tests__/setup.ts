@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ vi.mock('@coze-arch/bot-flags', () => ({
     'bot.automation.encapsulate': true,
   }),
 }));
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Typography: {
     Text: vi.fn(),
   },
@@ -37,4 +37,3 @@ vi.stubGlobal('IS_DEV_MODE', true);
 vi.stubGlobal('IS_OVERSEA', false);
 vi.stubGlobal('IS_BOE', false);
 vi.stubGlobal('REGION', 'cn');
-

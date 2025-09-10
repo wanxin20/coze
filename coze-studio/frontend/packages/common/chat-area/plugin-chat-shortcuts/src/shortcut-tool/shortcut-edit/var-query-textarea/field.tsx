@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import React, {
 
 import { type ExpressionEditorTreeNode } from '@coze-workflow/sdk';
 import { I18n } from '@coze-arch/i18n';
-import { type CommonFieldProps } from '@coze-arch/bot-semi';
+import { type CommonFieldProps } from '@coze-arch/coze-design';
 import { withField, UIIconButton, useFormState } from '@coze-arch/bot-semi';
 import { IconCopyLink } from '@coze-arch/bot-icons';
 import { type shortcut_command } from '@coze-arch/bot-api/playground_api';
@@ -154,4 +154,3 @@ const VarQueryTextareaWrapperWithField: FC<VarQueryTextareaWrapper> = props => {
 };
 
 export default VarQueryTextareaWrapperWithField;
-

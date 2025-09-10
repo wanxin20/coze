@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,8 +33,8 @@ import { UpdateUserAvatar } from '@coze-common/biz-components';
 import { REPORT_EVENTS, createReportEvent } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
 import { refreshUserInfo } from '@coze-arch/foundation-sdk';
-import { IconCozWarningCircleFillPalette } from '@coze-arch/bot-semi/icons';
-import { Input, Toast, Select } from '@coze-arch/bot-semi';
+import { IconCozWarningCircleFillPalette } from '@coze-arch/coze-design/icons';
+import { Input, Toast, Select } from '@coze-arch/coze-design';
 import { Form, type Upload } from '@coze-arch/bot-semi';
 import { isApiError } from '@coze-arch/bot-http';
 import { DeveloperApi } from '@coze-arch/bot-api';
@@ -435,4 +435,3 @@ export const UserInfoPanel = () => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   VARIABLE_TYPE_ALIAS_MAP,
 } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWarningCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozWarningCircle } from '@coze-arch/coze-design/icons';
 
 import { OverflowTagList, type TagProps } from './overflow-tag-list';
 import { VARIABLE_TYPE_ICON_MAP } from './constants';
@@ -124,4 +124,3 @@ export const VariableTagList: React.FC<VariableTagListProps> = ({
     />
   );
 };
-

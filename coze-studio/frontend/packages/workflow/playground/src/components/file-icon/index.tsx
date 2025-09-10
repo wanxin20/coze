@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type CSSProperties } from 'react';
 
-import { IconCozFileImage } from '@coze-arch/bot-semi/illustrations';
+import { IconCozFileImage } from '@coze-arch/coze-design/illustrations';
 import { Spin, Image } from '@coze-arch/bot-semi';
 
 import {
@@ -90,4 +90,3 @@ export const FileIcon = (props: FileIconProps) => {
     <Icon style={{ width: size, height: size, fontSize: size, ...iconStyle }} />
   );
 };
-

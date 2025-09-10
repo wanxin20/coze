@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, type MouseEvent } from 'react';
 
 import { get } from 'lodash-es';
 import { type StandardNodeType, concatTestId } from '@coze-workflow/base';
-import { Typography } from '@coze-arch/bot-semi';
+import { Typography } from '@coze-arch/coze-design';
 
 import { isPluginCategoryNodeTemplate } from '@/utils';
 import { type NodeCategory, type UnionNodeTemplate } from '@/typing';
@@ -88,4 +88,3 @@ export const AtomNodeList: FC<AtomNodeListProps> = ({
     ))}
   </>
 );
-

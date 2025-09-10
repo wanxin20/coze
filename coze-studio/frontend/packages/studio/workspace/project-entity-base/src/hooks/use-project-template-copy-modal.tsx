@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
 import { type ProductInfo } from '@coze-arch/bot-api/product_api';
 import { ProductApi } from '@coze-arch/bot-api';
 import { botInputLengthService } from '@coze-agent-ide/bot-input-length-limit';
-import { type FormApi } from '@coze-arch/bot-semi';
+import { type FormApi } from '@coze-arch/coze-design';
 
 import { commonProjectFormValid } from '../utils/common-project-form-valid';
 import { useFormSubmitState } from './use-project-form-submit-state';
@@ -179,4 +179,3 @@ export const useProjectTemplateCopyModal = (props: {
     },
   };
 };
-

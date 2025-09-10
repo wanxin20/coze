@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import {
   type DatabaseConditionOperator,
   type ViewVariableType,
 } from '@coze-workflow/base';
-import { Input } from '@coze-arch/bot-semi';
+import { Input } from '@coze-arch/coze-design';
 
 import { ValueExpressionInput } from '@/nodes-v2/components/value-expression-input';
 import { withField, useField } from '@/form';
@@ -59,4 +59,3 @@ export const ConditionRightField = withField(
     );
   },
 );
-

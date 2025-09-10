@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,6 @@
  * limitations under the License.
  */
 
-import { type RadioGroupProps } from '@coze-arch/bot-semi';
+import { type RadioGroupProps } from '@coze-arch/coze-design';
 
 export type ImportKnowledgeSourceModule = React.ComponentType<RadioGroupProps>;
-

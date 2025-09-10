@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
-import { Tooltip, CozInputNumber } from '@coze-arch/bot-semi';
+import { IconCozInfoCircle } from '@coze-arch/coze-design/icons';
+import { Tooltip, CozInputNumber } from '@coze-arch/coze-design';
 
 export interface ChatHistoryRoundProps {
   value?: number;
@@ -56,4 +56,3 @@ export const ChatHistoryRound = ({
     />
   </div>
 );
-

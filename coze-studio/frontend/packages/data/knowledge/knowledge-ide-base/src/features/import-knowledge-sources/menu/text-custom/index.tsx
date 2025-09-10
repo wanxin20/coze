@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { UnitType } from '@coze-data/knowledge-resource-processor-core';
 import { KnowledgeE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozPencilPaper } from '@coze-arch/bot-semi/icons';
+import { IconCozPencilPaper } from '@coze-arch/coze-design/icons';
 
 import { KnowledgeSourceMenuItem } from '@/components/knowledge-source-menu-item';
 
@@ -42,4 +42,3 @@ export const TextCustom = (props: ImportKnowledgeMenuSourceModuleProps) => {
 export const TextCustomModule: ImportKnowledgeMenuSourceModule = {
   Component: TextCustom,
 };
-

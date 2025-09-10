@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -52,7 +52,7 @@ vi.mock('@coze-common/chat-uikit', () => ({
   },
 }));
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Avatar: vi.fn(),
   Tag: vi.fn(),
 }));
@@ -182,4 +182,3 @@ describe('getInitBackground', () => {
     expect(info).toMatchObject({});
   });
 });
-

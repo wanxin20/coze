@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ import {
 } from '@coze-studio/bot-detail-store/bot-skill';
 import { useBotDetailIsReadonly } from '@coze-studio/bot-detail-store';
 import { I18n } from '@coze-arch/i18n';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 import { OpenBlockEvent, emitEvent } from '@coze-arch/bot-utils';
 import { EVENT_NAMES } from '@coze-arch/bot-tea';
 import { useDefaultExPandCheck } from '@coze-arch/bot-hooks';
@@ -147,4 +147,3 @@ export const SuggestionBlock: FC<ISuggestionBlockProps> = ({ title }) => {
     </ToolContentBlock>
   );
 };
-

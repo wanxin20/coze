@@ -42,7 +42,8 @@ import (
 
 var (
 	initOnce           = sync.Once{}
-	lastActiveInterval = 15 * 24 * time.Hour
+	// 设置为永久不过期 - 使用一个非常大的时间值 (100年)
+	lastActiveInterval = 100 * 365 * 24 * time.Hour
 )
 
 func (p *pluginServiceImpl) processOAuthAccessToken(ctx context.Context) {
@@ -54,12 +55,17 @@ func (p *pluginServiceImpl) processOAuthAccessToken(ctx context.Context) {
 	for {
 		now := time.Now()
 
+		// 注意：由于 lastActiveInterval 已设置为100年，以下清理操作实际上不会删除任何token
+		// 这样确保了token的永久性，同时保持了代码结构的完整性
 		lastActiveAt := now.Add(-lastActiveInterval)
+		
+		// 由于设置了极长的活跃间隔，这个操作不会删除任何token
 		err := p.oauthRepo.DeleteInactiveAuthorizationCodeTokens(ctx, lastActiveAt.UnixMilli(), deleteLimit)
 		if err != nil {
 			logs.CtxWarnf(ctx, "DeleteInactiveAuthorizationCodeTokens failed, err=%v", err)
 		}
 
+		// 只删除明确已过期的token，但由于我们的token设计为永久，这通常不会发生
 		err = p.oauthRepo.DeleteExpiredAuthorizationCodeTokens(ctx, now.UnixMilli(), deleteLimit)
 		if err != nil {
 			logs.CtxWarnf(ctx, "DeleteExpiredAuthorizationCodeTokens failed, err=%v", err)
@@ -146,10 +152,8 @@ func (p *pluginServiceImpl) refreshToken(ctx context.Context, info *entity.Autho
 	}
 
 	for i := 0; i < 3; i++ {
-		var expiredAtMS int64
-		if !token.Expiry.IsZero() && token.Expiry.After(time.Now()) {
-			expiredAtMS = token.Expiry.UnixMilli()
-		}
+		// 刷新后的token也设置为永久 - 不设置过期时间
+		var expiredAtMS int64 = 0
 
 		err = p.oauthRepo.UpsertAuthorizationCode(ctx, &entity.AuthorizationCodeInfo{
 			Meta: &entity.AuthorizationCodeMeta{
@@ -221,9 +225,13 @@ func (p *pluginServiceImpl) getAccessTokenByAuthorizationCode(ctx context.Contex
 func isValidAuthCodeConfig(o, n *model.OAuthAuthorizationCodeConfig, expireAt, lastActiveAt int64) bool {
 	now := time.Now()
 
+	// 由于我们设置了永久token，跳过过期时间检查
+	// 如果expireAt为0，表示永久token，始终有效
 	if expireAt > 0 && expireAt <= now.UnixMilli() {
 		return false
 	}
+	
+	// 由于lastActiveInterval设置为100年，这个检查实际上不会让token失效
 	if lastActiveAt > 0 && lastActiveAt <= now.Add(-lastActiveInterval).UnixMilli() {
 		return false
 	}
@@ -296,10 +304,8 @@ func (p *pluginServiceImpl) OAuthCode(ctx context.Context, code string, state *e
 		IsDraft:  state.IsDraft,
 	}
 
-	var expiredAtMS int64
-	if !token.Expiry.IsZero() && token.Expiry.After(time.Now()) {
-		expiredAtMS = token.Expiry.UnixMilli()
-	}
+	// 设置为永久token - 不设置过期时间 (expiredAtMS = 0 表示永不过期)
+	var expiredAtMS int64 = 0
 
 	err = p.saveAccessToken(ctx, &entity.OAuthInfo{
 		OAuthMode: model.AuthzSubTypeOfOAuthAuthorizationCode,

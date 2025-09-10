@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 export const ObjectRefValueDisplay: FC<{}> = props => (
   <Tooltip
@@ -40,4 +40,3 @@ export const ObjectRefValueDisplay: FC<{}> = props => (
     </div>
   </Tooltip>
 );
-

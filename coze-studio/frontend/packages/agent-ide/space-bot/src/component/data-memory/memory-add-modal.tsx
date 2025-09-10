@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import {
 import { useBotInfoAuditor } from '@coze-studio/bot-audit-adapter';
 import { BotE2e } from '@coze-data/e2e';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozTrashCan, IconCozPlus } from '@coze-arch/bot-semi/icons';
+import { IconCozTrashCan, IconCozPlus } from '@coze-arch/coze-design/icons';
 import {
   IconButton,
   Modal,
@@ -45,7 +45,7 @@ import {
   Checkbox,
   Switch,
   Button,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { EVENT_NAMES, sendTeaEvent } from '@coze-arch/bot-tea';
 
 import { AddButton } from '../add-button';
@@ -487,4 +487,3 @@ export const MemoryAddModal: React.FC<MemoryAddModalProps> = props => {
     </Modal>
   );
 };
-

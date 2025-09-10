@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,15 +17,15 @@
 import { type FC } from 'react';
 
 import {
-  FILE_TYPE_CONFIG,
-  FileTypeEnum,
-} from '@coze-common/chat-core/shared/const';
-import { Toast, Upload } from '@coze-arch/bot-semi';
-import {
   type IChatUploadCopywritingConfig,
   DEFAULT_MAX_FILE_SIZE,
   UploadType,
 } from '@coze-common/chat-uikit-shared';
+import {
+  FILE_TYPE_CONFIG,
+  FileTypeEnum,
+} from '@coze-common/chat-core/shared/const';
+import { Toast, Upload } from '@coze-arch/coze-design';
 
 interface IChatUploadProps {
   /**
@@ -132,6 +132,7 @@ export const ChatUpload: FC<IChatUploadProps> = props => {
       onFileChange={handleUpload}
       disabled={isDisabled}
       multiple={limitFileCount > 1}
+      uploadTrigger={'custom'}
     >
       {children}
     </Upload>
@@ -139,4 +140,3 @@ export const ChatUpload: FC<IChatUploadProps> = props => {
 };
 
 ChatUpload.displayName = 'UiKitChatUpload';
-

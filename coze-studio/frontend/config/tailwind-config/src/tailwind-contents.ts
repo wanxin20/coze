@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -47,8 +47,7 @@ export const getTailwindContents = (projectRoot: string) => {
   );
 
   // Compatible with coze-design internal tailwind style
-  contents.push('./node_modules/@coze-arch/bot-semi/**/*.{js,jsx}');
+  contents.push('./node_modules/@coze-arch/coze-design/**/*.{js,jsx}');
 
   return contents;
 };
-

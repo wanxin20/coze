@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useTestsetManageStore } from '@coze-workflow/test-run';
 import { I18n } from '@coze-arch/i18n';
-import { Checkbox, Typography } from '@coze-arch/bot-semi';
+import { Checkbox, Typography } from '@coze-arch/coze-design';
 
 import css from './testset-save.module.less';
 
@@ -63,4 +63,3 @@ export const TestsetSave: React.FC<TestsetSaveProps> = ({
     </div>
   );
 };
-

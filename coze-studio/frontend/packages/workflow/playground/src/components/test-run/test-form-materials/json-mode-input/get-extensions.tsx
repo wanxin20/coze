@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import jsonUnnecessaryProperties from '@coze-editor/extension-json-unnecessary-p
 import jsonHover from '@coze-editor/extension-json-hover';
 import jsonEmptyStringValueCompletion from '@coze-editor/extension-json-empty-string-value-completion';
 import { I18n } from '@coze-arch/i18n';
-import { Typography, Tag } from '@coze-arch/bot-semi';
+import { Typography, Tag } from '@coze-arch/coze-design';
 import { Decoration } from '@codemirror/view';
 
 import { VoiceWidget } from './voice-widget';
@@ -194,4 +194,3 @@ export const getExtensions = ({
     }),
   ] as any[];
 };
-

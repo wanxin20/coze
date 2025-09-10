@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -30,7 +30,7 @@ import {
   Input as UIInput,
   type InputProps,
   type TooltipProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import AutoSizeTooltip from '../auto-size-tooltip';
 
@@ -192,4 +192,3 @@ export default function WorkflowSLInput(props: WorkflowSLInputProps) {
     </div>
   );
 }
-

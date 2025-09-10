@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { useState } from 'react';
 import { I18n } from '@coze-arch/i18n';
 import { FrequencyType } from '@coze-arch/bot-api/memory';
 import { type AuthFrequencyInfo } from '@coze-arch/bot-api/knowledge';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 
 interface AccountFrequencyItemProps {
   accountInfo: AuthFrequencyInfo;
@@ -64,4 +64,3 @@ export const AccountFrequencyItem = ({
     </div>
   );
 };
-

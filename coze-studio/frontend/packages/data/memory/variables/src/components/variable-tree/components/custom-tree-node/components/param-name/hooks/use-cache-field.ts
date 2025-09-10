@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useEffect, useRef } from 'react';
 
-import { useFormApi } from '@coze-arch/bot-semi';
+import { useFormApi } from '@coze-arch/coze-design';
 
 import { type Variable } from '@/store';
 
@@ -34,4 +34,3 @@ export const useCacheField = (data: Variable) => {
     }
   }, [data.variableId]);
 };
-

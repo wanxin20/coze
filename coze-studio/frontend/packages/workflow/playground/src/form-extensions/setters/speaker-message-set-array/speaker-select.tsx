@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, useState, useEffect } from 'react';
 
 import { concatTestId } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Select, RadioGroup, Radio, withField } from '@coze-arch/bot-semi';
+import { Select, RadioGroup, Radio, withField } from '@coze-arch/coze-design';
 
 import { isRoleSpeakerValue } from './utils';
 import { useGetRoleSpeakerDataSource } from './use-get-role-speaker-datasource';
@@ -187,4 +187,3 @@ const OriginSpeakerSelect: FC<SpeakerSelectProps> = props => {
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const SpeakerSelect: any = withField(OriginSpeakerSelect);
-

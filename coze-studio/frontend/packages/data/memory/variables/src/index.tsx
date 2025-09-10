@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import classNames from 'classnames';
 import { useKnowledgeParams } from '@coze-data/knowledge-stores';
 import { I18n } from '@coze-arch/i18n';
-import { TabBar, TabPane } from '@coze-arch/bot-semi';
+import { TabBar, TabPane } from '@coze-arch/coze-design';
 
 import { VariablesValue } from './variables-value';
 import { VariablesConfig } from './variables-config';
@@ -54,4 +54,3 @@ export const VariablesPage = () => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Tag, Tooltip } from '@coze-arch/bot-semi';
+import { Tag, Tooltip } from '@coze-arch/coze-design';
 import { Boundary, OverflowList } from '@blueprintjs/core';
 
 import s from './index.module.less';
@@ -70,4 +70,3 @@ function RoleTag({ item }: { item: Role }) {
     </div>
   );
 }
-

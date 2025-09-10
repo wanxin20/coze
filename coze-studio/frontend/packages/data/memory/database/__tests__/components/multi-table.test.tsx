@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -56,7 +56,7 @@ const mockDatabaseList: DatabaseList = [
   },
 ];
 
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   TabPane: vi.fn(({ children }) => <div>{children}</div>),
   Tabs: vi.fn(({ children, renderTabBar }) => (
     <div>
@@ -145,4 +145,3 @@ describe('MultiTable', () => {
     expect(tab).toHaveClass(s['tab-bar-item']);
   });
 });
-

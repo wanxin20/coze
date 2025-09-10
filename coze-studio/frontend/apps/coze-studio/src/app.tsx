@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { RouterProvider } from 'react-router-dom';
 import { Suspense } from 'react';
 
-import { Spin } from '@coze-arch/bot-semi';
+import { Spin } from '@coze-arch/coze-design';
 
 import { router } from './routes';
 
@@ -34,4 +34,3 @@ export function App() {
     </Suspense>
   );
 }
-

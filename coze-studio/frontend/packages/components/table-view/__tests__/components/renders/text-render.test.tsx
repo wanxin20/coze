@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import '@testing-library/jest-dom';
 import { TextRender } from '../../../src/components/renders/text-render';
 
 // simulated dependency
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   TextArea: ({
     value,
     onChange,
@@ -278,4 +278,3 @@ describe('TextRender', () => {
     });
   });
 });
-

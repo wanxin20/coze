@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { useEffect, useRef, useState } from 'react';
 
 import { useMemoizedFn } from 'ahooks';
 import { I18n } from '@coze-arch/i18n';
-import { Button, Typography } from '@coze-arch/bot-semi';
+import { Button, Typography } from '@coze-arch/coze-design';
 
 import { type PanelInfo } from '@/services/workflow-float-layout-service';
 import {
@@ -118,4 +118,3 @@ export const RoleButton = () => {
     </div>
   );
 };
-

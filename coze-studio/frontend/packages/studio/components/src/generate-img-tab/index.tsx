@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,13 @@ import { useState } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowLeft } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowLeft } from '@coze-arch/coze-design/icons';
 import {
   Collapsible,
   IconButton,
   SegmentTab,
   Space,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { type TabItem } from './type';
 
@@ -134,4 +134,3 @@ export const GenerateImageTab: React.FC<GenerateImageTabProps> = ({
     </div>
   );
 };
-

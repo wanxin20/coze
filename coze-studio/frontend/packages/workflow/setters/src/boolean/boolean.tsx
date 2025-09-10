@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,11 +16,10 @@
 
 import React from 'react';
 
-import { Switch } from '@coze-arch/bot-semi';
+import { Switch } from '@coze-arch/coze-design';
 
 import type { Setter } from '../types';
 
 export const Boolean: Setter<boolean> = ({ value, onChange, readonly }) => (
   <Switch checked={value} onChange={onChange} disabled={readonly} />
 );
-

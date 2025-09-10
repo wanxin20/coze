@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import cls from 'classnames';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconButton } from '@coze-arch/coze-design';
 import { IconCollectFilled, IconCollectStroked } from '@coze-arch/bot-icons';
 
 import styles from './index.module.less';
@@ -56,4 +56,3 @@ export const FavoriteIcon = (props: {
 
   return icon;
 };
-

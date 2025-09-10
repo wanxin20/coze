@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,7 +35,7 @@ import {
   useProjectRole,
 } from '@coze-common/auth';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozEye, IconCozMore } from '@coze-arch/bot-semi/icons';
+import { IconCozEye, IconCozMore } from '@coze-arch/coze-design/icons';
 import {
   Button,
   IconButton,
@@ -45,7 +45,7 @@ import {
   Toast,
   Tooltip,
   Tag,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { useProjectInfo } from '../../../hooks';
 import { MonetizeConfig } from './monetize';
@@ -170,4 +170,3 @@ function LeftContent({ children }: PropsWithChildren) {
     children
   );
 }
-

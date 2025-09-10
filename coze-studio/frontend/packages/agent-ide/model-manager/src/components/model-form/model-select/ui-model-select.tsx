@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import React, { useState, type CSSProperties } from 'react';
 import { groupBy } from 'lodash-es';
 import classNames from 'classnames';
 import { ModelOptionItem } from '@coze-studio/components';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 import { type OptionProps } from '@coze-arch/bot-semi/Select';
 import { type ModelTag, type Model } from '@coze-arch/bot-api/developer_api';
 
@@ -145,4 +145,3 @@ export const UIModelSelect: React.FC<UIModelSelectProps> = ({
     </Select>
   );
 };
-

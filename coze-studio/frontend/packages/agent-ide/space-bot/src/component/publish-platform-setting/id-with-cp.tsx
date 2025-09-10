@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,8 +15,8 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCopy } from '@coze-arch/bot-semi/icons';
-import { IconButton, Space, Tooltip, Typography } from '@coze-arch/bot-semi';
+import { IconCozCopy } from '@coze-arch/coze-design/icons';
+import { IconButton, Space, Tooltip, Typography } from '@coze-arch/coze-design';
 
 const doRenderTooltip = (content, children) => (
   <Tooltip content={content}>{children}</Tooltip>
@@ -52,4 +52,3 @@ const IdWithCopy = ({
 );
 
 export { IdWithCopy };
-

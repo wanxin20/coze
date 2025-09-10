@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,7 +25,7 @@ import { type PublishConnectorInfo } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { ProductApi } from '@coze-arch/bot-api';
-import { Button, Modal } from '@coze-arch/bot-semi';
+import { Button, Modal } from '@coze-arch/coze-design';
 
 import { useProjectPublishStore } from '@/store';
 
@@ -146,4 +146,3 @@ export function TemplateBind({
     </div>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,8 +29,8 @@ import {
   type ViewVariableType,
 } from '@coze-workflow/base';
 import { type TreeNodeData } from '@coze-arch/bot-semi/Tree';
-import { IconCozApply } from '@coze-arch/bot-semi/icons';
-import { IconButton, type TreeSelectProps } from '@coze-arch/bot-semi';
+import { IconCozApply } from '@coze-arch/coze-design/icons';
+import { IconButton, type TreeSelectProps } from '@coze-arch/coze-design';
 
 import {
   RefValueDisplay,
@@ -215,4 +215,3 @@ export const useRefInputNode = ({
     renderVariableDisplay,
   };
 };
-

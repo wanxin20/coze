@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,7 +22,7 @@ import {
   type UploadValue,
 } from '@coze-common/biz-components/picture-upload';
 import { I18n } from '@coze-arch/i18n';
-import { Modal } from '@coze-arch/bot-semi';
+import { Modal } from '@coze-arch/coze-design';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import {
   FileBizType,
@@ -213,4 +213,3 @@ export const useCreateOrUpdateAgent = ({
     ),
   };
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useMemo } from 'react';
 
-import { SideSheet } from '@coze-arch/bot-semi';
+import { SideSheet } from '@coze-arch/coze-design';
 
 import { useTestFormState } from '@/hooks';
 import { WORKFLOW_PLAYGROUND_CONTENT_ID } from '@/constants';
@@ -76,4 +76,3 @@ const CommonSideSheetV2: React.FC<
 
 export { CommonSideSheetV2, SheetKeys };
 export { CommonSideSheetHeaderV2 } from './sheet-header';
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import classNames from 'classnames';
 import { ViewVariableType } from '@coze-workflow/variable';
 import { useNodeTestId } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { Tooltip } from '@coze-arch/coze-design';
 
 import { ValueExpressionInputField } from '@/node-registries/common/fields';
 import { useUpdateSortedPortLines } from '@/hooks';
@@ -268,4 +268,3 @@ export const AnswerOptionField = ({
     />
   </FieldArray>
 );
-

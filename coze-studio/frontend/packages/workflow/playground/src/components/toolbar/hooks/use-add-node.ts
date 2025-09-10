@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@
 import { useCallback } from 'react';
 
 import { StandardNodeType } from '@coze-workflow/base';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 import { WorkflowNodePanelService } from '@flowgram-adapter/free-layout-editor';
 import {
   type FlowNodeEntity,
@@ -271,4 +271,3 @@ export const useAddNode = () => {
 
   return addNode;
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { CollapsibleIconButton } from '@coze-studio/components/collapsible-icon-
 import { InputSlider } from '@coze-studio/components';
 import { useModelStore } from '@coze-studio/bot-detail-store/model';
 import { ModelFormItem } from '@coze-agent-ide/model-manager';
-import { IconCozChatSetting } from '@coze-arch/bot-semi/icons';
+import { IconCozChatSetting } from '@coze-arch/coze-design/icons';
 
 const DialogueConfig: FC<{ tips: ReactNode }> = ({ tips }) => {
   const { model, setModelByImmer } = useModelStore(
@@ -91,4 +91,3 @@ export const DialogueConfigView: FC<{
     />
   </Popover>
 );
-

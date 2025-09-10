@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -35,8 +35,8 @@ import {
   IconCozSetting,
   IconCozLongArrowUpCircle,
   IconCozDiamondFill,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Tag, Tooltip, Typography } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Tag, Tooltip, Typography } from '@coze-arch/coze-design';
 import { OverflowList } from '@blueprintjs/core';
 
 import { ModelOptionAvatar } from '../model-option-avatar';
@@ -319,4 +319,3 @@ function calcMaskStyle(buttonVisible: Array<boolean | undefined>) {
   const gradientEnd = gradientStart + MASK_WIDTH;
   return `linear-gradient(to left, rgba(0,0,0,0), rgba(0,0,0,0) ${gradientStart}px, #fff ${gradientEnd}px)`;
 }
-

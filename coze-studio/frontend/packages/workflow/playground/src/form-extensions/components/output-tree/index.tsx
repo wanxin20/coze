@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -39,7 +39,7 @@ import {
 import { useNodeTestId } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
 import { type TreeNodeData, type TreeProps } from '@coze-arch/bot-semi/Tree';
-import { Toast, Tree } from '@coze-arch/bot-semi';
+import { Toast, Tree } from '@coze-arch/coze-design';
 
 import { FormCard } from '../form-card';
 import { AddItemButton } from '../add-item-button';
@@ -690,4 +690,3 @@ export function OutputTree(props: PropsWithChildren<OutputTreeProps>) {
     </OutputTreeContextProvider>
   );
 }
-

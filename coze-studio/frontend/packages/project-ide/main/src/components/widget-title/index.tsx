@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import cls from 'classnames';
 import {
   IconCozCrossFill,
   IconCozWarningCircleFill,
-} from '@coze-arch/bot-semi/icons';
-import { Typography, Loading, Skeleton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Typography, Loading, Skeleton } from '@coze-arch/coze-design';
 import {
   type TitlePropsType,
   DISABLE_HANDLE_EVENT,
@@ -116,4 +116,3 @@ export const WidgetTitle: React.FC<TitlePropsType> = ({
 };
 
 export const widgetTitleRender = props => <WidgetTitle {...props} />;
-

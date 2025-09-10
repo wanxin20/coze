@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,13 +19,13 @@ import { useMemo } from 'react';
 import { gotoDebugFlow } from '@coze-workflow/test-run-shared';
 import { I18n } from '@coze-arch/i18n';
 import { type Span } from '@coze-arch/bot-api/workflow_api';
-import { IconCozExit } from '@coze-arch/bot-semi/icons';
+import { IconCozExit } from '@coze-arch/coze-design/icons';
 import {
   Typography,
   Tag,
   IconButton,
   type ButtonProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { StatusIcon } from '../status-tag';
 import {
@@ -87,4 +87,3 @@ export const SelectOption: React.FC<SelectOptionProps> = ({ span }) => {
     </div>
   );
 };
-

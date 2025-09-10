@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,8 +19,8 @@ import React, { useState, type ComponentProps } from 'react';
 import { ImageRender } from '@coze-common/table-view';
 import { I18n } from '@coze-arch/i18n';
 import { ColumnType } from '@coze-arch/bot-api/memory';
-import { IconCozImage } from '@coze-arch/bot-semi/icons';
-import { TextArea, Button, Modal } from '@coze-arch/bot-semi';
+import { IconCozImage } from '@coze-arch/coze-design/icons';
+import { TextArea, Button, Modal } from '@coze-arch/coze-design';
 
 import { type TableDataItem } from './hooks';
 
@@ -252,4 +252,3 @@ export const TableSegmentModal: React.FC<TableSegmentModalProps> = ({
     </Modal>
   );
 };
-

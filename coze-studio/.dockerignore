@@ -1,6 +1,21 @@
-# Exclude node_modules directories
+# Exclude ALL node_modules directories recursively - CRITICAL FOR BUILD
 **/node_modules
 **/node_modules/**
+node_modules
+node_modules/**
+
+# Exclude Python virtual environments and related files
+bin/.venv
+bin/.venv/**
+**/.venv
+**/.venv/**
+**/venv
+**/venv/**
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+**/.Python
 
 # Exclude build artifacts
 **/dist
@@ -8,6 +23,33 @@
 **/.rush/temp
 **/.rush/build-cache
 **/common/temp
+**/common/autoinstallers
+**/common/autoinstallers/**
+**/.pnpm
+**/.pnpm-store
+**/.pnpm/**
+
+# Exclude package manager caches and lock files
+**/pnpm-lock.yaml
+**/.npmrc
+**/package-lock.json
+**/yarn.lock
+
+# FORCE EXCLUDE frontend node_modules - Windows compatibility
+frontend/**/node_modules
+frontend/**/node_modules/**
+frontend/packages/*/node_modules
+frontend/packages/*/node_modules/**
+frontend/packages/*/*/node_modules
+frontend/packages/*/*/node_modules/**
+frontend/config/*/node_modules
+frontend/config/*/node_modules/**
+frontend/infra/*/node_modules
+frontend/infra/*/node_modules/**
+frontend/apps/*/node_modules
+frontend/apps/*/node_modules/**
+common/autoinstallers/plugins/node_modules
+common/autoinstallers/plugins/node_modules/**
 
 # Exclude development files
 **/.git

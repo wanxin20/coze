@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozThumbsup,
   IconCozThumbsupFill,
-} from '@coze-arch/bot-semi/icons';
-import { Tooltip, IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tooltip, IconButton } from '@coze-arch/coze-design';
 import { Layout } from '@coze-common/chat-uikit-shared';
 
 import { getShowFeedback } from '../../utils/get-show-feedback';
@@ -117,4 +117,3 @@ export const ThumbsUpUI: React.FC<ThumbsUpUIProps> = ({
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React, { type ReactNode, useCallback, useMemo, useState } from 'react';
 
 import classnames from 'classnames';
-import { Divider, List } from '@coze-arch/bot-semi';
+import { Divider, List } from '@coze-arch/coze-design';
 import type { TreeNodeData } from '@coze-arch/bot-semi/Tree';
 
 import { sortTreeDataByGroup } from './utils';
@@ -163,4 +163,3 @@ const CompositeSelectTreePanel = React.forwardRef(
 );
 
 export default CompositeSelectTreePanel;
-

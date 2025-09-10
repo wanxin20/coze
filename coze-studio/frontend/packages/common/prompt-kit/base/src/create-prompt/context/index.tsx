@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { createContext, useContext } from 'react';
 
-import { type FormApi } from '@coze-arch/bot-semi';
+import { type FormApi } from '@coze-arch/coze-design';
 
 import { type PromptConfiguratorModalProps } from '../types';
 
@@ -33,4 +33,3 @@ export const PromptConfiguratorProvider = PromptConfiguratorContext.Provider;
 
 export const useCreatePromptContext = () =>
   useContext(PromptConfiguratorContext);
-

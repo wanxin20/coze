@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import { renderHook, act } from '@testing-library/react-hooks';
 
 import { useSaveMockData } from '../../../src/hook/use-save-mock-data';
 
-vi.mock('@coze-arch/bot-semi', () => import('@coze-arch/bot-semi'));
+vi.mock('@coze-arch/coze-design', () => import('@coze-arch/bot-semi'));
 
 const mockBizCtx = {};
 
@@ -114,4 +114,3 @@ describe('useSaveMockData', () => {
     expect(onError).toHaveBeenCalledTimes(1);
   });
 });
-

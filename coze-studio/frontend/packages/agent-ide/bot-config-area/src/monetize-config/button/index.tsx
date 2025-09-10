@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { CollapsibleIconButton } from '@coze-studio/components/collapsible-icon-button';
 import { useMonetizeConfigStore } from '@coze-studio/bot-detail-store';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWallet } from '@coze-arch/bot-semi/icons';
-import { Popover } from '@coze-arch/bot-semi';
+import { IconCozWallet } from '@coze-arch/coze-design/icons';
+import { Popover } from '@coze-arch/coze-design';
 
 import { MonetizeConfigPanel } from '../panel';
 
@@ -42,4 +42,3 @@ export function MonetizeConfigButton() {
     </Popover>
   );
 }
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,8 +27,8 @@ import { I18n } from '@coze-arch/i18n';
 import { PluginDevelopApi } from '@coze-arch/bot-api';
 import { useBotCodeEditOutPlugin } from '@coze-agent-ide/bot-plugin/hook';
 import { CreateFormPluginModal } from '@coze-agent-ide/bot-plugin/component';
-import { IconCozPlugin } from '@coze-arch/bot-semi/icons';
-import { Menu, Tag, Toast, Table } from '@coze-arch/bot-semi';
+import { IconCozPlugin } from '@coze-arch/coze-design/icons';
+import { Menu, Tag, Toast, Table } from '@coze-arch/coze-design';
 
 import { BaseLibraryItem } from '../../components/base-library-item';
 import PluginDefaultIcon from '../../assets/plugin_default_icon.png';
@@ -140,4 +140,3 @@ export const usePluginConfig: UseEntityConfigHook = ({
     },
   };
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   IconCozTrashCan,
   IconCozListDisorder,
   IconCozCross,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   EmptyState,
   IconButton,
@@ -35,7 +35,7 @@ import {
   Tooltip,
   Checkbox,
   Popconfirm,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { useFlags } from '@coze-arch/bot-flags';
 import { type ProjectConversation } from '@coze-arch/bot-api/workflow_api';
 
@@ -268,4 +268,3 @@ export const DynamicChatList = ({
     </>
   );
 };
-

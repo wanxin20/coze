@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { TabPane, Tabs, Typography, Divider } from '@coze-arch/bot-semi';
+import { TabPane, Tabs, Typography, Divider } from '@coze-arch/coze-design';
 
 const { Text } = Typography;
 
@@ -171,4 +171,3 @@ const MultiTable = forwardRef<DataTableRef, MultiTableProps>(
 );
 
 export default MultiTable;
-

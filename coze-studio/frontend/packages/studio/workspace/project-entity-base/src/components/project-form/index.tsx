@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,7 +26,7 @@ import {
   type DraftProjectCreateRequest,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozUpload } from '@coze-arch/bot-semi/icons';
+import { IconCozUpload } from '@coze-arch/coze-design/icons';
 import {
   type BaseFormProps,
   Form,
@@ -34,7 +34,7 @@ import {
   FormTextArea,
   useFormApi,
   withField,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { FileBizType, IconType } from '@coze-arch/bot-api/developer_api';
 import { botInputLengthService } from '@coze-agent-ide/bot-input-length-limit';
 
@@ -142,4 +142,3 @@ export const ProjectInfoFieldFragment: React.FC<ProjectInfoFieldProps> = ({
 };
 
 const FormSwitch = withField(SwitchWithDesc);
-

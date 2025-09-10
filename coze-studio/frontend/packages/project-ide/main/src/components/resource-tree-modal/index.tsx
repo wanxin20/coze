@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -37,14 +37,14 @@ import {
   type DependencyTree,
 } from '@coze-arch/bot-api/workflow_api';
 import { workflowApi } from '@coze-arch/bot-api';
-import { IconCozCross, IconCozInfoCircle } from '@coze-arch/bot-semi/icons';
+import { IconCozCross, IconCozInfoCircle } from '@coze-arch/coze-design/icons';
 import {
   Modal,
   Button,
   Tooltip,
   Loading,
   Typography,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import { ResourceContent } from './resource-content';
 
@@ -200,4 +200,3 @@ export const ResourceTreeModal = ({
     </Modal>
   );
 };
-

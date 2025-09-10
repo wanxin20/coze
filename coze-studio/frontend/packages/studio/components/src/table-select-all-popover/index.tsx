@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, type PropsWithChildren } from 'react';
 
 import classNames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { Checkbox } from '@coze-arch/bot-semi';
+import { Checkbox } from '@coze-arch/coze-design';
 
 const wrapperStyle = classNames(
   'fixed left-[50%] translate-x-[-50%] bottom-[30px]',
@@ -68,4 +68,3 @@ export const TableSelectAllPopover: FC<
     </div>
   ) : null;
 };
-

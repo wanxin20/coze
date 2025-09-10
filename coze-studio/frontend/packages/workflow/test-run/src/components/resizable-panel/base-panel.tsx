@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React from 'react';
 
 import { isObject } from 'lodash-es';
 import cls from 'classnames';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { useResize } from './use-resize';
 
@@ -101,4 +101,3 @@ export const BasePanel: React.FC<React.PropsWithChildren<BasePanelProps>> = ({
     </div>
   );
 };
-

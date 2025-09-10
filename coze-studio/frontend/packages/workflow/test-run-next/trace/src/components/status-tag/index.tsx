@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozCheckMarkCircleFillPalette,
   IconCozCrossCircleFillPalette,
-} from '@coze-arch/bot-semi/icons';
-import { Tag } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tag } from '@coze-arch/coze-design';
 
 interface StatusTagProps {
   status?: number;
@@ -75,4 +75,3 @@ export const StatusTag: React.FC<StatusTagProps> = ({
     </Tag>
   );
 };
-

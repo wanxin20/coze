@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import classNames from 'classnames';
-import { Row, Col } from '@coze-arch/bot-semi';
+import { Row, Col } from '@coze-arch/coze-design';
 import { Image } from '@coze-arch/bot-md-box-adapter/slots';
 import {
   type OnImageClickCallback,
@@ -113,4 +113,3 @@ export const ImageBox: FC<ImageBoxProps> = ({ data, eventCallbacks }) => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -26,8 +26,8 @@ import {
   IconCozArrowRight,
   IconCozMinus,
   IconCozPlus,
-} from '@coze-arch/bot-semi/icons';
-import { Checkbox, Divider, IconButton, Loading } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Checkbox, Divider, IconButton, Loading } from '@coze-arch/coze-design';
 import 'cropperjs/dist/cropper.css';
 
 import {
@@ -312,4 +312,3 @@ export const PDFDocument: React.FC<PDFDocumentProps> = ({
     </div>
   );
 };
-

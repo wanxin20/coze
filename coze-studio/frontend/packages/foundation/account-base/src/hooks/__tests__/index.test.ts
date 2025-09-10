@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -114,7 +114,7 @@ describe('Account Hooks from index.ts', () => {
       (useUserStore as any).getState = vi.fn(() => mockUserState);
     });
 
-    it('should not call Banner if document is visible or user is not logged in', () => {
+    it('should not call alert if document is visible or user is not logged in', () => {
       mockUserState = { isSettled: true, userInfo: null }; // Not logged in
       renderHook(() => useAlterOnLogout(alertMock));
       // Simulate visibility change to hidden and back to visible (triggering cleanup and re-run)
@@ -127,7 +127,7 @@ describe('Account Hooks from index.ts', () => {
       expect(alertMock).not.toHaveBeenCalled();
     });
 
-    it('should call Banner if user was logged in, document becomes visible, and UID in localStorage is different or null', () => {
+    it('should call alert if user was logged in, document becomes visible, and UID in localStorage is different or null', () => {
       const currentUserId = 'user123';
       mockUserState = {
         isSettled: true,
@@ -150,7 +150,7 @@ describe('Account Hooks from index.ts', () => {
       expect(alertMock).toHaveBeenCalledTimes(1);
     });
 
-    it('should call Banner if user was logged in, document becomes visible, and UID in localStorage is different', () => {
+    it('should call alert if user was logged in, document becomes visible, and UID in localStorage is different', () => {
       const currentUserId = 'user123';
       const otherTabUserId = 'user456';
       mockUserState = {
@@ -172,7 +172,7 @@ describe('Account Hooks from index.ts', () => {
       expect(alertMock).toHaveBeenCalledTimes(1);
     });
 
-    it('should NOT call Banner if user was logged in, document becomes visible, and UID in localStorage matches', () => {
+    it('should NOT call alert if user was logged in, document becomes visible, and UID in localStorage matches', () => {
       const currentUserId = 'user123';
       mockUserState = {
         isSettled: true,
@@ -192,4 +192,3 @@ describe('Account Hooks from index.ts', () => {
     });
   });
 });
-

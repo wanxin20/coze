@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import {
   Select,
   type SelectProps,
   type InputProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 import s from './index.module.less';
 
@@ -71,4 +71,3 @@ export const SLSelect: React.FC<SLSelectProps> = props => {
     </div>
   );
 };
-

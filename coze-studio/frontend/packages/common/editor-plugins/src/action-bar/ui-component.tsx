@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ import {
   useInjector,
 } from '@coze-editor/editor/react';
 import { type EditorAPI } from '@coze-editor/editor/preset-prompt';
-import { Popover } from '@coze-arch/bot-semi';
+import { Popover } from '@coze-arch/coze-design';
 import { drawSelection, EditorView } from '@codemirror/view';
 
 import { type SelectionInfo } from '../types';
@@ -184,4 +184,3 @@ export const ActionBar: React.FC<PropsWithChildren<ActionBarProps>> = props => {
     </>
   );
 };
-

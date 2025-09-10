@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Button, Tag } from '@coze-arch/bot-semi';
+import { Button, Tag } from '@coze-arch/coze-design';
 import { Avatar, Popover } from '@coze-arch/bot-semi';
 import { IconInfo } from '@coze-arch/bot-icons';
 import { type ModelDescGroup } from '@coze-arch/bot-api/developer_api';
@@ -84,4 +84,3 @@ export const OptionItem: React.FC<OptionItemProps> = ({
     ) : null}
   </div>
 );
-

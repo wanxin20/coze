@@ -23,7 +23,16 @@ FastGPTRAG:
     docker compose -f docker-compose.rag.yml up --build -d
 coze-web:
 
-# 启动完整开发环境
-docker-compose up -d
+docker-compose up --build coze-web-dev 
 
-docker-compose up --build coze-web
+docker exec -it --user root coze-web-dev sh  
+
+rush update
+   rush install --bypass-policy
+   rush link
+
+   DEBUG=* VERBOSE_LOGGING=true npm run dev
+
+   docker-compose --profile development stop coze-web-dev
+   docker-compose --profile development up -d coze-web-dev
+   docker-compose --profile development restart coze-web-dev

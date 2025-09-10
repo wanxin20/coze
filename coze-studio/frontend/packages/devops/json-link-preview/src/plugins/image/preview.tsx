@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { Spin, ImagePreview } from '@coze-arch/bot-semi';
+import { Spin, ImagePreview } from '@coze-arch/coze-design';
 
 import { LoadError } from '../../common/load-error';
 import useImage from './hooks';
@@ -58,4 +58,3 @@ export const ImagePreviewContent = ({
     </div>
   );
 };
-

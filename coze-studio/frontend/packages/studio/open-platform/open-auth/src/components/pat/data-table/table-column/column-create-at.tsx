@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { type ColumnProps } from '@coze-arch/bot-semi';
+import { type ColumnProps } from '@coze-arch/coze-design';
 import { type PersonalAccessToken } from '@coze-arch/bot-api/pat_permission_api';
 
 import { getDetailTime } from '@/utils/time';
@@ -26,4 +26,3 @@ export const columnCreateAtConf: () => ColumnProps<PersonalAccessToken> =
     dataIndex: 'created_at',
     render: (createTime: number) => getDetailTime(createTime),
   });
-

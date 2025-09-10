@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -28,7 +28,7 @@ import { nanoid } from 'nanoid';
 import { cloneDeep, omit } from 'lodash-es';
 import { useRequest } from 'ahooks';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCross, IconCozLongArrowUp } from '@coze-arch/bot-semi/icons';
+import { IconCozCross, IconCozLongArrowUp } from '@coze-arch/coze-design/icons';
 import {
   Button,
   IconButton,
@@ -36,7 +36,7 @@ import {
   Spin,
   Tag,
   Toast,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { type PublishConnectorInfo } from '@coze-arch/bot-api/developer_api';
 import {
@@ -398,4 +398,3 @@ const convertBaseConfig = (config: FeishuBaseConfig): FeishuBaseConfigFe => {
   };
   return configFe;
 };
-

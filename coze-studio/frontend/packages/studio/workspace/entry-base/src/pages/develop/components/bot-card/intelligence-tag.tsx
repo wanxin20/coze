@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { IntelligenceType } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { Tag } from '@coze-arch/bot-semi';
+import { Tag } from '@coze-arch/coze-design';
 export interface IntelligenceTagProps {
   intelligenceType: IntelligenceType | undefined;
 }
@@ -48,4 +48,3 @@ export const IntelligenceTag: React.FC<IntelligenceTagProps> = ({
   }
   return null;
 };
-

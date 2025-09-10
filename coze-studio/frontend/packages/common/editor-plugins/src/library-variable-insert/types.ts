@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { type ComponentProps } from 'react';
 
-import { type Popover } from '@coze-arch/bot-semi';
+import { type Popover } from '@coze-arch/coze-design';
 
 import type { ILibraryList } from '../library-insert';
 import type { ExpressionEditorTreeNode } from '../expression/core';
@@ -28,4 +28,3 @@ export interface ContentSearchPopoverProps {
   onInsert?: (insertPosition: { from: number; to: number }) => void;
   variableTree?: ExpressionEditorTreeNode[];
 }
-

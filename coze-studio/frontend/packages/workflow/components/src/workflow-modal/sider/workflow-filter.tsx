@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -32,7 +32,7 @@ import {
   IconCozAllFill,
   IconCozFireFill,
   IconCozKnowledgeFill,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import { useFlags } from '@coze-arch/bot-flags';
 import { ProductEntityType } from '@coze-arch/bot-api/product_api';
 import { ProductApi } from '@coze-arch/bot-api';
@@ -266,4 +266,3 @@ const WorkflowFilter = forwardRef<
 WorkflowFilter.displayName = 'WorkflowFilter';
 
 export { WorkflowFilter };
-

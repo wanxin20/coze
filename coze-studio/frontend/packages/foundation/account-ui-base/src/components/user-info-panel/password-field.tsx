@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useState } from 'react';
 
-import { IconCozEyeClose, IconCozEye } from '@coze-arch/bot-semi/icons';
+import { IconCozEyeClose, IconCozEye } from '@coze-arch/coze-design/icons';
 
 export const PasswordDesc = ({ value }: { value: string }) => {
   const [show] = useState(false);
@@ -30,4 +30,3 @@ export const PasswordDesc = ({ value }: { value: string }) => {
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,13 +22,13 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozTrashCan,
   IconCozCheckMarkFill,
-} from '@coze-arch/bot-semi/icons';
+} from '@coze-arch/coze-design/icons';
 import {
   Select,
   Checkbox,
   Tooltip,
   type SelectProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type RenderSelectedItemFn } from '@coze-arch/bot-semi/Select';
 import { type Select as SemiSelect } from '@coze-arch/bot-semi';
 
@@ -227,4 +227,3 @@ const TagSelector: React.FC<Props> = props => {
 };
 
 export default TagSelector;
-

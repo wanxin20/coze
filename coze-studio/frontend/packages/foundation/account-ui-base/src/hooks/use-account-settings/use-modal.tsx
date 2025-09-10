@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useState } from 'react';
 
-import { Modal, type ModalProps } from '@coze-arch/bot-semi';
+import { Modal, type ModalProps } from '@coze-arch/coze-design';
 
 export type UseModalParams = Omit<ModalProps, 'visible'>;
 
@@ -39,4 +39,3 @@ export const useModal = (params: UseModalParams): UseModalReturnValue => {
     close: () => setVisible(false),
   };
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import classNames from 'classnames';
-import { IconCozKnowledgeFill } from '@coze-arch/bot-semi/icons';
+import { IconCozKnowledgeFill } from '@coze-arch/coze-design/icons';
 
 interface SiderCategoryProps {
   label: string;
@@ -43,4 +43,3 @@ const SiderCategory = ({ label, onClick, selected }: SiderCategoryProps) => (
 );
 
 export default SiderCategory;
-

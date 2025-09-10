@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
 import { I18n } from '@coze-arch/i18n';
 import { SceneType, usePageJumpService } from '@coze-arch/bot-hooks';
 import { StorageLocation } from '@coze-arch/bot-api/knowledge';
-import { Modal, Toast } from '@coze-arch/bot-semi';
+import { Modal, Toast } from '@coze-arch/coze-design';
 
 import { ActionType } from '@/types';
 import {
@@ -144,4 +144,3 @@ export const useBeforeKnowledgeIDEClose = ({
 
   return handleBotIdeBack;
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React, { type JSX } from 'react';
 
-import { type Theme } from '@coze-arch/bot-semi';
+import { type Theme } from '@coze-arch/coze-design';
 export interface COZTheme {
   theme: Theme;
 }
@@ -32,4 +32,3 @@ export function ThemeFactory({ theme, components, className }: Props) {
     theme === 'light' ? components.light : components.dark;
   return <div className={className}>{ComponentRender}</div>;
 }
-

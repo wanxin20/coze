@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { Tag, Typography } from '@coze-arch/bot-semi';
+import { Tag, Typography } from '@coze-arch/coze-design';
 
 import { NodeItem, LineItem, TextItem } from '../problem-item';
 import { type WorkflowProblem, type ProblemItem } from '../../types';
@@ -74,4 +74,3 @@ export const MyProblemGroup: React.FC<MyProblemGroupProps> = ({
     </BaseGroupWrap>
   );
 };
-

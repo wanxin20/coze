@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconButton } from '@coze-arch/coze-design';
 import { IconSideFoldOutlined } from '@coze-arch/bot-icons';
 
 import { useOpenGlobalLayoutSideSheet } from './global-layout/hooks';
@@ -33,4 +33,3 @@ export const SideSheetMenu = () => {
 };
 
 export default SideSheetMenu;
-

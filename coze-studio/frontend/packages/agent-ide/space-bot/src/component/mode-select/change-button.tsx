@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import { IconCozArrowDown } from '@coze-arch/bot-semi/icons';
-import { Tooltip } from '@coze-arch/bot-semi';
+import { IconCozArrowDown } from '@coze-arch/coze-design/icons';
+import { Tooltip } from '@coze-arch/coze-design';
 import { UIButton } from '@coze-arch/bot-semi';
 import { useFlags } from '@coze-arch/bot-flags';
 
@@ -74,4 +74,3 @@ export function ChangeButton({
     <Tooltip content={modeInfo?.title}>{content}</Tooltip>
   );
 }
-

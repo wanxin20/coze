@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type FC } from 'react';
 
 import { useBotDetailIsReadonly } from '@coze-studio/bot-detail-store';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconButton } from '@coze-arch/coze-design';
 import { IconAuto } from '@coze-arch/bot-icons';
 
 import { ToolTooltip } from '../tool-tooltip';
@@ -55,4 +55,3 @@ export const AutoGenerateButton: FC<AutoGenerateButtonProps> = ({
     </ToolTooltip>
   );
 };
-

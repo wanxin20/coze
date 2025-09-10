@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import cx from 'classnames';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 
 import type { Setter } from '../types';
 import type { Options, EnumValue } from './types';
@@ -47,4 +47,3 @@ export const Enum: Setter<EnumValue, EnumOptions> = ({
     onChange={v => onChange?.(v as EnumValue)}
   />
 );
-

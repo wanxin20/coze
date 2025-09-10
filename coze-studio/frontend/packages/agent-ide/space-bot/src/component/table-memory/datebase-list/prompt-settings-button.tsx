@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { type PropsWithChildren, useState, useEffect } from 'react';
 
 import { useToolItemContext, ToolItemAction } from '@coze-agent-ide/tool';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozSetting } from '@coze-arch/bot-semi/icons';
-import { Popover, Typography, Switch } from '@coze-arch/bot-semi';
+import { IconCozSetting } from '@coze-arch/coze-design/icons';
+import { Popover, Typography, Switch } from '@coze-arch/coze-design';
 import { MemoryApi } from '@coze-arch/bot-api';
 
 export type PromptSettingsButtonProps = PropsWithChildren<{
@@ -99,4 +99,3 @@ export function PromptSettingsButton({
     </Popover>
   );
 }
-

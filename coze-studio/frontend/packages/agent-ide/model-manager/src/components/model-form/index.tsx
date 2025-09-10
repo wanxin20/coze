@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { useCreation } from 'ahooks';
 import { type ISchema } from '@formily/react';
 import { type Form } from '@formily/core';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozWarningCircleFill } from '@coze-arch/bot-semi/icons';
-import { Loading } from '@coze-arch/bot-semi';
+import { IconCozWarningCircleFill } from '@coze-arch/coze-design/icons';
+import { Loading } from '@coze-arch/coze-design';
 
 import { primitiveExhaustiveCheck } from '../../utils/exhaustive-check';
 import {
@@ -134,4 +134,3 @@ export const ModelForm: React.FC<ModelFormProps> = ({
   primitiveExhaustiveCheck(formilyModule.status);
   return null;
 };
-

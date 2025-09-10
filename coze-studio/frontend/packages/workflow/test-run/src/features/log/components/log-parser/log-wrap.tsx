@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { isObject, toString, isNil } from 'lodash-es';
 import copy from 'copy-to-clipboard';
 import { logger } from '@coze-arch/logger';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCopy, IconCozCheckMark } from '@coze-arch/bot-semi/icons';
-import { IconButton, Toast, Tooltip } from '@coze-arch/bot-semi';
+import { IconCozCopy, IconCozCheckMark } from '@coze-arch/coze-design/icons';
+import { IconButton, Toast, Tooltip } from '@coze-arch/coze-design';
 
 import { type LogValueType } from '../../types';
 
@@ -107,4 +107,3 @@ export const LogWrap: React.FC<
     </div>
   );
 };
-

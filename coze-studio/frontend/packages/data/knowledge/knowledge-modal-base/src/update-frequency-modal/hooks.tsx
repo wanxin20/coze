@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,7 +34,7 @@ import {
   UpdateType,
 } from '@coze-arch/bot-api/knowledge';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { Form, FormSelect } from '@coze-arch/bot-semi';
+import { Form, FormSelect } from '@coze-arch/coze-design';
 
 import { DATA_REFACTOR_CLASS_NAME } from '../constant';
 
@@ -150,4 +150,3 @@ export const useUpdateFrequencyModal = (
     close,
   };
 };
-

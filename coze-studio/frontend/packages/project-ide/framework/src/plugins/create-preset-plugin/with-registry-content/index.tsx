@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import React from 'react';
 
-import { Spin } from '@coze-arch/bot-semi';
+import { Spin } from '@coze-arch/coze-design';
 import { useCurrentWidget } from '@coze-project-ide/client';
 
 import { type ProjectIDEWidget } from '@/widgets/project-ide-widget';
@@ -39,4 +39,3 @@ export const withRegistryContent = (registry: RegistryHandler<any>) => {
   };
   return WidgetComp;
 };
-

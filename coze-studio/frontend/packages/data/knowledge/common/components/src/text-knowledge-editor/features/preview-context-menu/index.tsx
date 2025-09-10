@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import React from 'react';
 
 import classNames from 'classnames';
-import { Menu } from '@coze-arch/bot-semi';
+import { Menu } from '@coze-arch/coze-design';
 
 import { type Chunk } from '@/text-knowledge-editor/types/chunk';
 import { type PreviewContextMenuItemRegistry } from '@/text-knowledge-editor/features/preview-context-menu-items/registry';
@@ -77,4 +77,3 @@ const PreviewContextMenu: React.FC<PreviewContextMenuProps> = props => {
 };
 
 export default PreviewContextMenu;
-

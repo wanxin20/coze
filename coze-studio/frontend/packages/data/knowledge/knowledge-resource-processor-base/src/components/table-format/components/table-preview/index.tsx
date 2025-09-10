@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import { ImageRender, type TableViewColumns } from '@coze-common/table-view';
 import { ColumnType } from '@coze-arch/idl/knowledge';
 import { I18n } from '@coze-arch/i18n';
 import { type ColumnProps } from '@coze-arch/bot-semi/Table';
-import { Table, Tag, Typography } from '@coze-arch/bot-semi';
+import { Table, Tag, Typography } from '@coze-arch/coze-design';
 
 import { getSrcFromImg } from '@/utils/table';
 import { type TableInfo, type TableSettings } from '@/types';
@@ -178,4 +178,3 @@ export const TablePreview: React.FC<TablePreviewProps> = ({
     </div>
   );
 };
-

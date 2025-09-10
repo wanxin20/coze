@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,7 +23,7 @@ import '@testing-library/jest-dom';
 import { useImagePreview } from '../../../src/components/renders/image-render/use-image-preview';
 
 // simulated dependency
-vi.mock('@coze-arch/bot-semi', () => ({
+vi.mock('@coze-arch/coze-design', () => ({
   Upload: function Upload({
     children,
     onChange,
@@ -107,7 +107,7 @@ vi.mock('@coze-arch/bot-semi', () => ({
   },
 }));
 
-vi.mock('@coze-arch/bot-semi/icons', () => ({
+vi.mock('@coze-arch/coze-design/icons', () => ({
   IconCozUpload: function IconCozUpload({ className }: any) {
     return <div data-testid="upload-icon" className={className} />;
   },
@@ -266,4 +266,3 @@ describe('useImagePreview 基本功能测试', () => {
     expect(urlInput).toBeDisabled();
   });
 });
-

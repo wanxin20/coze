@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { Fragment } from 'react';
 
 import cls from 'classnames';
 import { KnowledgeE2e } from '@coze-data/e2e';
-import { Typography, Space } from '@coze-arch/bot-semi';
+import { Typography, Space } from '@coze-arch/coze-design';
 
 import { ProcessStatus, type ProcessProgressItemProps } from '../../types';
 
@@ -118,4 +118,3 @@ export const ProcessProgressItem: React.FC<ProcessProgressItemProps> = ({
     </div>
   );
 };
-

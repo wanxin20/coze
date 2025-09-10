@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import {
   type ListProps,
   type EmptyStateProps,
   type ButtonProps,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 
 export interface EmptyProps {
   className?: string;
@@ -105,4 +105,3 @@ export interface InfiniteListRef<T> {
   reload: () => void;
   getDataList: () => T[]; // Get current list data
 }
-

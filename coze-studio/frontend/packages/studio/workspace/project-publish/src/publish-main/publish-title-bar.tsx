@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,14 +27,14 @@ import {
   type GetPublishRecordDetailRequest,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozArrowLeft } from '@coze-arch/bot-semi/icons';
+import { IconCozArrowLeft } from '@coze-arch/coze-design/icons';
 import {
   Banner,
   Button,
   IconButton,
   Toast,
   useFormApi,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { type DynamicParams } from '@coze-arch/bot-typings/teamspace';
 import { intelligenceApi } from '@coze-arch/bot-api';
 
@@ -204,4 +204,3 @@ export function PublishTitleBar() {
     </div>
   );
 }
-

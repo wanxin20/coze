@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React, { type ReactNode } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCross } from '@coze-arch/bot-semi/icons';
-import { Divider, Typography, Tag } from '@coze-arch/bot-semi';
+import { IconCozCross } from '@coze-arch/coze-design/icons';
+import { Divider, Typography, Tag } from '@coze-arch/coze-design';
 import { InteractiveType } from '@coze-common/mouse-pad-selector';
 
 import { getIsIPad } from '../utils';
@@ -207,4 +207,3 @@ function UndoRedoShortcuts() {
 }
 
 export { FlowShortcutsHelp };
-

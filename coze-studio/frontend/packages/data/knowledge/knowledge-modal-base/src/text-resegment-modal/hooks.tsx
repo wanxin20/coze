@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import { useDataModalWithCoze } from '@coze-data/utils';
 import { I18n } from '@coze-arch/i18n';
-import { type ButtonColor } from '@coze-arch/bot-semi/types';
+import { type ButtonColor } from '@coze-arch/coze-design/types';
 
 import styles from './index.module.less';
 
@@ -51,4 +51,3 @@ export const useTextResegmentModal = ({ onOk }: IResegmentModalProps) => {
     close,
   };
 };
-

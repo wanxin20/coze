@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { clsx } from 'clsx';
 import {
   IconCozClockFill,
   IconCozArrowLeftFill,
-} from '@coze-arch/bot-semi/icons';
-import { Tag, Tooltip, IconButton } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tag, Tooltip, IconButton } from '@coze-arch/coze-design';
 
 import { formatDuration } from '../utils/time';
 import { isSuccessStatus } from '../utils/basic';
@@ -176,4 +176,3 @@ export const renderCustomTreeNode =
         renderGraphNodeConfig={renderGraphNodeConfig}
       />
     );
-

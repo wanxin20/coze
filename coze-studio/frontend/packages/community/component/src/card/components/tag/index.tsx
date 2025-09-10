@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import {
   IconCozBot,
   IconCozWorkflow,
   IconCozWorkspace,
-} from '@coze-arch/bot-semi/icons';
-import { Tag, type TagProps } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tag, type TagProps } from '@coze-arch/coze-design';
 import { ProductEntityType } from '@coze-arch/bot-api/product_api';
 
 interface IProps {
@@ -76,4 +76,3 @@ export const CardTag = ({ type }: IProps) => {
     </Tag>
   );
 };
-

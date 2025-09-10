@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 import { type ComponentProps, type FC } from 'react';
 
 import classNames from 'classnames';
-import { IconCozCardPencil } from '@coze-arch/bot-semi/icons';
+import { IconCozCardPencil } from '@coze-arch/coze-design/icons';
 
 import { ToolItemAction } from '..';
 
@@ -37,4 +37,3 @@ export const ToolItemActionCard: FC<ToolItemActionCardProps> = props => {
     </ToolItemAction>
   );
 };
-

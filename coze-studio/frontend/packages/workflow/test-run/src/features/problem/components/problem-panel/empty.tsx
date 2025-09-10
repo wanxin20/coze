@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { IconCozIllusDone } from '@coze-arch/bot-semi/illustrations';
+import { IconCozIllusDone } from '@coze-arch/coze-design/illustrations';
 
 import styles from './empty.module.less';
 
@@ -23,4 +23,3 @@ export const ProblemEmpty = () => (
     <IconCozIllusDone width="120" height="120" />
   </div>
 );
-

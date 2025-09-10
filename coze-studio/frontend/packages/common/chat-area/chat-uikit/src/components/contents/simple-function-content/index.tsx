@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import { type FC } from 'react';
 
 import { typeSafeJsonParse } from '@coze-common/chat-area-utils';
-import { IconCozLoading } from '@coze-arch/bot-semi/icons';
-import { Typography } from '@coze-arch/bot-semi';
+import { IconCozLoading } from '@coze-arch/coze-design/icons';
+import { Typography } from '@coze-arch/coze-design';
 
 import { isFunctionCall } from '../../../utils/is-function-call';
 import { type ISimpleFunctionMessageContentProps } from './type';
@@ -70,4 +70,3 @@ export const SimpleFunctionContent: FC<
 };
 
 SimpleFunctionContent.displayName = 'SimpleFunctionContent';
-

@@ -31,8 +31,6 @@ import { ReactComponent as TextKnowledgeLogo } from '../../../../assets/text-kno
 import { ReactComponent as TableKnowledgeLogo } from '../../../../assets/table-knowledge.svg';
 // eslint-disable-next-line @coze-arch/no-deep-relative-import
 import { ReactComponent as ImageKnowledgeLogo } from '../../../../assets/image-knowledge.svg';
-// eslint-disable-next-line @coze-arch/no-deep-relative-import
-import { ReactComponent as FastGPTRAGKnowledgeLogo } from '../../../../assets/fastgptrag-knowledge.svg';
 
 import styles from './index.module.less';
 
@@ -82,16 +80,6 @@ const SelectFormatTypeComponent: React.FC<
           <ImageKnowledgeLogo />
         </div>
         <div>{I18n.t('knowledge_photo_001')}</div>
-      </Radio>
-      <Radio
-        value={FormatType.FastGPTRAG}
-        key={FormatType.FastGPTRAG}
-        data-testid="create-knowledge-modal-fastgptrag-radio"
-      >
-        <div className="radio-logo">
-          <FastGPTRAGKnowledgeLogo />
-        </div>
-        <div>{I18n.t('knowledge_fastgptrag_type', {}, 'FastGPT RAG')}</div>
       </Radio>
     </RadioGroup>
   );

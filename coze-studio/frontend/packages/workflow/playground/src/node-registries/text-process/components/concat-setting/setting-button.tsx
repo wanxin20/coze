@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,8 +17,8 @@
 import React from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozSetting } from '@coze-arch/bot-semi/icons';
-import { Popover, IconButton } from '@coze-arch/bot-semi';
+import { IconCozSetting } from '@coze-arch/coze-design/icons';
+import { Popover, IconButton } from '@coze-arch/coze-design';
 
 import { type DelimiterSelectorValue } from '@/form-extensions/setters/delimiter-selector';
 import { useField, withField } from '@/form';
@@ -63,4 +63,3 @@ export const SettingButtonField = withField(() => {
     </Popover>
   );
 });
-

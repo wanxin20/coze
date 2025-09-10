@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import {
   type Message,
 } from '@coze-common/chat-area';
 import { I18n } from '@coze-arch/i18n';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { Space } from '@coze-arch/bot-semi';
 
 import { useGetPosition } from '../../../hooks/use-get-position';
@@ -125,4 +125,3 @@ export const InterruptMessageContent: React.FC<{
 };
 
 InterruptMessageContent.displayName = 'ChatAreaFunctionCallMessageContent';
-

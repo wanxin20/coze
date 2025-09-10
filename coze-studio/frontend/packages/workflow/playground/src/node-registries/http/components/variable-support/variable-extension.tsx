@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -33,7 +33,7 @@ import { type EditorAPI } from '@coze-editor/editor/preset-universal';
 import { Completion } from '@coze-common/editor-plugins/expression';
 import { I18n } from '@coze-arch/i18n';
 import type { TreeNodeData } from '@coze-arch/bot-semi/Tree';
-import { Dropdown, Toast, type Tree } from '@coze-arch/bot-semi';
+import { Dropdown, Toast, type Tree } from '@coze-arch/coze-design';
 import type { EditorState } from '@codemirror/state';
 
 import { SelectType } from '@/form-extensions/components/tree-variable-selector/types';
@@ -371,4 +371,3 @@ export function VariableExtension({
     </div>
   );
 }
-

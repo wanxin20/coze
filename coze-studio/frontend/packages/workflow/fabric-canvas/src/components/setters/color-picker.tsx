@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { useCallback, type FC, useMemo } from 'react';
 
 import classnames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozCheckMarkFill } from '@coze-arch/bot-semi/icons';
-import { Input, Slider } from '@coze-arch/bot-semi';
+import { IconCozCheckMarkFill } from '@coze-arch/coze-design/icons';
+import { Input, Slider } from '@coze-arch/coze-design';
 
 import styles from './color-picker.module.less';
 interface IProps {
@@ -186,4 +186,3 @@ export const ColorPicker: FC<IProps> = props => {
     </div>
   );
 };
-

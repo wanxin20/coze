@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -25,9 +25,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozClockFill,
   IconCozCheckMarkCircleFill,
-} from '@coze-arch/bot-semi/icons';
-import { Typography, } from '@coze-arch/bot-semi';
-import { LoadingButton } from '@coze-common/loading-button';
+} from '@coze-arch/coze-design/icons';
+import { Typography, LoadingButton } from '@coze-arch/coze-design';
 import { Avatar, Image, Tooltip } from '@coze-arch/bot-semi';
 import { CheckType } from '@coze-arch/bot-api/workflow_api';
 import { type Int64, SpaceType } from '@coze-arch/bot-api/developer_api';
@@ -345,4 +344,3 @@ export const WorkflowCard: FC<WorkflowCardProps> = props => {
     </div>
   );
 };
-

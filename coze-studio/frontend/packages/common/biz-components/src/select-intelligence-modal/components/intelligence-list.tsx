@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import React from 'react';
 
 import { type IntelligenceData } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozLoading, IconCozEmpty } from '@coze-arch/bot-semi/icons';
-import { Spin, IconButton } from '@coze-arch/bot-semi';
+import { IconCozLoading, IconCozEmpty } from '@coze-arch/coze-design/icons';
+import { Spin, IconButton } from '@coze-arch/coze-design';
 
 import { IntelligenceItem } from './intelligence-item';
 
@@ -95,4 +95,3 @@ export const IntelligenceList: React.FC<IntelligenceListProps> = ({
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { I18n } from '@coze-arch/i18n';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconButton } from '@coze-arch/coze-design';
 import { IconAdd } from '@coze-arch/bot-icons';
 
 import { type ISysConfigItemGroup } from '../../hooks';
@@ -51,4 +51,3 @@ export const AddVariable = (props: {
     </div>
   ) : null;
 };
-

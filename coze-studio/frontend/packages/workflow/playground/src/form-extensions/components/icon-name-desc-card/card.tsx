@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,8 +18,8 @@ import { type FC, type ReactNode } from 'react';
 
 import classnames from 'classnames';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozTrashCan } from '@coze-arch/bot-semi/icons';
-import { Avatar } from '@coze-arch/bot-semi';
+import { IconCozTrashCan } from '@coze-arch/coze-design/icons';
+import { Avatar } from '@coze-arch/coze-design';
 import { type Position } from '@coze-arch/bot-semi/Tooltip';
 
 import { Text } from '../text';
@@ -136,4 +136,3 @@ export const IconNameDescCard: FC<IconNameDescProps> = props => {
     </div>
   );
 };
-

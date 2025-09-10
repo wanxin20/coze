@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,7 +27,7 @@ import {
   IconCozFileOther,
   IconCozFilePdf,
   IconCozFileCsv,
-} from '@coze-arch/bot-semi/illustrations';
+} from '@coze-arch/coze-design/illustrations';
 
 import { PREVIEW_IMAGE_TYPE } from './constants';
 
@@ -132,4 +132,3 @@ export const isImageFile = (name: string) => {
   const ext = getFileExtension(name);
   return PREVIEW_IMAGE_TYPE.includes(ext);
 };
-

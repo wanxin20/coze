@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -22,8 +22,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozInfoCircle,
   IconCozDiamondFill,
-} from '@coze-arch/bot-semi/icons';
-import { Tooltip, Space } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Tooltip, Space } from '@coze-arch/coze-design';
 import {
   useBenefitAvailable,
   PremiumPaywallScene,
@@ -90,4 +90,3 @@ export function ConnectorGroupHeader({
     </div>
   );
 }
-

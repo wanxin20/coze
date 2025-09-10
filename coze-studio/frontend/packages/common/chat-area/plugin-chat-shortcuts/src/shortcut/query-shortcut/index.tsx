@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC, useRef } from 'react';
 
 import { type ShortCutCommand } from '@coze-agent-ide/tool-config';
 import { useIsSendMessageLock } from '@coze-common/chat-area';
-import { Button } from '@coze-arch/bot-semi';
+import { Button } from '@coze-arch/coze-design';
 import { SendType } from '@coze-arch/bot-api/playground_api';
 
 import {
@@ -118,4 +118,3 @@ export const QueryShortcut: FC<QueryShortcutProps> = props => {
     </div>
   );
 };
-

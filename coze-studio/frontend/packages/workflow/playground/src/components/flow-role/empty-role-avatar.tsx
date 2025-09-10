@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-import { CozAvatar, type AvatarProps } from '@coze-arch/bot-semi';
+import { CozAvatar, type AvatarProps } from '@coze-arch/coze-design';
 
 import img from './avatar.png';
 
@@ -29,4 +29,3 @@ export const EmptyRoleAvatar: React.FC<EmptyRoleAvatarProps> = ({
   width,
   ...props
 }) => <CozAvatar src={img} style={{ width, height: width }} {...props} />;
-

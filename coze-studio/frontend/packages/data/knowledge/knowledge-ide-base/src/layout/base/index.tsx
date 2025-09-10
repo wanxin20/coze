@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
 } from '@coze-data/knowledge-stores';
 import { useReportTti } from '@coze-arch/report-tti';
 import { I18n } from '@coze-arch/i18n';
-import { Layout } from '@coze-arch/bot-semi';
+import { Layout } from '@coze-arch/coze-design';
 import { renderHtmlTitle } from '@coze-arch/bot-utils';
 import { type DocumentInfo, type Dataset } from '@coze-arch/bot-api/knowledge';
 import { FormatType } from '@coze-arch/bot-api/knowledge';
@@ -135,4 +135,3 @@ export const KnowledgeIDEBaseLayout = ({
     </DataErrorBoundary>
   );
 };
-

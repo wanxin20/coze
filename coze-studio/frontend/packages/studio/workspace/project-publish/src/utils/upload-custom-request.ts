@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,7 @@
  */
 
 import { AxiosError } from 'axios';
-import { type UploadProps } from '@coze-arch/bot-semi';
+import { type UploadProps } from '@coze-arch/coze-design';
 import { upLoadFile } from '@coze-arch/bot-utils';
 import { ProductApi } from '@coze-arch/bot-api';
 
@@ -98,4 +98,3 @@ export const uploadCustomRequestImageX: UploadProps['customRequest'] =
       }
     }
   };
-

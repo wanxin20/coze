@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,8 +20,8 @@ import { type FeedbackStatus } from '@flowgram-adapter/free-layout-editor';
 import { useCurrentEntity } from '@flowgram-adapter/free-layout-editor';
 import { Previewer } from '@coze-workflow/code-editor-adapter';
 import { I18n } from '@coze-arch/i18n';
-import { IconCozExpand } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozExpand } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { useNodeFormPanelState } from '@/hooks/use-node-side-sheet-store';
 import { useGlobalState } from '@/hooks';
@@ -170,4 +170,3 @@ export const CodeEditorWithBizIDE: FC<CodeProps> = (props: CodeProps) => {
     </>
   );
 };
-

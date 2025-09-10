@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -29,7 +29,7 @@ import {
   type PublishConnectorInfo,
 } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
-import { Checkbox, Tooltip, Typography } from '@coze-arch/bot-semi';
+import { Checkbox, Tooltip, Typography } from '@coze-arch/coze-design';
 import { typeSafeJSONParse } from '@coze-arch/bot-utils';
 import { type TextProps } from '@coze-arch/bot-semi/Typography';
 
@@ -366,4 +366,3 @@ export function ConnectorCard({
     </Tooltip>
   );
 }
-

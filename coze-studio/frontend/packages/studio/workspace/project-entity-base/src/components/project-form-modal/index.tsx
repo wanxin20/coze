@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -20,7 +20,7 @@ import { SpaceFormSelect } from '@coze-studio/components';
 import { type AuditData } from '@coze-arch/idl/intelligence_api';
 import { I18n } from '@coze-arch/i18n';
 import { type RenderAutoGenerateParams } from '@coze-common/biz-components/picture-upload';
-import { type FormApi, Modal, type ModalProps } from '@coze-arch/bot-semi';
+import { type FormApi, Modal, type ModalProps } from '@coze-arch/coze-design';
 
 import {
   filedKeyMap,
@@ -133,4 +133,3 @@ export const ProjectFormModal: React.FC<BizProjectFormModalProps> = ({
     </Modal>
   );
 };
-

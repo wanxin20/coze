@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -23,8 +23,8 @@ import { I18n } from '@coze-arch/i18n';
 import {
   IconCozArrowLeft,
   IconCozWarningCircleFill,
-} from '@coze-arch/bot-semi/icons';
-import { IconButton, Loading } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { IconButton, Loading } from '@coze-arch/coze-design';
 import { CustomError } from '@coze-arch/bot-error';
 import { type Model, type ModelInfo } from '@coze-arch/bot-api/developer_api';
 
@@ -239,4 +239,3 @@ function useInitFormily():
   primitiveExhaustiveCheck(formilyModule.status);
   throw new CustomError('normal_error', 'unrecognized formilyModule.status');
 }
-

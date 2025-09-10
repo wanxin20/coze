@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,7 +17,7 @@
 /* eslint-disable @coze-arch/no-deep-relative-import */
 
 import { I18n } from '@coze-arch/i18n';
-import { Toast, Typography } from '@coze-arch/bot-semi';
+import { Toast, Typography } from '@coze-arch/coze-design';
 import { sendTeaEvent, EVENT_NAMES } from '@coze-arch/bot-tea';
 import { RadioGroup, Radio, UIModal } from '@coze-arch/bot-semi';
 import { useService } from '@flowgram-adapter/free-layout-editor';
@@ -130,4 +130,3 @@ export const useMergeConfirm = () => {
     mergeConfirm,
   };
 };
-

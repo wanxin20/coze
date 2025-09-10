@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,7 +16,7 @@
 
 import type { ParsingStrategy } from '@coze-arch/idl/knowledge';
 import { I18n } from '@coze-arch/i18n';
-import type { FormApi } from '@coze-arch/bot-semi';
+import type { FormApi } from '@coze-arch/coze-design';
 
 import { type SegmentMode, type CustomSegmentRule } from '@/types';
 import { CustomSegment } from '@/features/segment-strategys/segment-strategy/custom';
@@ -68,4 +68,3 @@ export const SegmentConfig = ({
     </CollapsePanel>
   </>
 );
-

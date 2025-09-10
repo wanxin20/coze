@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,7 @@ import React, { useState } from 'react';
 
 import copy from 'copy-to-clipboard';
 import { I18n } from '@coze-arch/i18n';
-import { Tooltip, Toast } from '@coze-arch/bot-semi';
+import { Tooltip, Toast } from '@coze-arch/coze-design';
 import { UITag } from '@coze-arch/bot-semi';
 import { IconChevronDown } from '@coze-arch/bot-icons';
 
@@ -69,4 +69,3 @@ export const TagList: React.FC<TagListProps> = ({
 };
 
 export default TagList;
-

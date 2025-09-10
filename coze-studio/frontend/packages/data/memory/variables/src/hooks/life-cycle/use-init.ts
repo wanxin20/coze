@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,7 +21,7 @@ import { I18n } from '@coze-arch/i18n';
 import { CustomError } from '@coze-arch/bot-error';
 import { type project_memory as ProjectMemory } from '@coze-arch/bot-api/memory';
 import { MemoryApi } from '@coze-arch/bot-api';
-import { Toast } from '@coze-arch/bot-semi';
+import { Toast } from '@coze-arch/coze-design';
 
 import { useVariableGroupsStore } from '../../store';
 
@@ -122,4 +122,3 @@ const useGetVariableList = (
     error: error?.message ?? '',
   };
 };
-

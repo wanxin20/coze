@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,13 +18,13 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { useCallback } from 'react';
 
 import { I18n } from '@coze-arch/i18n';
-import { IconCozIllusError } from '@coze-arch/bot-semi/illustrations';
+import { IconCozIllusError } from '@coze-arch/coze-design/illustrations';
 import {
   IconCozInfoCircle,
   IconCozCross,
   IconCozRefresh,
-} from '@coze-arch/bot-semi/icons';
-import { Modal, Tooltip, Button, EmptyState } from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design/icons';
+import { Modal, Tooltip, Button, EmptyState } from '@coze-arch/coze-design';
 import { type DependencyTree } from '@coze-arch/bot-api/workflow_api';
 import { ResourceTree } from '@coze-common/resource-tree';
 
@@ -106,4 +106,3 @@ export const ReferenceModal = ({
     </Modal>
   );
 };
-

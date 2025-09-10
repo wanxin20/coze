@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -21,8 +21,8 @@ import {
   type FieldArrayRenderProps,
 } from '@flowgram-adapter/free-layout-editor';
 import { type InputValueVO, type ViewVariableType } from '@coze-workflow/base';
-import { IconCozMinus } from '@coze-arch/bot-semi/icons';
-import { IconButton } from '@coze-arch/bot-semi';
+import { IconCozMinus } from '@coze-arch/coze-design/icons';
+import { IconButton } from '@coze-arch/coze-design';
 
 import { isVisionInput } from '../utils/index';
 import { VisionValueField } from './vision-value-field';
@@ -78,4 +78,3 @@ export const VisionInputField: FC<VisionInputFieldProps> = ({
     </div>
   );
 };
-

@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -24,7 +24,7 @@ import {
 } from '@coze-workflow/base/types';
 import { REPORT_EVENTS as ReportEventNames } from '@coze-arch/report-events';
 import { I18n } from '@coze-arch/i18n';
-import { Cascader, type CascaderData } from '@coze-arch/bot-semi';
+import { Cascader, type CascaderData } from '@coze-arch/coze-design';
 import { CustomError } from '@coze-arch/bot-error';
 
 const hoursSize = 24;
@@ -255,4 +255,3 @@ export const FixCronjobSelect: React.FC<FixCronjobSelectProps> = ({
     </>
   );
 };
-

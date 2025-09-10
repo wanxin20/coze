@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -18,7 +18,7 @@ import { type FC } from 'react';
 
 import { ConditionLogic } from '@coze-workflow/base';
 import { I18n } from '@coze-arch/i18n';
-import { Select } from '@coze-arch/bot-semi';
+import { Select } from '@coze-arch/coze-design';
 
 import { logicTextMap } from './constants';
 
@@ -83,4 +83,3 @@ export const ConditionItemLogic: FC<ConditionItemLogicProps> = props => {
     </div>
   );
 };
-

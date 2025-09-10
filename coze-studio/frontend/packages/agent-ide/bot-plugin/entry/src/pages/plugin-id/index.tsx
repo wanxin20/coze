@@ -1,4 +1,4 @@
-﻿/*
+/*
  * Copyright 2025 coze-dev Authors
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -48,7 +48,7 @@ import {
   Tooltip,
   Banner,
   Popconfirm,
-} from '@coze-arch/bot-semi';
+} from '@coze-arch/coze-design';
 import { renderHtmlTitle } from '@coze-arch/bot-utils';
 import { useSpaceStore } from '@coze-arch/bot-studio-store';
 import { UIEmpty } from '@coze-arch/bot-semi';
@@ -671,4 +671,3 @@ const PluginDetailPage = ({
 };
 
 export { PluginDetailPage };
-
