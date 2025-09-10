@@ -16,7 +16,7 @@ docker compose up -d mysql redis elasticsearch minio etcd milvus nsqlookupd nsqd
 
 
 coze-server:
-    docker compose -f docker-compose.yml restart coze-server
+    docker compose restart coze-server
     docker compose logs -f coze-server  
 FastGPTRAG:
     docker compose -f docker-compose.rag.yml down
@@ -36,3 +36,4 @@ rush update
    docker-compose --profile development stop coze-web-dev
    docker-compose --profile development up -d coze-web-dev
    docker-compose --profile development restart coze-web-dev
+

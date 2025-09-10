@@ -23,14 +23,14 @@ bin/.venv/**
 **/.rush/temp
 **/.rush/build-cache
 **/common/temp
-**/common/autoinstallers
-**/common/autoinstallers/**
+# **/common/autoinstallers     # Commented out - Rush needs autoinstallers
+# **/common/autoinstallers/**  # for plugins and build tools
 **/.pnpm
 **/.pnpm-store
 **/.pnpm/**
 
 # Exclude package manager caches and lock files
-**/pnpm-lock.yaml
+# **/pnpm-lock.yaml  # Commented out - Rush needs lockfiles for autoinstallers
 **/.npmrc
 **/package-lock.json
 **/yarn.lock
@@ -48,8 +48,9 @@ frontend/infra/*/node_modules
 frontend/infra/*/node_modules/**
 frontend/apps/*/node_modules
 frontend/apps/*/node_modules/**
-common/autoinstallers/plugins/node_modules
-common/autoinstallers/plugins/node_modules/**
+# Keep autoinstaller node_modules exclusion to avoid copying installed packages
+common/autoinstallers/*/node_modules
+common/autoinstallers/*/node_modules/**
 
 # Exclude development files
 **/.git

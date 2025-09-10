@@ -1,0 +1,108 @@
+# 开发模式Dockerfile - 优化编译速度和依赖缓存
+FROM golang:1.24-alpine
+
+WORKDIR /app
+
+# 安装构建和运行时依赖
+RUN apk add --no-cache \
+    git \
+    gcc \
+    libc-dev \
+    python3 \
+    python3-dev \
+    py3-pip \
+    pax-utils \
+    bind-tools \
+    file \
+    deno \
+    curl \
+    build-base
+
+# 设置Go环境变量以优化模块缓存
+ENV GOPROXY=https://proxy.golang.org,direct
+ENV GOSUMDB=sum.golang.org
+ENV GO111MODULE=on
+ENV CGO_ENABLED=1
+
+# 创建Python虚拟环境并安装Python依赖
+RUN python3 -m venv --copies --upgrade-deps /app/.venv && \
+    . /app/.venv/bin/activate && \
+    pip install --no-cache-dir \
+        urllib3==1.26.16 \
+        h11==0.16.0 \
+        httpx==0.28.1 \
+        pillow==11.2.0 \
+        pdfplumber==0.11.7 \
+        python-docx==1.2.0 \
+        numpy==2.3.1 \
+        pymupdf
+
+# 设置PATH以优先使用虚拟环境
+ENV PATH="/app/.venv/bin:${PATH}"
+
+# 初始化deno运行时（可选）
+RUN deno run -A jsr:@eyurtsev/pyodide-sandbox -c "print('Deno initialized')" || true
+
+# 创建源代码目录
+RUN mkdir -p /app/src
+
+# 设置工作目录
+WORKDIR /app/src
+
+# 开发模式启动脚本
+RUN echo '#!/bin/sh' > /app/dev-start.sh && \
+    echo 'set -e' >> /app/dev-start.sh && \
+    echo 'echo "🚀 开发模式启动中..."' >> /app/dev-start.sh && \
+    echo 'cd /app/src' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 检查go.mod是否存在' >> /app/dev-start.sh && \
+    echo 'if [ ! -f "go.mod" ]; then' >> /app/dev-start.sh && \
+    echo '  echo "❌ go.mod文件未找到，请确保源代码已正确挂载"' >> /app/dev-start.sh && \
+    echo '  exit 1' >> /app/dev-start.sh && \
+    echo 'fi' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 智能依赖管理：只有go.mod或go.sum变化时才重新下载' >> /app/dev-start.sh && \
+    echo 'if [ ! -f "/tmp/go-deps-hash" ] || ! sha256sum go.mod go.sum | sha256sum -c /tmp/go-deps-hash > /dev/null 2>&1; then' >> /app/dev-start.sh && \
+    echo '  echo "📦 检测到依赖变化，下载Go模块..."' >> /app/dev-start.sh && \
+    echo '  go mod download' >> /app/dev-start.sh && \
+    echo '  if [ $? -eq 0 ]; then' >> /app/dev-start.sh && \
+    echo '    sha256sum go.mod go.sum > /tmp/go-deps-hash' >> /app/dev-start.sh && \
+    echo '    echo "✅ Go模块下载完成并缓存"' >> /app/dev-start.sh && \
+    echo '  else' >> /app/dev-start.sh && \
+    echo '    echo "❌ Go模块下载失败"' >> /app/dev-start.sh && \
+    echo '    exit 1' >> /app/dev-start.sh && \
+    echo '  fi' >> /app/dev-start.sh && \
+    echo 'else' >> /app/dev-start.sh && \
+    echo '  echo "✅ 依赖无变化，跳过下载（使用缓存）"' >> /app/dev-start.sh && \
+    echo 'fi' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 编译Go应用' >> /app/dev-start.sh && \
+    echo 'echo "🔧 编译Go应用..."' >> /app/dev-start.sh && \
+    echo 'go build -ldflags="-s -w" -o /app/opencoze main.go' >> /app/dev-start.sh && \
+    echo 'if [ $? -eq 0 ]; then' >> /app/dev-start.sh && \
+    echo '  echo "✅ 编译成功"' >> /app/dev-start.sh && \
+    echo 'else' >> /app/dev-start.sh && \
+    echo '  echo "❌ 编译失败"' >> /app/dev-start.sh && \
+    echo '  exit 1' >> /app/dev-start.sh && \
+    echo 'fi' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 复制必要的Python脚本（如果存在）' >> /app/dev-start.sh && \
+    echo '[ -f "infra/impl/document/parser/builtin/parse_pdf.py" ] && cp infra/impl/document/parser/builtin/parse_pdf.py /app/' >> /app/dev-start.sh && \
+    echo '[ -f "infra/impl/document/parser/builtin/parse_docx.py" ] && cp infra/impl/document/parser/builtin/parse_docx.py /app/' >> /app/dev-start.sh && \
+    echo '[ -f "infra/impl/coderunner/script/sandbox.py" ] && cp infra/impl/coderunner/script/sandbox.py /app/' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 确保Python脚本可执行' >> /app/dev-start.sh && \
+    echo 'chmod +x /app/*.py 2>/dev/null || true' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 启动应用' >> /app/dev-start.sh && \
+    echo 'echo "🚀 启动Coze后端服务..."' >> /app/dev-start.sh && \
+    echo 'echo "📡 服务地址: http://localhost:8888"' >> /app/dev-start.sh && \
+    echo 'echo "🔄 开发模式已启用 - 修改代码后重启容器即可"' >> /app/dev-start.sh && \
+    echo 'exec /app/opencoze' >> /app/dev-start.sh && \
+    chmod +x /app/dev-start.sh
+
+# 暴露端口
+EXPOSE 8888 8889
+
+# 使用开发启动脚本
+CMD ["/app/dev-start.sh"]

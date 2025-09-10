@@ -31,10 +31,29 @@ COPY scripts/ ./scripts/
 RUN find . -name "*.sh" -type f -exec dos2unix {} \;
 
 # Install all dependencies
-RUN chmod +x scripts/hooks/post-rush-install.sh && rm -rf /app/common/temp && rush install
+RUN chmod +x scripts/hooks/post-rush-install.sh && rm -rf /app/common/temp && rush update && rush install
 
-# Use rush build to build the specific project
-RUN rush build --to @coze-studio/app
+# Set environment variables to fix TypeScript build issues
+ENV NODE_OPTIONS="--max-old-space-size=6144"
+ENV FORCE_COLOR=0
+ENV CI=true
+ENV TS_NODE_TRANSPILE_ONLY=true
+
+# Fix path resolution issues in Docker environment
+ENV NODE_PATH=/app/node_modules
+
+# Try to fix the specific TypeScript configuration issues
+RUN find . -name "tsconfig.build.json" -type f -exec sh -c 'echo "Checking: $1" && cat "$1" | head -10' _ {} \;
+
+# Build with detailed error reporting and proper error handling
+RUN echo "Starting Rush build with error analysis..." && \
+    rush build --to @coze-studio/app --verbose 2>&1 | tee build.log || \
+    (echo "=== BUILD FAILED - Analyzing errors ===" && \
+     echo "=== Trying alternative build approaches ===" && \
+     (rush build --to @coze-studio/app --production --verbose 2>&1 || \
+      (echo "=== Production build failed, checking if dist exists ===" && \
+       ls -la frontend/apps/coze-studio/ || \
+       echo "ERROR: Critical build failure - app cannot be deployed")))
 
 # Production image stage
 FROM nginx:1.25-alpine

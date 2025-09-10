@@ -383,23 +383,45 @@ services:
       - coze-network
 
   coze-server:
-    # build:
-    #   context: ../
-    #   dockerfile: backend/Dockerfile
-    image: cozedev/coze-studio-server:latest
+    # 开发模式：使用自定义开发Dockerfile
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile.dev
     restart: always
     container_name: coze-server
     env_file: *env_file
-    # environment:
-    #   LISTEN_ADDR: 0.0.0.0:8888
+    environment:
+      # 基础服务配置
+      LISTEN_ADDR: 0.0.0.0:8888
+      
+      # 日志配置 - 开发环境友好的详细日志
+      LOG_LEVEL: ${LOG_LEVEL:-debug}
+      ENABLE_API_LOGGING: ${ENABLE_API_LOGGING:-true}
+      ENABLE_REQUEST_LOGGING: ${ENABLE_REQUEST_LOGGING:-true}
+      VERBOSE_LOGGING: ${VERBOSE_LOGGING:-true}
+      # 启用彩色日志输出
+      ENABLE_COLOR_LOGS: ${ENABLE_COLOR_LOGS:-true}
+      FORCE_COLOR: ${FORCE_COLOR:-1}
+      
+      # 开发模式配置
+      CGO_ENABLED: ${CGO_ENABLED:-1}
+      GOOS: linux
+      DEV_MODE: true
+      WATCH_MODE: true
     networks:
       - coze-network
-    # ports:
-    #   - '8888'
-    #   - '8889'
+    ports:
+      - '8888:8888'
+      - '8889:8889'
+    working_dir: /app
     volumes:
       - .env:/app/.env
-      - ../backend/conf:/app/resources/conf
+      # 挂载源代码目录（开发模式，使用cached提升性能）
+      - ../backend:/app/src:cached
+      - ../backend/conf:/app/resources/conf:ro
+      # Go模块缓存挂载（避免重复下载依赖）
+      - go-mod-cache:/go/pkg/mod
+      - go-build-cache:/root/.cache/go-build
       # - ../backend/static:/app/resources/static
     depends_on:
       mysql:
@@ -412,7 +434,6 @@ services:
         condition: service_healthy
       milvus:
         condition: service_healthy
-    command: ['/app/opencoze']
 
   coze-web:
     # build:
@@ -436,3 +457,10 @@ services:
 networks:
   coze-network:
     driver: bridge
+
+volumes:
+  # Go模块缓存卷，用于加速依赖下载
+  go-mod-cache:
+    driver: local
+  go-build-cache:
+    driver: local
