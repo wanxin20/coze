@@ -6,6 +6,7 @@ enum FormatType {
     Table = 1  // table
     Image = 2  // image
     Database = 3 // database
+    FastGPTRAG = 4 // FastGPT RAG knowledge base
 }
 
 struct ChunkStrategy {

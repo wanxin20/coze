@@ -41,6 +41,7 @@ export const KnowledgeUploadPage = () => {
   const docID = locationSearchParams.get('doc_id') || '';
   const isDouyinBot =
     locationSearchParams.get('is_douyin') === 'true' ? true : false;
+  const isFastGPTRAG = locationSearchParams.get('fastgpt_rag') === 'true';
   const { dataset_id, space_id } = useParams();
   const params: IKnowledgeParams = {
     datasetID: dataset_id || '',
@@ -50,6 +51,7 @@ export const KnowledgeUploadPage = () => {
     docID,
     isDouyinBot,
     biz: 'library',
+    ...(isFastGPTRAG && { isFastGPTRAG }), // 条件添加FastGPT RAG标识
   };
 
   const uploadConfig = getUploadConfig(
@@ -81,6 +83,32 @@ export const KnowledgeUploadPage = () => {
           ),
       }}
     >
+      {isFastGPTRAG && (
+        <div style={{
+          padding: '16px',
+          backgroundColor: '#f0f9ff',
+          borderBottom: '1px solid #e0e7ff',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '12px'
+        }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '4px 12px',
+            backgroundColor: '#10b981',
+            color: 'white',
+            borderRadius: '16px',
+            fontSize: '12px',
+            fontWeight: 500
+          }}>
+            🚀 FastGPT RAG
+          </div>
+          <span style={{ color: '#64748b', fontSize: '14px' }}>
+            文件将上传到FastGPT RAG服务进行自动训练，训练完成后可在知识库中查看结果
+          </span>
+        </div>
+      )}
       <KnowledgeResourceProcessor uploadConfig={uploadConfig} />
     </KnowledgeParamsStoreProvider>
   );

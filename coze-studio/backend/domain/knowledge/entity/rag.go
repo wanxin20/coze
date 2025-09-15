@@ -55,8 +55,8 @@ type RAGCollection struct {
 	ChunkSplitter string                 `json:"chunkSplitter,omitempty"`
 	Status        string                 `json:"status"`
 	Metadata      map[string]interface{} `json:"metadata,omitempty"`
-	CreateTime    int64                  `json:"createTime"` // 保持与FastGPT兼容
-	UpdateTime    int64                  `json:"updateTime"` // 保持与FastGPT兼容
+	CreateTime    string                 `json:"createTime"` // FastGPT返回的时间字符串
+	UpdateTime    string                 `json:"updateTime"` // FastGPT返回的时间字符串
 	CreatedAt     int64                  `json:"createdAt"`  // 内部使用
 	UpdatedAt     int64                  `json:"updatedAt"`  // 内部使用
 }
@@ -320,8 +320,8 @@ type RAGCollectionFastGPT struct {
 	Type         string                 `json:"type"`
 	Name         string                 `json:"name"`
 	Tags         []string               `json:"tags,omitempty"`
-	CreateTime   int64                  `json:"createTime"`
-	UpdateTime   int64                  `json:"updateTime"`
+	CreateTime   string                 `json:"createTime"`
+	UpdateTime   string                 `json:"updateTime"`
 	FileID       string                 `json:"fileId,omitempty"`
 	RawLink      string                 `json:"rawLink,omitempty"`
 	Metadata     map[string]interface{} `json:"metadata,omitempty"`

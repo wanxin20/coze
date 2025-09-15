@@ -31,7 +31,7 @@ RUN python3 -m venv --copies --upgrade-deps /app/.venv && \
         urllib3==1.26.16 \
         h11==0.16.0 \
         httpx==0.28.1 \
-        pillow==11.2.0 \
+        pillow==11.1.0 \
         pdfplumber==0.11.7 \
         python-docx==1.2.0 \
         numpy==2.3.1 \
@@ -54,6 +54,23 @@ RUN echo '#!/bin/sh' > /app/dev-start.sh && \
     echo 'set -e' >> /app/dev-start.sh && \
     echo 'echo "🚀 开发模式启动中..."' >> /app/dev-start.sh && \
     echo 'cd /app/src' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 创建.env文件软链接' >> /app/dev-start.sh && \
+    echo 'if [ -f "/app/.env" ]; then' >> /app/dev-start.sh && \
+    echo '  ln -sf /app/.env /app/src/.env' >> /app/dev-start.sh && \
+    echo '  echo "✅ 环境变量文件链接创建成功"' >> /app/dev-start.sh && \
+    echo 'else' >> /app/dev-start.sh && \
+    echo '  echo "⚠️  警告：/app/.env文件不存在"' >> /app/dev-start.sh && \
+    echo 'fi' >> /app/dev-start.sh && \
+    echo '' >> /app/dev-start.sh && \
+    echo '# 创建配置文件目录软链接' >> /app/dev-start.sh && \
+    echo 'if [ -d "/app/src/conf" ] && [ ! -d "/app/src/resources" ]; then' >> /app/dev-start.sh && \
+    echo '  mkdir -p /app/src/resources' >> /app/dev-start.sh && \
+    echo '  ln -sf /app/src/conf /app/src/resources/conf' >> /app/dev-start.sh && \
+    echo '  echo "✅ 配置文件目录链接创建成功"' >> /app/dev-start.sh && \
+    echo 'else' >> /app/dev-start.sh && \
+    echo '  echo "ℹ️  配置文件目录已存在或无需创建链接"' >> /app/dev-start.sh && \
+    echo 'fi' >> /app/dev-start.sh && \
     echo '' >> /app/dev-start.sh && \
     echo '# 检查go.mod是否存在' >> /app/dev-start.sh && \
     echo 'if [ ! -f "go.mod" ]; then' >> /app/dev-start.sh && \

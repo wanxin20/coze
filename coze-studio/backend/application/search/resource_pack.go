@@ -76,10 +76,11 @@ type resourceBasePacker struct {
 }
 
 type dataInfo struct {
-	iconURI *string
-	iconURL string
-	desc    *string
-	status  *int32
+	iconURI       *string
+	iconURL       string
+	desc          *string
+	status        *int32
+	knowledgeType *string // 添加知识库类型字段
 }
 
 func (b *resourceBasePacker) GetActions(ctx context.Context) []*common.ResourceAction {
@@ -200,11 +201,20 @@ func (k *knowledgePacker) GetDataInfo(ctx context.Context) (*dataInfo, error) {
 
 	kn := res.Knowledge
 
+	// 根据RagDatasetID判断知识库类型
+	var knowledgeType string
+	if kn.RagDatasetID != "" {
+		knowledgeType = "fastgpt_rag"
+	} else {
+		knowledgeType = "native"
+	}
+
 	return &dataInfo{
-		iconURI: ptr.Of(kn.IconURI),
-		iconURL: kn.IconURL,
-		desc:    ptr.Of(kn.Description),
-		status:  ptr.Of(int32(kn.Status)),
+		iconURI:       ptr.Of(kn.IconURI),
+		iconURL:       kn.IconURL,
+		desc:          ptr.Of(kn.Description),
+		status:        ptr.Of(int32(kn.Status)),
+		knowledgeType: ptr.Of(knowledgeType),
 	}, nil
 }
 

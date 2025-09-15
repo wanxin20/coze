@@ -45,6 +45,8 @@ export interface IParams {
   initialTab?: 'structure' | 'draft' | 'online';
   /** The function is to bring the Douyin mark in the url when jumping to the upload page to distinguish the views on the upload page */
   isDouyinBot?: boolean;
+  /** FastGPT RAG knowledge base flag */
+  isFastGPTRAG?: boolean;
   pageMode?: 'modal' | 'normal';
 
   first_auto_open_edit_document_id?: string;

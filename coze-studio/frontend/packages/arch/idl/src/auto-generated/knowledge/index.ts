@@ -384,6 +384,7 @@ export default class KnowledgeService<T> {
       format_type: _req['format_type'],
       biz_id: _req['biz_id'],
       project_id: _req['project_id'],
+      knowledge_type: _req['knowledge_type'],
       storage_location: _req['storage_location'],
       Base: _req['Base'],
     };

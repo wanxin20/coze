@@ -59,10 +59,11 @@ const (
 type DocumentType int64
 
 const (
-	DocumentTypeText    DocumentType = 0 // Text
-	DocumentTypeTable   DocumentType = 1 // table
-	DocumentTypeImage   DocumentType = 2 // image
-	DocumentTypeUnknown DocumentType = 9 // unknown
+	DocumentTypeText      DocumentType = 0 // Text
+	DocumentTypeTable     DocumentType = 1 // table
+	DocumentTypeImage     DocumentType = 2 // image
+	DocumentTypeFastGPTRAG DocumentType = 4 // FastGPT RAG knowledge base
+	DocumentTypeUnknown   DocumentType = 9 // unknown
 )
 
 type ListKnowledgeResponse struct {
@@ -89,6 +90,7 @@ type Info struct {
 	CreatedAtMs int64
 	UpdatedAtMs int64
 	DeletedAtMs int64
+	RagDatasetID string // FastGPTRAG Dataset ID for unified management
 }
 
 type KnowledgeStatus int64

@@ -926,6 +926,17 @@ table "knowledge" {
     default = 0
     comment = "0: Text 1: Table 2: Images"
   }
+  column "rag_dataset_id" {
+    null    = true
+    type    = varchar(255)
+    comment = "FastGPTRAG Dataset ID for unified management"
+  }
+  column "knowledge_type" {
+    null    = false
+    type    = varchar(32)
+    default = "native"
+    comment = "Knowledge base type: native, fastgpt_rag"
+  }
   primary_key {
     columns = [column.id]
   }
@@ -937,6 +948,12 @@ table "knowledge" {
   }
   index "idx_space_id_deleted_at_updated_at" {
     columns = [column.space_id, column.deleted_at, column.updated_at]
+  }
+  index "idx_knowledge_rag_dataset_id" {
+    columns = [column.rag_dataset_id]
+  }
+  index "idx_knowledge_type" {
+    columns = [column.knowledge_type]
   }
 }
 table "knowledge_document" {

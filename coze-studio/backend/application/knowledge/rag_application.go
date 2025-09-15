@@ -28,6 +28,22 @@ import (
 	"github.com/coze-dev/coze-studio/backend/pkg/logs"
 )
 
+// ParseTimeString 解析 ISO 8601 时间字符串为 time.Time
+func ParseTimeString(timeStr string) time.Time {
+	if timeStr == "" {
+		return time.Time{}
+	}
+	
+	// 尝试解析 ISO 8601 格式的时间字符串
+	if t, err := time.Parse(time.RFC3339, timeStr); err == nil {
+		return t
+	}
+	
+	// 如果解析失败，记录错误并返回零值
+	logs.Errorf("Failed to parse time string: %s", timeStr)
+	return time.Time{}
+}
+
 // convertFiltersToStringMap 转换filters类型
 func convertFiltersToStringMap(filters map[string]interface{}) map[string]string {
 	result := make(map[string]string)
@@ -102,6 +118,66 @@ func NewRAGApplication(
 		knowledgeSvc:   knowledgeSvc,
 		converter:      NewRAGConverter(), // 初始化转换器
 	}
+}
+
+// SearchByKnowledgeID 通过Coze Knowledge ID进行统一搜索 (推荐使用此方法)
+func (app *RAGApplication) SearchByKnowledgeID(ctx context.Context, knowledgeID int64, query string, topK int, scoreThreshold float64, searchMode string) (*ragModel.RagSearchResponse, error) {
+	// 1. 通过Knowledge ID获取对应的RagDatasetID
+	knowledge, err := app.knowledgeSvc.GetKnowledgeByID(ctx, &service.GetKnowledgeByIDRequest{
+		KnowledgeID: knowledgeID,
+	})
+	if err != nil {
+		logs.CtxErrorf(ctx, "Failed to get knowledge by ID %d: %v", knowledgeID, err)
+		return nil, fmt.Errorf("knowledge not found: %w", err)
+	}
+
+	if knowledge.Knowledge.RagDatasetID == "" {
+		return nil, fmt.Errorf("knowledge %d has no associated RAG dataset", knowledgeID)
+	}
+
+	// 2. 构建RAG搜索请求，使用DatasetID作为唯一标识
+	ragReq := &entity.RAGSearchRequest{
+		DatasetID:      knowledge.Knowledge.RagDatasetID, // 使用DatasetID作为唯一标识
+		Query:          query,
+		TopK:           topK,
+		ScoreThreshold: scoreThreshold,
+		SearchMode:     searchMode,
+		UsingReRank:    true, // 默认启用重排序
+	}
+
+	// 3. 调用RAG服务进行dataset搜索 (teamid和userid使用默认值)
+	result, err := app.ragClient.SearchDataset(ctx, ragReq)
+	if err != nil {
+		logs.CtxErrorf(ctx, "RAG dataset search failed for knowledge %d (dataset %s): %v", knowledgeID, knowledge.Knowledge.RagDatasetID, err)
+		return nil, fmt.Errorf("RAG dataset search failed: %w", err)
+	}
+
+	// 4. 转换响应结果
+	searchResults := make([]*ragModel.RagSearchItem, len(result.Results))
+	for i, item := range result.Results {
+		searchResults[i] = &ragModel.RagSearchItem{
+			Id:             item.ID,
+			Content:        item.Content,
+			Score:          item.Score,
+			CollectionId:   item.CollectionID,
+			CollectionName: item.CollectionName,
+		}
+	}
+
+	response := &ragModel.RagSearchResponse{
+		BaseResponse: ragModel.BaseResponse{
+			Code: 200,
+			Msg:  "Success",
+		},
+		SearchResults:     searchResults,
+		Total:            int32(result.TotalCount),
+		SearchMode:       result.SearchMode,
+		Duration:         fmt.Sprintf("%dms", result.ExecutionTime),
+		EmbeddingTokens:  getUsageStatsEmbeddingTokens(result.UsageStats),
+		RerankInputTokens: getUsageStatsRerankTokens(result.UsageStats),
+	}
+
+	return response, nil
 }
 
 // RagSearch RAG搜索 (对应FastGPT的dataset搜索)
@@ -734,12 +810,14 @@ func (app *RAGApplication) CreateKnowledgeBase(ctx context.Context, req *ragMode
 		return nil, fmt.Errorf("create dataset failed: %w", err)
 	}
 
+	logs.CtxInfof(ctx, "Created FastGPT RAG dataset successfully, fastgpt_id=%s", dataset.ID)
+
 	response := &ragModel.CreateKnowledgeBaseResponse{
 		BaseResponse: ragModel.BaseResponse{
 			Code: 200,
 			Msg:  "Success",
 		},
-		Id: dataset.ID,
+		Id: dataset.ID, // 返回FastGPT dataset ID
 	}
 
 	return response, nil
@@ -747,23 +825,54 @@ func (app *RAGApplication) CreateKnowledgeBase(ctx context.Context, req *ragMode
 
 // GetKnowledgeBaseById 获取知识库详情 (对应FastGPT的dataset详情)
 func (app *RAGApplication) GetKnowledgeBaseById(ctx context.Context, req *ragModel.GetKnowledgeBaseByIdRequest) (*ragModel.GetKnowledgeBaseByIdResponse, error) {
-	// 调用RAG服务获取dataset详情
-	dataset, err := app.ragClient.GetDataset(ctx, req.Id)
+	// 1. 首先尝试将 req.Id 解析为 Coze 知识库 ID
+	var ragDatasetID string
+	
+	// 检查是否为数字格式的 Coze 知识库 ID
+	if knowledgeID, err := strconv.ParseInt(req.Id, 10, 64); err == nil {
+		// 如果是数字，说明可能是 Coze 知识库 ID，需要查找对应的 RAG dataset ID
+		knowledge, err := app.knowledgeSvc.GetKnowledgeByID(ctx, &service.GetKnowledgeByIDRequest{
+			KnowledgeID: knowledgeID,
+		})
+		if err != nil {
+			logs.CtxErrorf(ctx, "Failed to get knowledge by ID %d: %v", knowledgeID, err)
+			return nil, fmt.Errorf("knowledge not found: %w", err)
+		}
+
+		if knowledge.Knowledge.RagDatasetID == "" {
+			return nil, fmt.Errorf("knowledge %d has no associated RAG dataset", knowledgeID)
+		}
+		
+		ragDatasetID = knowledge.Knowledge.RagDatasetID
+		logs.CtxInfof(ctx, "Converting Coze knowledge ID %s to RAG dataset ID %s", req.Id, ragDatasetID)
+	} else {
+		// 如果不是数字，直接作为 RAG dataset ID 使用
+		ragDatasetID = req.Id
+		logs.CtxInfof(ctx, "Using direct RAG dataset ID: %s", ragDatasetID)
+	}
+
+	// 2. 调用RAG服务获取dataset详情
+	dataset, err := app.ragClient.GetDataset(ctx, ragDatasetID)
 	if err != nil {
 		logs.CtxErrorf(ctx, "Get dataset by id failed: %v", err)
-		return nil, fmt.Errorf("get dataset by id failed: %w", err)
+		return nil, fmt.Errorf("get RAG dataset failed: %w", err)
 	}
 
 	if dataset == nil {
+		logs.CtxErrorf(ctx, "Dataset not found for RAG dataset ID: %s", ragDatasetID)
 		return nil, fmt.Errorf("dataset not found")
 	}
+
+	// 记录 FastGPT RAG 返回的原始数据结构
+	logs.CtxInfof(ctx, "FastGPT RAG dataset response: ID=%s, Name=%s, Description=%s, Type=%s, VectorModel=%s, AgentModel=%s, CreatedAt=%d, UpdatedAt=%d, FileCount=%d, DataCount=%d", 
+		dataset.ID, dataset.Name, dataset.Description, dataset.Type, dataset.VectorModel, dataset.AgentModel, dataset.CreatedAt, dataset.UpdatedAt, dataset.FileCount, dataset.DataCount)
 
 	response := &ragModel.GetKnowledgeBaseByIdResponse{
 		BaseResponse: ragModel.BaseResponse{
 			Code: 200,
 			Msg:  "Success",
 		},
-		KnowledgeBase: &ragModel.KnowledgeBase{
+		Data: &ragModel.KnowledgeBase{
 			Id:           dataset.ID,
 			Name:         dataset.Name,
 			Intro:        dataset.Description,
@@ -774,8 +883,13 @@ func (app *RAGApplication) GetKnowledgeBaseById(ctx context.Context, req *ragMod
 			UpdateTime:   time.Unix(dataset.UpdatedAt, 0),
 			FileCount:    dataset.FileCount,
 			DataCount:    dataset.DataCount,
+			RagDatasetId: ragDatasetID, // 设置RAG数据集ID，前端需要用来获取集合列表
 		},
 	}
+
+	// 记录最终返回给前端的数据结构
+	logs.CtxInfof(ctx, "Final response to frontend: Code=%d, Msg=%s, Data.Id=%s, Data.Name=%s, Data.Intro=%s, Data.Type=%s, Data.VectorModel=%s, Data.AgentModel=%s, Data.FileCount=%d, Data.DataCount=%d, Data.RagDatasetId=%s", 
+		response.Code, response.Msg, response.Data.Id, response.Data.Name, response.Data.Intro, response.Data.Type, response.Data.VectorModel, response.Data.AgentModel, response.Data.FileCount, response.Data.DataCount, response.Data.RagDatasetId)
 
 	return response, nil
 }
@@ -818,7 +932,7 @@ func (app *RAGApplication) UpdateKnowledgeBase(ctx context.Context, req *ragMode
 			Code: 200,
 			Msg:  "Success",
 		},
-		KnowledgeBase: &ragModel.KnowledgeBase{
+		Data: &ragModel.KnowledgeBase{
 			Id:           updatedDataset.ID,
 			Name:         updatedDataset.Name,
 			Intro:        updatedDataset.Description,
@@ -856,9 +970,35 @@ func (app *RAGApplication) DeleteKnowledgeBase(ctx context.Context, req *ragMode
 
 // SearchTestKnowledgeBase 知识库搜索测试 (对应FastGPT的dataset搜索测试)
 func (app *RAGApplication) SearchTestKnowledgeBase(ctx context.Context, req *ragModel.SearchTestKnowledgeBaseRequest) (*ragModel.SearchTestKnowledgeBaseResponse, error) {
-	// 转换搜索参数
+	// 1. 首先尝试将 req.DatasetId 解析为 Coze 知识库 ID
+	var ragDatasetID string
+	
+	// 检查是否为数字格式的 Coze 知识库 ID
+	if knowledgeID, err := strconv.ParseInt(req.DatasetId, 10, 64); err == nil {
+		// 如果是数字，说明可能是 Coze 知识库 ID，需要查找对应的 RAG dataset ID
+		knowledge, err := app.knowledgeSvc.GetKnowledgeByID(ctx, &service.GetKnowledgeByIDRequest{
+			KnowledgeID: knowledgeID,
+		})
+		if err != nil {
+			logs.CtxErrorf(ctx, "Failed to get knowledge by ID %d: %v", knowledgeID, err)
+			return nil, fmt.Errorf("knowledge not found: %w", err)
+		}
+
+		if knowledge.Knowledge.RagDatasetID == "" {
+			return nil, fmt.Errorf("knowledge %d has no associated RAG dataset", knowledgeID)
+		}
+		
+		ragDatasetID = knowledge.Knowledge.RagDatasetID
+		logs.CtxInfof(ctx, "Converting Coze knowledge ID %s to RAG dataset ID %s", req.DatasetId, ragDatasetID)
+	} else {
+		// 如果不是数字，直接作为 RAG dataset ID 使用
+		ragDatasetID = req.DatasetId
+		logs.CtxInfof(ctx, "Using direct RAG dataset ID: %s", ragDatasetID)
+	}
+
+	// 2. 转换搜索参数
 	searchReq := &entity.RAGSearchRequest{
-		DatasetID:      req.DatasetId,
+		DatasetID:      ragDatasetID,
 		Query:          req.Text,
 		TopK:           int(req.Limit),
 		ScoreThreshold: req.Similarity,
@@ -1083,8 +1223,8 @@ func (app *RAGApplication) GetRagCollections(ctx context.Context, req *ragModel.
 			DatasetId:     item.DatasetID,
 			Name:          item.Name,
 			Type:          item.Type,
-			CreateTime:    time.Unix(item.CreateTime, 0), // 修正时间类型转换
-			UpdateTime:    time.Unix(item.UpdateTime, 0), // 修正时间类型转换
+			CreateTime:    ParseTimeString(item.CreateTime),
+			UpdateTime:    ParseTimeString(item.UpdateTime),
 			RawText:       item.RawText,
 			TrainingType:  item.TrainingType,
 			ChunkSize:     int32(item.ChunkSize),
@@ -1119,8 +1259,8 @@ func (app *RAGApplication) GetRagCollectionById(ctx context.Context, req *ragMod
 		DatasetId:     result.DatasetID,
 		Name:          result.Name,
 		Type:          result.Type,
-		CreateTime:    time.Unix(result.CreateTime, 0),
-		UpdateTime:    time.Unix(result.UpdateTime, 0),
+		CreateTime:    ParseTimeString(result.CreateTime),
+		UpdateTime:    ParseTimeString(result.UpdateTime),
 		RawText:       result.RawText,
 		TrainingType:  result.TrainingType,
 		ChunkSize:     int32(result.ChunkSize),
@@ -1163,8 +1303,8 @@ func (app *RAGApplication) UpdateRagCollection(ctx context.Context, req *ragMode
 		DatasetId:     result.DatasetID,
 		Name:          result.Name,
 		Type:          result.Type,
-		CreateTime:    time.Unix(result.CreateTime, 0),
-		UpdateTime:    time.Unix(result.UpdateTime, 0),
+		CreateTime:    ParseTimeString(result.CreateTime),
+		UpdateTime:    ParseTimeString(result.UpdateTime),
 		RawText:       result.RawText,
 		TrainingType:  result.TrainingType,
 		ChunkSize:     int32(result.ChunkSize),

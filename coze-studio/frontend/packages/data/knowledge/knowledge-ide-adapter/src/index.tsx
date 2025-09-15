@@ -37,3 +37,8 @@ export {
   type BizWorkflowKnowledgeIDEProps,
 } from './scenes/biz-workflow';
 export { useBizWorkflowKnowledgeIDEFullScreenModal } from './scenes/biz-workflow/modal';
+
+export {
+  BizLibraryFastGPTRAGKnowledgeIDE,
+  type BizLibraryFastGPTRAGKnowledgeIDEProps,
+} from './scenes/biz-library-fastgpt-rag';

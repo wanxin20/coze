@@ -166,8 +166,10 @@ type CreateDatasetRequest struct {
 	// Open to third-party business identity, coze pass 0 or no pass
 	BizID int64 `thrift:"biz_id,6" form:"biz_id" json:"biz_id,string" query:"biz_id"`
 	//project ID
-	ProjectID int64      `thrift:"project_id,7" form:"project_id" json:"project_id,string" query:"project_id"`
-	Base      *base.Base `thrift:"Base,255,optional" form:"Base" json:"Base,omitempty" query:"Base"`
+	ProjectID int64 `thrift:"project_id,7" form:"project_id" json:"project_id,string" query:"project_id"`
+	// Knowledge base type: native, fastgpt_rag
+	KnowledgeType string     `thrift:"knowledge_type,8" form:"knowledge_type" json:"knowledge_type" query:"knowledge_type"`
+	Base          *base.Base `thrift:"Base,255,optional" form:"Base" json:"Base,omitempty" query:"Base"`
 }
 
 func NewCreateDatasetRequest() *CreateDatasetRequest {
@@ -203,6 +205,10 @@ func (p *CreateDatasetRequest) GetBizID() (v int64) {
 
 func (p *CreateDatasetRequest) GetProjectID() (v int64) {
 	return p.ProjectID
+}
+
+func (p *CreateDatasetRequest) GetKnowledgeType() (v string) {
+	return p.KnowledgeType
 }
 
 var CreateDatasetRequest_Base_DEFAULT *base.Base
@@ -1588,6 +1594,8 @@ type Dataset struct {
 	ProcessingFileIDList []string `thrift:"processing_file_id_list,24" form:"processing_file_id_list" json:"processing_file_id_list" query:"processing_file_id_list"`
 	//project ID
 	ProjectID string `thrift:"project_id,25" form:"project_id" json:"project_id" query:"project_id"`
+	// Knowledge base type: native, fastgpt_rag
+	KnowledgeType *string `thrift:"knowledge_type,26,optional" form:"knowledge_type" json:"knowledge_type,omitempty" query:"knowledge_type"`
 }
 
 func NewDataset() *Dataset {

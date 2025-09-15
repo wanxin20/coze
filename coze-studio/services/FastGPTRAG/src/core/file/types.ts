@@ -3,6 +3,8 @@
  * 复刻FastGPT-2的类型系统
  */
 
+import { ParagraphChunkAIModeEnum } from '@/core/dataset/processing/paragraphProcessor.js';
+
 export interface ImageType {
   uuid: string;
   base64: string;
@@ -38,6 +40,13 @@ export interface FileProcessOptions {
   extractImages?: boolean;
   filename?: string;
   encoding?: string;
+  vlmModel?: string;
+  imagePrompt?: string;
+  // 段落优化相关选项
+  enableParagraphOptimization?: boolean;
+  paragraphChunkAIMode?: ParagraphChunkAIModeEnum;
+  agentModel?: string;
+  language?: 'zh' | 'en' | 'auto';
 }
 
 export type SupportedFileType = 
@@ -51,7 +60,13 @@ export type SupportedFileType =
   | 'xlsx' 
   | 'csv' 
   | 'json'
-  | 'text';
+  | 'text'
+  | 'jpg'
+  | 'jpeg'
+  | 'png'
+  | 'gif'
+  | 'webp'
+  | 'bmp';
 
 export interface ChunkResult {
   text: string;

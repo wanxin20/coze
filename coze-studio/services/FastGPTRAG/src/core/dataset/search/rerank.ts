@@ -28,6 +28,12 @@ const RERANK_MODELS: Record<string, RerankModelConfig> = {
     endpoint: config.oneApiUrl,
     apiKey: config.oneApiKey
   },
+  'bge-reranker-v2-m3': {
+    model: 'BAAI/bge-reranker-v2-m3',
+    maxInputLength: 8192,
+    endpoint: 'https://api.siliconflow.cn/v1',
+    apiKey: process.env.SILICONFLOW_API_KEY
+  },
   'cohere-rerank-v3': {
     model: 'rerank-english-v3.0',
     maxInputLength: 4096,
@@ -74,7 +80,7 @@ export async function rerankResults(params: {
     let rerankScores: Array<{ id: string; score: number }> = [];
     let inputTokens = 0;
 
-    if (model.startsWith('bge-')) {
+    if (model.startsWith('bge-') || model === 'bge-reranker-v2-m3') {
       const bgeResult = await rerankWithBGE(query, documents, modelConfig);
       rerankScores = bgeResult.scores;
       inputTokens = bgeResult.inputTokens;
@@ -139,7 +145,10 @@ async function rerankWithBGE(
       return_documents: false
     };
 
-    const response = await fetch(`${config.endpoint}/rerank`, {
+    // 硅基流动使用不同的API路径
+    const apiPath = config.endpoint?.includes('siliconflow.cn') ? '/rerank' : '/rerank';
+    
+    const response = await fetch(`${config.endpoint}${apiPath}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

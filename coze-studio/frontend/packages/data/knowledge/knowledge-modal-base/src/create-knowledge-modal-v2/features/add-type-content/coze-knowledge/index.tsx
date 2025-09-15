@@ -48,10 +48,11 @@ export interface CozeKnowledgeAddTypeContentFormData {
 export interface AddTypeContentProps {
   onImportKnowledgeTypeChange?: (type: UnitType) => void;
   onSelectFormatTypeChange?: (type: FormatType) => void;
+  knowledgeType?: string; // 知识库类型
 }
 
 export const CozeKnowledgeAddTypeContent = (params: AddTypeContentProps) => {
-  const { onImportKnowledgeTypeChange, onSelectFormatTypeChange } = params;
+  const { onImportKnowledgeTypeChange, onSelectFormatTypeChange, knowledgeType } = params;
   const formApi = useFormApi<CozeKnowledgeAddTypeContentFormData>();
   // Use useState to ensure re-rendering
   const [currentFormatType, setCurrentFormatType] = useState(FormatType.Text);
@@ -107,15 +108,18 @@ export const CozeKnowledgeAddTypeContent = (params: AddTypeContentProps) => {
 
   return (
     <div data-testid={KnowledgeE2e.CreateKnowledgeModal}>
-      <SelectFormatType
-        field="format_type"
-        noLabel
-        onChange={(type: FormatType) => {
-          setCurrentFormatType(type);
-          formApi.setValue('format_type', type);
-          onSelectFormatTypeChange?.(type);
-        }}
-      />
+      {/* 只有在非 FastGPT RAG 知识库时才显示格式类型选择 */}
+      {knowledgeType !== 'fastgpt_rag' && (
+        <SelectFormatType
+          field="format_type"
+          noLabel
+          onChange={(type: FormatType) => {
+            setCurrentFormatType(type);
+            formApi.setValue('format_type', type);
+            onSelectFormatTypeChange?.(type);
+          }}
+        />
+      )}
       <CozeInputWithCountField
         data-testid={KnowledgeE2e.CreateKnowledgeModalNameInput}
         field="name"
@@ -157,24 +161,27 @@ export const CozeKnowledgeAddTypeContent = (params: AddTypeContentProps) => {
         }}
       />
 
-      <div
-        className="semi-form-field"
-        x-label-pos="top"
-        x-field-id="name"
-        x-extra-pos="bottom"
-      >
-        <label className="semi-form-field-label semi-form-field-label-left">
-          <div className="semi-form-field-label-text" x-semi-prop="label">
-            {I18n.t('create-dataset-import-type')}
-          </div>
-        </label>
+      {/* 只有在非 FastGPT RAG 知识库时才显示导入类型选择 */}
+      {knowledgeType !== 'fastgpt_rag' && (
+        <div
+          className="semi-form-field"
+          x-label-pos="top"
+          x-field-id="name"
+          x-extra-pos="bottom"
+        >
+          <label className="semi-form-field-label semi-form-field-label-left">
+            <div className="semi-form-field-label-text" x-semi-prop="label">
+              {I18n.t('create-dataset-import-type')}
+            </div>
+          </label>
 
-        <ImportKnowledgeSourceSelect
-          formatType={currentFormatType}
-          initValue={unitType}
-          onChange={setUnitType}
-        />
-      </div>
+          <ImportKnowledgeSourceSelect
+            formatType={currentFormatType}
+            initValue={unitType}
+            onChange={setUnitType}
+          />
+        </div>
+      )}
 
       <PictureUpload
         label={I18n.t('datasets_model_create_avatar')}

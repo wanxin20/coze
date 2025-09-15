@@ -28,6 +28,7 @@ import (
 	knowledgeModel "github.com/coze-dev/coze-studio/backend/api/model/crossdomain/knowledge"
 	model "github.com/coze-dev/coze-studio/backend/api/model/crossdomain/knowledge"
 	dataset "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge"
+	ragModel "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge/rag"
 	modelCommon "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge"
 	"github.com/coze-dev/coze-studio/backend/application/upload"
 	"github.com/coze-dev/coze-studio/backend/domain/knowledge/entity"
@@ -601,6 +602,8 @@ func convertDocumentTypeEntity2Dataset(formatType model.DocumentType) dataset.Fo
 		return dataset.FormatType_Table
 	case model.DocumentTypeImage:
 		return dataset.FormatType_Image
+	case model.DocumentTypeFastGPTRAG:
+		return dataset.FormatType_FastGPTRAG
 	default:
 		return dataset.FormatType_Text
 	}
@@ -614,6 +617,8 @@ func convertDocumentTypeDataset2Entity(formatType dataset.FormatType) model.Docu
 		return model.DocumentTypeTable
 	case dataset.FormatType_Image:
 		return model.DocumentTypeImage
+	case dataset.FormatType_FastGPTRAG:
+		return model.DocumentTypeFastGPTRAG
 	default:
 		return model.DocumentTypeUnknown
 	}
@@ -681,6 +686,107 @@ func batchConvertKnowledgeEntity2Model(ctx context.Context, knowledgeEntity []*m
 			ProcessingFileIDList: processingFileIDList,
 			ProjectID:            strconv.FormatInt(k.AppID, 10),
 		}
+	}
+	return knowledgeMap, nil
+}
+
+// batchConvertKnowledgeEntity2ModelWithRAGInfo 转换知识库实体到模型，包含RAG信息
+func (k *KnowledgeApplicationService) batchConvertKnowledgeEntity2ModelWithRAGInfo(ctx context.Context, knowledgeEntity []*model.Knowledge) (map[int64]*dataset.Dataset, error) {
+	knowledgeMap := map[int64]*dataset.Dataset{}
+	for _, knowledge := range knowledgeEntity {
+		documentEntity, err := KnowledgeSVC.DomainSVC.ListDocument(ctx, &service.ListDocumentRequest{
+			KnowledgeID: knowledge.ID,
+			SelectAll:   true,
+		})
+		if err != nil {
+			logs.CtxErrorf(ctx, "list document failed, err: %v", err)
+			return nil, err
+		}
+		datasetStatus := dataset.DatasetStatus_DatasetReady
+		if knowledge.Status == model.KnowledgeStatusDisable {
+			datasetStatus = dataset.DatasetStatus_DatasetForbid
+		}
+
+		var (
+			rule                 *entity.ChunkingStrategy
+			totalSize            int64
+			sliceCount           int32
+			processingFileList   []string
+			processingFileIDList []string
+			fileList             []string
+		)
+		for i := range documentEntity.Documents {
+			doc := documentEntity.Documents[i]
+			totalSize += doc.Size
+			sliceCount += int32(doc.SliceCount)
+			if doc.Status == entity.DocumentStatusChunking || doc.Status == entity.DocumentStatusUploading {
+				processingFileList = append(processingFileList, doc.Name)
+				processingFileIDList = append(processingFileIDList, strconv.FormatInt(doc.ID, 10))
+			}
+			if i == 0 {
+				rule = doc.ChunkingStrategy
+			}
+			fileList = append(fileList, doc.Name)
+		}
+		
+		// 判断知识库类型
+		var knowledgeType string
+		if knowledge.Type == model.DocumentTypeFastGPTRAG || knowledge.RagDatasetID != "" {
+			knowledgeType = "fastgpt_rag"
+		} else {
+			knowledgeType = "native"
+		}
+		
+		// 构建基础的Dataset信息
+		datasetInfo := &dataset.Dataset{
+			DatasetID:            knowledge.ID,
+			Name:                 knowledge.Name,
+			FileList:             fileList,
+			AllFileSize:          totalSize,
+			BotUsedCount:         0,
+			Status:               datasetStatus,
+			ProcessingFileList:   processingFileList,
+			UpdateTime:           int32(knowledge.UpdatedAtMs / 1000),
+			IconURI:              knowledge.IconURI,
+			IconURL:              knowledge.IconURL,
+			Description:          knowledge.Description,
+			CanEdit:              true,
+			CreateTime:           int32(knowledge.CreatedAtMs / 1000),
+			CreatorID:            knowledge.CreatorID,
+			SpaceID:              knowledge.SpaceID,
+			FailedFileList:       nil,
+			FormatType:           convertDocumentTypeEntity2Dataset(knowledge.Type),
+			SliceCount:           sliceCount,
+			DocCount:             int32(len(documentEntity.Documents)),
+			HitCount:             int32(knowledge.SliceHit),
+			ChunkStrategy:        convertChunkingStrategy2Model(rule),
+			ProcessingFileIDList: processingFileIDList,
+			ProjectID:            strconv.FormatInt(knowledge.AppID, 10),
+			KnowledgeType:        &knowledgeType,
+		}
+		
+		// 如果是FastGPT RAG知识库，添加额外的RAG信息
+		if knowledge.Type == model.DocumentTypeFastGPTRAG || (knowledge.Type == model.DocumentTypeText && knowledge.RagDatasetID != "") {
+			// 可以在这里添加RAG特有的字段
+			// 例如：RAG服务状态、RAG dataset ID等
+			// 这些信息可以通过扩展Dataset结构或使用Description字段来传递
+			datasetInfo.Description = knowledge.Description + " [FastGPT-RAG]"
+			
+			// 如果需要获取FastGPT RAG的详细信息，可以调用RAG服务
+			if k.ragApp != nil {
+				ragInfo, err := k.ragApp.GetKnowledgeBaseById(ctx, &ragModel.GetKnowledgeBaseByIdRequest{
+					Id: knowledge.RagDatasetID,
+				})
+				if err != nil {
+					logs.CtxWarnf(ctx, "Failed to get RAG knowledge base info for %s: %v", knowledge.RagDatasetID, err)
+				} else if ragInfo != nil && ragInfo.Data != nil {
+					// 可以添加RAG特有的信息
+					logs.CtxInfof(ctx, "Got RAG info for knowledge %d: %+v", knowledge.ID, ragInfo.Data)
+				}
+			}
+		}
+		
+		knowledgeMap[knowledge.ID] = datasetInfo
 	}
 	return knowledgeMap, nil
 }
@@ -774,6 +880,8 @@ func convertFormatType2Entity(tp dataset.FormatType) model.DocumentType {
 		return model.DocumentTypeTable
 	case dataset.FormatType_Image:
 		return model.DocumentTypeImage
+	case dataset.FormatType_FastGPTRAG:
+		return model.DocumentTypeFastGPTRAG
 	default:
 		return model.DocumentTypeUnknown
 	}

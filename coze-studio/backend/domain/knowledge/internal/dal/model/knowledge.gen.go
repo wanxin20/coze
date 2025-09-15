@@ -12,18 +12,20 @@ const TableNameKnowledge = "knowledge"
 
 // Knowledge knowledge tabke
 type Knowledge struct {
-	ID          int64          `gorm:"column:id;primaryKey;comment:id" json:"id"`                                                       // id
-	Name        string         `gorm:"column:name;not null;comment:knowledge's name" json:"name"`                                       // knowledge's name
-	AppID       int64          `gorm:"column:app_id;not null;comment:app id" json:"app_id"`                                             // app id
-	CreatorID   int64          `gorm:"column:creator_id;not null;comment:creator id" json:"creator_id"`                                 // creator id
-	SpaceID     int64          `gorm:"column:space_id;not null;comment:space id" json:"space_id"`                                       // space id
-	CreatedAt   int64          `gorm:"column:created_at;not null;comment:Create Time in Milliseconds" json:"created_at"`                // Create Time in Milliseconds
-	UpdatedAt   int64          `gorm:"column:updated_at;not null;comment:Update Time in Milliseconds" json:"updated_at"`                // Update Time in Milliseconds
-	DeletedAt   gorm.DeletedAt `gorm:"column:deleted_at;comment:Delete Time" json:"deleted_at"`                                         // Delete Time
-	Status      int32          `gorm:"column:status;not null;default:1;comment:0 initialization, 1 effective, 2 invalid" json:"status"` // 0 initialization, 1 effective, 2 invalid
-	Description string         `gorm:"column:description;comment:description" json:"description"`                                       // description
-	IconURI     string         `gorm:"column:icon_uri;comment:icon uri" json:"icon_uri"`                                                // icon uri
-	FormatType  int32          `gorm:"column:format_type;not null;comment:0: Text 1: Table 2: Images" json:"format_type"`               // 0: Text 1: Table 2: Images
+	ID           int64          `gorm:"column:id;primaryKey;comment:id" json:"id"`                                                       // id
+	Name         string         `gorm:"column:name;not null;comment:knowledge's name" json:"name"`                                       // knowledge's name
+	AppID        int64          `gorm:"column:app_id;not null;comment:app id" json:"app_id"`                                             // app id
+	CreatorID    int64          `gorm:"column:creator_id;not null;comment:creator id" json:"creator_id"`                                 // creator id
+	SpaceID      int64          `gorm:"column:space_id;not null;comment:space id" json:"space_id"`                                       // space id
+	CreatedAt    int64          `gorm:"column:created_at;not null;comment:Create Time in Milliseconds" json:"created_at"`                // Create Time in Milliseconds
+	UpdatedAt    int64          `gorm:"column:updated_at;not null;comment:Update Time in Milliseconds" json:"updated_at"`                // Update Time in Milliseconds
+	DeletedAt    gorm.DeletedAt `gorm:"column:deleted_at;comment:Delete Time" json:"deleted_at"`                                         // Delete Time
+	Status       int32          `gorm:"column:status;not null;default:1;comment:0 initialization, 1 effective, 2 invalid" json:"status"` // 0 initialization, 1 effective, 2 invalid
+	Description  string         `gorm:"column:description;comment:description" json:"description"`                                       // description
+	IconURI      string         `gorm:"column:icon_uri;comment:icon uri" json:"icon_uri"`                                                // icon uri
+	FormatType   int32          `gorm:"column:format_type;not null;comment:0: Text 1: Table 2: Images" json:"format_type"`               // 0: Text 1: Table 2: Images
+	RagDatasetID string         `gorm:"column:rag_dataset_id;comment:FastGPTRAG Dataset ID for unified management" json:"rag_dataset_id"` // FastGPTRAG Dataset ID for unified management
+	KnowledgeType string        `gorm:"column:knowledge_type;not null;default:native;comment:Knowledge base type: native, fastgpt_rag" json:"knowledge_type"` // Knowledge base type: native, fastgpt_rag
 }
 
 // TableName Knowledge's table name

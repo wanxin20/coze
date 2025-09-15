@@ -21,6 +21,8 @@ const (
 	FormatType_Image FormatType = 2
 	// database
 	FormatType_Database FormatType = 3
+	// FastGPT RAG knowledge base
+	FormatType_FastGPTRAG FormatType = 4
 )
 
 func (p FormatType) String() string {
@@ -33,6 +35,8 @@ func (p FormatType) String() string {
 		return "Image"
 	case FormatType_Database:
 		return "Database"
+	case FormatType_FastGPTRAG:
+		return "FastGPTRAG"
 	}
 	return "<UNSET>"
 }
@@ -47,6 +51,8 @@ func FormatTypeFromString(s string) (FormatType, error) {
 		return FormatType_Image, nil
 	case "Database":
 		return FormatType_Database, nil
+	case "FastGPTRAG":
+		return FormatType_FastGPTRAG, nil
 	}
 	return FormatType(0), fmt.Errorf("not a valid FormatType string")
 }

@@ -347,3 +347,6 @@ export function auditLog(req: express.Request, res: express.Response, next: expr
   
   next();
 }
+
+// Export authMiddleware as alias for authenticate (for compatibility)
+export const authMiddleware = authenticate;

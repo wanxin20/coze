@@ -64,13 +64,15 @@ type Knowledge interface {
 }
 
 type CreateKnowledgeRequest struct {
-	Name        string
-	Description string
-	CreatorID   int64
-	SpaceID     int64
-	IconUri     string
-	FormatType  knowledge.DocumentType
-	AppID       int64
+	Name          string
+	Description   string
+	CreatorID     int64
+	SpaceID       int64
+	IconUri       string
+	FormatType    knowledge.DocumentType
+	AppID         int64
+	RagDatasetID  string // FastGPTRAG Dataset ID for unified management
+	KnowledgeType string // Knowledge base type: native, fastgpt_rag
 }
 
 type CreateKnowledgeResponse struct {

@@ -29,6 +29,7 @@ import (
 	model "github.com/coze-dev/coze-studio/backend/api/model/crossdomain/knowledge"
 	dataset "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge"
 	document "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge"
+	ragModel "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge/rag"
 	modelCommon "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge"
 	resource "github.com/coze-dev/coze-studio/backend/api/model/resource/common"
 	"github.com/coze-dev/coze-studio/backend/application/base/ctxutil"
@@ -52,6 +53,7 @@ type KnowledgeApplicationService struct {
 	DomainSVC service.Knowledge
 	eventBus  search.ResourceEventBus
 	storage   storage.Storage
+	ragApp    *RAGApplication // RAG 应用服务
 }
 
 var KnowledgeSVC = &KnowledgeApplicationService{}
@@ -65,14 +67,69 @@ func (k *KnowledgeApplicationService) CreateKnowledge(ctx context.Context, req *
 	if uid == nil {
 		return nil, errorx.New(errno.ErrKnowledgePermissionCode, errorx.KV("msg", "session required"))
 	}
+	
+	var ragDatasetID string
+	knowledgeTypeRaw := req.GetKnowledgeType()
+	
+	// 处理数字类型的知识库类型标识：1=coze_native, 2=fastgpt_rag
+	var knowledgeType string
+	switch knowledgeTypeRaw {
+	case "1":
+		knowledgeType = "native"
+	case "2":
+		knowledgeType = "fastgpt_rag"
+	case "fastgpt_rag":
+		knowledgeType = "fastgpt_rag"
+	case "native", "coze_native":
+		knowledgeType = "native"
+	default:
+		knowledgeType = "native" // 默认为原生知识库
+	}
+	
+	logs.CtxInfof(ctx, "Creating knowledge with raw type: %s, mapped type: %s, name: %s", knowledgeTypeRaw, knowledgeType, req.Name)
+	
+	// 如果是FastGPT RAG知识库，先调用RAG服务创建dataset
+	if knowledgeType == "fastgpt_rag" {
+		if k.ragApp == nil {
+			logs.CtxWarnf(ctx, "RAG application not initialized, skipping fastgpt dataset creation")
+		} else {
+			ragReq := &ragModel.CreateKnowledgeBaseRequest{
+				Name:        req.Name,
+				Intro:       req.Description,
+				Type:        "dataset",
+				VectorModel: "text-embedding-v3", // 默认向量模型
+				AgentModel:  "qwen-max",          // 默认智能体模型
+				TeamId:      fmt.Sprintf("%d", req.SpaceID),
+				UserId:      fmt.Sprintf("%d", *uid),
+			}
+			
+			ragResp, err := k.ragApp.CreateKnowledgeBase(ctx, ragReq)
+			if err != nil {
+				logs.CtxErrorf(ctx, "create fastgpt rag dataset failed, err: %v", err)
+				return dataset.NewCreateDatasetResponse(), errorx.New(errno.ErrKnowledgeDBCode, errorx.KV("msg", "failed to create fastgpt rag dataset"))
+			}
+			
+			ragDatasetID = ragResp.Id // 这是FastGPT RAG dataset ID
+			logs.CtxInfof(ctx, "created fastgpt rag dataset successfully, fastgpt_dataset_id: %s", ragDatasetID)
+		}
+	}
+	
+	// 如果是 FastGPT RAG 知识库，强制设置格式类型为 FastGPTRAG
+	finalDocumentType := documentType
+	if knowledgeType == "fastgpt_rag" {
+		finalDocumentType = model.DocumentTypeFastGPTRAG
+	}
+	
 	createReq := service.CreateKnowledgeRequest{
-		Name:        req.Name,
-		Description: req.Description,
-		CreatorID:   ptr.From(uid),
-		SpaceID:     req.SpaceID,
-		AppID:       req.GetProjectID(),
-		FormatType:  documentType,
-		IconUri:     req.IconURI,
+		Name:          req.Name,
+		Description:   req.Description,
+		CreatorID:     ptr.From(uid),
+		SpaceID:       req.SpaceID,
+		AppID:         req.GetProjectID(),
+		FormatType:    finalDocumentType,
+		IconUri:       req.IconURI,
+		RagDatasetID:  ragDatasetID,  // FastGPT RAG Dataset ID
+		KnowledgeType: knowledgeType, // 知识库类型
 	}
 	if req.IconURI == "" {
 		createReq.IconUri = getIconURI(req.GetFormatType())
@@ -86,13 +143,21 @@ func (k *KnowledgeApplicationService) CreateKnowledge(ctx context.Context, req *
 	if req.ProjectID != 0 {
 		ptrAppID = ptr.Of(req.ProjectID)
 	}
+	// 根据知识库类型设置正确的 res_sub_type
+	var resSubType int32
+	if knowledgeType == "fastgpt_rag" {
+		resSubType = 4 // FastGPT RAG 标签
+	} else {
+		resSubType = int32(req.FormatType)
+	}
+	
 	err = k.eventBus.PublishResources(ctx, &resourceEntity.ResourceDomainEvent{
 		OpType: resourceEntity.Created,
 		Resource: &resourceEntity.ResourceDocument{
 			ResType:       resource.ResType_Knowledge,
 			ResID:         domainResp.KnowledgeID,
 			Name:          ptr.Of(req.Name),
-			ResSubType:    ptr.Of(int32(req.FormatType)),
+			ResSubType:    ptr.Of(resSubType),
 			SpaceID:       ptr.Of(req.SpaceID),
 			APPID:         ptrAppID,
 			OwnerID:       ptr.Of(*uid),
@@ -133,7 +198,7 @@ func (k *KnowledgeApplicationService) DatasetDetail(ctx context.Context, req *da
 		logs.CtxErrorf(ctx, "get knowledge failed, err: %v", err)
 		return dataset.NewDatasetDetailResponse(), err
 	}
-	knowledgeMap, err := batchConvertKnowledgeEntity2Model(ctx, domainResp.KnowledgeList)
+	knowledgeMap, err := k.batchConvertKnowledgeEntity2ModelWithRAGInfo(ctx, domainResp.KnowledgeList)
 	if err != nil {
 		logs.CtxErrorf(ctx, "batch convert knowledge entity failed, err: %v", err)
 		return dataset.NewDatasetDetailResponse(), err
@@ -274,6 +339,179 @@ func (k *KnowledgeApplicationService) UpdateKnowledge(ctx context.Context, req *
 	return &dataset.UpdateDatasetResponse{}, nil
 }
 
+// createDocumentForFastGPTRAG 为FastGPT RAG知识库创建文档
+func (k *KnowledgeApplicationService) createDocumentForFastGPTRAG(ctx context.Context, req *dataset.CreateDocumentRequest, knowledgeInfo *model.Knowledge) (*dataset.CreateDocumentResponse, error) {
+	logs.CtxInfof(ctx, "Creating document for FastGPT RAG knowledge base: %d, RagDatasetID: %s", req.GetDatasetID(), knowledgeInfo.RagDatasetID)
+	
+	if len(req.GetDocumentBases()) == 0 {
+		return dataset.NewCreateDocumentResponse(), errors.New("document base is empty")
+	}
+	
+	resp := dataset.NewCreateDocumentResponse()
+	documentInfos := make([]*dataset.DocumentInfo, 0)
+	
+	// 处理每个文档
+	for _, docBase := range req.GetDocumentBases() {
+		if docBase == nil {
+			continue
+		}
+		
+		sourceInfo := docBase.GetSourceInfo()
+		if sourceInfo == nil {
+			logs.CtxWarnf(ctx, "Source info is empty for document: %s", docBase.GetName())
+			continue
+		}
+		
+		var collectionID, trainingJobID string
+		var err error
+		
+		// 根据源信息类型处理
+		if sourceInfo.GetTosURI() != "" {
+			// 处理文件上传
+			collectionID, trainingJobID, err = k.handleFastGPTRAGFileUpload(ctx, knowledgeInfo.RagDatasetID, docBase, req)
+			if err != nil {
+				logs.CtxErrorf(ctx, "Failed to upload file to FastGPT RAG: %v", err)
+				return resp, fmt.Errorf("failed to upload file to FastGPT RAG: %w", err)
+			}
+		} else if sourceInfo.GetCustomContent() != "" {
+			// 处理文本内容
+			collectionID, trainingJobID, err = k.handleFastGPTRAGTextUpload(ctx, knowledgeInfo.RagDatasetID, docBase, req)
+			if err != nil {
+				logs.CtxErrorf(ctx, "Failed to upload text to FastGPT RAG: %v", err)
+				return resp, fmt.Errorf("failed to upload text to FastGPT RAG: %w", err)
+			}
+		} else {
+			logs.CtxWarnf(ctx, "No valid source info for document: %s", docBase.GetName())
+			continue
+		}
+		
+		// 创建文档响应 - 使用DocumentInfo而不是Document
+		// TODO: 需要重新生成thrift代码后添加TrainingJobID和CollectionID字段
+		documentInfo := &dataset.DocumentInfo{
+			Name:           docBase.GetName(),
+			DocumentID:     0, // 临时ID，实际应该生成一个唯一ID
+			Status:         dataset.DocumentStatus_Processing,
+			CreateTime:     int32(time.Now().Unix()),
+			UpdateTime:     int32(time.Now().Unix()),
+			// TrainingJobID:  &trainingJobID,  // 需要重新生成thrift代码后启用
+			// CollectionID:   &collectionID,   // 需要重新生成thrift代码后启用
+		}
+		
+		documentInfos = append(documentInfos, documentInfo)
+		logs.CtxInfof(ctx, "Successfully initiated FastGPT RAG processing for document: %s, CollectionID: %s, TrainingJobID: %s", 
+			docBase.GetName(), collectionID, trainingJobID)
+	}
+	
+	resp.DocumentInfos = documentInfos
+	return resp, nil
+}
+
+// handleFastGPTRAGFileUpload 处理FastGPT RAG文件上传
+func (k *KnowledgeApplicationService) handleFastGPTRAGFileUpload(ctx context.Context, ragDatasetID string, docBase *dataset.DocumentBase, req *dataset.CreateDocumentRequest) (collectionID, trainingJobID string, err error) {
+	sourceInfo := docBase.GetSourceInfo()
+	
+	// 从TOS URI获取文件数据
+	fileData, err := k.getFileDataFromTOS(ctx, sourceInfo.GetTosURI())
+	if err != nil {
+		return "", "", fmt.Errorf("failed to get file data from TOS: %w", err)
+	}
+	
+	// 确定文件类型
+	fileType := k.getFileTypeFromURI(sourceInfo.GetTosURI())
+	
+	// 构建FastGPT RAG请求
+	ragReq := &ragModel.CreateRagCollectionFromFileRequest{
+		DatasetId:         ragDatasetID,
+		Name:              docBase.GetName(),
+		FileData:          fileData,
+		FileName:          docBase.GetName(),
+		FileType:          ragModel.SupportedFileType(fileType),
+		TrainingType:      "auto", // 自动训练
+		ChunkSize:         1000,   // 默认分块大小
+		ChunkOverlap:      200,    // 默认重叠大小
+		PreserveStructure: true,   // 保持结构
+		ExtractImages:     false,  // 不提取图片
+		Tags:              []string{},
+		Metadata:          map[string]interface{}{
+			"uploadedBy": "coze-studio",
+			"uploadTime": time.Now().Format(time.RFC3339),
+			"originalName": docBase.GetName(),
+		},
+	}
+	
+	// 调用RAG服务
+	result, err := k.ragApp.CreateRagCollectionFromFile(ctx, ragReq)
+	if err != nil {
+		return "", "", fmt.Errorf("failed to create RAG collection from file: %w", err)
+	}
+	
+	logs.CtxInfof(ctx, "Successfully created RAG collection from file: %s, CollectionID: %s, TrainingJobID: %s", 
+		docBase.GetName(), result.CollectionId, result.TrainingJobId)
+	
+	return result.CollectionId, result.TrainingJobId, nil
+}
+
+// handleFastGPTRAGTextUpload 处理FastGPT RAG文本上传
+func (k *KnowledgeApplicationService) handleFastGPTRAGTextUpload(ctx context.Context, ragDatasetID string, docBase *dataset.DocumentBase, req *dataset.CreateDocumentRequest) (collectionID, trainingJobID string, err error) {
+	sourceInfo := docBase.GetSourceInfo()
+	
+	// 构建FastGPT RAG文本请求
+	ragReq := &ragModel.CreateRagCollectionFromTextRequest{
+		DatasetId:    ragDatasetID,
+		Name:         docBase.GetName(),
+		Text:         sourceInfo.GetCustomContent(),
+		TrainingType: "auto", // 自动训练
+		ChunkSize:    1000,   // 默认分块大小
+		ChunkOverlap: 200,    // 默认重叠大小
+		Tags:         []string{},
+		Metadata:     map[string]interface{}{
+			"uploadedBy": "coze-studio",
+			"uploadTime": time.Now().Format(time.RFC3339),
+			"originalName": docBase.GetName(),
+			"contentType": "text",
+		},
+	}
+	
+	// 调用RAG服务
+	result, err := k.ragApp.CreateRagCollectionFromText(ctx, ragReq)
+	if err != nil {
+		return "", "", fmt.Errorf("failed to create RAG collection from text: %w", err)
+	}
+	
+	logs.CtxInfof(ctx, "Successfully created RAG collection from text: %s, CollectionID: %s, TrainingJobID: %s", 
+		docBase.GetName(), result.CollectionId, result.TrainingJobId)
+	
+	return result.CollectionId, result.TrainingJobId, nil
+}
+
+// getFileDataFromTOS 从TOS获取文件数据
+func (k *KnowledgeApplicationService) getFileDataFromTOS(ctx context.Context, tosURI string) ([]byte, error) {
+	// TODO: 实现从TOS获取文件数据的逻辑
+	// 这里需要调用TOS客户端来获取文件内容
+	logs.CtxInfof(ctx, "Getting file data from TOS: %s", tosURI)
+	
+	// 临时返回空数据，实际实现需要调用TOS API
+	return nil, fmt.Errorf("TOS file retrieval not implemented yet")
+}
+
+// getFileTypeFromURI 从URI获取文件类型
+func (k *KnowledgeApplicationService) getFileTypeFromURI(uri string) string {
+	// 从文件扩展名推断文件类型
+	ext := GetExtension(uri)
+	switch ext {
+	case "pdf":
+		return "pdf"
+	case "txt":
+		return "txt"
+	case "docx":
+		return "docx"
+	case "md":
+		return "markdown"
+	default:
+		return "txt"
+	}
+}
+
 func (k *KnowledgeApplicationService) CreateDocument(ctx context.Context, req *dataset.CreateDocumentRequest) (*dataset.CreateDocumentResponse, error) {
 	uid := ctxutil.GetUIDFromCtx(ctx)
 	if uid == nil {
@@ -288,6 +526,12 @@ func (k *KnowledgeApplicationService) CreateDocument(ctx context.Context, req *d
 		return dataset.NewCreateDocumentResponse(), errors.New("knowledge not found")
 	}
 	knowledgeInfo := listResp.KnowledgeList[0]
+	
+	// 检查是否为FastGPT RAG知识库
+	if knowledgeInfo.RagDatasetID != "" {
+		// 调用FastGPT RAG服务处理文件上传
+		return k.createDocumentForFastGPTRAG(ctx, req, knowledgeInfo)
+	}
 	documents := []*entity.Document{}
 	if len(req.GetDocumentBases()) == 0 {
 		return dataset.NewCreateDocumentResponse(), errors.New("document base is empty")

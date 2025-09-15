@@ -927,9 +927,9 @@ func (c *Client) GetCollection(ctx context.Context, collectionID string) (*entit
 		return nil, fmt.Errorf("get collection failed: code=%d, message=%s", resp.Code, resp.Message)
 	}
 
-	// 转换时间字段
-	createTime := parseTimeField(resp.Data.CreateTime)
-	updateTime := parseTimeField(resp.Data.UpdateTime)
+	// 转换时间字段为字符串
+	createTime := convertTimeToString(resp.Data.CreateTime)
+	updateTime := convertTimeToString(resp.Data.UpdateTime)
 
 	// 直接使用FastGPT RAG服务返回的status字段
 	status := resp.Data.Status
@@ -1726,4 +1726,29 @@ func (c *Client) ListKnowledgeBases(ctx context.Context, teamID string) ([]*enti
 	}
 
 	return knowledgeBases, nil
+}
+
+// convertTimeToString 将时间字段转换为字符串
+func convertTimeToString(v interface{}) string {
+	if v == nil {
+		return ""
+	}
+	
+	switch t := v.(type) {
+	case string:
+		// 如果已经是字符串，直接返回
+		return t
+	case float64:
+		// 如果是数字（Unix时间戳），转换为ISO 8601格式
+		return time.Unix(int64(t), 0).Format(time.RFC3339)
+	case int64:
+		// 如果是int64（Unix时间戳），转换为ISO 8601格式
+		return time.Unix(t, 0).Format(time.RFC3339)
+	case int:
+		// 如果是int（Unix时间戳），转换为ISO 8601格式
+		return time.Unix(int64(t), 0).Format(time.RFC3339)
+	default:
+		// 其他类型，返回空字符串
+		return ""
+	}
 }

@@ -98,6 +98,16 @@ func InitRAGApp(ctx context.Context, ragClient knowledgeImpl.RAGClient, knowledg
 }
 
 func InitService(ctx context.Context, c *ServiceComponents, bus search.ResourceEventBus) (*KnowledgeApplicationService, error) {
+	// 🔥 关键修复：在创建知识库服务之前先获取RAG客户端并设置到配置中
+	ragClient := ragImpl.GetGlobalRAGClient()
+	if ragClient != nil {
+		logs.CtxInfof(ctx, "🔥 RAGClient is available, setting up knowledge service with FastGPT support")
+		c.RAGClient = ragClient // 将RAG客户端传递给知识库服务配置
+	} else {
+		logs.CtxWarnf(ctx, "🔥 RAGClient is not available, knowledge service will work without FastGPT support")
+	}
+
+	// 现在创建知识库服务，配置中已包含RAG客户端
 	knowledgeDomainSVC, knowledgeEventHandler := knowledgeImpl.NewKnowledgeSVC(c)
 
 	nameServer := os.Getenv(consts.MQServer)
@@ -106,7 +116,6 @@ func InitService(ctx context.Context, c *ServiceComponents, bus search.ResourceE
 	}
 
 	// 初始化RAGApp
-	ragClient := ragImpl.GetGlobalRAGClient()
 	if ragClient != nil {
 		if err := InitRAGApp(ctx, ragClient, knowledgeDomainSVC); err != nil {
 			logs.CtxWarnf(ctx, "Failed to initialize RAGApp: %v", err)
@@ -114,12 +123,11 @@ func InitService(ctx context.Context, c *ServiceComponents, bus search.ResourceE
 		} else {
 			logs.CtxInfof(ctx, "RAGApp initialized successfully")
 		}
-	} else {
-		logs.CtxWarnf(ctx, "RAGClient is not available, RAGApp will not be initialized")
 	}
 
 	KnowledgeSVC.DomainSVC = knowledgeDomainSVC
 	KnowledgeSVC.eventBus = bus
 	KnowledgeSVC.storage = c.Storage
+	KnowledgeSVC.ragApp = RAGApp // 设置RAG应用服务
 	return KnowledgeSVC, nil
 }

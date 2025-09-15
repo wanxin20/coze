@@ -9,6 +9,8 @@ import collectionRoutes from './api/routes/collection.js';
 import dataRoutes from './api/routes/data.js';
 import searchRoutes from './api/routes/search.js';
 import monitoringRoutes from './api/routes/monitoring.js';
+import imageRoutes from './api/routes/image.js';
+import qaTrainingRoutes from './api/routes/qaTraining.js';
 import { performanceMonitor, startMetricsCollection } from './core/monitoring/index.js';
 import { simpleAuth } from './middleware/simpleAuth.js';
 
@@ -100,6 +102,18 @@ app.use('/api/search', searchRoutes);
 
 // Monitoring and admin routes
 app.use('/api/monitoring', monitoringRoutes);
+app.use('/api/image', imageRoutes);
+
+// QA training routes
+app.use('/api/qa-training', qaTrainingRoutes);
+
+// Training management routes
+import trainingManagementRoutes from './api/routes/trainingManagement.js';
+app.use('/api/training', trainingManagementRoutes);
+
+// Paragraph processing routes
+import paragraphProcessingRoutes from './api/routes/paragraphProcessing.js';
+app.use('/api/paragraph', paragraphProcessingRoutes);
 
 // Error handling middleware
 app.use((error: any, req: express.Request, res: express.Response, next: express.NextFunction) => {

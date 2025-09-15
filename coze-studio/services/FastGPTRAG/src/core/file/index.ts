@@ -13,9 +13,18 @@ import {
   FileInfo,
   ImageType
 } from './types.js';
+import { 
+  paragraphProcessor, 
+  ParagraphChunkAIModeEnum 
+} from '@/core/dataset/processing/paragraphProcessor.js';
 import { docxProcessor } from './processors/docx.js';
 import { pdfProcessor } from './processors/pdf.js';
 import { xlsxProcessor } from './processors/xlsx.js';
+import { pptxProcessor } from './processors/pptx.js';
+import { htmlProcessor } from './processors/html.js';
+import { csvProcessor } from './processors/csv.js';
+import { rawTextProcessor } from './processors/rawText.js';
+import { imageProcessor } from './processors/image.js';
 
 /**
  * 文件处理管理器 - 复刻FastGPT-2的完整实现
@@ -89,10 +98,27 @@ export class FileProcessManager {
             throw new Error('XLSX processing requires file buffer or path');
           }
           break;
+
+        case 'pptx':
+          if (!fileBuffer && filePath) {
+            processResult = await pptxProcessor.processFromPath(filePath);
+          } else if (fileBuffer) {
+            processResult = await pptxProcessor.processFromBuffer(fileBuffer);
+          } else {
+            throw new Error('PPTX processing requires file buffer or path');
+          }
+          break;
           
         case 'html':
-          if (!fileContent) throw new Error('HTML content is required');
-          processResult = this.processHTMLContent(fileContent);
+          if (!fileBuffer && filePath) {
+            processResult = await htmlProcessor.processFromPath(filePath);
+          } else if (fileBuffer) {
+            processResult = await htmlProcessor.processFromBuffer(fileBuffer);
+          } else if (fileContent) {
+            processResult = this.processHTMLContent(fileContent);
+          } else {
+            throw new Error('HTML processing requires file buffer, path or content');
+          }
           break;
           
         case 'md':
@@ -102,8 +128,15 @@ export class FileProcessManager {
           break;
           
         case 'csv':
-          if (!fileContent) throw new Error('CSV content is required');
-          processResult = this.processCSVContent(fileContent);
+          if (!fileBuffer && filePath) {
+            processResult = await csvProcessor.processFromPath(filePath);
+          } else if (fileBuffer) {
+            processResult = await csvProcessor.processFromBuffer(fileBuffer);
+          } else if (fileContent) {
+            processResult = this.processCSVContent(fileContent);
+          } else {
+            throw new Error('CSV processing requires file buffer, path or content');
+          }
           break;
           
         case 'json':
@@ -111,35 +144,94 @@ export class FileProcessManager {
           processResult = this.processJSONContent(fileContent);
           break;
           
+        case 'jpg':
+        case 'jpeg':
+        case 'png':
+        case 'gif':
+        case 'webp':
+        case 'bmp':
+          if (!fileBuffer && filePath) {
+            processResult = await imageProcessor.processFromPath(filePath, {
+              generateDescription: options.extractImages,
+              vlmModel: options.vlmModel,
+              customPrompt: options.imagePrompt
+            });
+          } else if (fileBuffer) {
+            processResult = await imageProcessor.processFromBuffer(fileBuffer, {
+              filename: options.filename,
+              generateDescription: options.extractImages,
+              vlmModel: options.vlmModel,
+              customPrompt: options.imagePrompt
+            });
+          } else {
+            throw new Error('Image processing requires file buffer or path');
+          }
+          break;
+
         case 'txt':
         case 'text':
         default:
-          if (!fileContent) throw new Error('Text content is required');
-          processResult = this.processPlainText(fileContent);
+          if (!fileBuffer && filePath) {
+            processResult = await rawTextProcessor.processFromPath(filePath, options.encoding);
+          } else if (fileBuffer) {
+            processResult = await rawTextProcessor.processFromBuffer(fileBuffer, options.encoding);
+          } else if (fileContent) {
+            processResult = this.processPlainText(fileContent);
+          } else {
+            throw new Error('Text processing requires file buffer, path or content');
+          }
           break;
       }
 
-      // 使用增强的文本清理器
-      const cleanedText = TextCleaner.smartClean(processResult.rawText);
+      // 使用增强的段落处理器进行文本优化
+      let finalText = processResult.rawText;
       
-      // 验证文本质量
-      const quality = TextCleaner.validateTextQuality(cleanedText);
-      if (!quality.isValid) {
-        logger.warn(`Text quality issues detected: ${quality.issues.join(', ')}, score: ${quality.score}`);
-        if (quality.score < 30) {
-          throw new Error(`Text quality too poor: ${quality.issues.join(', ')}`);
+      // 如果启用了段落优化
+      if (options.enableParagraphOptimization !== false) {
+        try {
+          const paragraphResult = await paragraphProcessor.processLLMParagraph({
+            rawText: processResult.rawText,
+            model: options.agentModel || 'gpt-3.5-turbo',
+            paragraphChunkAIMode: options.paragraphChunkAIMode || ParagraphChunkAIModeEnum.auto,
+            language: options.language || 'auto',
+            preserveStructure: options.preserveStructure !== false
+          });
+          
+          finalText = paragraphResult.resultText;
+          
+          // 添加处理统计到元数据
+          if (processResult.metadata) {
+            processResult.metadata.paragraphOptimization = {
+              applied: paragraphResult.optimizationApplied,
+              tokensUsed: paragraphResult.totalInputTokens + paragraphResult.totalOutputTokens,
+              processingTime: paragraphResult.processingTime,
+              lengthChange: paragraphResult.processedLength - paragraphResult.originalLength
+            };
+          }
+        } catch (error) {
+          logger.warn('Paragraph optimization failed, using smart text cleaning:', error);
+          finalText = paragraphProcessor.smartTextCleaning(processResult.rawText);
         }
+      } else {
+        // 仅进行智能文本清理
+        finalText = paragraphProcessor.smartTextCleaning(processResult.rawText);
+      }
+      
+      // 使用传统清理器作为备用
+      if (!finalText || finalText.trim().length < 10) {
+        logger.warn('Paragraph processor result invalid, using traditional cleaner');
+        finalText = TextCleaner.smartClean(processResult.rawText);
       }
       
       // 检测语言
-      const language = this.detectLanguage(cleanedText);
+      const language = this.detectLanguage(finalText);
       if (processResult.metadata) {
         processResult.metadata.language = language;
       }
 
       // 分块处理
       const chunks = await this.splitTextIntoChunks({
-        text: cleanedText,
+        text: finalText,
         chunkSize,
         chunkOverlap,
         preserveStructure,
@@ -147,14 +239,14 @@ export class FileProcessManager {
       });
 
       const result: FileProcessResult = {
-        rawText: cleanedText, // 使用清理后的文本
+        rawText: finalText, // 使用优化后的文本
         formatText: processResult.formatText,
         imageList: processResult.imageList,
         chunks: chunks, // 添加分块结果
         metadata: {
           ...processResult.metadata,
           totalChunks: chunks.length,
-          totalCharacters: cleanedText.length,
+          totalCharacters: finalText.length,
           language,
           format: type
         }
@@ -173,7 +265,7 @@ export class FileProcessManager {
    * 检查是否为文本类型文件
    */
   private isTextBasedFile(type: SupportedFileType): boolean {
-    return ['txt', 'md', 'markdown', 'html', 'csv', 'json'].includes(type);
+    return ['txt', 'md', 'markdown', 'json'].includes(type);
   }
 
   /**

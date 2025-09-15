@@ -49,19 +49,21 @@ func newKnowledge(db *gorm.DB, opts ...gen.DOOption) knowledge {
 type knowledge struct {
 	knowledgeDo
 
-	ALL         field.Asterisk
-	ID          field.Int64  // id
-	Name        field.String // knowledge's name
-	AppID       field.Int64  // app id
-	CreatorID   field.Int64  // creator id
-	SpaceID     field.Int64  // space id
-	CreatedAt   field.Int64  // Create Time in Milliseconds
-	UpdatedAt   field.Int64  // Update Time in Milliseconds
-	DeletedAt   field.Field  // Delete Time
-	Status      field.Int32  // 0 initialization, 1 effective, 2 invalid
-	Description field.String // description
-	IconURI     field.String // icon uri
-	FormatType  field.Int32  // 0: Text 1: Table 2: Images
+	ALL           field.Asterisk
+	ID            field.Int64  // id
+	Name          field.String // knowledge's name
+	AppID         field.Int64  // app id
+	CreatorID     field.Int64  // creator id
+	SpaceID       field.Int64  // space id
+	CreatedAt     field.Int64  // Create Time in Milliseconds
+	UpdatedAt     field.Int64  // Update Time in Milliseconds
+	DeletedAt     field.Field  // Delete Time
+	Status        field.Int32  // 0 initialization, 1 effective, 2 invalid
+	Description   field.String // description
+	IconURI       field.String // icon uri
+	FormatType    field.Int32  // 0: Text 1: Table 2: Images
+	RagDatasetID  field.String // FastGPTRAG Dataset ID for unified management
+	KnowledgeType field.String // Knowledge base type: native, fastgpt_rag
 
 	fieldMap map[string]field.Expr
 }
@@ -90,6 +92,8 @@ func (k *knowledge) updateTableName(table string) *knowledge {
 	k.Description = field.NewString(table, "description")
 	k.IconURI = field.NewString(table, "icon_uri")
 	k.FormatType = field.NewInt32(table, "format_type")
+	k.RagDatasetID = field.NewString(table, "rag_dataset_id")
+	k.KnowledgeType = field.NewString(table, "knowledge_type")
 
 	k.fillFieldMap()
 
@@ -106,7 +110,7 @@ func (k *knowledge) GetFieldByName(fieldName string) (field.OrderExpr, bool) {
 }
 
 func (k *knowledge) fillFieldMap() {
-	k.fieldMap = make(map[string]field.Expr, 12)
+	k.fieldMap = make(map[string]field.Expr, 14)
 	k.fieldMap["id"] = k.ID
 	k.fieldMap["name"] = k.Name
 	k.fieldMap["app_id"] = k.AppID
@@ -119,6 +123,8 @@ func (k *knowledge) fillFieldMap() {
 	k.fieldMap["description"] = k.Description
 	k.fieldMap["icon_uri"] = k.IconURI
 	k.fieldMap["format_type"] = k.FormatType
+	k.fieldMap["rag_dataset_id"] = k.RagDatasetID
+	k.fieldMap["knowledge_type"] = k.KnowledgeType
 }
 
 func (k knowledge) clone(db *gorm.DB) knowledge {

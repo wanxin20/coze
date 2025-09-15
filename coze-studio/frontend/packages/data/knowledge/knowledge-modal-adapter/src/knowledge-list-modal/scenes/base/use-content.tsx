@@ -29,6 +29,7 @@ export const useKnowledgeListModalContent = (
   // A modal for creating a knowledge base
   const createKnowledgeModal = useCreateKnowledgeModalV2({
     projectID,
+    knowledgeType: 'coze_native', // 知识库列表模态窗口中默认使用原生知识库
     onFinish: (datasetId: string, type: UnitType, shouldUpload: boolean) => {
       onClickAddKnowledge?.(datasetId, type, shouldUpload);
       createKnowledgeModal.close();
@@ -46,6 +47,7 @@ export const KnowledgeListModalContent = (props: DataSetModalContentProps) => {
   // A modal for creating a knowledge base
   const createKnowledgeModal = useCreateKnowledgeModalV2({
     projectID,
+    knowledgeType: 'coze_native', // 知识库列表模态窗口中默认使用原生知识库
     onFinish: (datasetId: string, type: UnitType, shouldUpload: boolean) => {
       onClickAddKnowledge?.(datasetId, type, shouldUpload);
       createKnowledgeModal.close();

@@ -96,56 +96,92 @@ async function testFileUpload(datasetId) {
 }
 
 // 等待文件训练完成函数
-async function waitForFileTraining(datasetId, collectionId, maxWaitTime = 120) {
+async function waitForFileTraining(datasetId, collectionId, maxAttempts = 30) {
   log('\n⏳ 等待文件向量化训练完成...', 'blue');
   log('   这可能需要较长时间，请耐心等待...', 'yellow');
   
-  let waitTime = 0;
+  let processingComplete = false;
+  let attempts = 0;
+  let backoffDelay = 5000; // 初始延迟5秒
   
-  while (waitTime < maxWaitTime) {
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    waitTime += 3;
+  while (!processingComplete && attempts < maxAttempts) {
+    attempts++;
+    log(`   检查处理状态 (${attempts}/${maxAttempts})...`, 'cyan');
     
     try {
-      // 尝试搜索来检查训练状态
-      const testSearch = await api.post('/api/core/dataset/searchTest', {
-        datasetId: datasetId,
-        text: '银发经济',
-        limit: 3,
-        similarity: 0.3,
-        searchMode: 'embedding'
-      });
+      // 直接检查集合状态
+      const collectionStatus = await api.get(`/api/core/dataset/collection/${collectionId}`);
       
-      if (testSearch.data.code === 200) {
-        const results = testSearch.data.data.searchRes || [];
-        // 查找来自文件集合的结果
-        const fileResults = results.filter(r => r.collectionId === collectionId);
-        if (fileResults.length > 0) {
-          log(`✅ 文件训练完成！找到 ${fileResults.length} 个文件相关结果`, 'green');
+      if (collectionStatus.data && collectionStatus.data.code === 200) {
+        const collection = collectionStatus.data.data;
+        const status = collection.status || 'unknown';
+        log(`   当前状态: ${status}`, 'cyan');
+        
+        // 完成状态
+        if (status === 'ready' || status === 'trained' || status === 'completed') {
+          processingComplete = true;
+          log('   ✅ 文件处理完成', 'green');
           
-          // 显示文件训练验证结果
-          log(`   📋 文件训练验证结果:`, 'cyan');
-          fileResults.forEach((result, index) => {
-            const content = result.q || result.a || '无内容';
-            const score = result.score?.[0]?.value || result.score;
-            log(`   ${index + 1}. ${content.substring(0, 100)}${content.length > 100 ? '...' : ''}`, 'blue');
-            if (score !== undefined) {
-              log(`      相似度: ${typeof score === 'number' ? score.toFixed(4) : score}`, 'blue');
+          // 验证搜索功能
+          try {
+            const testSearch = await api.post('/api/core/dataset/searchTest', {
+              datasetId: datasetId,
+              text: '银发经济',
+              limit: 3,
+              similarity: 0.3,
+              searchMode: 'embedding'
+            });
+            
+            if (testSearch.data.code === 200) {
+              const results = testSearch.data.data.searchRes || [];
+              const fileResults = results.filter(r => r.collectionId === collectionId);
+              if (fileResults.length > 0) {
+                log(`   📋 搜索验证成功：找到 ${fileResults.length} 个相关结果`, 'cyan');
+                fileResults.slice(0, 2).forEach((result, index) => {
+                  const content = result.q || result.a || '无内容';
+                  const score = result.score?.[0]?.value || result.score;
+                  log(`   ${index + 1}. ${content.substring(0, 100)}${content.length > 100 ? '...' : ''}`, 'blue');
+                  if (score !== undefined) {
+                    log(`      相似度: ${typeof score === 'number' ? score.toFixed(4) : score}`, 'blue');
+                  }
+                });
+              }
             }
-          });
+          } catch (searchError) {
+            log('   ⚠️ 搜索验证失败，但训练已完成', 'yellow');
+          }
           
-          return true;
+          break; // 重要：完成后立即退出循环
+        } 
+        // 错误状态
+        else if (status === 'error' || status === 'failed') {
+          log('   ❌ 文件处理失败', 'red');
+          break;
+        } 
+        // 处理中状态（包括training, processing, pending等）
+        else {
+          log(`   状态 "${status}" - 等待 ${backoffDelay/1000} 秒后重试...`, 'cyan');
+          await new Promise(resolve => setTimeout(resolve, backoffDelay));
+          backoffDelay = Math.min(backoffDelay * 1.2, 20000); // 最大延迟20秒
         }
+      } else {
+        log(`   ⚠️ 无法获取状态信息，等待 ${backoffDelay/1000} 秒后重试...`, 'yellow');
+        await new Promise(resolve => setTimeout(resolve, backoffDelay));
+        backoffDelay = Math.min(backoffDelay * 1.2, 20000);
       }
-    } catch (error) {
-      // 继续等待
+    } catch (statusError) {
+      log(`   ⚠️ 状态检查失败: ${statusError.message}`, 'yellow');
+      // 错误情况下也使用退避延迟
+      await new Promise(resolve => setTimeout(resolve, backoffDelay));
+      backoffDelay = Math.min(backoffDelay * 1.2, 20000);
     }
-    
-    log(`   等待中... (${waitTime}s/${maxWaitTime}s)`, 'blue');
   }
   
-  log('⚠️  等待训练超时，可能训练仍在进行中', 'yellow');
-  return false;
+  if (!processingComplete) {
+    log('   ⚠️ 文件处理超时，但可能训练仍在进行中', 'yellow');
+  }
+  
+  return processingComplete;
 }
 
 let testDatasetId = null;

@@ -53,6 +53,10 @@ struct DocumentInfo {
     33: optional string     doc_tree_tos_url // Hierarchical segmented document tree tos_url
     34: optional string     preview_tos_url  // Preview the original document tos_url
     35: optional i64        review_id  // Preview the original document tos_url
+    
+    // FastGPT RAG related fields
+    36: optional string     training_job_id  // FastGPT RAG training job ID
+    37: optional string     collection_id    // FastGPT RAG collection ID
 }
 
 struct TableColumn {

@@ -30,16 +30,17 @@ type BaseResponse struct {
 
 // KnowledgeBase 知识库模型
 type KnowledgeBase struct {
-	Id          string    `json:"id"`
-	Name        string    `json:"name"`
-	Intro       string    `json:"intro"`
-	Type        string    `json:"type"`
-	VectorModel string    `json:"vectorModel"`
-	AgentModel  string    `json:"agentModel"`
-	CreateTime  time.Time `json:"createTime"`
-	UpdateTime  time.Time `json:"updateTime"`
-	FileCount   int32     `json:"fileCount"`
-	DataCount   int32     `json:"dataCount"`
+	Id           string    `json:"id"`
+	Name         string    `json:"name"`
+	Intro        string    `json:"intro"`
+	Type         string    `json:"type"`
+	VectorModel  string    `json:"vectorModel"`
+	AgentModel   string    `json:"agentModel"`
+	CreateTime   time.Time `json:"createTime"`
+	UpdateTime   time.Time `json:"updateTime"`
+	FileCount    int32     `json:"fileCount"`
+	DataCount    int32     `json:"dataCount"`
+	RagDatasetId string    `json:"ragDatasetId"` // RAG数据集ID，前端需要用来获取集合列表
 }
 
 // GetKnowledgeBasesRequest 获取知识库列表请求
@@ -85,7 +86,7 @@ type GetKnowledgeBaseByIdRequest struct {
 // GetKnowledgeBaseByIdResponse 获取知识库详情响应
 type GetKnowledgeBaseByIdResponse struct {
 	BaseResponse
-	KnowledgeBase *KnowledgeBase `json:"knowledgeBase"`
+	Data *KnowledgeBase `json:"data"`
 }
 
 // UpdateKnowledgeBaseRequest 更新知识库请求
@@ -100,7 +101,7 @@ type UpdateKnowledgeBaseRequest struct {
 // UpdateKnowledgeBaseResponse 更新知识库响应
 type UpdateKnowledgeBaseResponse struct {
 	BaseResponse
-	KnowledgeBase *KnowledgeBase `json:"knowledgeBase"`
+	Data *KnowledgeBase `json:"data"`
 }
 
 // DeleteKnowledgeBaseRequest 删除知识库请求

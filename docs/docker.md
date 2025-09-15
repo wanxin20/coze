@@ -20,7 +20,7 @@ coze-server:
     docker compose logs -f coze-server  
 FastGPTRAG:
     docker compose -f docker-compose.rag.yml down
-    docker compose -f docker-compose.rag.yml up --build -d
+   docker compose -f docker-compose.rag.yml up fastgpt-rag
 coze-web:
 
 docker-compose up --build coze-web-dev 
@@ -31,9 +31,12 @@ rush update
    rush install --bypass-policy
    rush link
 
-   DEBUG=* VERBOSE_LOGGING=true npm run dev
+  
 
    docker-compose --profile development stop coze-web-dev
    docker-compose --profile development up -d coze-web-dev
    docker-compose --profile development restart coze-web-dev
+
+cd coze-studio/frontend/apps/coze-studio
+ DEBUG=* VERBOSE_LOGGING=true npm run dev
 

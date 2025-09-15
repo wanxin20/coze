@@ -47,25 +47,103 @@ import (
 	"github.com/coze-dev/coze-studio/backend/pkg/lang/ptr"
 	"github.com/coze-dev/coze-studio/backend/pkg/lang/sets"
 	"github.com/coze-dev/coze-studio/backend/pkg/lang/slices"
+	"sort"
 	"github.com/coze-dev/coze-studio/backend/pkg/logs"
 	"github.com/coze-dev/coze-studio/backend/pkg/sonic"
 	"github.com/coze-dev/coze-studio/backend/types/errno"
 )
 
 func (k *knowledgeSVC) Retrieve(ctx context.Context, request *RetrieveRequest) (response *RetrieveResponse, err error) {
+	// 强制日志：确认新代码被执行
+	logs.CtxInfof(ctx, "🔥 NEW RETRIEVE CODE EXECUTED - KnowledgeIDs: %v, Query: %s", request.KnowledgeIDs, request.Query)
+	
 	if request == nil {
 		return nil, errorx.New(errno.ErrKnowledgeInvalidParamCode, errorx.KV("msg", "request is nil"))
 	}
 	if len(request.Query) == 0 {
 		return &knowledgeModel.RetrieveResponse{}, nil
 	}
+	// Check knowledge base types first to determine retrieval strategy
+	typeMap, ragMap, err := k.getKnowledgeTypesAndRagMapping(ctx, request.KnowledgeIDs)
+	if err != nil {
+		logs.CtxErrorf(ctx, "failed to get knowledge types and rag mapping: %v", err)
+		// Graceful degradation: treat all as native knowledge bases
+		logs.CtxWarnf(ctx, "falling back to native-only retrieval due to type mapping error")
+		nativeRequest := *request
+		retrieveContext, err := k.newRetrieveContext(ctx, &nativeRequest)
+		if err != nil {
+			return nil, err
+		}
+		return k.nativeRetrieve(ctx, &nativeRequest, retrieveContext)
+	}
+
+	// Group knowledge IDs by type
+	nativeKnowledgeIDs := make([]int64, 0)
+	fastgptKnowledgeIDs := make([]int64, 0)
+	
+	for _, knowledgeID := range request.KnowledgeIDs {
+		if knowledgeType, exists := typeMap[knowledgeID]; exists {
+			if knowledgeType == "fastgpt_rag" {
+				fastgptKnowledgeIDs = append(fastgptKnowledgeIDs, knowledgeID)
+			} else {
+				nativeKnowledgeIDs = append(nativeKnowledgeIDs, knowledgeID)
+			}
+		} else {
+			// Default to native if type is not found
+			nativeKnowledgeIDs = append(nativeKnowledgeIDs, knowledgeID)
+		}
+	}
+
+	// Log knowledge base type distribution
+	logs.CtxInfof(ctx, "🔥 Knowledge base distribution: native=%d, fastgpt=%d", len(nativeKnowledgeIDs), len(fastgptKnowledgeIDs))
+
+	// If we have only FastGPT knowledge bases, skip document context creation
+	if len(fastgptKnowledgeIDs) > 0 && len(nativeKnowledgeIDs) == 0 {
+		logs.CtxInfof(ctx, "🔥 FastGPT-only retrieval - skipping document context creation")
+		if k.ragClient != nil {
+			return k.fastGPTOnlyRetrieve(ctx, request, fastgptKnowledgeIDs, ragMap)
+		} else {
+			logs.CtxWarnf(ctx, "FastGPT knowledge bases found but RAG client unavailable")
+			return &knowledgeModel.RetrieveResponse{}, nil
+		}
+	}
+
+	// For native or mixed retrieval, create retrieve context
 	retrieveContext, err := k.newRetrieveContext(ctx, request)
 	if err != nil {
 		return nil, err
 	}
-	if len(retrieveContext.Documents) == 0 {
+	if len(retrieveContext.Documents) == 0 && len(nativeKnowledgeIDs) > 0 {
+		logs.CtxInfof(ctx, "🔥 NO DOCUMENTS FOUND for native knowledge bases - returning empty response")
 		return &knowledgeModel.RetrieveResponse{}, nil
 	}
+	
+	logs.CtxInfof(ctx, "🔥 FOUND %d DOCUMENTS - proceeding with retrieval", len(retrieveContext.Documents))
+
+	// If we have FastGPT knowledge bases and RAG client is available, use hybrid retrieval
+	if len(fastgptKnowledgeIDs) > 0 && k.ragClient != nil {
+		return k.hybridRetrieve(ctx, request, retrieveContext, nativeKnowledgeIDs, fastgptKnowledgeIDs, ragMap)
+	}
+
+	// Degradation: if FastGPT knowledge bases exist but RAG client is unavailable
+	if len(fastgptKnowledgeIDs) > 0 && k.ragClient == nil {
+		logs.CtxWarnf(ctx, "FastGPT knowledge bases found but RAG client unavailable, excluding from retrieval")
+	}
+
+	// Fall back to native-only retrieval
+	if len(nativeKnowledgeIDs) > 0 {
+		// Update request to only include native knowledge IDs
+		nativeRequest := *request
+		nativeRequest.KnowledgeIDs = nativeKnowledgeIDs
+		return k.nativeRetrieve(ctx, &nativeRequest, retrieveContext)
+	}
+
+	// No valid knowledge bases found
+	return &knowledgeModel.RetrieveResponse{}, nil
+}
+
+// nativeRetrieve performs retrieval using only native knowledge bases
+func (k *knowledgeSVC) nativeRetrieve(ctx context.Context, request *RetrieveRequest, retrieveContext *RetrieveContext) (*RetrieveResponse, error) {
 	chain := compose.NewChain[*RetrieveContext, []*knowledgeModel.RetrieveSlice]()
 	rewriteNode := compose.InvokableLambda(k.queryRewriteNode)
 	// vectorized recall
@@ -104,6 +182,390 @@ func (k *knowledgeSVC) Retrieve(ctx context.Context, request *RetrieveRequest) (
 	return &RetrieveResponse{
 		RetrieveSlices: output,
 	}, nil
+}
+
+// fastGPTOnlyRetrieve performs retrieval using only FastGPT knowledge bases
+func (k *knowledgeSVC) fastGPTOnlyRetrieve(ctx context.Context, request *RetrieveRequest, fastgptKnowledgeIDs []int64, ragMap map[int64]string) (*RetrieveResponse, error) {
+	logs.CtxInfof(ctx, "🔥 performing FastGPT-only retrieval: fastgpt=%d", len(fastgptKnowledgeIDs))
+
+	// Call FastGPT retrieval directly
+	fastgptResults, err := k.retrieveFastGPT(ctx, request, fastgptKnowledgeIDs, ragMap)
+	if err != nil {
+		logs.CtxErrorf(ctx, "FastGPT retrieval failed: %v", err)
+		return nil, err
+	}
+
+	logs.CtxInfof(ctx, "🔥 FastGPT-only retrieval completed: results=%d", len(fastgptResults))
+
+	return &RetrieveResponse{
+		RetrieveSlices: fastgptResults,
+	}, nil
+}
+
+// hybridRetrieve performs hybrid retrieval combining native and FastGPT knowledge bases
+func (k *knowledgeSVC) hybridRetrieve(ctx context.Context, request *RetrieveRequest, retrieveContext *RetrieveContext, nativeKnowledgeIDs []int64, fastgptKnowledgeIDs []int64, ragMap map[int64]string) (*RetrieveResponse, error) {
+	logs.CtxInfof(ctx, "performing hybrid retrieval: native=%d, fastgpt=%d", len(nativeKnowledgeIDs), len(fastgptKnowledgeIDs))
+
+	// Use errgroup for parallel execution
+	eg, ctx := errgroup.WithContext(ctx)
+	
+	var nativeResults []*knowledgeModel.RetrieveSlice
+	var fastgptResults []*knowledgeModel.RetrieveSlice
+	var nativeErr, fastgptErr error
+
+	// Execute native retrieval in parallel if we have native knowledge bases
+	if len(nativeKnowledgeIDs) > 0 {
+		eg.Go(func() error {
+			nativeRequest := *request
+			nativeRequest.KnowledgeIDs = nativeKnowledgeIDs
+			
+			// Update retrieve context to only include native documents
+			nativeContext, err := k.newRetrieveContext(ctx, &nativeRequest)
+			if err != nil {
+				nativeErr = err
+				return nil // Don't fail the entire operation
+			}
+			
+			resp, err := k.nativeRetrieve(ctx, &nativeRequest, nativeContext)
+			if err != nil {
+				logs.CtxErrorf(ctx, "native retrieval failed: %v", err)
+				nativeErr = err
+				return nil // Don't fail the entire operation
+			}
+			nativeResults = resp.RetrieveSlices
+			return nil
+		})
+	}
+
+	// Execute FastGPT retrieval in parallel
+	eg.Go(func() error {
+		results, err := k.retrieveFastGPT(ctx, request, fastgptKnowledgeIDs, ragMap)
+		if err != nil {
+			logs.CtxErrorf(ctx, "FastGPT retrieval failed: %v", err)
+			fastgptErr = err
+			return nil // Don't fail the entire operation
+		}
+		fastgptResults = results
+		return nil
+	})
+
+	// Wait for both operations to complete
+	if err := eg.Wait(); err != nil {
+		return nil, err
+	}
+
+	// Log any errors but continue with partial results
+	if nativeErr != nil {
+		logs.CtxWarnf(ctx, "native retrieval had errors: %v", nativeErr)
+	}
+	if fastgptErr != nil {
+		logs.CtxWarnf(ctx, "FastGPT retrieval had errors: %v", fastgptErr)
+	}
+
+	// Merge and re-rank results
+	mergedResults, err := k.mergeAndRerankResults(ctx, nativeResults, fastgptResults, request.Strategy, request.Query)
+	if err != nil {
+		logs.CtxErrorf(ctx, "failed to merge and rerank results: %v", err)
+		return nil, err
+	}
+
+	logs.CtxInfof(ctx, "hybrid retrieval completed: native=%d, fastgpt=%d, merged=%d", 
+		len(nativeResults), len(fastgptResults), len(mergedResults))
+
+	return &RetrieveResponse{
+		RetrieveSlices: mergedResults,
+	}, nil
+}
+
+// getKnowledgeTypesAndRagMapping retrieves knowledge base types and RAG dataset mappings
+func (k *knowledgeSVC) getKnowledgeTypesAndRagMapping(ctx context.Context, knowledgeIDs []int64) (typeMap map[int64]string, ragMap map[int64]string, err error) {
+	if len(knowledgeIDs) == 0 {
+		return make(map[int64]string), make(map[int64]string), nil
+	}
+
+	knowledgeModels, err := k.knowledgeRepo.MGetByID(ctx, knowledgeIDs)
+	if err != nil {
+		return nil, nil, fmt.Errorf("failed to get knowledge models: %w", err)
+	}
+
+	typeMap = make(map[int64]string)
+	ragMap = make(map[int64]string)
+
+	for _, km := range knowledgeModels {
+		if km == nil {
+			continue
+		}
+		
+		// Set knowledge type (default to native if empty)
+		knowledgeType := km.KnowledgeType
+		if knowledgeType == "" {
+			knowledgeType = "native"
+		}
+		typeMap[km.ID] = knowledgeType
+
+		// If it's a FastGPT RAG knowledge base, store the dataset ID mapping
+		if knowledgeType == "fastgpt_rag" && km.RagDatasetID != "" {
+			ragMap[km.ID] = km.RagDatasetID
+		}
+	}
+
+	return typeMap, ragMap, nil
+}
+
+// retrieveFastGPT performs retrieval using FastGPT RAG service
+func (k *knowledgeSVC) retrieveFastGPT(ctx context.Context, request *RetrieveRequest, knowledgeIDs []int64, ragMap map[int64]string) ([]*knowledgeModel.RetrieveSlice, error) {
+	if k.ragClient == nil {
+		return nil, fmt.Errorf("RAG client is not available")
+	}
+
+	var allResults []*knowledgeModel.RetrieveSlice
+	successCount := 0
+	errorCount := 0
+	
+	// Process each FastGPT knowledge base
+	for _, knowledgeID := range knowledgeIDs {
+		datasetID, exists := ragMap[knowledgeID]
+		if !exists || datasetID == "" {
+			logs.CtxWarnf(ctx, "no RAG dataset ID found for knowledge %d, skipping", knowledgeID)
+			errorCount++
+			continue
+		}
+
+		// Convert Coze parameters to FastGPT parameters
+		ragRequest := k.convertCozeToFastGPTParams(request.Strategy, request.Query, datasetID)
+		
+		logs.CtxDebugf(ctx, "calling FastGPT search for knowledge %d (dataset %s) with params: TopK=%d, ScoreThreshold=%.2f, SearchMode=%s", 
+			knowledgeID, datasetID, ragRequest.TopK, ragRequest.ScoreThreshold, ragRequest.SearchMode)
+		
+		// Call FastGPT search with timeout and error handling
+		ragResponse, err := k.ragClient.SearchDataset(ctx, ragRequest)
+		if err != nil {
+			logs.CtxErrorf(ctx, "FastGPT search failed for knowledge %d (dataset %s): %v", knowledgeID, datasetID, err)
+			errorCount++
+			continue // Continue with other knowledge bases for fault tolerance
+		}
+
+		if ragResponse == nil {
+			logs.CtxWarnf(ctx, "FastGPT search returned nil response for knowledge %d (dataset %s)", knowledgeID, datasetID)
+			errorCount++
+			continue
+		}
+
+		// Convert FastGPT results to Coze format
+		knowledgeResults := k.convertFastGPTResultsToCoze(ragResponse.Results, knowledgeID)
+		allResults = append(allResults, knowledgeResults...)
+		successCount++
+
+		logs.CtxDebugf(ctx, "FastGPT search completed for knowledge %d: found %d results", knowledgeID, len(knowledgeResults))
+	}
+
+	// Log summary statistics
+	logs.CtxInfof(ctx, "FastGPT retrieval summary: success=%d, errors=%d, total_results=%d", successCount, errorCount, len(allResults))
+
+	// If all FastGPT knowledge bases failed, return an error
+	if successCount == 0 && errorCount > 0 {
+		return nil, fmt.Errorf("all FastGPT knowledge bases failed to retrieve results")
+	}
+
+	return allResults, nil
+}
+
+// convertCozeToFastGPTParams converts Coze retrieval strategy to FastGPT search parameters
+func (k *knowledgeSVC) convertCozeToFastGPTParams(strategy *entity.RetrievalStrategy, query string, datasetID string) *entity.RAGSearchRequest {
+	ragReq := &entity.RAGSearchRequest{
+		DatasetID: datasetID,
+		Query:     query,
+	}
+
+	if strategy != nil {
+		// Map TopK (default: 3)
+		if strategy.TopK != nil && *strategy.TopK > 0 {
+			ragReq.TopK = int(*strategy.TopK)
+		} else {
+			ragReq.TopK = 3
+		}
+
+		// Map MinScore (default: 0.5)
+		if strategy.MinScore != nil {
+			ragReq.ScoreThreshold = float64(*strategy.MinScore)
+		} else {
+			ragReq.ScoreThreshold = 0.5
+		}
+
+		// Map EnableRerank (default: false)
+		ragReq.UsingReRank = strategy.EnableRerank
+
+		// Map SearchType to SearchMode
+		switch strategy.SearchType {
+		case knowledgeModel.SearchTypeSemantic:
+			ragReq.SearchMode = "embedding"
+		case knowledgeModel.SearchTypeFullText:
+			ragReq.SearchMode = "fullTextRecall"
+		case knowledgeModel.SearchTypeHybrid:
+			ragReq.SearchMode = "mixedRecall"
+		default:
+			ragReq.SearchMode = "embedding" // Default to semantic search
+		}
+
+		// Note: We ignore complex parameters like EnableNL2SQL, MaxTokens, IsPersonalOnly, SelectType
+		// as per the design principle of simplification
+	} else {
+		// Default values
+		ragReq.TopK = 3
+		ragReq.ScoreThreshold = 0.5
+		ragReq.SearchMode = "embedding"
+		ragReq.UsingReRank = false
+	}
+
+	return ragReq
+}
+
+// convertFastGPTResultsToCoze converts FastGPT search results to Coze RetrieveSlice format
+func (k *knowledgeSVC) convertFastGPTResultsToCoze(fastGPTResults []*entity.RAGSearchItem, knowledgeID int64) []*knowledgeModel.RetrieveSlice {
+	results := make([]*knowledgeModel.RetrieveSlice, 0, len(fastGPTResults))
+
+	for _, item := range fastGPTResults {
+		if item == nil {
+			continue
+		}
+
+		slice := &knowledgeModel.RetrieveSlice{
+			Slice: &knowledgeModel.Slice{
+				KnowledgeID: knowledgeID,
+				DocumentID:  0, // FastGPT doesn't have document concept in the same way
+				RawContent: []*knowledgeModel.SliceContent{
+					{
+						Type: knowledgeModel.SliceContentTypeText,
+						Text: &item.Content,
+					},
+				},
+				Extra: map[string]string{
+					"collection_id":   item.CollectionID,
+					"collection_name": item.CollectionName,
+					"source_name":     item.SourceName,
+				},
+			},
+			Score: item.Score,
+		}
+
+		// Add metadata if available
+		if len(item.Metadata) > 0 {
+			for k, v := range item.Metadata {
+				slice.Slice.Extra[k] = v
+			}
+		}
+
+		results = append(results, slice)
+	}
+
+	return results
+}
+
+// mergeAndRerankResults merges native and FastGPT results and applies re-ranking if enabled
+func (k *knowledgeSVC) mergeAndRerankResults(ctx context.Context, nativeResults []*knowledgeModel.RetrieveSlice, fastgptResults []*knowledgeModel.RetrieveSlice, strategy *entity.RetrievalStrategy, query string) ([]*knowledgeModel.RetrieveSlice, error) {
+	// Log input statistics
+	logs.CtxDebugf(ctx, "merging results: native=%d, fastgpt=%d", len(nativeResults), len(fastgptResults))
+
+	// Simple merge: combine all results
+	allResults := make([]*knowledgeModel.RetrieveSlice, 0, len(nativeResults)+len(fastgptResults))
+	allResults = append(allResults, nativeResults...)
+	allResults = append(allResults, fastgptResults...)
+
+	if len(allResults) == 0 {
+		logs.CtxDebugf(ctx, "no results to merge")
+		return allResults, nil
+	}
+
+	// Apply re-ranking if enabled and reranker is available
+	if strategy != nil && strategy.EnableRerank && k.reranker != nil {
+		// Convert to rerank format
+		rerankData := make([]*rerank.Data, len(allResults))
+		for i, result := range allResults {
+			if result.Slice != nil && len(result.Slice.RawContent) > 0 && result.Slice.RawContent[0].Text != nil {
+				rerankData[i] = &rerank.Data{
+					Document: &schema.Document{
+						Content: *result.Slice.RawContent[0].Text,
+						MetaData: map[string]any{
+							"knowledge_id": result.Slice.KnowledgeID,
+							"score":        result.Score,
+						},
+					},
+					Score: result.Score,
+				}
+			}
+		}
+
+		// Perform re-ranking
+		rerankReq := &rerank.Request{
+			Query: query,
+			Data:  [][]*rerank.Data{rerankData}, // Single group of results
+			TopN:  func() *int64 {
+				if strategy.TopK != nil {
+					return strategy.TopK
+				}
+				return ptr.Of(int64(3))
+			}(),
+		}
+
+		rerankResp, err := k.reranker.Rerank(ctx, rerankReq)
+		if err != nil {
+			logs.CtxWarnf(ctx, "reranking failed, using original order: %v", err)
+		} else if rerankResp == nil {
+			logs.CtxWarnf(ctx, "reranker returned nil response, using original order")
+		} else {
+			// Apply reranked order and scores
+			rerankedResults := make([]*knowledgeModel.RetrieveSlice, 0, len(rerankResp.SortedData))
+			for _, item := range rerankResp.SortedData {
+				// Find the original result by matching content
+				for _, original := range allResults {
+					if original.Slice != nil && len(original.Slice.RawContent) > 0 && 
+					   original.Slice.RawContent[0].Text != nil &&
+					   *original.Slice.RawContent[0].Text == item.Document.Content {
+						// Update score with reranked score
+						original.Score = item.Score
+						rerankedResults = append(rerankedResults, original)
+						break
+					}
+				}
+			}
+			if len(rerankedResults) > 0 {
+				allResults = rerankedResults
+				logs.CtxDebugf(ctx, "reranking applied successfully: %d results reranked", len(rerankedResults))
+			} else {
+				logs.CtxWarnf(ctx, "reranking produced no results, using original order")
+			}
+		}
+	} else {
+		// Sort by score in descending order
+		sort.Slice(allResults, func(i, j int) bool {
+			return allResults[i].Score > allResults[j].Score
+		})
+	}
+
+	// Apply TopK limit
+	beforeTopK := len(allResults)
+	if strategy != nil && strategy.TopK != nil && *strategy.TopK > 0 && len(allResults) > int(*strategy.TopK) {
+		allResults = allResults[:*strategy.TopK]
+		logs.CtxDebugf(ctx, "applied TopK limit: %d -> %d results", beforeTopK, len(allResults))
+	}
+
+	// Apply MinScore filter
+	beforeMinScore := len(allResults)
+	if strategy != nil && strategy.MinScore != nil {
+		filteredResults := make([]*knowledgeModel.RetrieveSlice, 0, len(allResults))
+		for _, result := range allResults {
+			if result.Score >= float64(*strategy.MinScore) {
+				filteredResults = append(filteredResults, result)
+			}
+		}
+		allResults = filteredResults
+		if beforeMinScore != len(allResults) {
+			logs.CtxDebugf(ctx, "applied MinScore filter (%.2f): %d -> %d results", *strategy.MinScore, beforeMinScore, len(allResults))
+		}
+	}
+
+	logs.CtxInfof(ctx, "merge and rerank completed: final result count=%d", len(allResults))
+	return allResults, nil
 }
 
 func (k *knowledgeSVC) newRetrieveContext(ctx context.Context, req *RetrieveRequest) (*RetrieveContext, error) {
@@ -529,7 +991,12 @@ func (k *knowledgeSVC) reRankNode(ctx context.Context, resultMap map[string]any)
 	resp, err := k.reranker.Rerank(ctx, &rerank.Request{
 		Query: query,
 		Data:  retrieveResultArr,
-		TopN:  retrieveCtx.Strategy.TopK,
+		TopN:  func() *int64 {
+			if retrieveCtx.Strategy.TopK != nil {
+				return retrieveCtx.Strategy.TopK
+			}
+			return ptr.Of(int64(3))
+		}(),
 	})
 	if err != nil {
 		logs.CtxErrorf(ctx, "rerank failed: %v", err)

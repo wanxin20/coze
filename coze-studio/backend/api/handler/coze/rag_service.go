@@ -21,26 +21,111 @@ package coze
 import (
 	"context"
 	"fmt"
+	"io"
+	"strconv"
 
+	"github.com/bytedance/sonic"
 	"github.com/cloudwego/hertz/pkg/app"
 	"github.com/cloudwego/hertz/pkg/protocol/consts"
 
 	ragModel "github.com/coze-dev/coze-studio/backend/api/model/data/knowledge/rag"
 	"github.com/coze-dev/coze-studio/backend/application/knowledge"
+	"github.com/coze-dev/coze-studio/backend/domain/knowledge/service"
+	"github.com/coze-dev/coze-studio/backend/pkg/logs"
 )
 
 // RagSearch RAG搜索
 // @router /api/knowledge/rag/search [POST]
 func RagSearch(ctx context.Context, c *app.RequestContext) {
 	var err error
-	var req ragModel.RagSearchRequest
-	err = c.BindAndValidate(&req)
+	
+	// 先解析为通用的map，以处理datasetId可能是字符串的情况
+	var requestBody map[string]interface{}
+	err = c.BindAndValidate(&requestBody)
 	if err != nil {
 		c.String(consts.StatusBadRequest, err.Error())
 		return
 	}
+	
+	// 手动构建RagSearchRequest，处理datasetId的类型转换
+	var req ragModel.RagSearchRequest
+	
+	// 处理datasetId - 可能是字符串或数字
+	if datasetIdRaw, exists := requestBody["datasetId"]; exists {
+		switch v := datasetIdRaw.(type) {
+		case string:
+			req.DatasetId, err = strconv.ParseInt(v, 10, 64)
+			if err != nil {
+				logs.CtxErrorf(ctx, "Invalid datasetId string format: %s", v)
+				c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+					Code: 400,
+					Msg:  "Invalid datasetId format",
+				})
+				return
+			}
+		case float64:
+			req.DatasetId = int64(v)
+		case int64:
+			req.DatasetId = v
+		default:
+			logs.CtxErrorf(ctx, "Invalid datasetId type: %T", v)
+			c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+				Code: 400,
+				Msg:  "Invalid datasetId type",
+			})
+			return
+		}
+	} else {
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "datasetId is required",
+		})
+		return
+	}
+	
+	// 设置其他字段
+	if text, exists := requestBody["text"]; exists {
+		if textStr, ok := text.(string); ok {
+			req.Text = textStr
+		}
+	}
+	if limit, exists := requestBody["limit"]; exists {
+		if limitFloat, ok := limit.(float64); ok {
+			req.Limit = int32(limitFloat)
+		}
+	}
+	if similarity, exists := requestBody["similarity"]; exists {
+		if simFloat, ok := similarity.(float64); ok {
+			req.Similarity = simFloat
+		}
+	}
+	if searchMode, exists := requestBody["searchMode"]; exists {
+		if modeStr, ok := searchMode.(string); ok {
+			req.SearchMode = modeStr
+		}
+	}
+	if usingReRank, exists := requestBody["usingReRank"]; exists {
+		if reRankBool, ok := usingReRank.(bool); ok {
+			req.UsingReRank = reRankBool
+		}
+	}
+	if rerankModel, exists := requestBody["rerankModel"]; exists {
+		if modelStr, ok := rerankModel.(string); ok {
+			req.RerankModel = modelStr
+		}
+	}
 
-	resp, err := knowledge.RAGApp.RagSearch(ctx, &req)
+	// 直接使用SearchByKnowledgeID方法，它会自动处理ID转换
+	logs.CtxInfof(ctx, "Searching in Coze knowledge ID %d with query: %s", req.DatasetId, req.Text)
+	
+	resp, err := knowledge.RAGApp.SearchByKnowledgeID(
+		ctx,
+		req.DatasetId,  // Coze知识库ID
+		req.Text,       // 搜索查询
+		int(req.Limit), // 返回结果数量
+		req.Similarity, // 相似度阈值
+		req.SearchMode, // 搜索模式
+	)
 	if err != nil {
 		internalServerErrorResponse(ctx, c, err)
 		return
@@ -1450,20 +1535,169 @@ func BatchRetrainCollections(ctx context.Context, c *app.RequestContext) {
 // CreateCollectionFromFileUpload 从文件上传创建集合 (FastGPT兼容)
 // @router /api/knowledge/rag/core/dataset/collection/create/file [POST]
 func CreateCollectionFromFileUpload(ctx context.Context, c *app.RequestContext) {
-	var err error
-	var req ragModel.CreateRagCollectionFromFileRequest
-	err = c.BindAndValidate(&req)
+	logs.CtxInfof(ctx, "FastGPT RAG file upload request received")
+
+	// 获取上传的文件
+	file, err := c.FormFile("file")
 	if err != nil {
-		c.String(consts.StatusBadRequest, err.Error())
+		logs.CtxErrorf(ctx, "Failed to get uploaded file: %v", err)
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "No file uploaded or invalid file",
+		})
 		return
 	}
 
-	resp, err := knowledge.RAGApp.CreateRagCollectionFromFile(ctx, &req)
+	// 打开文件
+	src, err := file.Open()
+	if err != nil {
+		logs.CtxErrorf(ctx, "Failed to open uploaded file: %v", err)
+		c.JSON(consts.StatusInternalServerError, ragModel.BaseResponse{
+			Code: 500,
+			Msg:  "Failed to process uploaded file",
+		})
+		return
+	}
+	defer src.Close()
+
+	// 读取文件数据
+	fileData, err := io.ReadAll(src)
+	if err != nil {
+		logs.CtxErrorf(ctx, "Failed to read file data: %v", err)
+		c.JSON(consts.StatusInternalServerError, ragModel.BaseResponse{
+			Code: 500,
+			Msg:  "Failed to read file data",
+		})
+		return
+	}
+
+	// 解析表单数据
+	var requestData struct {
+		DatasetId         string                 `json:"datasetId"`
+		Name              string                 `json:"name"`
+		TrainingType      string                 `json:"trainingType"`
+		ChunkSize         int32                  `json:"chunkSize"`
+		ChunkOverlap      int32                  `json:"chunkOverlap"`
+		PreserveStructure bool                   `json:"preserveStructure"`
+		ExtractImages     bool                   `json:"extractImages"`
+		Tags              []string               `json:"tags"`
+		Metadata          map[string]interface{} `json:"metadata"`
+	}
+
+	// 获取data参数
+	dataParam := c.PostForm("data")
+	if dataParam == "" {
+		logs.CtxErrorf(ctx, "Missing data parameter")
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "Missing data parameter",
+		})
+		return
+	}
+
+	// 解析JSON数据
+	if err := sonic.Unmarshal([]byte(dataParam), &requestData); err != nil {
+		logs.CtxErrorf(ctx, "Failed to parse data parameter: %v", err)
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "Invalid data parameter format",
+		})
+		return
+	}
+
+	// 验证必需参数
+	if requestData.DatasetId == "" {
+		logs.CtxErrorf(ctx, "Missing datasetId")
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "datasetId is required",
+		})
+		return
+	}
+
+	// 将Coze知识库ID转换为RAG数据集ID
+	// 前端传递的是Coze知识库ID，我们需要查询对应的RAG数据集ID
+	knowledgeID, err := strconv.ParseInt(requestData.DatasetId, 10, 64)
+	if err != nil {
+		logs.CtxErrorf(ctx, "Invalid datasetId format: %s", requestData.DatasetId)
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "Invalid datasetId format",
+		})
+		return
+	}
+
+	knowledgeResp, err := knowledge.KnowledgeSVC.DomainSVC.GetKnowledgeByID(ctx, &service.GetKnowledgeByIDRequest{
+		KnowledgeID: knowledgeID,
+	})
+	if err != nil {
+		logs.CtxErrorf(ctx, "Failed to get knowledge info for ID %s: %v", requestData.DatasetId, err)
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "Invalid datasetId: knowledge not found",
+		})
+		return
+	}
+
+	if knowledgeResp.Knowledge == nil {
+		logs.CtxErrorf(ctx, "Knowledge %s not found", requestData.DatasetId)
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "Knowledge not found",
+		})
+		return
+	}
+
+	if knowledgeResp.Knowledge.RagDatasetID == "" {
+		logs.CtxErrorf(ctx, "Knowledge %s is not a FastGPT RAG dataset", requestData.DatasetId)
+		c.JSON(consts.StatusBadRequest, ragModel.BaseResponse{
+			Code: 400,
+			Msg:  "Knowledge is not a FastGPT RAG dataset",
+		})
+		return
+	}
+
+	logs.CtxInfof(ctx, "Converting Coze knowledge ID %s to RAG dataset ID %s", 
+		requestData.DatasetId, knowledgeResp.Knowledge.RagDatasetID)
+
+	// 确定文件类型
+	filename := file.Filename
+	fileType := getFileTypeFromFilename(filename)
+
+	// 构建请求，使用RAG数据集ID
+	req := &ragModel.CreateRagCollectionFromFileRequest{
+		DatasetId:         knowledgeResp.Knowledge.RagDatasetID,
+		Name:              requestData.Name,
+		FileData:          fileData,
+		FileName:          filename,
+		FileType:          ragModel.SupportedFileType(fileType),
+		TrainingType:      requestData.TrainingType,
+		ChunkSize:         requestData.ChunkSize,
+		ChunkOverlap:      requestData.ChunkOverlap,
+		PreserveStructure: requestData.PreserveStructure,
+		ExtractImages:     requestData.ExtractImages,
+		Tags:              requestData.Tags,
+		Metadata:          requestData.Metadata,
+	}
+
+	resp, err := knowledge.RAGApp.CreateRagCollectionFromFile(ctx, req)
 	if err != nil {
 		internalServerErrorResponse(ctx, c, err)
 		return
 	}
-	c.JSON(consts.StatusOK, resp)
+	
+	logs.CtxInfof(ctx, "FastGPT RAG file upload successful: CollectionID=%s, TrainingJobID=%s", 
+		resp.CollectionId, resp.TrainingJobId)
+	
+	// 返回标准格式的响应，前端期望code=200
+	c.JSON(consts.StatusOK, map[string]interface{}{
+		"code": 200,
+		"msg":  "success",
+		"data": map[string]interface{}{
+			"collectionId":  resp.CollectionId,
+			"trainingJobId": resp.TrainingJobId,
+		},
+	})
 }
 
 // CreateCollectionFromLocalFile 从本地文件创建集合 (FastGPT兼容)
@@ -1523,4 +1757,37 @@ func CreateCollectionFromTextFastGPT(ctx context.Context, c *app.RequestContext)
 	c.JSON(consts.StatusOK, resp)
 }
 
-// 删除重复的函数定义 - 这些函数已在前面定义过
+// getFileTypeFromFilename 从文件名获取文件类型
+func getFileTypeFromFilename(filename string) string {
+	if len(filename) == 0 {
+		return "txt"
+	}
+
+	// 获取文件扩展名
+	for i := len(filename) - 1; i >= 0; i-- {
+		if filename[i] == '.' {
+			ext := filename[i+1:]
+			switch ext {
+			case "pdf":
+				return "pdf"
+			case "docx", "doc":
+				return "docx"
+			case "txt":
+				return "txt"
+			case "md", "markdown":
+				return "md"
+			case "html", "htm":
+				return "html"
+			case "csv":
+				return "csv"
+			case "json":
+				return "json"
+			case "xlsx", "xls":
+				return "xlsx"
+			default:
+				return "txt"
+			}
+		}
+	}
+	return "txt"
+}

@@ -15,6 +15,7 @@
  */
 
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 import { useRequest } from 'ahooks';
 import { useCreateKnowledgeModalV2 } from '@coze-data/knowledge-modal-adapter';
@@ -25,13 +26,17 @@ import {
 } from '@coze-arch/idl/plugin_develop';
 import { DatasetStatus } from '@coze-arch/idl/knowledge';
 import { I18n, type I18nKeysNoOptionsType } from '@coze-arch/i18n';
-import { IconCozClock, IconCozKnowledge } from '@coze-arch/coze-design/icons';
+import { IconCozClock, IconCozKnowledge, IconCozDatabase } from '@coze-arch/coze-design/icons';
 import { Menu, Switch, Tag, Toast, Table } from '@coze-arch/coze-design';
 import { KnowledgeApi } from '@coze-arch/bot-api';
 import { safeJSONParse } from '@coze-agent-ide/space-bot/util';
 
 import { BaseLibraryItem } from '../../components/base-library-item';
 import DocDefaultIcon from '../../assets/doc_default_icon.png';
+import { 
+  KnowledgeTypeSelectionModal, 
+  KnowledgeBaseType 
+} from '../../components/knowledge-type-selection-modal';
 import { type UseEntityConfigHook } from './types';
 
 const { TableAction } = Table;
@@ -40,11 +45,13 @@ const { TableAction } = Table;
  * 0-text
  * 1-table
  * 2-image
+ * 4-fastgpt_rag
  * */
-const knowledgeSubTypeTextMap: Record<number, I18nKeysNoOptionsType> = {
+const knowledgeSubTypeTextMap: Record<number, string> = {
   0: 'library_filter_tags_text',
   1: 'library_filter_tags_table',
   2: 'library_filter_tags_image',
+  4: 'library_filter_tags_fastgpt_rag',
 };
 
 /**
@@ -66,6 +73,7 @@ const renderKnowledgeItem = (item: ResourceInfo) => {
   const knowledgeBizStatusTag =
     item.biz_res_status !== undefined &&
     knowledgeBizStatusTextMap[item.biz_res_status];
+  
   return (
     <BaseLibraryItem
       resourceInfo={item}
@@ -86,11 +94,12 @@ const renderKnowledgeItem = (item: ResourceInfo) => {
           {knowledgeTag ? (
             <Tag
               data-testid="workspace.library.item.tag"
-              color="brand"
+              color={item.res_sub_type === 4 ? "green" : "brand"}
               size="mini"
               className="flex-shrink-0 flex-grow-0"
+              prefixIcon={item.res_sub_type === 4 ? <IconCozDatabase /> : undefined}
             >
-              {I18n.t(knowledgeTag)}
+              {I18n.t(knowledgeTag as any)}
             </Tag>
           ) : null}
           {knowledgeBizStatusTag ? (
@@ -150,6 +159,14 @@ const getTypeFilters = () => ({
       ),
       value: 2,
     },
+    {
+      label: (
+        <span data-testid="space.library.filter.knowledge.fastgpt_rag">
+          {I18n.t('library_filter_tags_fastgpt_rag' as any)}
+        </span>
+      ),
+      value: 4,
+    },
   ],
 });
 
@@ -159,20 +176,58 @@ export const useKnowledgeConfig: UseEntityConfigHook = ({
   getCommonActions,
 }) => {
   const navigate = useNavigate();
+  const [typeSelectionVisible, setTypeSelectionVisible] = useState(false);
+  const [selectedKnowledgeType, setSelectedKnowledgeType] = useState<KnowledgeBaseType>(KnowledgeBaseType.COZE_NATIVE);
+  
   const {
     modal: createKnowledgeModal,
     open: openCreateKnowledgeModal,
     close: closeCreateKnowledgeModal,
   } = useCreateKnowledgeModalV2({
+    knowledgeType: selectedKnowledgeType, // 传递知识库类型
     onFinish: (datasetID, unitType, shouldUpload) => {
-      navigate(
-        `/space/${spaceId}/knowledge/${datasetID}${
-          shouldUpload ? '/upload' : ''
-        }?type=${unitType}&from=create`,
-      );
+      // 刷新资源库列表
+      reloadList();
       closeCreateKnowledgeModal();
+      
+      // 如果需要上传文件，跳转到上传页面
+      if (shouldUpload) {
+        const uploadParams = new URLSearchParams({
+          type: unitType,
+          from: 'create'
+        });
+        if (selectedKnowledgeType === KnowledgeBaseType.FASTGPT_RAG) {
+          uploadParams.set('knowledge_type', 'fastgpt_rag');
+        }
+        navigate(`/space/${spaceId}/knowledge/${datasetID}/upload?${uploadParams.toString()}`);
+      } else {
+        // 如果不需要上传，跳转到知识库详情页面
+        const detailParams = new URLSearchParams({ from: 'library' });
+        if (selectedKnowledgeType === KnowledgeBaseType.FASTGPT_RAG) {
+          detailParams.set('knowledge_type', 'fastgpt_rag');
+        }
+        navigate(`/space/${spaceId}/knowledge/${datasetID}?${detailParams.toString()}`);
+      }
     },
   });
+
+  const handleKnowledgeTypeSelection = (type: KnowledgeBaseType) => {
+    setTypeSelectionVisible(false);
+    setSelectedKnowledgeType(type);
+    
+    // 无论选择哪种类型，都使用相同的创建模态窗口
+    openCreateKnowledgeModal();
+  };
+
+
+  const handleOpenTypeSelection = () => {
+   
+    setTypeSelectionVisible(true);
+  };
+
+  const handleCloseTypeSelection = () => {
+    setTypeSelectionVisible(false);
+  };
 
   // delete
   const { run: delKnowledge } = useRequest(
@@ -209,21 +264,38 @@ export const useKnowledgeConfig: UseEntityConfigHook = ({
   );
 
   return {
-    modals: <>{createKnowledgeModal}</>,
+    modals: (
+      <>
+        {createKnowledgeModal}
+        <KnowledgeTypeSelectionModal
+          visible={typeSelectionVisible}
+          onConfirm={handleKnowledgeTypeSelection}
+          onCancel={handleCloseTypeSelection}
+        />
+      </>
+    ),
     config: {
       typeFilter: getTypeFilters(),
       renderCreateMenu: () => (
         <Menu.Item
           data-testid="workspace.library.header.create.knowledge"
           icon={<IconCozKnowledge />}
-          onClick={openCreateKnowledgeModal}
+          onClick={handleOpenTypeSelection}
         >
           {I18n.t('library_resource_type_knowledge')}
         </Menu.Item>
       ),
       target: [ResType.Knowledge],
       onItemClick: (item: ResourceInfo) => {
-        navigate(`/space/${spaceId}/knowledge/${item.res_id}?from=library`);
+        // 检查是否为FastGPT RAG知识库 (res_sub_type = 4)
+        const isFastGPTKnowledge = item.res_sub_type === 4;
+        const queryParams = new URLSearchParams({ from: 'library' });
+        
+        if (isFastGPTKnowledge) {
+          queryParams.set('knowledge_type', 'fastgpt_rag');
+        }
+        
+        navigate(`/space/${spaceId}/knowledge/${item.res_id}?${queryParams.toString()}`);
       },
       renderItem: renderKnowledgeItem,
       renderActions: (item: ResourceInfo) => {

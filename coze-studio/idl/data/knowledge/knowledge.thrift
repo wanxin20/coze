@@ -12,6 +12,7 @@ struct CreateDatasetRequest  {
     5: common.FormatType format_type
     6: i64 biz_id (agw.js_conv="str", api.js_conv="true") // Open to third-party business identity, coze pass 0 or no pass
     7: i64 project_id (agw.js_conv="str", api.js_conv="true") //project ID
+    8: string knowledge_type         // Knowledge base type: native, fastgpt_rag
 
     255: optional base.Base Base
 }
@@ -74,6 +75,7 @@ struct Dataset {
 
     24: list<string>     processing_file_id_list  // List of file IDs in process
     25: string        project_id          //project ID
+    26: optional string knowledge_type    // Knowledge base type: native, fastgpt_rag
 }
 
 struct ListDatasetRequest {

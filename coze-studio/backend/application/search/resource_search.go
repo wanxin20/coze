@@ -349,12 +349,25 @@ func (s *SearchApplicationService) packProjectResource(ctx context.Context, reso
 		info.BizExtend = map[string]string{
 			"format_type": strconv.FormatInt(int64(resource.GetResSubType()), 10),
 		}
+		
+		// 检查是否为FastGPT知识库
 		di, err := packer.GetDataInfo(ctx)
 		if err != nil {
 			logs.CtxErrorf(ctx, "GetDataInfo failed, resID=%d, resType=%d, err=%v",
 				resource.ResID, resource.ResType, err)
 		} else {
 			info.BizResStatus = di.status
+			// 直接使用数据库中的knowledge_type字段
+			if di.knowledgeType != nil {
+				info.BizExtend["knowledge_type"] = *di.knowledgeType
+				// 如果是 FastGPT RAG 知识库，设置特殊的 res_sub_type
+				if *di.knowledgeType == "fastgpt_rag" {
+					info.ResSubType = ptr.Of(int32(4)) // FastGPTRAG 标签
+				}
+			} else {
+				info.BizExtend["knowledge_type"] = "native" // 默认值
+			}
+			
 			if di.status != nil && *di.status == int32(knowledgeModel.KnowledgeStatusDisable) {
 				actions := slices.Clone(info.Actions)
 				for _, a := range actions {

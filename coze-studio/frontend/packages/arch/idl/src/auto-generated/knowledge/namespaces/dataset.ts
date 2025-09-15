@@ -166,6 +166,8 @@ export interface CreateDatasetRequest {
   project_id?: string;
   /** 存储位置，0: byterag，1: opensearch，2: douyin */
   storage_location?: common.StorageLocation;
+  /** 知识库类型：native, fastgpt_rag */
+  knowledge_type?: string;
   Base?: base.Base;
 }
 

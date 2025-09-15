@@ -15,6 +15,7 @@
  */
 
 import { useNavigate, useParams } from 'react-router-dom';
+import { useMemo } from 'react';
 
 import qs from 'qs';
 import { KnowledgeParamsStoreProvider } from '@coze-data/knowledge-stores';
@@ -26,6 +27,7 @@ import { type ActionType } from '@coze-data/knowledge-ide-base/types';
 import {
   BizAgentKnowledgeIDE,
   BizLibraryKnowledgeIDE,
+  BizLibraryFastGPTRAGKnowledgeIDE,
   BizProjectKnowledgeIDE,
   BizWorkflowKnowledgeIDE,
 } from '@coze-data/knowledge-ide-adapter';
@@ -56,6 +58,25 @@ export const KnowledgePreviewPage = () => {
   };
   const navigate = useNavigate();
   const spaceID = useSpaceStore(store => store.space.id);
+  
+  // 简化知识库类型判断逻辑 - 直接通过URL参数判断
+  const knowledgeType = useMemo(() => {
+    const urlKnowledgeType = searchParams.get('knowledge_type');
+    const fromParam = searchParams.get('from');
+    
+    // 如果URL明确指定了类型，直接使用
+    if (urlKnowledgeType === 'fastgpt_rag') {
+      return 'fastgpt_rag';
+    }
+    
+    // 如果从库页面跳转且有特定标识，也认为是FastGPT RAG
+    if (fromParam === 'library' && searchParams.get('type') === 'fastgpt_rag') {
+      return 'fastgpt_rag';
+    }
+    
+    // 默认为原生知识库
+    return 'native';
+  }, [searchParams]);
   return (
     <KnowledgeParamsStoreProvider
       params={{ ...params, spaceID }}
@@ -87,7 +108,10 @@ export const KnowledgePreviewPage = () => {
         if (params.biz === 'project') {
           return <BizProjectKnowledgeIDE />;
         }
-        // Default'library'
+        // Default'library' - 根据知识库类型选择不同的组件
+        if (knowledgeType === 'fastgpt_rag') {
+          return <BizLibraryFastGPTRAGKnowledgeIDE />;
+        }
         return <BizLibraryKnowledgeIDE />;
       })()}
     </KnowledgeParamsStoreProvider>

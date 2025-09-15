@@ -84,6 +84,7 @@ func NewKnowledgeSVC(config *KnowledgeSVCConfig) (Knowledge, eventbus.ConsumerHa
 		enableCompactTable:  ptr.FromOrDefault(config.EnableCompactTable, true),
 		cacheCli:            config.CacheCli,
 		modelFactory:        config.ModelFactory,
+		ragClient:           config.RAGClient,
 	}
 
 	return svc, svc
@@ -104,6 +105,7 @@ type KnowledgeSVCConfig struct {
 	EnableCompactTable  *bool                          // Optional: Table data compression, default true
 	OCR                 ocr.OCR                        // Optional: ocr, ocr function is not available when not provided
 	CacheCli            cache.Cmdable                  // Optional: cache implementation
+	RAGClient           RAGClient                      // Optional: FastGPT RAG client for hybrid knowledge retrieval
 }
 
 type knowledgeSVC struct {
@@ -123,7 +125,8 @@ type knowledgeSVC struct {
 	storage             storage.Storage
 	nl2Sql              nl2sql.NL2SQL
 	cacheCli            cache.Cmdable
-	enableCompactTable  bool // Table data compression
+	enableCompactTable  bool      // Table data compression
+	ragClient           RAGClient // FastGPT RAG client for hybrid knowledge retrieval
 }
 
 func (k *knowledgeSVC) CreateKnowledge(ctx context.Context, request *CreateKnowledgeRequest) (response *CreateKnowledgeResponse, err error) {
@@ -142,18 +145,25 @@ func (k *knowledgeSVC) CreateKnowledge(ctx context.Context, request *CreateKnowl
 		return nil, errorx.New(errno.ErrKnowledgeIDGenCode)
 	}
 
+	knowledgeType := request.KnowledgeType
+	if knowledgeType == "" {
+		knowledgeType = "native" // 默认为原生知识库
+	}
+
 	if err = k.knowledgeRepo.Create(ctx, &model.Knowledge{
-		ID:          id,
-		Name:        request.Name,
-		CreatorID:   request.CreatorID,
-		AppID:       request.AppID,
-		SpaceID:     request.SpaceID,
-		CreatedAt:   now,
-		UpdatedAt:   now,
-		Status:      int32(knowledgeModel.KnowledgeStatusEnable), // At present, the initialization of the vector library is triggered by the document, and the knowledge base has no init process
-		Description: request.Description,
-		IconURI:     request.IconUri,
-		FormatType:  int32(request.FormatType),
+		ID:            id,
+		Name:          request.Name,
+		CreatorID:     request.CreatorID,
+		AppID:         request.AppID,
+		SpaceID:       request.SpaceID,
+		CreatedAt:     now,
+		UpdatedAt:     now,
+		Status:        int32(knowledgeModel.KnowledgeStatusEnable), // At present, the initialization of the vector library is triggered by the document, and the knowledge base has no init process
+		Description:   request.Description,
+		IconURI:       request.IconUri,
+		FormatType:    int32(request.FormatType),
+		RagDatasetID:  request.RagDatasetID,  // 存储FastGPTRAG的DatasetID
+		KnowledgeType: knowledgeType,         // 知识库类型
 	}); err != nil {
 		return nil, errorx.New(errno.ErrKnowledgeDBCode, errorx.KV("msg", err.Error()))
 	}
@@ -1214,6 +1224,7 @@ func (k *knowledgeSVC) fromModelKnowledge(ctx context.Context, knowledge *model.
 			CreatedAtMs: knowledge.CreatedAt,
 			UpdatedAtMs: knowledge.UpdatedAt,
 			AppID:       knowledge.AppID,
+			RagDatasetID: knowledge.RagDatasetID,
 		},
 		SliceHit: sliceHit,
 		Type:     knowledgeModel.DocumentType(knowledge.FormatType),

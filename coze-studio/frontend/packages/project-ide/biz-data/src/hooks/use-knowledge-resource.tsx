@@ -59,13 +59,14 @@ const useKnowledgeResource = (): UseKnowledgeResourceReturn => {
   const IDENav = useIDENavigate();
   // const openResource = useOpenResource();
 
-  // Creating knowledge
+  // Creating knowledge - 默认使用 coze_native 类型
   const {
     modal: createKnowledgeModal,
     open: openCreateKnowledgeModal,
     close,
   } = useCreateKnowledgeModalV2({
     projectID,
+    knowledgeType: 'coze_native', // 项目IDE中默认使用原生知识库
     onFinish: (datasetID, unitType, shouldUpload) => {
       refetch();
       close();

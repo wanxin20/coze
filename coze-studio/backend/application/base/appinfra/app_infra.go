@@ -206,7 +206,7 @@ func initRAGManager(ctx context.Context) error {
 	// 从环境变量获取RAG服务配置
 	ragServiceURL := os.Getenv("RAG_SERVICE_URL")
 	if ragServiceURL == "" {
-		// 在Docker环境中使用容器名称进行通信
+		// 使用Docker容器名称访问RAG服务
 		ragServiceURL = "http://coze-fastgpt-rag:3001"
 	}
 	

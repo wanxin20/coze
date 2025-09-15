@@ -6,6 +6,7 @@ import { logger } from '@/utils/logger.js';
 import { insertDatasetDataVector, getVectorStore } from '@/core/vectorstore/newController.js';
 import { getEmbeddingModel } from '@/core/embedding/index.js';
 import { safeObjectId, isValidObjectId } from '@/utils/objectId.js';
+import { startQATrainingJob, generateQA } from './qaTraining.js';
 
 export interface TrainingJobParams {
   collectionId: string;
@@ -73,15 +74,29 @@ export async function startTrainingJob(params: TrainingJobParams): Promise<strin
       return trainingId;
     }
 
-    // 启动异步训练进程
-    processTrainingQueue({
-      trainingId,
-      collectionId,
-      dataItems,
-      collection,
-      mode,
-      batchSize
-    });
+    // 根据训练模式选择不同的处理方式
+    if (mode === TrainingModeEnum.qa) {
+      // QA训练模式
+      await startQATrainingJob({
+        collectionId,
+        teamId,
+        tmbId,
+        batchSize,
+        qaPrompt: collection.qaPrompt,
+        agentModel: collection.datasetId?.agentModel,
+        vectorModel: collection.datasetId?.vectorModel
+      });
+    } else {
+      // 其他训练模式（chunk, auto, image等）
+      processTrainingQueue({
+        trainingId,
+        collectionId,
+        dataItems,
+        collection,
+        mode,
+        batchSize
+      });
+    }
 
     return trainingId;
   } catch (error) {
@@ -349,6 +364,16 @@ export async function retryFailedTraining(collectionId: string): Promise<string>
     throw error;
   }
 }
+
+// 启动训练队列管理器 - 复现原版FastGPT的训练队列逻辑
+export const startTrainingQueue = (fast?: boolean) => {
+  const max = 10; // 最大进程数
+
+  for (let i = 0; i < (fast ? max : 1); i++) {
+    generateQA(); // QA训练队列
+    generateVector(); // 向量训练队列
+  }
+};
 
 // 启动向量生成队列 - 复现原版FastGPT的generateVector函数
 export async function generateVector(): Promise<void> {

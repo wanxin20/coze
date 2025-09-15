@@ -25,6 +25,7 @@ import {
 } from '@coze-data/knowledge-resource-processor-base/layout/base';
 
 import { getUploadConfig } from './config';
+import { FastGPTRAGUploadProcessor } from './fastgpt-rag-processor';
 
 export type KnowledgeResourceProcessorProps =
   KnowledgeResourceProcessorLayoutProps;
@@ -32,7 +33,13 @@ export type KnowledgeResourceProcessorProps =
 export const KnowledgeResourceProcessor = (
   props: KnowledgeResourceProcessorProps,
 ) => {
-  const { type, opt } = useKnowledgeParams();
+  const { type, opt, isFastGPTRAG } = useKnowledgeParams();
+  
+  // 如果是FastGPT RAG知识库，使用专用的上传处理器
+  if (isFastGPTRAG) {
+    return <FastGPTRAGUploadProcessor {...props} />;
+  }
+  
   const uploadConfig = getUploadConfig(
     type ?? UnitType.TEXT,
     opt ?? OptType.ADD,

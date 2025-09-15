@@ -148,9 +148,6 @@ func Register(r *server.Hertz) {
 					_dataset := _core.Group("/dataset", _ragcoredatasetMw()...)
 					_dataset.GET("/", append(_getknowledgebasesMw(), coze.GetKnowledgeBases)...)
 					_dataset.POST("/", append(_createknowledgebaseMw(), coze.CreateKnowledgeBase)...)
-					_dataset.GET("/:id", append(_getknowledgebasebyidMw(), coze.GetKnowledgeBaseById)...)
-					_dataset.PUT("/:id", append(_updateknowledgebaseMw(), coze.UpdateKnowledgeBase)...)
-					_dataset.DELETE("/:id", append(_deleteknowledgebaseMw(), coze.DeleteKnowledgeBase)...)
 					_dataset.POST("/searchTest", append(_searchtestknowledgebaseMw(), coze.SearchTestKnowledgeBase)...)
 					
 					// ========== FastGPT标准集合管理接口 ==========
@@ -164,6 +161,11 @@ func Register(r *server.Hertz) {
 						_collection.POST("/:id/sync", append(_synccollectionfastgptMw(), coze.SyncCollectionFastGPT)...)
 						_collection.POST("/:id/retrain", append(_retraincollectionfastgptMw(), coze.RetrainCollectionFastGPT)...)
 					}
+					
+					// ========== 参数路由使用更具体的路径避免冲突 ==========
+					_dataset.GET("/item/:id", append(_getknowledgebasebyidMw(), coze.GetKnowledgeBaseById)...)
+					_dataset.PUT("/item/:id", append(_updateknowledgebaseMw(), coze.UpdateKnowledgeBase)...)
+					_dataset.DELETE("/item/:id", append(_deleteknowledgebaseMw(), coze.DeleteKnowledgeBase)...)
 					
 					// ========== FastGPT标准数据管理接口 ==========
 					{
@@ -251,17 +253,23 @@ func Register(r *server.Hertz) {
 				_file.GET("/status/:jobId", append(_getfileprocessingstatusMw(), coze.GetFileProcessingStatus)...)
 			}
 			
+			// ========== 训练状态接口 ==========
+			{
+				_training := _rag.Group("/training")
+				_training.GET("/status/:jobId", coze.GetTrainingStatus)
+			}
+			
 			// ========== FastGPT兼容的文件上传接口 ==========
 			{
-				_core := _rag.Group("/core", _ragcoreMw()...)
+				_core := _rag.Group("/core")
 				{
-					_dataset := _core.Group("/dataset", _ragcoredatasetMw()...)
+					_dataset := _core.Group("/dataset")
 					{
-						_collection := _dataset.Group("/collection", _ragcorecollectionMw()...)
-						_collection.POST("/create/file", append(_createcollectionfromfileuploadMw(), coze.CreateCollectionFromFileUpload)...)
-						_collection.POST("/create/localFile", append(_createcollectionfromlocalfileMw(), coze.CreateCollectionFromLocalFile)...)
-						_collection.POST("/create/link", append(_createcollectionfromlinkfastgptMw(), coze.CreateCollectionFromLinkFastGPT)...)
-						_collection.POST("/create/text", append(_createcollectionfromtextfastgptMw(), coze.CreateCollectionFromTextFastGPT)...)
+						_collection := _dataset.Group("/collection")
+						_collection.POST("/create/file", coze.CreateCollectionFromFileUpload)
+						_collection.POST("/create/localFile", coze.CreateCollectionFromLocalFile)
+						_collection.POST("/create/link", coze.CreateCollectionFromLinkFastGPT)
+						_collection.POST("/create/text", coze.CreateCollectionFromTextFastGPT)
 					}
 				}
 			}
@@ -556,6 +564,30 @@ func Register(r *server.Hertz) {
 				_upload1 := _workflow_api.Group("/upload", _upload1Mw()...)
 				_upload1.POST("/auth_token", append(_getworkflowuploadauthtokenMw(), coze.GetWorkflowUploadAuthToken)...)
 			}
+		}
+		{
+			// FastGPT RAG routes
+			_rag := _api.Group("/rag")
+			{
+				_core := _rag.Group("/core")
+				{
+					_dataset := _core.Group("/dataset")
+					{
+						_collection := _dataset.Group("/collection")
+						{
+							_create := _collection.Group("/create")
+							_create.POST("/file", coze.CreateCollectionFromFileUpload)
+							_create.POST("/localFile", coze.CreateCollectionFromLocalFile)
+							_create.POST("/link", coze.CreateCollectionFromLinkFastGPT)
+							_create.POST("/text", coze.CreateCollectionFromTextFastGPT)
+						}
+					}
+				}
+			}
+		}
+		{
+			_training := _api.Group("/training")
+			_training.GET("/status/:jobId", coze.GetTrainingStatus)
 		}
 	}
 	{

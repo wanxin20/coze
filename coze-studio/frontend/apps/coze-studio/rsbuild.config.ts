@@ -29,6 +29,12 @@ const API_PROXY_TARGET = `http://${API_HOST}:${
 }/`;
 
 const mergedConfig = defineConfig({
+  dev: {
+    hmr: true, // 启用热模块替换
+    client: {
+      overlay: true, // 显示错误覆盖层
+    },
+  },
   server: {
     strictPort: true,
     proxy: [
@@ -57,19 +63,7 @@ const mergedConfig = defineConfig({
       // eslint-disable-next-line @typescript-eslint/no-require-imports
       addPlugins([require('tailwindcss')('./tailwind.config.ts')]);
     },
-    rspack(config, { appendPlugins, addRules, mergeConfig }) {
-      addRules([
-        {
-          test: /\.(css|less|jsx|tsx|ts|js)/,
-          exclude: [
-            new RegExp('apps/coze-studio/src/index.css'),
-            /node_modules/,
-            new RegExp('packages/arch/i18n'),
-          ],
-          use: '@coze-arch/import-watch-loader',
-        },
-      ]);
-
+    rspack(config, { appendPlugins, mergeConfig }) {
       return mergeConfig(config, {
         module: {
           parser: {
@@ -84,7 +78,9 @@ const mergedConfig = defineConfig({
           },
         },
         watchOptions: {
-          poll: true,
+          poll: 1000, // 1秒轮询一次文件变化
+          aggregateTimeout: 300, // 延迟300ms重新构建
+          ignored: /node_modules/, // 忽略node_modules
         },
         ignoreWarnings: [
           /Critical dependency: the request of a dependency is an expression/,

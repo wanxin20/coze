@@ -36,11 +36,12 @@ export interface UseCreateKnowledgeModalParams {
   projectID?: string;
   onFinish?: (datasetId: string, type: UnitType, shouldUpload: boolean) => void;
   beforeCreate?: (shouldUpload: boolean) => void;
+  knowledgeType?: string; // 知识库类型：native, fastgpt_rag
 }
 export const useCreateKnowledgeModalV2 = (
   params: UseCreateKnowledgeModalParams = {},
 ) => {
-  const { onFinish, beforeCreate, projectID } = params;
+  const { onFinish, beforeCreate, projectID, knowledgeType } = params;
   const formRef = useRef<Form<CozeKnowledgeAddTypeContentFormData>>(null);
   // Use useState to ensure re-rendering
   const [currentFormatType, setCurrentFormatType] = useState(FormatType.Text);
@@ -52,6 +53,22 @@ export const useCreateKnowledgeModalV2 = (
 
   const createDataset = async () => {
     await formRef.current?.formApi.validate();
+    
+    // 使用数字字符串类型标识知识库类型：1=coze_native, 2=fastgpt_rag
+    const getKnowledgeTypeString = (frontendType: string) => {
+      switch (frontendType) {
+        case 'fastgpt_rag':
+          return '2';
+        case 'coze_native':
+        default:
+          return '1';
+      }
+    };
+    
+    const knowledgeTypeString = getKnowledgeTypeString(knowledgeType || 'coze_native');
+    
+    console.log('Creating knowledge with frontend type:', knowledgeType, 'type string:', knowledgeTypeString);
+    
     const { dataset_id: datasetId } = await KnowledgeApi.CreateDataset({
       project_id: projectID || undefined,
       name: formRef.current?.formApi.getValue('name'),
@@ -59,6 +76,7 @@ export const useCreateKnowledgeModalV2 = (
       description: formRef.current?.formApi.getValue('description'),
       icon_uri: formRef.current?.formApi.getValue('icon_uri')?.[0].uid,
       space_id: spaceId || undefined,
+      knowledge_type: knowledgeTypeString, // 传递数字字符串类型标识
     });
     return datasetId;
   };
@@ -98,21 +116,24 @@ export const useCreateKnowledgeModalV2 = (
         >
           {I18n.t('kl_write_108')}
         </LoadingButton>
-        <LoadingButton
-          data-testid={KnowledgeE2e.CreateKnowledgeModalSubmitAndImportButton}
-          color="primary"
-          onClick={async () => {
-            beforeCreate?.(true);
-            const datasetId = await createDataset();
-            if (onFinish) {
-              onFinish(datasetId || '', unitType, true);
-            } else {
-              resourceNavigate.upload?.({ type: unitType });
-            }
-          }}
-        >
-          {I18n.t('kl_write_109')}
-        </LoadingButton>
+        {/* 只有在非 FastGPT RAG 知识库时才显示创建并导入按钮 */}
+        {knowledgeType !== 'fastgpt_rag' && (
+          <LoadingButton
+            data-testid={KnowledgeE2e.CreateKnowledgeModalSubmitAndImportButton}
+            color="primary"
+            onClick={async () => {
+              beforeCreate?.(true);
+              const datasetId = await createDataset();
+              if (onFinish) {
+                onFinish(datasetId || '', unitType, true);
+              } else {
+                resourceNavigate.upload?.({ type: unitType });
+              }
+            }}
+          >
+            {I18n.t('kl_write_109')}
+          </LoadingButton>
+        )}
       </div>
     ),
   });
@@ -127,6 +148,7 @@ export const useCreateKnowledgeModalV2 = (
         <CozeKnowledgeAddTypeContent
           onImportKnowledgeTypeChange={setUnitType}
           onSelectFormatTypeChange={setCurrentFormatType}
+          knowledgeType={knowledgeType}
         />
       </Form>,
     ),

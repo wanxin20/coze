@@ -28,8 +28,8 @@ RUN npm ci && npm cache clean --force
 # 复制源代码
 COPY . .
 
-# 构建应用
-RUN npm run build
+# 构建应用 - 确保 TypeScript 工具可用
+RUN npx tsc && npx tsc-alias
 
 # 清理开发依赖，只保留生产依赖
 RUN npm ci --only=production && npm cache clean --force
