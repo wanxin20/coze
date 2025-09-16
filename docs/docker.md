@@ -18,9 +18,13 @@ docker compose up -d mysql redis elasticsearch minio etcd milvus nsqlookupd nsqd
 coze-server:
     docker compose restart coze-server
     docker compose logs -f coze-server  
+    docker compose -f docker-compose.rag.yml logs -f fastgpt-rag
+    sudo truncate -s 0 /var/lib/docker/containers/$(docker inspect coze-server --format='{{.Id}}')/$(docker inspect coze-server --format='{{.Id}}')-json.log
 FastGPTRAG:
     docker compose -f docker-compose.rag.yml down
+    docker compose -f docker-compose.rag.yml build fastgpt-rag
    docker compose -f docker-compose.rag.yml up fastgpt-rag
+       
 coze-web:
 
 docker-compose up --build coze-web-dev 

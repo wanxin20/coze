@@ -222,6 +222,7 @@ export async function searchDatasetData(
 
     // 重排序
     if (usingReRank && (embeddingRecallResults.length > 0 || fullTextRecallResults.length > 0)) {
+      logger.info(`🎯 Rerank requested: usingReRank=${usingReRank}, embeddingResults=${embeddingRecallResults.length}, fullTextResults=${fullTextRecallResults.length}`);
       try {
         const allResults = [...embeddingRecallResults, ...fullTextRecallResults];
         const uniqueResults = new Map<string, SearchDataResponseItemType>();
@@ -237,8 +238,8 @@ export async function searchDatasetData(
         if (resultsForRerank.length > 0) {
           const rerankResult = await rerankResults({
             query: reRankQuery,
-            results: resultsForRerank,
-            model: 'bge-reranker-base'
+            results: resultsForRerank
+            // 使用默认模型 bge-reranker-v2-m3
           });
           reRankResults = rerankResult.results;
           reRankInputTokens = rerankResult.inputTokens;
@@ -287,7 +288,11 @@ export async function searchDatasetData(
         usingSimilarityFilter = true;
         return filterSameDataResults.filter((item) => {
           const reRankScore = item.score.find((score) => score.type === SearchScoreTypeEnum.reRank);
-          if (reRankScore && reRankScore.value < similarity) return false;
+          // BGE reranker scores are typically much lower than embedding similarity scores
+          // Use a more lenient threshold for rerank scores
+          const rerankThreshold = Math.min(similarity, 0.001); // Much lower threshold for rerank
+          const scoreValue = reRankScore?.value || 0;
+          if (reRankScore && scoreValue < rerankThreshold) return false;
           return true;
         });
       }

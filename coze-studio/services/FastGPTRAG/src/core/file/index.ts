@@ -186,12 +186,12 @@ export class FileProcessManager {
       // 使用增强的段落处理器进行文本优化
       let finalText = processResult.rawText;
       
-      // 如果启用了段落优化
-      if (options.enableParagraphOptimization !== false) {
+      // 如果启用了段落优化（默认关闭以提升性能）
+      if (options.enableParagraphOptimization === true) {
         try {
           const paragraphResult = await paragraphProcessor.processLLMParagraph({
             rawText: processResult.rawText,
-            model: options.agentModel || 'gpt-3.5-turbo',
+            model: options.agentModel || config.defaultLlmModel,
             paragraphChunkAIMode: options.paragraphChunkAIMode || ParagraphChunkAIModeEnum.auto,
             language: options.language || 'auto',
             preserveStructure: options.preserveStructure !== false

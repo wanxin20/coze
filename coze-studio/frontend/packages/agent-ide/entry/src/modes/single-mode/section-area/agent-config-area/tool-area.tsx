@@ -119,6 +119,14 @@ export const ToolArea: React.FC<ToolAreaProps> = props => {
                 formatType={FormatType.Image}
                 desc={I18n.t('knowledge_photo_027')}
               />
+              
+              <DataSetArea
+                initRef={DataSetAreaRef}
+                toolKey={ToolKey.FASTGPT_RAG}
+                title=" FastGPT RAG"
+                desc="FastGPT RAG知识库，支持智能分块和向量化"
+                formatType={FormatType.Text}
+              />
               {knowledgeToolSlot}
             </GroupingContainer>
             <GroupingContainer

@@ -19,6 +19,7 @@ export enum FilterKnowledgeType {
   TEXT = 'TEXT',
   TABLE = 'TABLE',
   IMAGE = 'IMAGE',
+  FASTGPT_RAG = 'FASTGPT_RAG',
 }
 
 export enum DocumentUpdateInterval {

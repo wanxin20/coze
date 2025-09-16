@@ -10,7 +10,7 @@ export class XlsxProcessor {
 
   async processFromBuffer(buffer: Buffer): Promise<FileProcessResult> {
     try {
-      logger.info('Starting XLSX processing with node-xlsx');
+      // Processing XLSX file
       
       const workbook = XLSX.parse(buffer);
       let fullText = '';

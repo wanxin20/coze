@@ -7,6 +7,7 @@ import {
   deleteDataset
 } from '@/core/dataset/controller.js';
 import { searchTest } from '@/core/dataset/search/legacyController.js';
+import { SearchScoreTypeEnum } from '@/core/dataset/search/newController.js';
 import { CreateDatasetParams, DatasetTypeEnum } from '@/types/dataset.js';
 import { logger } from '@/utils/logger.js';
 
@@ -188,9 +189,35 @@ router.post('/searchTest', async (req, res, next) => {
 
     const result = await searchTest(params, authContext);
 
+    // Convert score arrays to single score values for coze backend compatibility
+    const convertedResults = result.searchRes.map(item => {
+      let finalScore = 0;
+      
+      // If rerank was used, prioritize rerank score
+      if (result.usingReRank) {
+        const rerankScore = item.score.find(s => s.type === SearchScoreTypeEnum.reRank);
+        if (rerankScore) {
+          finalScore = rerankScore.value;
+        } else {
+          // Fallback to embedding score if rerank score not found
+          const embeddingScore = item.score.find(s => s.type === SearchScoreTypeEnum.embedding);
+          finalScore = embeddingScore?.value || 0;
+        }
+      } else {
+        // Use embedding score when rerank is not used
+        const embeddingScore = item.score.find(s => s.type === SearchScoreTypeEnum.embedding);
+        finalScore = embeddingScore?.value || 0;
+      }
+      
+      return {
+        ...item,
+        score: finalScore  // Convert score array to single score value
+      };
+    });
+
     // Format response to match Go backend expectations
     const formattedResult = {
-      list: result.searchRes,  // Use 'list' instead of 'searchRes' for Go backend compatibility
+      list: convertedResults,  // Use converted results with single score values
       total: result.searchRes.length,
       searchMode: result.searchMode,
       limit: result.limit,

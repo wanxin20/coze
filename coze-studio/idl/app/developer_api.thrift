@@ -127,8 +127,9 @@ struct TabDisplayItems {
     16: optional TabStatus knowledge_table_tab_status
     17: optional TabStatus knowledge_text_tab_status
     18: optional TabStatus knowledge_photo_tab_status
-    19: optional TabStatus hook_info_tab_status
-    20: optional TabStatus default_user_input_tab_status
+    19: optional TabStatus knowledge_fastgpt_rag_tab_status
+    20: optional TabStatus hook_info_tab_status
+    21: optional TabStatus default_user_input_tab_status
 }
 
 struct GetDraftBotDisplayInfoResponse {

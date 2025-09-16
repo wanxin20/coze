@@ -67,10 +67,7 @@ export async function searchByEmbedding(params: {
     const sortedResults = Array.from(uniqueResults.entries())
       .sort((a, b) => b[1].score - a[1].score);
     
-    logger.info(`Vector search filtering: ${sortedResults.length} total results, similarity threshold: ${similarity}`);
-    if (sortedResults.length > 0) {
-      logger.info(`Top result score: ${sortedResults[0][1].score}, matches threshold: ${sortedResults[0][1].score >= similarity}`);
-    }
+    // Apply similarity threshold filtering
     
     const filteredResults = sortedResults
       .filter(([_, result]) => result.score >= similarity)
@@ -90,9 +87,9 @@ export async function searchByEmbedding(params: {
       datasetId: safeObjectId(datasetId)
     }).lean();
 
-    logger.info(`Found ${dataItems.length} data items in database`);
+    // Retrieved data items from database
     if (dataItems.length > 0) {
-      logger.info(`Sample data item indexes: ${JSON.stringify(dataItems[0].indexes.map(idx => idx.dataId))}`);
+      // Sample data item retrieved
     }
 
     // Map results to response format
@@ -124,7 +121,7 @@ export async function searchByEmbedding(params: {
       }
     }
 
-    logger.info(`Final search results: ${results.length} items mapped from ${filteredResults.length} vector results`);
+    // Search results mapped successfully
 
     return { results, tokens };
   } catch (error) {

@@ -5998,6 +5998,7 @@ export interface TabDisplayItems {
   knowledge_table_tab_status?: TabStatus;
   knowledge_text_tab_status?: TabStatus;
   knowledge_photo_tab_status?: TabStatus;
+  knowledge_fastgpt_rag_tab_status?: TabStatus;
   hook_info_tab_status?: TabStatus;
   default_user_input_tab_status?: TabStatus;
   knowledge_volcano_unstructured_tab_status?: TabStatus;

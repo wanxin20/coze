@@ -7,6 +7,8 @@ import { insertDatasetDataVector, getVectorStore } from '@/core/vectorstore/newC
 import { getEmbeddingModel } from '@/core/embedding/index.js';
 import { safeObjectId, isValidObjectId } from '@/utils/objectId.js';
 import { startQATrainingJob, generateQA } from './qaTraining.js';
+import { imageTrainingProcessor, ImageTrainingMode } from '@/core/dataset/training/imageTraining.js';
+import { config } from '@/config/index.js';
 
 export interface TrainingJobParams {
   collectionId: string;
@@ -53,7 +55,7 @@ export async function startTrainingJob(params: TrainingJobParams): Promise<strin
 
     const teamIdForQuery = safeObjectId(teamId, '000000000000000000000001');
 
-    // 获取集合信息
+    // 获取集合信息并检查状态
     const collection = await MongoDatasetCollection.findOne({
       _id: safeObjectId(collectionId),
       teamId: teamIdForQuery
@@ -63,6 +65,59 @@ export async function startTrainingJob(params: TrainingJobParams): Promise<strin
       throw new Error('Collection not found or access denied');
     }
 
+    // 检查集合状态，防止重复训练
+    if (collection.status === 'training') {
+      logger.warn(`Collection ${collectionId} is already being trained, skipping training`);
+      return trainingId; // 直接返回，不抛错误
+    }
+    
+    // 如果是processing状态，说明文件处理已完成，现在需要进行向量化训练
+    if (collection.status === 'processing') {
+      logger.info(`Collection ${collectionId} file processing completed, starting vectorization training`);
+      // 继续执行训练逻辑，不要跳过
+    }
+
+    // 原子性更新状态为训练中
+    const updateResult = await MongoDatasetCollection.updateOne(
+      {
+        _id: safeObjectId(collectionId),
+        teamId: teamIdForQuery,
+        status: { $nin: ['training'] } // 只有在非训练状态时才能更新（允许从processing转为training）
+      },
+      {
+        $set: {
+          status: 'training',
+          updateTime: new Date()
+        }
+      }
+    );
+
+    // 如果更新失败，说明状态已被其他进程修改
+    if (updateResult.matchedCount === 0) {
+      logger.warn(`Collection ${collectionId} status changed by another process, skipping training`);
+      return trainingId;
+    }
+
+    logger.info(`Collection ${collectionId} status set to training`);
+
+    // 在函数结束时恢复状态
+    const restoreStatus = async (status: 'ready' | 'error') => {
+      try {
+        await MongoDatasetCollection.updateOne(
+          { _id: safeObjectId(collectionId) },
+          {
+            $set: {
+              status,
+              updateTime: new Date()
+            }
+          }
+        );
+        logger.info(`Collection ${collectionId} status restored to ${status}`);
+      } catch (error) {
+        logger.error(`Failed to restore collection ${collectionId} status:`, error);
+      }
+    };
+
     // 获取需要训练的数据项
     const dataItems = await MongoDatasetData.find({
       collectionId: safeObjectId(collectionId),
@@ -71,36 +126,46 @@ export async function startTrainingJob(params: TrainingJobParams): Promise<strin
 
     if (dataItems.length === 0) {
       logger.info(`No data items to train in collection: ${collectionId}`);
+      await restoreStatus('ready');
       return trainingId;
     }
 
-    // 根据训练模式选择不同的处理方式
-    if (mode === TrainingModeEnum.qa) {
-      // QA训练模式
-      await startQATrainingJob({
-        collectionId,
-        teamId,
-        tmbId,
-        batchSize,
-        qaPrompt: collection.qaPrompt,
-        agentModel: collection.datasetId?.agentModel,
-        vectorModel: collection.datasetId?.vectorModel
-      });
-    } else {
-      // 其他训练模式（chunk, auto, image等）
-      processTrainingQueue({
-        trainingId,
-        collectionId,
-        dataItems,
-        collection,
-        mode,
-        batchSize
-      });
-    }
+    try {
+      // 根据训练模式选择不同的处理方式
+      if (mode === TrainingModeEnum.qa) {
+        // QA训练模式
+        await startQATrainingJob({
+          collectionId,
+          teamId,
+          tmbId,
+          batchSize,
+          qaPrompt: collection.qaPrompt,
+          agentModel: (collection.datasetId as any)?.agentModel || config.defaultLlmModel,
+          vectorModel: (collection.datasetId as any)?.vectorModel || config.defaultVectorModel
+        });
+      } else {
+        // 其他训练模式（chunk, auto, image等）
+        await processTrainingQueue({
+          trainingId,
+          collectionId,
+          dataItems,
+          collection,
+          mode,
+          batchSize
+        });
+      }
 
-    return trainingId;
+      // 训练完成，恢复就绪状态
+      await restoreStatus('ready');
+      return trainingId;
+    } catch (trainingError) {
+      // 训练失败，设置错误状态
+      await restoreStatus('error');
+      throw trainingError;
+    }
   } catch (error) {
     logger.error(`Failed to start training job:`, error);
+    // 如果是在状态检查阶段失败，不需要恢复状态
     throw error;
   }
 }
@@ -128,11 +193,7 @@ async function processTrainingQueue(params: {
 
   try {
     logger.info(`Processing training queue: ${trainingId}, ${dataItems.length} items`);
-    logger.info(`Collection info:`, {
-      collectionId: collection._id,
-      datasetId: collection.datasetId._id || collection.datasetId,
-      vectorModel: collection.datasetId.vectorModel || 'text-embedding-v3'
-    });
+    // Collection training setup
 
     // 标记数据为重建中，同时更新collection状态为training
     await Promise.all([
@@ -151,12 +212,7 @@ async function processTrainingQueue(params: {
       const batch = dataItems.slice(i, i + batchSize);
       
       try {
-        logger.info(`Processing batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(dataItems.length / batchSize)}`);
-        logger.info(`Batch items:`, batch.map(item => ({ 
-          id: item._id, 
-          q: item.q.substring(0, 50) + '...',
-          indexes: item.indexes?.length || 0 
-        })));
+        // Processing training batch
         
         await processBatch({
           batch,
@@ -171,7 +227,7 @@ async function processTrainingQueue(params: {
           { rebuilding: false, updateTime: new Date() }
         );
 
-        logger.info(`✅ Processed batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(dataItems.length / batchSize)} for training ${trainingId}`);
+        // Batch processed successfully
       } catch (error) {
         logger.error(`❌ Failed to process batch ${i / batchSize + 1}:`, error);
         
@@ -193,7 +249,7 @@ async function processTrainingQueue(params: {
       { status: 'ready', updateTime: new Date() }
     );
     
-    logger.info(`🎉 Training job completed: ${trainingId}`);
+    // Training job completed successfully
   } catch (error) {
     logger.error(`❌ Training queue processing failed:`, error);
     
@@ -222,8 +278,16 @@ async function processBatch(params: {
   const { batch, collection, mode } = params;
 
   try {
-    logger.info(`Starting batch processing with ${batch.length} items`);
+    // Starting batch processing
     
+    // 根据训练模式进行不同处理
+    if (mode === TrainingModeEnum.image || mode === TrainingModeEnum.imageParse) {
+      // 图片训练模式 - 使用专门的图片训练处理器
+      await processImageTrainingBatch({ batch, collection, mode });
+      return;
+    }
+    
+    // 其他模式的常规文本训练
     // 准备训练数据
     const inputs = batch.map(item => {
       // 根据集合设置组合标题和内容
@@ -276,7 +340,7 @@ async function processBatch(params: {
       metadata
     });
 
-    logger.info(`✅ Batch processed successfully: ${inputs.length} items, tokens: ${result.tokens}, vectorIds: ${result.insertIds.length}`);
+    // Batch vectorization completed
     
     // 验证向量是否真的被插入了 - 使用正确的向量维度
     try {
@@ -306,6 +370,107 @@ async function processBatch(params: {
     
   } catch (error) {
     logger.error('❌ Failed to process batch:', error);
+    throw error;
+  }
+}
+
+// 处理图片训练批次
+async function processImageTrainingBatch(params: {
+  batch: any[];
+  collection: any;
+  mode: TrainingModeEnum;
+}): Promise<void> {
+  const { batch, collection, mode } = params;
+  
+  // Processing image training batch
+  
+  try {
+    // 遍历每个数据项，检查是否包含图片
+    for (const item of batch) {
+      // 如果数据项包含图片描述映射或图片ID
+      if (item.imageDescMap || item.imageId) {
+        logger.info(`Processing image data item: ${item._id}`);
+        
+        // 直接使用图片描述进行向量化
+        let imageDescription = '';
+        
+        if (item.imageDescMap && typeof item.imageDescMap === 'object') {
+          // 获取所有图片描述
+          const descriptions = Object.values(item.imageDescMap);
+          imageDescription = descriptions.join('\n\n');
+        } else if (item.q) {
+          // 如果没有imageDescMap，使用q字段（可能已经包含了图片描述）
+          imageDescription = item.q;
+        }
+        
+        if (imageDescription) {
+          // 构建训练输入
+          const trainingInput = collection.indexPrefixTitle && collection.name ? 
+            `${collection.name}\n${imageDescription}` : imageDescription;
+          
+          // 准备元数据
+          const metadata = {
+            dataId: item.indexes?.[0]?.dataId || `${item._id.toString()}_${Date.now()}`,
+            q: imageDescription,
+            a: item.a || '',
+            chunkIndex: item.chunkIndex || 0,
+            imageId: item.imageId
+          };
+          
+          logger.info(`Training image description: ${imageDescription.substring(0, 200)}...`);
+          
+          // 获取嵌入模型
+          const vectorModel = collection.datasetId?.vectorModel || collection.datasetId || 'text-embedding-v3';
+          const embeddingModel = getEmbeddingModel(vectorModel);
+          
+          // 向量化并存储
+          const result = await insertDatasetDataVector({
+            inputs: [trainingInput],
+            model: embeddingModel,
+            teamId: collection.teamId.toString(),
+            datasetId: (collection.datasetId._id || collection.datasetId).toString(),
+            collectionId: collection._id.toString(),
+            metadata: [metadata]
+          });
+          
+          // Image item vectorized
+        } else {
+          logger.warn(`No image description found for item: ${item._id}`);
+        }
+      } else {
+        // 非图片数据项，使用常规处理
+        logger.info(`Processing non-image item: ${item._id}`);
+        
+        const trainingInput = collection.indexPrefixTitle && collection.name ? 
+          `${collection.name}\n${item.q}` : item.q;
+        
+        const metadata = {
+          dataId: item.indexes?.[0]?.dataId || `${item._id.toString()}_${Date.now()}`,
+          q: item.q,
+          a: item.a || '',
+          chunkIndex: item.chunkIndex || 0
+        };
+        
+        const vectorModel = collection.datasetId?.vectorModel || collection.datasetId || 'text-embedding-v3';
+        const embeddingModel = getEmbeddingModel(vectorModel);
+        
+        const result = await insertDatasetDataVector({
+          inputs: [trainingInput],
+          model: embeddingModel,
+          teamId: collection.teamId.toString(),
+          datasetId: (collection.datasetId._id || collection.datasetId).toString(),
+          collectionId: collection._id.toString(),
+          metadata: [metadata]
+        });
+        
+        // Text item vectorized
+      }
+    }
+    
+    // Image training batch completed
+    
+  } catch (error) {
+    logger.error('❌ Failed to process image training batch:', error);
     throw error;
   }
 }

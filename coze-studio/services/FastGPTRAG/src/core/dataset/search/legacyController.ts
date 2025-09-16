@@ -224,8 +224,8 @@ export async function searchDataset(
     if (usingReRank && searchResults.length > 0) {
       const rerankResult = await rerankResults({
         query: text,
-        results: searchResults.slice(0, 100), // Limit to top 100 for reranking
-        model: 'bge-reranker-base' // Default rerank model
+        results: searchResults.slice(0, 100) // Limit to top 100 for reranking
+        // 使用默认模型 bge-reranker-v2-m3
       });
       finalResults = rerankResult.results;
       reRankInputTokens = rerankResult.inputTokens;
@@ -235,7 +235,11 @@ export async function searchDataset(
     const filteredResults = finalResults.filter(item => {
       if (usingReRank) {
         const reRankScore = item.score.find(s => s.type === SearchScoreTypeEnum.reRank);
-        return !reRankScore || reRankScore.value >= similarity;
+        // BGE reranker scores are typically much lower than embedding similarity scores
+        // Use a more lenient threshold for rerank scores
+        const rerankThreshold = Math.min(similarity, 0.001); // Much lower threshold for rerank
+        const scoreValue = reRankScore?.value || 0;
+        return !reRankScore || scoreValue >= rerankThreshold;
       } else if (searchMode === DatasetSearchModeEnum.embedding) {
         const embeddingScore = item.score.find(s => s.type === SearchScoreTypeEnum.embedding);
         return !embeddingScore || embeddingScore.value >= similarity;
@@ -286,13 +290,7 @@ export async function searchTest(
   const startTime = Date.now();
   
   try {
-    logger.info('Starting search test with params:', {
-      datasetId: params.datasetId,
-      text: params.text?.substring(0, 50) + '...',
-      searchMode: params.searchMode,
-      limit: params.limit,
-      similarity: params.similarity
-    });
+    // Starting search test
 
     // First check if there's any data in the collection
     const datasetId = safeObjectId(params.datasetId);
@@ -315,7 +313,7 @@ export async function searchTest(
       teamId: teamId
     });
 
-    logger.info(`Found ${dataCount} data items in dataset ${params.datasetId}`);
+    // Checked dataset data count
 
     if (dataCount === 0) {
       logger.warn('No data items found in dataset, returning empty results');
@@ -354,7 +352,7 @@ export async function searchTest(
           }
         );
 
-        logger.info(`Vector search returned ${vectorResults.length} results`);
+        // Vector search completed
       } catch (vectorError) {
         logger.error('Vector search test failed:', vectorError);
       }

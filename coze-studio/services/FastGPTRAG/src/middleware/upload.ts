@@ -44,12 +44,21 @@ const fileFilter = (req: any, file: Express.Multer.File, cb: multer.FileFilterCa
     'application/vnd.ms-powerpoint',
     'text/html',
     'application/xml',
-    'text/xml'
+    'text/xml',
+    // 图片类型支持
+    'image/jpeg',
+    'image/jpg',
+    'image/png',
+    'image/gif',
+    'image/webp',
+    'image/bmp'
   ];
 
   const allowedExtensions = [
     '.txt', '.md', '.csv', '.json', '.pdf', '.docx', '.doc', '.html', '.xml',
-    '.xlsx', '.xls', '.pptx', '.ppt', '.htm', '.markdown'
+    '.xlsx', '.xls', '.pptx', '.ppt', '.htm', '.markdown',
+    // 图片扩展名支持
+    '.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'
   ];
 
   const fileExtension = path.extname(file.originalname).toLowerCase();

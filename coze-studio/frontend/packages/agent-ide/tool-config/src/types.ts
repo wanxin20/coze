@@ -41,6 +41,7 @@ export const enum ToolKey {
   DOCUMENT = 'document',
   TABLE = 'table',
   PHOTO = 'photo',
+  FASTGPT_RAG = 'fastgptRag',
   SHORTCUT = 'shortcut',
   DEV_HOOKS = 'devHooks',
   USER_INPUT = 'userInput',

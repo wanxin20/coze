@@ -42,7 +42,7 @@ import { useDefaultExPandCheck } from '@coze-arch/bot-hooks';
 import { CustomError } from '@coze-arch/bot-error';
 import { DatasetSource, FormatType } from '@coze-arch/bot-api/knowledge';
 import { KnowledgeApi } from '@coze-arch/bot-api';
-import { SkillKeyEnum } from '@coze-agent-ide/tool-config';
+import { SkillKeyEnum, ToolKey } from '@coze-agent-ide/tool-config';
 import {
   ToolContentBlock,
   useToolValidData,
@@ -148,6 +148,7 @@ export const DataSetAreaItem: FC<IDataSetAreaProps> = ({
   formatType,
   initRef,
   tooltip,
+  toolKey,
 }) => {
   const params = useParams();
   const navigate = useNavigate();
@@ -156,6 +157,11 @@ export const DataSetAreaItem: FC<IDataSetAreaProps> = ({
   const setDataSetList = useDatasetStore(state => state.setDataSetList);
   const setToolValidData = useToolValidData();
   const defaultKnowledgeType = useMemo(() => {
+    // Special handling for FastGPTRAG tool
+    if (toolKey === ToolKey.FASTGPT_RAG) {
+      return FilterKnowledgeType.FASTGPT_RAG;
+    }
+    
     switch (formatType) {
       case FormatType.Table:
         return FilterKnowledgeType.TABLE;
@@ -166,7 +172,7 @@ export const DataSetAreaItem: FC<IDataSetAreaProps> = ({
       default:
         return undefined;
     }
-  }, [formatType]);
+  }, [formatType, toolKey]);
 
   const { knowledge, updateSkillKnowledgeDatasetList } = useBotSkillStore(
     useShallow(state => ({
@@ -270,11 +276,19 @@ export const DataSetAreaItem: FC<IDataSetAreaProps> = ({
   });
 
   const currentDatasetList = useMemo(
-    () =>
-      dataSetList.filter(
-        item => formatType === undefined || item.format_type === formatType,
-      ),
-    [dataSetList],
+    () => {
+      return dataSetList.filter(item => {
+        // Special handling for FastGPTRAG tool
+        if (toolKey === ToolKey.FASTGPT_RAG) {
+          // Filter FastGPTRAG knowledge bases by knowledge_type
+          return item.knowledge_type === 'fastgpt_rag';
+        }
+        
+        // Default filtering by format_type
+        return formatType === undefined || item.format_type === formatType;
+      });
+    },
+    [dataSetList, formatType, toolKey],
   );
 
   useEffect(() => {

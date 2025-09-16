@@ -162,6 +162,16 @@ export async function deleteDataset(
     const collections = await MongoDatasetCollection.find({
       datasetId: { $in: datasetIds }
     }).lean();
+
+    // 检查是否有正在处理或训练的集合
+    const busyCollections = collections.filter(c => 
+      c.status === 'processing' || c.status === 'training'
+    );
+    
+    if (busyCollections.length > 0) {
+      const busyNames = busyCollections.map(c => c.name).join(', ');
+      throw new Error(`Cannot delete dataset: collections [${busyNames}] are currently being processed or trained. Please wait for completion or cancel the training first.`);
+    }
     
     const collectionIds = collections.map(c => c._id);
 

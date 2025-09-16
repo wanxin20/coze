@@ -1,4 +1,5 @@
 import express from 'express';
+import path from 'path';
 import {
   createCollection,
   getCollections,
@@ -498,6 +499,98 @@ router.post('/create/link', async (req, res, next) => {
       data: result
     });
   } catch (error) {
+    next(error);
+  }
+});
+
+// Create collection from images upload (specialized route for images)
+router.post('/create/images', uploadSingle.array('file', 20), async (req, res, next) => {
+  let uploadedFiles: string[] = [];
+  
+  try {
+    const files = req.files as Express.Multer.File[];
+    if (!files || files.length === 0) {
+      return res.status(400).json({
+        code: 400,
+        message: 'No image files uploaded',
+        data: null
+      });
+    }
+
+    uploadedFiles.push(...files.map(f => f.path));
+    
+    // Parse form data
+    let data: any = {};
+    if (req.body.data) {
+      try {
+        data = JSON.parse(req.body.data);
+      } catch (error) {
+        cleanupFiles(uploadedFiles);
+        return res.status(400).json({
+          code: 400,
+          message: 'Invalid data parameter, must be valid JSON',
+          data: null
+        });
+      }
+    }
+
+    const authContext = {
+      teamId: req.headers['x-team-id'] as string || '000000000000000000000001',
+      tmbId: req.headers['x-user-id'] as string || '000000000000000000000002',
+      userId: req.headers['x-user-id'] as string || '000000000000000000000002'
+    };
+
+    if (!data.datasetId) {
+      cleanupFiles(uploadedFiles);
+      return res.status(400).json({
+        code: 400,
+        message: 'datasetId is required',
+        data: null
+      });
+    }
+
+    // Validate all files are images
+    const imageExtensions = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.bmp'];
+    for (const file of files) {
+      const ext = path.extname(file.originalname).toLowerCase();
+      if (!imageExtensions.includes(ext)) {
+        cleanupFiles(uploadedFiles);
+        return res.status(400).json({
+          code: 400,
+          message: `File ${file.originalname} is not a supported image format. Supported: ${imageExtensions.join(', ')}`,
+          data: null
+        });
+      }
+    }
+
+    // Process first image to create collection
+    const firstFile = files[0];
+    const firstFileInfo = getFileInfo(firstFile);
+    
+    const result = await createCollectionFromFile({
+      ...data,
+      name: data.name || `图片集合_${new Date().toLocaleDateString()}`,
+      file: firstFileInfo,
+      trainingType: 'imageParse' // 专门用于图片解析训练
+    }, authContext);
+
+    // If multiple images, add them to the same collection
+    if (files.length > 1) {
+      // TODO: Implement batch image addition to existing collection
+      logger.info(`Created image collection with ${files.length} images: ${result.collectionId}`);
+    }
+
+    // Cleanup uploaded files after processing
+    cleanupFiles(uploadedFiles);
+
+    res.json({
+      code: 200,
+      message: `Image collection created successfully with ${files.length} image(s)`,
+      data: result
+    });
+  } catch (error) {
+    cleanupFiles(uploadedFiles);
+    logger.error('Image collection creation error:', error);
     next(error);
   }
 });

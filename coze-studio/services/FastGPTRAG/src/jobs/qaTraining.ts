@@ -3,6 +3,7 @@ import { MongoDatasetCollection } from '@/core/dataset/collection/schema.js';
 import { MongoDatasetData } from '@/core/dataset/data/schema.js';
 import { TrainingModeEnum } from '@/types/dataset.js';
 import { logger } from '@/utils/logger.js';
+import { config } from '@/config/index.js';
 import { qaTrainingProcessor, type QATrainingRequest } from '@/core/dataset/training/qaTraining.js';
 import { safeObjectId, isValidObjectId } from '@/utils/objectId.js';
 
@@ -49,7 +50,7 @@ export async function startQATrainingJob(params: QATrainingJobParams): Promise<s
     tmbId, 
     batchSize = 5, 
     qaPrompt,
-    agentModel = 'gpt-3.5-turbo',
+    agentModel = config.defaultLlmModel,
     vectorModel = 'text-embedding-v3'
   } = params;
   
@@ -178,7 +179,7 @@ async function processQATrainingQueue(params: {
         processedCount += batch.length;
         totalGeneratedQAs += batchResult.totalQAs;
 
-        logger.info(`✅ Processed QA batch ${Math.floor(i / batchSize) + 1}/${Math.ceil(dataItems.length / batchSize)} for training ${trainingId}`);
+        // QA batch processed successfully
         logger.info(`Generated ${batchResult.totalQAs} QA pairs in this batch`);
         
       } catch (error) {
@@ -315,8 +316,8 @@ export async function generateQA(): Promise<void> {
           teamId: collection.teamId.toString(),
           tmbId: collection.tmbId.toString(),
           qaPrompt: collection.qaPrompt,
-          agentModel: collection.datasetId?.agentModel || 'gpt-3.5-turbo',
-          vectorModel: collection.datasetId?.vectorModel || 'text-embedding-v3'
+          agentModel: (collection.datasetId as any)?.agentModel || config.defaultLlmModel,
+          vectorModel: (collection.datasetId as any)?.vectorModel || 'text-embedding-v3'
         });
 
         logger.info(`QA training started for collection: ${collection._id}`);

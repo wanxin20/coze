@@ -47,6 +47,7 @@ export const TOOL_KEY_TO_API_STATUS_KEY_MAP: {
   [ToolKey.TABLE]: 'knowledge_table_tab_status',
   [ToolKey.DOCUMENT]: 'knowledge_text_tab_status',
   [ToolKey.PHOTO]: 'knowledge_photo_tab_status',
+  [ToolKey.FASTGPT_RAG]: 'knowledge_fastgpt_rag_tab_status',
   [ToolKey.SHORTCUT]: 'shortcut_tab_status',
   [ToolKey.DEV_HOOKS]: 'hook_info_tab_status',
   [ToolKey.USER_INPUT]: 'default_user_input_tab_status',

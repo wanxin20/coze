@@ -434,8 +434,9 @@ export class TrainingTaskScheduler {
 
       // 更新计数
       for (const item of counts) {
-        if (item._id in this.runningTasks) {
-          this.runningTasks[item._id] = item.count;
+        const mode = item._id as TrainingModeEnum;
+        if (mode in this.runningTasks) {
+          this.runningTasks[mode] = item.count;
         }
       }
 

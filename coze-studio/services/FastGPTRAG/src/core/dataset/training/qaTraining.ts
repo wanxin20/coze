@@ -1,5 +1,6 @@
 import { logger } from '../../../utils/logger.js';
 import { Types } from 'mongoose';
+import { config } from '@/config/index.js';
 import { TrainingModeEnum } from '@/types/dataset.js';
 import { MongoDatasetData } from '../data/schema.js';
 import { MongoDatasetCollection } from '../collection/schema.js';
@@ -94,7 +95,7 @@ export class QATrainingProcessor {
       tmbId,
       chunkIndex,
       qaPrompt,
-      agentModel = 'gpt-3.5-turbo',
+      agentModel = config.defaultLlmModel,
       vectorModel = 'text-embedding-v3',
       billId
     } = request;
@@ -496,7 +497,7 @@ export class QATrainingProcessor {
    */
   estimateQATrainingCost(
     textLength: number,
-    agentModel: string = 'gpt-3.5-turbo'
+    agentModel: string = config.defaultLlmModel
   ): {
     estimatedInputTokens: number;
     estimatedOutputTokens: number;

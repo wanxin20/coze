@@ -1784,6 +1784,16 @@ func getFileTypeFromFilename(filename string) string {
 				return "json"
 			case "xlsx", "xls":
 				return "xlsx"
+			case "jpg", "jpeg":
+				return "jpeg"
+			case "png":
+				return "png"
+			case "gif":
+				return "gif"
+			case "webp":
+				return "webp"
+			case "bmp":
+				return "bmp"
 			default:
 				return "txt"
 			}

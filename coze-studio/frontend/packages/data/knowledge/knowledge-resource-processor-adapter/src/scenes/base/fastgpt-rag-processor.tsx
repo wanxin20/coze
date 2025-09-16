@@ -29,10 +29,13 @@ interface UploadProgress {
 }
 
 export const FastGPTRAGUploadProcessor: React.FC<FastGPTRAGUploadProcessorProps> = (props) => {
-  const { datasetID, spaceID } = useKnowledgeParams();
+  const { datasetID, spaceID, type: unitType } = useKnowledgeParams();
   const [uploadProgress, setUploadProgress] = useState<UploadProgress[]>([]);
   const [isDragOver, setIsDragOver] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  
+  // 根据URL参数确定上传类型
+  const uploadType: 'text' | 'image' = unitType === 'image_file' ? 'image' : 'text';
 
   // 处理文件上传到FastGPT RAG
   const handleFileUpload = useCallback(async (files: FileList) => {
@@ -53,26 +56,31 @@ export const FastGPTRAGUploadProcessor: React.FC<FastGPTRAGUploadProcessorProps>
         const formData = new FormData();
         formData.append('file', file);
         
+        // 检测文件类型，设置合适的训练类型
+        const fileExtension = file.name.toLowerCase().split('.').pop() || '';
+        const isImageFile = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'bmp'].includes(fileExtension);
+        
         // 构建FastGPT RAG上传请求数据
         const uploadData = {
           datasetId: datasetID,
           name: file.name.replace(/\.[^/.]+$/, ''), // 移除文件扩展名作为集合名称
-          trainingType: 'auto',
+          trainingType: isImageFile ? 'imageParse' : 'auto', // 图片使用imageParse模式
           chunkSize: 1000,
           chunkOverlap: 200,
           preserveStructure: true,
-          extractImages: false,
+          extractImages: !isImageFile, // 图片文件本身不需要提取图片
           tags: [],
           metadata: {
             uploadedBy: 'coze-studio',
             uploadTime: new Date().toISOString(),
+            fileType: isImageFile ? 'image' : 'document',
           }
         };
         
         formData.append('data', JSON.stringify(uploadData));
 
-        // 调用FastGPT RAG文件上传API
-        const response = await fetch('/api/rag/core/dataset/collection/create/file', {
+        // 调用FastGPT RAG文件上传API - 使用正确的端点
+        const response = await fetch('/api/knowledge/rag/core/dataset/collection/create/file', {
           method: 'POST',
           headers: {
             'x-team-id': '000000000000000000000001', // 默认团队ID
@@ -242,70 +250,166 @@ export const FastGPTRAGUploadProcessor: React.FC<FastGPTRAGUploadProcessorProps>
     e.target.value = '';
   }, [handleFileUpload]);
 
+  const textFormats = ['PDF', 'DOCX', 'TXT', 'MD', 'HTML', 'CSV', 'JSON'];
+  const imageFormats = ['JPG', 'PNG', 'GIF', 'WEBP', 'BMP'];
+
+  // 返回按钮逻辑
+  const handleGoBack = useCallback(() => {
+    const currentUrl = new URL(window.location.href);
+    const pathParts = currentUrl.pathname.split('/');
+    
+    // 从 /space/{spaceId}/knowledge/{datasetId}/upload 返回到 /space/{spaceId}/knowledge/{datasetId}
+    if (pathParts.length >= 5 && pathParts[pathParts.length - 1] === 'upload') {
+      const backUrl = pathParts.slice(0, -1).join('/') + currentUrl.search;
+      window.location.href = backUrl;
+    } else {
+      // fallback: 使用 history.back()
+      window.history.back();
+    }
+  }, []);
+
   return (
-    <div style={{ padding: '24px', maxWidth: '800px', margin: '0 auto' }}>
-      {/* FastGPT RAG标识 */}
+    <div style={{ 
+      minHeight: '100vh',
+      backgroundColor: 'var(--coz-mg-card, #ffffff)',
+      display: 'flex',
+      flexDirection: 'column'
+    }}>
+      {/* 顶部导航栏 */}
       <div style={{
-        marginBottom: '24px',
-        padding: '16px',
-        backgroundColor: '#f0f9ff',
-        border: '1px solid #e0e7ff',
-        borderRadius: '8px',
+        padding: '16px 24px',
+        borderBottom: '1px solid var(--coz-bd-dim, #e5e7eb)',
+        backgroundColor: 'var(--coz-mg-card, #ffffff)',
         display: 'flex',
         alignItems: 'center',
-        gap: '12px'
+        gap: '16px'
       }}>
+        <button
+          onClick={handleGoBack}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            padding: '8px 12px',
+            border: '1px solid var(--coz-bd-dim, #d1d5db)',
+            borderRadius: '6px',
+            backgroundColor: 'transparent',
+            color: 'var(--coz-fg-default, #374151)',
+            fontSize: '14px',
+            cursor: 'pointer',
+            transition: 'all 0.2s ease'
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.backgroundColor = 'var(--coz-mg-weak, #f3f4f6)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.backgroundColor = 'transparent';
+          }}
+        >
+          ← 返回
+        </button>
+        
         <div style={{
-          display: 'inline-flex',
+          display: 'flex',
           alignItems: 'center',
-          padding: '6px 16px',
-          backgroundColor: '#10b981',
-          color: 'white',
-          borderRadius: '20px',
-          fontSize: '14px',
-          fontWeight: 600
+          gap: '12px'
         }}>
-          🚀 FastGPT RAG
-        </div>
-        <div style={{ color: '#64748b', fontSize: '14px' }}>
-          文件将直接上传到FastGPT RAG服务进行自动训练和向量化处理
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            padding: '4px 12px',
+            backgroundColor: '#10b981',
+            color: 'white',
+            borderRadius: '16px',
+            fontSize: '12px',
+            fontWeight: 500
+          }}>
+            🚀 FastGPT RAG
+          </div>
+          <h1 style={{
+            margin: 0,
+            fontSize: '18px',
+            fontWeight: 600,
+            color: 'var(--coz-fg-default, #1f2937)'
+          }}>
+            {uploadType === 'text' ? '📄 上传文本文档' : '🖼️ 上传图片文件'}
+          </h1>
         </div>
       </div>
 
-      {/* 上传区域 */}
-      <div
-        style={{
-          border: `2px dashed ${isDragOver ? '#10b981' : '#d1d5db'}`,
-          borderRadius: '12px',
-          padding: '48px 24px',
-          textAlign: 'center',
-          backgroundColor: isDragOver ? '#f0fdf4' : '#fafafa',
-          cursor: 'pointer',
-          transition: 'all 0.3s ease',
-        }}
-        onDragOver={handleDragOver}
-        onDragLeave={handleDragLeave}
-        onDrop={handleDrop}
-        onClick={handleClickUpload}
-      >
-        <div style={{ fontSize: '48px', marginBottom: '16px' }}>📁</div>
-        <div style={{ fontSize: '18px', fontWeight: 500, marginBottom: '8px', color: '#374151' }}>
-          {isDragOver ? '释放文件开始上传' : '拖拽文件到此处或点击选择文件'}
+      {/* 主内容区域 */}
+      <div style={{ 
+        flex: 1,
+        padding: '32px 24px',
+        maxWidth: '800px',
+        margin: '0 auto',
+        width: '100%'
+      }}>
+
+        {/* 上传区域 */}
+        <div
+          style={{
+            border: `2px dashed ${isDragOver ? '#10b981' : 'var(--coz-bd-dim, #d1d5db)'}`,
+            borderRadius: '8px',
+            padding: '48px 24px',
+            textAlign: 'center',
+            backgroundColor: isDragOver ? '#f0fdf4' : 'var(--coz-mg-card, #fafafa)',
+            cursor: 'pointer',
+            transition: 'all 0.3s ease',
+            minHeight: '240px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}
+          onDragOver={handleDragOver}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+          onClick={handleClickUpload}
+        >
+          <div style={{ fontSize: '48px', marginBottom: '20px', opacity: 0.8 }}>
+            {uploadType === 'text' ? '📄' : '🖼️'}
+          </div>
+          <div style={{ fontSize: '18px', fontWeight: 500, marginBottom: '8px', color: 'var(--coz-fg-default, #374151)' }}>
+            {isDragOver ? '释放文件开始上传' : `拖拽${uploadType === 'text' ? '文档' : '图片'}到此处或点击选择文件`}
+          </div>
+          <div style={{ fontSize: '14px', color: 'var(--coz-fg-dim, #6b7280)', marginBottom: '16px' }}>
+            支持格式：{uploadType === 'text' ? textFormats.join(', ') : imageFormats.join(', ')}
+          </div>
+          <div style={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            gap: '8px', 
+            justifyContent: 'center',
+            marginTop: '8px'
+          }}>
+            {(uploadType === 'text' ? textFormats : imageFormats).map(format => (
+              <span 
+                key={format}
+                style={{
+                  padding: '4px 10px',
+                  backgroundColor: 'var(--coz-mg-weak, #e5e7eb)',
+                  color: 'var(--coz-fg-dim, #6b7280)',
+                  borderRadius: '12px',
+                  fontSize: '12px',
+                  fontWeight: 500
+                }}
+              >
+                {format}
+              </span>
+            ))}
+          </div>
         </div>
-        <div style={{ fontSize: '14px', color: '#6b7280' }}>
-          支持 PDF, DOCX, TXT, MD, HTML, CSV, JSON 等格式
-        </div>
-        <div style={{ fontSize: '12px', color: '#9ca3af', marginTop: '8px' }}>
-          文件将自动进行智能分块和向量化处理
-        </div>
-      </div>
 
       {/* 隐藏的文件输入 */}
       <input
         ref={fileInputRef}
         type="file"
         multiple
-        accept=".pdf,.docx,.txt,.md,.html,.csv,.json"
+        accept={uploadType === 'text' 
+          ? '.pdf,.docx,.txt,.md,.html,.csv,.json'
+          : '.jpg,.jpeg,.png,.gif,.webp,.bmp'
+        }
         style={{ display: 'none' }}
         onChange={handleFileInputChange}
       />
@@ -313,19 +417,41 @@ export const FastGPTRAGUploadProcessor: React.FC<FastGPTRAGUploadProcessorProps>
       {/* 上传进度列表 */}
       {uploadProgress.length > 0 && (
         <div style={{ marginTop: '32px' }}>
-          <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '16px', color: '#374151' }}>
+          <h3 style={{ 
+            fontSize: '16px', 
+            fontWeight: 600, 
+            marginBottom: '16px', 
+            color: 'var(--coz-fg-default, #374151)' 
+          }}>
             上传进度
           </h3>
           {uploadProgress.map((item, index) => (
             <div key={index} style={{
               padding: '16px',
-              border: '1px solid #e5e7eb',
+              border: '1px solid var(--coz-bd-dim, #e5e7eb)',
               borderRadius: '8px',
               marginBottom: '12px',
-              backgroundColor: 'white'
+              backgroundColor: 'var(--coz-mg-card, white)',
+              boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)'
             }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{ fontWeight: 500, color: '#374151' }}>{item.fileName}</span>
+              <div style={{ 
+                display: 'flex', 
+                justifyContent: 'space-between', 
+                alignItems: 'center', 
+                marginBottom: '8px' 
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontSize: '16px' }}>
+                    {item.fileName.toLowerCase().match(/\.(jpg|jpeg|png|gif|webp|bmp)$/i) ? '🖼️' : '📄'}
+                  </span>
+                  <span style={{ 
+                    fontWeight: 500, 
+                    color: 'var(--coz-fg-default, #374151)',
+                    fontSize: '14px'
+                  }}>
+                    {item.fileName}
+                  </span>
+                </div>
                 <span style={{
                   padding: '4px 12px',
                   borderRadius: '16px',
@@ -352,7 +478,7 @@ export const FastGPTRAGUploadProcessor: React.FC<FastGPTRAGUploadProcessorProps>
                 <div style={{
                   width: '100%',
                   height: '6px',
-                  backgroundColor: '#f3f4f6',
+                  backgroundColor: 'var(--coz-mg-weak, #f3f4f6)',
                   borderRadius: '3px',
                   overflow: 'hidden',
                   marginBottom: '8px'
@@ -370,7 +496,7 @@ export const FastGPTRAGUploadProcessor: React.FC<FastGPTRAGUploadProcessorProps>
               {item.message && (
                 <div style={{ 
                   fontSize: '13px', 
-                  color: item.status === 'failed' ? '#dc2626' : '#6b7280',
+                  color: item.status === 'failed' ? '#dc2626' : 'var(--coz-fg-dim, #6b7280)',
                   marginTop: '4px'
                 }}>
                   {item.message}
@@ -381,23 +507,40 @@ export const FastGPTRAGUploadProcessor: React.FC<FastGPTRAGUploadProcessorProps>
         </div>
       )}
 
-      {/* 使用说明 */}
-      <div style={{
-        marginTop: '32px',
-        padding: '16px',
-        backgroundColor: '#f9fafb',
-        borderRadius: '8px',
-        border: '1px solid #e5e7eb'
-      }}>
-        <h4 style={{ fontSize: '14px', fontWeight: 600, marginBottom: '8px', color: '#374151' }}>
-          📋 使用说明
-        </h4>
-        <ul style={{ fontSize: '13px', color: '#6b7280', margin: 0, paddingLeft: '16px' }}>
-          <li>文件上传后将自动发送到FastGPT RAG服务进行处理</li>
-          <li>系统会自动进行文档解析、智能分块和向量化</li>
-          <li>训练完成后，内容将自动添加到当前知识库中</li>
-          <li>您可以在知识库页面查看处理后的文档片段</li>
-        </ul>
+        {/* 使用说明 */}
+        <div style={{
+          marginTop: '32px',
+          padding: '20px',
+          backgroundColor: 'var(--coz-mg-weak, #f8fafc)',
+          borderRadius: '8px',
+          border: '1px solid var(--coz-bd-dim, #e2e8f0)'
+        }}>
+          <h4 style={{ 
+            fontSize: '15px', 
+            fontWeight: 600, 
+            marginBottom: '12px', 
+            color: 'var(--coz-fg-default, #1e293b)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px'
+          }}>
+            💡 智能处理说明
+          </h4>
+          <div style={{ 
+            fontSize: '14px', 
+            color: 'var(--coz-fg-dim, #64748b)', 
+            lineHeight: '22px'
+          }}>
+            <p style={{ margin: '0 0 8px 0' }}>
+              文件上传后将自动发送到 <strong>FastGPT RAG</strong> 服务进行智能处理：
+            </p>
+            <div style={{ paddingLeft: '16px' }}>
+              <div style={{ marginBottom: '4px' }}>• 自动文档解析和内容提取</div>
+              <div style={{ marginBottom: '4px' }}>• 智能分块和向量化处理</div>
+              <div style={{ marginBottom: '4px' }}>• 训练完成后自动添加到知识库</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

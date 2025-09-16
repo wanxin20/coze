@@ -477,13 +477,14 @@ router.post('/batch', authMiddleware, async (req, res) => {
         });
     }
 
-    logger.info(`Batch ${action} operation completed: ${result.modifiedCount || result.deletedCount} tasks affected`);
+    const affectedCount = 'modifiedCount' in result ? result.modifiedCount : result.deletedCount;
+    logger.info(`Batch ${action} operation completed: ${affectedCount} tasks affected`);
 
     res.json({
       success: true,
       data: {
         action,
-        affected: result.modifiedCount || result.deletedCount || 0
+        affected: affectedCount || 0
       }
     });
 

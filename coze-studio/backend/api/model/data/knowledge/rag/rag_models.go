@@ -615,6 +615,11 @@ const (
 	FileTypeXLSX   SupportedFileType = "xlsx"
 	FileTypeCSV    SupportedFileType = "csv"
 	FileTypeJSON   SupportedFileType = "json"
+	FileTypeJPEG   SupportedFileType = "jpeg"
+	FileTypePNG    SupportedFileType = "png"
+	FileTypeGIF    SupportedFileType = "gif"
+	FileTypeWEBP   SupportedFileType = "webp"
+	FileTypeBMP    SupportedFileType = "bmp"
 )
 
 // FileInfo 文件信息

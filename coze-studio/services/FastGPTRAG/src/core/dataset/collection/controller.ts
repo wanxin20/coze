@@ -36,7 +36,14 @@ function mapFileExtensionToType(extension: string): any {
     'xlsx': 'xlsx',
     'xls': 'xlsx', // 将XLS文件当作XLSX处理
     'csv': 'csv',
-    'json': 'json'
+    'json': 'json',
+    // 图片类型映射
+    'jpg': 'jpg',
+    'jpeg': 'jpeg',
+    'png': 'png',
+    'gif': 'gif',
+    'webp': 'webp',
+    'bmp': 'bmp'
   };
   
   return typeMap[ext] || 'txt'; // 默认当作文本处理
@@ -95,7 +102,7 @@ export async function createCollection(
       chunkSplitter: params.chunkSplitter || '\n',
       qaPrompt: params.qaPrompt || '',
       metadata: params.metadata || {},
-      status: 'pending', // 设置初始状态
+      status: 'ready', // 设置初始状态
       updateTime: new Date()
     });
 
@@ -505,7 +512,10 @@ export async function createCollectionFromFile(
       chunkOverlap: 50,
       preserveStructure: true,
       extractImages: true,
-      filename: params.file.originalName
+      filename: params.file.originalName,
+      enableParagraphOptimization: params.enableParagraphOptimization || false,  // 从参数中获取，默认关闭
+      agentModel: params.agentModel,
+      paragraphChunkAIMode: params.paragraphChunkAIMode
     });
 
     // 创建集合并直接处理内容
@@ -627,7 +637,8 @@ async function processCollectionContent(
       content: rawText,
       type: 'txt',
       chunkSize: collection.chunkSize || 512,
-      chunkOverlap: 50
+      chunkOverlap: 50,
+      enableParagraphOptimization: false  // 确保内容处理时也不启用段落优化
     });
     
     const chunks = processResult.chunks || [];
@@ -652,18 +663,45 @@ async function processCollectionContent(
     if (dataItems.length > 0) {
       await MongoDatasetData.insertMany(dataItems);
       
+      // 根据集合的训练类型选择正确的训练模式
+      let trainingMode = TrainingModeEnum.chunk; // 默认模式
+      
+      if (collection.trainingType === 'image') {
+        trainingMode = TrainingModeEnum.image;
+      } else if (collection.trainingType === 'imageParse') {
+        trainingMode = TrainingModeEnum.imageParse;
+      } else if (collection.trainingType === 'qa') {
+        trainingMode = TrainingModeEnum.qa;
+      } else if (collection.trainingType === 'auto') {
+        trainingMode = TrainingModeEnum.auto;
+      }
+      
+      logger.info(`Starting training with mode: ${trainingMode} for collection: ${collectionId}`);
+      
       // Start vectorization training
       await startTrainingJob({
         collectionId,
         teamId: authContext.teamId,
         tmbId: authContext.tmbId,
-        mode: TrainingModeEnum.chunk
+        mode: trainingMode
       });
     }
 
     logger.info(`Processed ${chunks.length} chunks for collection: ${collectionId}`);
+    
+    // 处理完成，但不直接设置为ready，因为训练任务会管理状态
+    // 训练任务完成后会自动设置为ready
+    logger.info(`Collection content processing completed: ${collectionId}`);
+    
   } catch (error) {
     logger.error('Failed to process collection content:', error);
+    
+    // 处理失败时设置错误状态
+    await MongoDatasetCollection.findByIdAndUpdate(collectionId, {
+      status: 'error',
+      updateTime: new Date()
+    });
+    
     throw error;
   }
 }

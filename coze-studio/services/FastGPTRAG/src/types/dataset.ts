@@ -49,6 +49,22 @@ export enum ParagraphChunkAIModeEnum {
   disable = 'disable'
 }
 
+// 数据集状态枚举 - 参考FastGPT
+export enum DatasetStatusEnum {
+  active = 'active',
+  syncing = 'syncing',
+  waiting = 'waiting',
+  error = 'error'
+}
+
+// 集合状态枚举 - 用于训练状态管理
+export enum CollectionStatusEnum {
+  ready = 'ready',        // 就绪状态
+  processing = 'processing', // 处理中
+  training = 'training',  // 训练中
+  error = 'error'         // 错误状态
+}
+
 export enum TrainingModeEnum {
   chunk = 'chunk',
   qa = 'qa',
@@ -196,6 +212,10 @@ export interface CreateCollectionParams {
   chunkSplitter?: string;
   qaPrompt?: string;
   metadata?: Record<string, any>;
+  // 段落优化配置
+  enableParagraphOptimization?: boolean;
+  agentModel?: string;
+  paragraphChunkAIMode?: ParagraphChunkAIModeEnum;
 }
 
 export interface PushDatasetDataParams {

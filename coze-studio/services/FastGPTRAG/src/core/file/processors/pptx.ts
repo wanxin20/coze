@@ -2,7 +2,7 @@ import { logger } from '../../../utils/logger.js';
 import { FileProcessResult } from '../types.js';
 import * as fs from 'fs';
 import * as path from 'path';
-import * as decompress from 'decompress';
+import decompress from 'decompress';
 import { DOMParser } from '@xmldom/xmldom';
 import { v4 as uuidv4 } from 'uuid';
 

@@ -232,6 +232,8 @@ export interface Dataset {
   dataset_type?: DatasetType;
   /** storage_config详细信息 */
   storage_config?: StorageConfig;
+  /** 知识库类型：native, fastgpt_rag */
+  knowledge_type?: string;
 }
 
 export interface DatasetDetailRequest {
@@ -263,6 +265,8 @@ export interface DatasetFilter {
   format_type?: common.FormatType;
   /** 按coze/火山筛选 */
   dataset_type_list?: Array<DatasetType>;
+  /** 知识库类型：native, fastgpt_rag */
+  knowledge_type?: string;
 }
 
 export interface DeleteDatasetRequest {

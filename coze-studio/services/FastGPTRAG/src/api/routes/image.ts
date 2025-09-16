@@ -1,6 +1,6 @@
 import express from 'express';
 import multer from 'multer';
-import { imageProcessor } from '@/core/file/processors/image.js';
+import { imageProcessor, ImageProcessor } from '@/core/file/processors/image.js';
 import { imageTrainingProcessor, ImageTrainingMode } from '@/core/dataset/training/imageTraining.js';
 import { vlmService } from '@/core/vlm/index.js';
 import { logger } from '@/utils/logger.js';
@@ -317,7 +317,7 @@ router.post('/generate-description', authMiddleware, upload.single('image'), asy
  */
 router.get('/supported-formats', (req, res) => {
   try {
-    const formats = imageProcessor.constructor.getSupportedFormats();
+    const formats = ImageProcessor.getSupportedFormats();
     
     res.json({
       success: true,

@@ -23,7 +23,7 @@ export class PdfProcessor {
 
   async processFromBuffer(buffer: Buffer): Promise<FileProcessResult> {
     try {
-      logger.info('Starting PDF processing with pdfjs legacy');
+      // Processing PDF with pdfjs
       
       const rawText = await this.readPdfFile(buffer);
       

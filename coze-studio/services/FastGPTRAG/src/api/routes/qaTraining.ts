@@ -1,6 +1,7 @@
 import express from 'express';
 import { Types } from 'mongoose';
 import { logger } from '@/utils/logger.js';
+import { config } from '@/config/index.js';
 import { 
   startQATrainingJob, 
   getQATrainingStatus, 
@@ -25,7 +26,7 @@ router.post('/start', authMiddleware, async (req, res) => {
       collectionId, 
       batchSize = 5,
       qaPrompt,
-      agentModel = 'gpt-3.5-turbo',
+      agentModel = config.defaultLlmModel,
       vectorModel = 'text-embedding-v3'
     } = req.body;
 
@@ -286,7 +287,7 @@ router.post('/generate-single', authMiddleware, async (req, res) => {
       datasetId,
       collectionId,
       qaPrompt,
-      agentModel = 'gpt-3.5-turbo',
+      agentModel = config.defaultLlmModel,
       vectorModel = 'text-embedding-v3'
     } = req.body;
 

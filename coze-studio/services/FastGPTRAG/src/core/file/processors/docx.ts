@@ -12,7 +12,7 @@ export class DocxProcessor {
     const imageList: ImageType[] = [];
     
     try {
-      logger.info('Starting DOCX processing with mammoth');
+      // Processing DOCX file
       
       // 使用mammoth将DOCX转换为HTML，同时提取图片
       const { value: html } = await mammoth.convertToHtml(

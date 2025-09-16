@@ -1,6 +1,6 @@
 import { logger } from '../../../utils/logger.js';
 import { FileProcessResult, ImageType } from '../types.js';
-import { vlmService } from '../../vlm/index.js';
+import { vlmService, VLMService } from '../../vlm/index.js';
 import { v4 as uuidv4 } from 'uuid';
 import * as fs from 'fs';
 
@@ -33,7 +33,7 @@ export class ImageProcessor {
       }
 
       // 验证图片格式是否支持VLM
-      if (generateDescription && !vlmService.constructor.isSupportedImageFormat(mimeType)) {
+      if (generateDescription && !VLMService.isSupportedImageFormat(mimeType)) {
         logger.warn(`Image format ${mimeType} not supported for VLM processing`);
       }
 
@@ -52,7 +52,7 @@ export class ImageProcessor {
       let imageDescMap: Record<string, string> = {};
 
       // 使用VLM生成图片描述
-      if (generateDescription && vlmService.constructor.isSupportedImageFormat(mimeType)) {
+      if (generateDescription && VLMService.isSupportedImageFormat(mimeType)) {
         try {
           const descResult = await vlmService.generateImageDescription({
             imageBase64: base64,
@@ -137,7 +137,7 @@ export class ImageProcessor {
       concurrency = 3
     } = options || {};
 
-    logger.info(`Processing batch of ${images.length} images`);
+    // Processing image batch
 
     const imageList: ImageType[] = [];
     const imageDescMap: Record<string, string> = {};
@@ -166,7 +166,7 @@ export class ImageProcessor {
         mime: mimeType,
         filename
       };
-    }).filter(Boolean);
+    }).filter((item): item is { id: string; base64: string; mime: string; filename: string } => item !== null);
 
     // 批量生成描述
     if (generateDescription && imageData.length > 0) {
@@ -199,7 +199,8 @@ export class ImageProcessor {
     // 构建文本内容
     imageList.forEach((image) => {
       const description = imageDescMap[image.uuid] || '图片内容';
-      const filename = imageData.find(d => d.id === image.uuid)?.filename || 'image';
+      const imageDataItem = imageData.find(d => d && d.id === image.uuid);
+      const filename = imageDataItem?.filename || 'image';
       textParts.push(this.buildSearchableText(filename, description, image.mime));
     });
 

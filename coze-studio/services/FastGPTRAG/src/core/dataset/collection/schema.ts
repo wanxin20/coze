@@ -7,7 +7,8 @@ import {
   ChunkTriggerConfigTypeEnum,
   ChunkSettingModeEnum,
   DataChunkSplitModeEnum,
-  ParagraphChunkAIModeEnum
+  ParagraphChunkAIModeEnum,
+  CollectionStatusEnum
 } from '@/types/dataset.js';
 import { DatasetCollectionName } from '../schema.js';
 
@@ -88,6 +89,12 @@ const DatasetCollectionSchema = new mongoose.Schema({
     type: Date,
     default: () => new Date()
   },
+  // 状态管理 - 用于防止并发冲突
+  status: {
+    type: String,
+    enum: Object.values(CollectionStatusEnum),
+    default: CollectionStatusEnum.ready
+  },
   // Metadata
   fileId: {
     type: mongoose.Schema.Types.ObjectId,
@@ -102,12 +109,6 @@ const DatasetCollectionSchema = new mongoose.Schema({
   metadata: {
     type: Object,
     default: {}
-  },
-  // Status tracking
-  status: {
-    type: String,
-    enum: ['pending', 'processing', 'training', 'ready', 'failed'],
-    default: 'pending'
   },
   forbid: Boolean,
   customPdfParse: Boolean,

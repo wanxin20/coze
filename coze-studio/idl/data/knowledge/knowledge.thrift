@@ -107,6 +107,7 @@ struct DatasetFilter {
     3: optional DatasetSource source_type   // source
     4: optional DatasetScopeType  scope_type   // search type
     5: optional common.FormatType format_type // type
+    6: optional string knowledge_type    // Knowledge base type: native, fastgpt_rag
 }
 
 enum DatasetScopeType {

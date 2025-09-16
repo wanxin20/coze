@@ -86,6 +86,15 @@ const DEFAULT_VLM_MODELS: Record<string, VLMModelConfig> = {
     maxTokens: 4096,
     vision: true,
     provider: 'custom'
+  },
+  'zai-org/GLM-4.5V': {
+    name: 'GLM-4.5V',
+    model: 'zai-org/GLM-4.5V',
+    apiKey: process.env.SILICONFLOW_API_KEY,
+    endpoint: process.env.SILICONFLOW_API_URL || 'https://api.siliconflow.cn/v1',
+    maxTokens: 4096,
+    vision: true,
+    provider: 'custom'
   }
 };
 
@@ -516,5 +525,4 @@ export class VLMService {
 // 导出单例实例
 export const vlmService = new VLMService();
 
-// 导出类型
-export { VLMModelConfig, ImageDescriptionRequest, ImageDescriptionResponse };
+// 类型已在上面直接导出，无需重复导出

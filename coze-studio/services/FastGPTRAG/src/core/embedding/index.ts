@@ -91,12 +91,7 @@ export async function getVectorsByText({ model, input, type, headers }: GetVecto
       let response: any;
       const maxRetries = 3;
       
-      logger.info(`Making embedding request to: ${url}`, {
-        model: model.model,
-        provider: model.provider,
-        inputLength: Array.isArray(requestData.input) ? requestData.input.length : 1,
-        authHeader: authHeader.substring(0, 20) + '...'
-      });
+      // Making embedding request to provider
 
       for (let attempt = 1; attempt <= maxRetries; attempt++) {
         try {
@@ -198,13 +193,7 @@ export function getEmbeddingModel(modelName: string): EmbeddingModel {
     logger.warn(`Model ${modelName} (mapped to ${mappedModelName}) not found, using fallback: ${model.model}`);
   }
   
-  // Log model selection for debugging
-  logger.info(`Selected embedding model: ${model.model} (provider: ${model.provider})`, {
-    requestedModel: modelName,
-    mappedModel: mappedModelName,
-    selectedModel: model.model,
-    availableModels: config.vectorModels.map(m => m.model)
-  });
+  // Model selection completed
   
   return model;
 }

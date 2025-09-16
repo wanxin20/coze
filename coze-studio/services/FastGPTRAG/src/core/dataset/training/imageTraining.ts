@@ -1,5 +1,5 @@
 import { logger } from '../../../utils/logger.js';
-import { vlmService, type ImageDescriptionResponse } from '../../vlm/index.js';
+import { vlmService, VLMService, type ImageDescriptionResponse } from '../../vlm/index.js';
 import { ImageType } from '../../file/types.js';
 
 /**
@@ -332,7 +332,7 @@ export class ImageTrainingProcessor {
 
     // 检查图片格式
     for (const image of request.imageList) {
-      if (!vlmService.constructor.isSupportedImageFormat(image.mime)) {
+      if (!VLMService.isSupportedImageFormat(image.mime)) {
         return { valid: false, error: `Unsupported image format: ${image.mime}` };
       }
     }

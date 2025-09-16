@@ -1,6 +1,7 @@
 import express from 'express';
 import { logger } from '@/utils/logger.js';
 import { authMiddleware } from '@/middleware/auth.js';
+import { config } from '@/config/index.js';
 import { 
   paragraphProcessor,
   ParagraphChunkAIModeEnum,
@@ -17,7 +18,7 @@ router.post('/optimize', authMiddleware, async (req, res) => {
   try {
     const {
       rawText,
-      model = 'gpt-3.5-turbo',
+      model = config.defaultLlmModel,
       paragraphChunkAIMode = ParagraphChunkAIModeEnum.enable,
       customPrompt,
       language = 'auto',
@@ -172,7 +173,7 @@ router.post('/batch', authMiddleware, async (req, res) => {
   try {
     const {
       texts,
-      model = 'gpt-3.5-turbo',
+      model = config.defaultLlmModel,
       paragraphChunkAIMode = ParagraphChunkAIModeEnum.enable,
       customPrompt,
       language = 'auto',
@@ -305,7 +306,7 @@ router.post('/validate', authMiddleware, async (req, res) => {
         quality: validation,
         detectedLanguage: language,
         shouldSkipAutoProcessing: shouldSkipAuto,
-        recommendations: this.generateRecommendations(text, validation, language)
+        recommendations: generateRecommendations(text, validation, language)
       }
     });
 
@@ -328,7 +329,7 @@ router.get('/modes', (req, res) => {
     data: {
       modes: Object.values(ParagraphChunkAIModeEnum).map(mode => ({
         value: mode,
-        description: this.getModeDescription(mode)
+        description: getModeDescription(mode)
       })),
       defaultMode: ParagraphChunkAIModeEnum.auto
     }

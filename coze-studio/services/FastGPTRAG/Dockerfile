@@ -16,20 +16,17 @@ RUN apk add --no-cache \
     librsvg-dev \
     pixman-dev
 
-# 复制 package 文件
-COPY package*.json ./
+# 复制源代码（先复制所有内容）
+COPY . .
 
 # 设置 npm 镜像源（如果在中国）
 RUN npm config set registry https://registry.npmmirror.com
 
 # 安装所有依赖（包括开发依赖用于构建）
-RUN npm ci && npm cache clean --force
+RUN npm ci
 
-# 复制源代码
-COPY . .
-
-# 构建应用 - 确保 TypeScript 工具可用
-RUN npx tsc && npx tsc-alias
+# 构建应用
+RUN npm run build
 
 # 清理开发依赖，只保留生产依赖
 RUN npm ci --only=production && npm cache clean --force

@@ -77,11 +77,12 @@ const getDatasetList = async (
     space_id: string;
     scope_type?: DatasetScopeType;
     format_type?: FormatType;
+    knowledge_type?: string;
     projectID?: string;
   },
   pageIndex = 1,
 ) => {
-  const { query, search_type, space_id, scope_type, format_type, projectID } =
+  const { query, search_type, space_id, scope_type, format_type, knowledge_type, projectID } =
     props;
   const resp = await KnowledgeApi.ListDataset({
     space_id,
@@ -91,6 +92,7 @@ const getDatasetList = async (
       name: query,
       scope_type,
       format_type,
+      knowledge_type,
     },
     order_field: search_type,
     project_id: projectID,
@@ -209,6 +211,7 @@ const useKnowledgeFilter = ({
     FilterKnowledgeType.TEXT,
     FilterKnowledgeType.TABLE,
     FilterKnowledgeType.IMAGE,
+    FilterKnowledgeType.FASTGPT_RAG,
   ],
   projectID,
   beforeCreate,
@@ -252,13 +255,15 @@ const useKnowledgeFilter = ({
             search_type: searchType,
             scope_type: isPersonal ? DatasetScopeType.ScopeSelf : scopeType,
             format_type:
-              currentKnowledgeType === FilterKnowledgeType.ALL
+              currentKnowledgeType === FilterKnowledgeType.ALL || currentKnowledgeType === FilterKnowledgeType.FASTGPT_RAG
                 ? undefined
                 : {
                     [FilterKnowledgeType.TABLE]: FormatType.Table,
                     [FilterKnowledgeType.TEXT]: FormatType.Text,
                     [FilterKnowledgeType.IMAGE]: FormatType.Image,
                   }[currentKnowledgeType],
+            // 对于FastGPTRAG类型，使用knowledge_type参数而不是format_type
+            knowledge_type: currentKnowledgeType === FilterKnowledgeType.FASTGPT_RAG ? 'fastgpt_rag' : undefined,
             projectID,
           },
           newData?.nextPageIndex,
@@ -523,6 +528,22 @@ const useKnowledgeFilter = ({
           }
         >
           {I18n.t('knowledge_photo_025')}
+        </div>
+      );
+    }
+    if (type === FilterKnowledgeType.FASTGPT_RAG) {
+      return (
+        <div
+          data-testid="BotKnowledgeSelectListModalFastGPTRAGTab"
+          key={FilterKnowledgeType.FASTGPT_RAG}
+          onClick={() => setCurrentKnowledgeType(FilterKnowledgeType.FASTGPT_RAG)}
+          className={
+            currentKnowledgeType === FilterKnowledgeType.FASTGPT_RAG
+              ? styles['file-type-tab-item-active']
+              : styles['file-type-tab-item']
+          }
+        >
+          FastGPT RAG
         </div>
       );
     }

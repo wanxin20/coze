@@ -60,8 +60,13 @@ export class LLMService {
 
       logger.debug('LLM request body:', JSON.stringify(requestBody, null, 2));
 
-      // 发送请求
-      const response = await fetch(`${config.oneApiUrl}/v1/chat/completions`, {
+      // 发送请求 - 修复URL重复v1的问题
+      const apiUrl = config.oneApiUrl.endsWith('/v1') 
+        ? `${config.oneApiUrl}/chat/completions`
+        : `${config.oneApiUrl}/v1/chat/completions`;
+      
+      logger.debug(`LLM API URL: ${apiUrl}`);
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -76,7 +81,7 @@ export class LLMService {
         throw new Error(`LLM API request failed: ${response.status} ${response.statusText}`);
       }
 
-      const data = await response.json();
+      const data = await response.json() as any;
       logger.debug('LLM response:', JSON.stringify(data, null, 2));
 
       // 解析响应
