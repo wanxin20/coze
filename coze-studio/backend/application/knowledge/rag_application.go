@@ -1229,6 +1229,7 @@ func (app *RAGApplication) GetRagCollections(ctx context.Context, req *ragModel.
 			TrainingType:  item.TrainingType,
 			ChunkSize:     int32(item.ChunkSize),
 			Status:        item.Status,
+			Metadata:      item.Metadata, // 添加缺失的Metadata字段
 		}
 	}
 	

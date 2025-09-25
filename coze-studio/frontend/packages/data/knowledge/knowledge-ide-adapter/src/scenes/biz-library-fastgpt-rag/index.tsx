@@ -59,8 +59,8 @@ const FastGPTRAGCollectionList = () => {
         throw new Error('获取知识库信息失败或知识库不存在');
       }
 
-      // 使用知识库ID作为RAG数据集ID来获取集合列表
-      const ragDatasetId = knowledgeResult.data.ragDatasetId || datasetID;
+      // 使用知识库响应中的_id作为RAG数据集ID来获取集合列表
+      const ragDatasetId = knowledgeResult.data.ragDatasetId || knowledgeResult.data._id || datasetID;
       console.log('使用RAG数据集ID:', ragDatasetId);
       
       // 构建带查询参数的URL
@@ -83,16 +83,27 @@ const FastGPTRAGCollectionList = () => {
       const result = await response.json();
       console.log('集合列表响应:', result);
       
-      // 适配实际的API响应格式: { code: 0, msg: "success", list: [...], total: 2 }
-      if (result.code === 0 && result.list && Array.isArray(result.list)) {
-        console.log(`成功获取到 ${result.list.length} 个集合`);
-        setCollections(result.list);
-        return result.list;
+      // 适配两种可能的API响应格式:
+      // 格式1 (后端原始): { code: 200, message: "Success", data: { list: [...], total: 1 } }
+      // 格式2 (前端转换后): { code: 0, msg: "success", list: [...], total: 1 }
+      let collections = [];
+      
+      if (result.code === 200 && result.data && result.data.list && Array.isArray(result.data.list)) {
+        // 格式1：嵌套data结构
+        collections = result.data.list;
+      } else if (result.code === 0 && result.list && Array.isArray(result.list)) {
+        // 格式2：直接list结构
+        collections = result.list;
       } else {
         console.warn('集合列表响应格式异常:', result);
         setCollections([]);
         return [];
       }
+      
+      console.log(`成功获取到 ${collections.length} 个集合`);
+      console.log('集合数据详情:', collections);
+      setCollections(collections);
+      return collections;
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : '获取集合列表失败';
       console.error('获取集合列表错误:', error);
@@ -130,6 +141,31 @@ const FastGPTRAGCollectionList = () => {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
   };
 
+  // 修复文件名乱码问题
+  const fixFileName = (fileName: string) => {
+    if (!fileName) return '';
+    
+    // 检查是否包含乱码字符（Unicode转义序列）
+    if (fileName.includes('\\u')) {
+      try {
+        // 尝试修复常见的中文乱码
+        return fileName
+          .replace(/\\u([0-9a-fA-F]{4})/g, (match, hex) => String.fromCharCode(parseInt(hex, 16)))
+          .replace(/[\u0080-\u00FF]/g, ''); // 移除无效字符
+      } catch (error) {
+        // 如果修复失败，返回清理后的文件名
+        return fileName.replace(/[^\w\s.-]/g, '').substring(0, 50) + '...';
+      }
+    }
+    
+    // 如果文件名过长，截断处理
+    if (fileName.length > 50) {
+      return fileName.substring(0, 50) + '...';
+    }
+    
+    return fileName;
+  };
+
   // 获取集合类型显示文本
   const getCollectionTypeText = (type: string) => {
     const typeMap: Record<string, string> = {
@@ -148,6 +184,7 @@ const FastGPTRAGCollectionList = () => {
       waiting: { text: '等待中', color: '#faad14' },
       training: { text: '训练中', color: '#1890ff' },
       trained: { text: '已完成', color: '#52c41a' },
+      ready: { text: '已完成', color: '#52c41a' }, // 映射FastGPT的ready状态到已完成
       error: { text: '失败', color: '#ff4d4f' },
     };
     return statusMap[status] || { text: status || '未知', color: '#666' };
@@ -269,7 +306,11 @@ const FastGPTRAGCollectionList = () => {
         overflowY: 'auto',
       }}>
         {collections.map((collection, index) => {
-          const trainingStatus = getTrainingStatusText(collection.trainingStatus);
+          const trainingStatus = getTrainingStatusText(collection.status);
+          
+          // 调试信息：打印每个集合的详细数据
+          console.log(`集合 ${index}:`, collection);
+          console.log(`集合metadata:`, collection.metadata);
           
           return (
             <div
@@ -339,19 +380,19 @@ const FastGPTRAGCollectionList = () => {
                 <div>
                   <span style={{ fontWeight: 500 }}>文档数:</span>
                   <span style={{ marginLeft: '4px' }}>
-                    {collection.fileCount || collection.dataCount || 0}
+                    {collection.metadata?.imageCount ? collection.metadata.imageCount : 1}
                   </span>
                 </div>
                 <div>
                   <span style={{ fontWeight: 500 }}>向量数:</span>
                   <span style={{ marginLeft: '4px' }}>
-                    {collection.vectorCount || 0}
+                    {collection.metadata?.processedChunks || 0}
                   </span>
                 </div>
                 <div>
                   <span style={{ fontWeight: 500 }}>大小:</span>
                   <span style={{ marginLeft: '4px' }}>
-                    {formatFileSize(collection.fileSize)}
+                    {formatFileSize(collection.metadata?.fileSize || 0)}
                   </span>
                 </div>
                 <div>
@@ -363,7 +404,7 @@ const FastGPTRAGCollectionList = () => {
               </div>
 
               {/* 集合描述 */}
-              {collection.intro && (
+              {(collection.intro || collection.metadata?.fileName) && (
                 <div style={{
                   marginTop: '8px',
                   padding: '8px',
@@ -373,7 +414,7 @@ const FastGPTRAGCollectionList = () => {
                   color: '#666',
                   fontStyle: 'italic',
                 }}>
-                  {collection.intro}
+                  {collection.intro || `文件: ${fixFileName(collection.metadata?.fileName || '未知文件')}`}
                 </div>
               )}
             </div>
@@ -714,8 +755,18 @@ const FastGPTRAGAddContentButton = () => {
     const spaceId = urlParams.get('space_id') || window.location.pathname.split('/')[2];
     const datasetId = urlParams.get('dataset_id') || window.location.pathname.split('/')[4];
     
-    // 构建上传页面的URL参数
+    // 构建上传页面的URL参数，保留原始页面的重要参数
     const uploadParams = new URLSearchParams();
+    
+    // 保留原始详情页的参数，这样返回时能正确跳转
+    if (urlParams.get('from')) {
+      uploadParams.set('from', urlParams.get('from')!);
+    }
+    if (urlParams.get('knowledge_type')) {
+      uploadParams.set('knowledge_type', urlParams.get('knowledge_type')!);
+    }
+    
+    // 添加上传页面特有的参数
     uploadParams.set('fastgpt_rag', 'true'); // 标识这是FastGPT RAG操作
     
     switch (type) {

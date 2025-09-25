@@ -20,6 +20,8 @@ interface KnowledgeIDEQuery {
   workflow_id?: string;
   agent_id?: string;
   page_mode?: 'modal' | 'normal';
+  from?: string;
+  knowledge_type?: string;
 }
 export const getKnowledgeIDEQuery = (): KnowledgeIDEQuery => {
   const queryParams = new URLSearchParams(location.search);
@@ -29,6 +31,8 @@ export const getKnowledgeIDEQuery = (): KnowledgeIDEQuery => {
     workflow_id: queryParams.get('workflow_id'),
     agent_id: queryParams.get('agent_id'),
     page_mode: queryParams.get('page_mode') as KnowledgeIDEQuery['page_mode'],
+    from: queryParams.get('from'),
+    knowledge_type: queryParams.get('knowledge_type'),
   };
   // Filter out null values to avoid generating extra querystrings.
   return Object.fromEntries(Object.entries(knowledgeQuery).filter(e => !!e[1]));
