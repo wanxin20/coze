@@ -82,14 +82,17 @@ func (s *OpenAuthApplicationService) CreatePersonalAccessToken(ctx context.Conte
 		UserID: *userID,
 	}
 
-	if req.DurationDay == "customize" {
-		appReq.Expire = req.ExpireAt
-	} else {
-		expireDay, err := strconv.ParseInt(req.DurationDay, 10, 64)
-		if err != nil {
-			return resp, errors.New("invalid expireDay")
+	// 如果没有提供ExpireAt，则尝试使用DurationDay（向后兼容）
+	if req.ExpireAt == 0 && req.DurationDay != "" {
+		if req.DurationDay == "customize" {
+			appReq.Expire = req.ExpireAt
+		} else {
+			expireDay, err := strconv.ParseInt(req.DurationDay, 10, 64)
+			if err != nil {
+				return resp, errors.New("invalid expireDay")
+			}
+			appReq.Expire = time.Now().Add(time.Duration(expireDay) * time.Hour * 24).Unix()
 		}
-		appReq.Expire = time.Now().Add(time.Duration(expireDay) * time.Hour * 24).Unix()
 	}
 
 	apiKeyResp, err := openapiAuthDomainSVC.Create(ctx, appReq)

@@ -20,7 +20,6 @@ import { I18n } from '@coze-arch/i18n';
 import { type PersonalAccessToken } from '@coze-arch/bot-api/pat_permission_api';
 import { Modal, type FormApi } from '@coze-arch/coze-design';
 
-import { ExpirationDate, getExpireAt } from '@/utils/time';
 import {
   usePATPermission,
   useCreatePAT,
@@ -29,9 +28,6 @@ import {
 
 export interface FormApiInfo {
   name: string;
-  duration_day: ExpirationDate;
-
-  expire_at: Date;
 }
 
 interface PatFormProps {
@@ -44,23 +40,7 @@ interface PatFormProps {
   afterSubmit?: (params: Record<string, unknown>) => void;
 }
 
-const getDurationData = (durationDay: ExpirationDate, expireAt: Date) => ({
-  duration_day: durationDay,
-  ...(durationDay === ExpirationDate.CUSTOMIZE
-    ? { expire_at: getExpireAt(expireAt as Date) }
-    : {}),
-});
-
 const validateName = (name?: string) => Boolean(name);
-const validateDuration = (durationDay?: ExpirationDate, expireAt?: Date) => {
-  if (!durationDay) {
-    return false;
-  }
-  if (durationDay === ExpirationDate.CUSTOMIZE && !expireAt) {
-    return false;
-  }
-  return true;
-};
 
 const authMigrateNoticeLSKey = 'auth_migrate_notice_do_not_show_again';
 
@@ -108,11 +88,7 @@ export const usePatForm = ({
   const [isFailToValid, setIsFailToValid] = useState(true);
 
   const onSubmit = () => {
-    const {
-      name = '',
-      duration_day,
-      expire_at,
-    } = formApi.current?.getValues() || {};
+    const { name = '' } = formApi.current?.getValues() || {};
 
     const params = {
       name,
@@ -121,24 +97,20 @@ export const usePatForm = ({
     if (isCreate) {
       runCreate({
         ...params,
-        ...getDurationData(duration_day as ExpirationDate, expire_at as Date),
+        expire_at: -1, // 设置为永久令牌
       });
     } else {
       runUpdate({ ...params, id: editInfo?.id ?? '' });
     }
-    afterSubmit?.({ ...params, duration_day, expire_at });
+    afterSubmit?.(params);
   };
 
   const validateParams = () => {
-    const { name, duration_day, expire_at } =
-      formApi.current?.getValues() || {};
+    const { name } = formApi.current?.getValues() || {};
 
     const nameValid = validateName(name);
     const isCustomParamsValid = validateCustomParams?.() !== false;
-    const durationValid = isCreate
-      ? validateDuration(duration_day, expire_at)
-      : true;
-    setIsFailToValid(!(nameValid && isCustomParamsValid && durationValid));
+    setIsFailToValid(!(nameValid && isCustomParamsValid));
   };
 
   const onFormValueChange = (
