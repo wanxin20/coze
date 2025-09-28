@@ -394,6 +394,9 @@ services:
       # 基础服务配置
       LISTEN_ADDR: 0.0.0.0:8888
       
+      # MinIO代理配置
+      MINIO_PROXY_ENDPOINT: :8889
+      
       # 日志配置 - 开发环境友好的详细日志
       LOG_LEVEL: ${LOG_LEVEL:-debug}
       ENABLE_API_LOGGING: ${ENABLE_API_LOGGING:-true}

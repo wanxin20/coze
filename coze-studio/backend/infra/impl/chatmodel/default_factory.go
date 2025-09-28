@@ -43,7 +43,7 @@ func NewDefaultFactory() chatmodel.Factory {
 
 func NewFactory(customFactory map[chatmodel.Protocol]Builder) chatmodel.Factory {
 	protocol2Builder := map[chatmodel.Protocol]Builder{
-		chatmodel.ProtocolOpenAI:   openAIBuilder,
+		chatmodel.ProtocolOpenAI:   EnhancedOpenAIBuilder, // 使用增强版OpenAI构建器处理流式响应问题
 		chatmodel.ProtocolClaude:   claudeBuilder,
 		chatmodel.ProtocolDeepseek: deepseekBuilder,
 		chatmodel.ProtocolArk:      arkBuilder,

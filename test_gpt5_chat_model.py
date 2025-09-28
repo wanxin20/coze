@@ -14,7 +14,61 @@ API_KEY = "sk-AyobioLworaCLNbs1zD0aDdTP3zZFmIdCDwgu3kfvBFCS8IH"
 NEW_MODEL = "gemini-2.5-flash-preview-05-20"  # 新的聊天模型
 OLD_MODEL = "gpt-5-2025-08-07"       # 旧的推理模型
 
-def test_model_response(model_name, test_name):
+def fix_encoding(text):
+    """修复可能的编码问题"""
+    try:
+        # 尝试修复双重编码问题：Latin-1 → UTF-8
+        fixed_bytes = text.encode('latin-1')
+        fixed_text = fixed_bytes.decode('utf-8')
+        return fixed_text
+    except:
+        return text
+
+def process_stream_response(response):
+    """处理流式响应"""
+    content_chunks = []
+    usage = {}
+    
+    print("🌊 开始处理流式响应...")
+    
+    try:
+        for line in response.iter_lines():
+            if line:
+                line_str = line.decode('utf-8')
+                print(f"📝 收到数据: {line_str[:100]}{'...' if len(line_str) > 100 else ''}")
+                
+                if line_str.startswith('data: ') and not line_str.endswith('[DONE]'):
+                    try:
+                        data_str = line_str[6:]  # 移除 'data: '
+                        data = json.loads(data_str)
+                        
+                        if 'choices' in data and data['choices']:
+                            delta = data['choices'][0].get('delta', {})
+                            if 'content' in delta:
+                                # 尝试修复编码问题
+                                content = delta['content']
+                                fixed_content = fix_encoding(content)
+                                content_chunks.append(fixed_content)
+                                print(f"💬 内容片段: {repr(fixed_content)}")
+                        
+                        # 提取usage信息（通常在最后一个chunk中）
+                        if 'usage' in data:
+                            usage = data['usage']
+                            
+                    except json.JSONDecodeError as e:
+                        print(f"⚠️ 解析流式数据失败: {e}")
+                        continue
+                elif line_str.strip() == 'data: [DONE]':
+                    print("✅ 流式响应完成")
+                    break
+    except Exception as e:
+        print(f"⚠️ 处理流式响应异常: {e}")
+    
+    content = ''.join(content_chunks)
+    print(f"🎯 流式响应汇总: {len(content_chunks)} 个片段，总长度 {len(content)} 字符")
+    return content, usage
+
+def test_model_response(model_name, test_name, use_stream=False):
     """测试指定模型的回复功能"""
     url = f"{BASE_URL.rstrip('/')}/v1/chat/completions"
     
@@ -49,6 +103,7 @@ def test_model_response(model_name, test_name):
     
     print(f"\n{'='*80}")
     print(f"🤖 测试模型: {model_name} ({test_name})")
+    print(f"🌊 模式: {'流式输出' if use_stream else '非流式输出'}")
     print(f"⏰ 测试时间: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
     print('='*80)
     
@@ -66,25 +121,33 @@ def test_model_response(model_name, test_name):
             ],
             "max_tokens": test_case['max_tokens'],
             "temperature": 0.7,
-            "stream": False
+            "stream": use_stream
         }
         
         try:
             start_time = time.time()
-            response = requests.post(url, headers=headers, json=payload, timeout=30)
+            
+            if use_stream:
+                # 流式请求
+                response = requests.post(url, headers=headers, json=payload, timeout=30, stream=True)
+            else:
+                # 非流式请求
+                response = requests.post(url, headers=headers, json=payload, timeout=30)
+            
             end_time = time.time()
             response_time = end_time - start_time
             
             if response.status_code == 200:
-                result = response.json()
-                
-                # 提取回复内容
-                content = ""
-                if 'choices' in result and len(result['choices']) > 0:
-                    content = result['choices'][0]['message']['content']
-                
-                # 提取token使用情况
-                usage = result.get('usage', {})
+                if use_stream:
+                    # 处理流式响应
+                    content, usage = process_stream_response(response)
+                else:
+                    # 处理非流式响应
+                    result = response.json()
+                    content = ""
+                    if 'choices' in result and len(result['choices']) > 0:
+                        content = result['choices'][0]['message']['content']
+                    usage = result.get('usage', {})
                 completion_tokens = usage.get('completion_tokens', 0)
                 reasoning_tokens = usage.get('completion_tokens_details', {}).get('reasoning_tokens', 0)
                 prompt_tokens = usage.get('prompt_tokens', 0)
@@ -145,45 +208,61 @@ def test_model_response(model_name, test_name):
     
     return results
 
-def print_summary(new_results, old_results=None):
+def print_summary(non_stream_results, stream_results=None):
     """打印测试结果总结"""
     print(f"\n{'='*80}")
     print("📊 测试结果总结")
     print('='*80)
     
-    # 新模型结果
-    print(f"\n🆕 新模型 (gpt-5-chat-2025-08-07) 结果:")
-    successful_tests = sum(1 for r in new_results if r['success'])
-    content_tests = sum(1 for r in new_results if r.get('has_content', False))
+    # 非流式模式结果
+    print(f"\n📋 非流式模式结果:")
+    successful_tests = sum(1 for r in non_stream_results if r['success'])
+    content_tests = sum(1 for r in non_stream_results if r.get('has_content', False))
     
-    print(f"   ✅ 成功调用: {successful_tests}/{len(new_results)}")
-    print(f"   💬 有内容回复: {content_tests}/{len(new_results)}")
+    print(f"   ✅ 成功调用: {successful_tests}/{len(non_stream_results)}")
+    print(f"   💬 有内容回复: {content_tests}/{len(non_stream_results)}")
     
     if content_tests > 0:
-        avg_response_time = sum(r.get('response_time', 0) for r in new_results if r['success']) / successful_tests
-        avg_content_length = sum(r.get('content_length', 0) for r in new_results if r.get('has_content', False)) / content_tests
+        avg_response_time = sum(r.get('response_time', 0) for r in non_stream_results if r['success']) / successful_tests
+        avg_content_length = sum(r.get('content_length', 0) for r in non_stream_results if r.get('has_content', False)) / content_tests
         print(f"   ⏱️  平均响应时间: {avg_response_time:.2f}秒")
         print(f"   📝 平均回复长度: {avg_content_length:.0f}字符")
     
-    # 对比旧模型（如果有）
-    if old_results:
-        print(f"\n🔄 旧模型 (gpt-5-2025-08-07) 对比:")
-        old_successful = sum(1 for r in old_results if r['success'])
-        old_content = sum(1 for r in old_results if r.get('has_content', False))
+    # 流式模式结果（如果有）
+    if stream_results:
+        print(f"\n🌊 流式模式结果:")
+        stream_successful = sum(1 for r in stream_results if r['success'])
+        stream_content = sum(1 for r in stream_results if r.get('has_content', False))
         
-        print(f"   ✅ 成功调用: {old_successful}/{len(old_results)}")
-        print(f"   💬 有内容回复: {old_content}/{len(old_results)}")
+        print(f"   ✅ 成功调用: {stream_successful}/{len(stream_results)}")
+        print(f"   💬 有内容回复: {stream_content}/{len(stream_results)}")
         
-        print(f"\n📈 改进效果:")
-        print(f"   回复率提升: {old_content}/{len(old_results)} → {content_tests}/{len(new_results)}")
+        if stream_content > 0:
+            stream_avg_time = sum(r.get('response_time', 0) for r in stream_results if r['success']) / stream_successful
+            stream_avg_length = sum(r.get('content_length', 0) for r in stream_results if r.get('has_content', False)) / stream_content
+            print(f"   ⏱️  平均响应时间: {stream_avg_time:.2f}秒")
+            print(f"   📝 平均回复长度: {stream_avg_length:.0f}字符")
         
-        if old_content == 0 and content_tests > 0:
-            print("   🎉 从完全无回复改善为正常回复！")
+        print(f"\n📈 模式对比:")
+        print(f"   非流式成功率: {content_tests}/{len(non_stream_results)} ({content_tests/len(non_stream_results)*100:.1f}%)")
+        print(f"   流式成功率: {stream_content}/{len(stream_results)} ({stream_content/len(stream_results)*100:.1f}%)")
+        
+        if content_tests > 0 and stream_content > 0:
+            non_stream_avg_time = sum(r.get('response_time', 0) for r in non_stream_results if r['success']) / successful_tests
+            stream_avg_time = sum(r.get('response_time', 0) for r in stream_results if r['success']) / stream_successful
+            print(f"   响应时间对比: 非流式 {non_stream_avg_time:.2f}s vs 流式 {stream_avg_time:.2f}s")
     
     # 建议
     print(f"\n💡 建议:")
-    if content_tests == len(new_results):
-        print("   ✅ 所有测试都成功，模型配置正常，可以在Coze中使用")
+    if content_tests == len(non_stream_results):
+        print("   ✅ 非流式模式完全正常，推荐使用")
+        if stream_results:
+            if sum(1 for r in stream_results if r.get('has_content', False)) == len(stream_results):
+                print("   ✅ 流式模式也正常，编码修复有效")
+            else:
+                print("   ⚠️  流式模式有问题，建议使用非流式模式")
+        else:
+            print("   💡 可以尝试流式模式来对比性能")
     elif content_tests > 0:
         print("   ⚠️  部分测试成功，建议检查失败的测试用例")
     else:
@@ -191,20 +270,34 @@ def print_summary(new_results, old_results=None):
 
 def main():
     print("🚀 开始测试GPT-5 Chat模型回复功能...")
-    print("🎯 目标：验证切换到gpt-5-chat-2025-08-07后是否能正常回复")
+    print("🎯 目标：验证流式和非流式输出模式")
     
-    # 测试新模型（主要测试）
-    new_results = test_model_response(NEW_MODEL, "新聊天模型")
+    # 测试非流式模式
+    print("\n" + "="*60)
+    print("📋 第一轮：非流式模式测试")
+    print("="*60)
+    non_stream_results = test_model_response(NEW_MODEL, "非流式模式", use_stream=False)
     
-    # 可选：也测试旧模型作对比（如果你想看对比效果）
-    print(f"\n❓ 是否也测试旧模型作对比？(可能会出现空回复)")
-    print("   注意：旧模型测试可能会消耗更多token且回复为空")
+    # 询问是否测试流式模式
+    print(f"\n❓ 是否也测试流式模式？")
+    print("   注意：流式模式可能有中文编码问题，但我们已添加修复逻辑")
+    print("   流式模式会显示详细的数据接收过程")
     
-    # 这里我们跳过旧模型测试，只测试新模型
-    old_results = None
+    try:
+        user_input = input("输入 'y' 或 'yes' 来测试流式模式，其他任意键跳过: ").lower().strip()
+        test_stream = user_input in ['y', 'yes']
+    except:
+        test_stream = False
+    
+    stream_results = None
+    if test_stream:
+        print("\n" + "="*60)
+        print("🌊 第二轮：流式模式测试")
+        print("="*60)
+        stream_results = test_model_response(NEW_MODEL, "流式模式", use_stream=True)
     
     # 打印总结
-    print_summary(new_results, old_results)
+    print_summary(non_stream_results, stream_results)
     
     print(f"\n🏁 测试完成!")
     print(f"📄 测试文件保存在: {__file__}")
